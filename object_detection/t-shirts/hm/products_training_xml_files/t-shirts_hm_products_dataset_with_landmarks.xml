@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>imglab dataset</name>
+<comment>Created by imglab tool.</comment>
+<images>
+  <image file='../../../../dataset/t-shirts/hm/products/0141643001/0141643001.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='473' y='202'/>
+      <part name='01' x='609' y='257'/>
+      <part name='02' x='734' y='430'/>
+      <part name='03' x='612' y='524'/>
+      <part name='04' x='593' y='511'/>
+      <part name='05' x='593' y='711'/>
+      <part name='06' x='593' y='945'/>
+      <part name='07' x='385' y='945'/>
+      <part name='08' x='179' y='950'/>
+      <part name='09' x='178' y='711'/>
+      <part name='10' x='181' y='515'/>
+      <part name='11' x='158' y='528'/>
+      <part name='12' x='37' y='431'/>
+      <part name='13' x='161' y='256'/>
+      <part name='14' x='296' y='201'/>
+      <part name='15' x='381' y='229'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0141643002/0141643002.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='473' y='209'/>
+      <part name='01' x='604' y='263'/>
+      <part name='02' x='732' y='432'/>
+      <part name='03' x='610' y='530'/>
+      <part name='04' x='591' y='512'/>
+      <part name='05' x='594' y='710'/>
+      <part name='06' x='594' y='939'/>
+      <part name='07' x='387' y='943'/>
+      <part name='08' x='182' y='939'/>
+      <part name='09' x='180' y='716'/>
+      <part name='10' x='182' y='522'/>
+      <part name='11' x='161' y='538'/>
+      <part name='12' x='36' y='438'/>
+      <part name='13' x='162' y='265'/>
+      <part name='14' x='295' y='209'/>
+      <part name='15' x='380' y='230'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0219154017/0219154017.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='474' y='215'/>
+      <part name='01' x='614' y='285'/>
+      <part name='02' x='731' y='468'/>
+      <part name='03' x='599' y='557'/>
+      <part name='04' x='582' y='539'/>
+      <part name='05' x='583' y='724'/>
+      <part name='06' x='170' y='714'/>
+      <part name='07' x='367' y='938'/>
+      <part name='08' x='161' y='927'/>
+      <part name='10' x='183' y='546'/>
+      <part name='11' x='167' y='559'/>
+      <part name='12' x='36' y='473'/>
+      <part name='13' x='178' y='258'/>
+      <part name='14' x='286' y='214'/>
+      <part name='15' x='372' y='236'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0336530007/0336530007.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='456' y='220'/>
+      <part name='01' x='609' y='290'/>
+      <part name='02' x='732' y='441'/>
+      <part name='03' x='612' y='555'/>
+      <part name='04' x='588' y='535'/>
+      <part name='05' x='587' y='722'/>
+      <part name='06' x='583' y='937'/>
+      <part name='07' x='366' y='936'/>
+      <part name='08' x='164' y='937'/>
+      <part name='09' x='169' y='711'/>
+      <part name='10' x='174' y='534'/>
+      <part name='11' x='155' y='543'/>
+      <part name='12' x='35' y='440'/>
+      <part name='13' x='154' y='279'/>
+      <part name='14' x='298' y='217'/>
+      <part name='15' x='375' y='245'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0336530008/0336530008.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='460' y='211'/>
+      <part name='01' x='600' y='277'/>
+      <part name='02' x='733' y='423'/>
+      <part name='03' x='609' y='540'/>
+      <part name='04' x='598' y='527'/>
+      <part name='05' x='604' y='721'/>
+      <part name='06' x='604' y='943'/>
+      <part name='07' x='390' y='940'/>
+      <part name='08' x='169' y='941'/>
+      <part name='09' x='175' y='722'/>
+      <part name='10' x='182' y='533'/>
+      <part name='11' x='158' y='550'/>
+      <part name='12' x='36' y='440'/>
+      <part name='13' x='157' y='285'/>
+      <part name='14' x='304' y='211'/>
+      <part name='15' x='379' y='227'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0336530009/0336530009.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='456' y='232'/>
+      <part name='01' x='603' y='301'/>
+      <part name='02' x='733' y='444'/>
+      <part name='03' x='610' y='554'/>
+      <part name='04' x='600' y='547'/>
+      <part name='05' x='601' y='701'/>
+      <part name='06' x='601' y='920'/>
+      <part name='07' x='388' y='925'/>
+      <part name='08' x='171' y='920'/>
+      <part name='09' x='171' y='702'/>
+      <part name='10' x='178' y='531'/>
+      <part name='11' x='158' y='553'/>
+      <part name='12' x='36' y='461'/>
+      <part name='13' x='156' y='299'/>
+      <part name='14' x='296' y='235'/>
+      <part name='15' x='375' y='255'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0375323010/0375323010.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='466' y='210'/>
+      <part name='01' x='617' y='290'/>
+      <part name='02' x='733' y='466'/>
+      <part name='03' x='598' y='563'/>
+      <part name='04' x='584' y='552'/>
+      <part name='05' x='588' y='730'/>
+      <part name='06' x='591' y='946'/>
+      <part name='07' x='389' y='941'/>
+      <part name='08' x='187' y='946'/>
+      <part name='09' x='186' y='727'/>
+      <part name='10' x='188' y='555'/>
+      <part name='11' x='167' y='574'/>
+      <part name='12' x='37' y='475'/>
+      <part name='13' x='156' y='282'/>
+      <part name='14' x='299' y='208'/>
+      <part name='15' x='380' y='226'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0386859005/0386859005.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='461' y='214'/>
+      <part name='01' x='606' y='285'/>
+      <part name='02' x='732' y='465'/>
+      <part name='03' x='597' y='551'/>
+      <part name='04' x='581' y='533'/>
+      <part name='05' x='584' y='705'/>
+      <part name='06' x='586' y='934'/>
+      <part name='07' x='385' y='925'/>
+      <part name='08' x='185' y='934'/>
+      <part name='09' x='184' y='712'/>
+      <part name='10' x='180' y='542'/>
+      <part name='11' x='162' y='557'/>
+      <part name='12' x='36' y='472'/>
+      <part name='13' x='156' y='287'/>
+      <part name='14' x='299' y='216'/>
+      <part name='15' x='378' y='232'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0386859006/0386859006.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='460' y='226'/>
+      <part name='01' x='600' y='294'/>
+      <part name='02' x='731' y='465'/>
+      <part name='03' x='612' y='569'/>
+      <part name='04' x='582' y='544'/>
+      <part name='05' x='586' y='719'/>
+      <part name='06' x='584' y='926'/>
+      <part name='07' x='386' y='913'/>
+      <part name='08' x='191' y='916'/>
+      <part name='09' x='186' y='715'/>
+      <part name='10' x='182' y='553'/>
+      <part name='11' x='157' y='575'/>
+      <part name='12' x='36' y='482'/>
+      <part name='13' x='149' y='305'/>
+      <part name='14' x='283' y='231'/>
+      <part name='15' x='374' y='253'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0386859007/0386859007.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='462' y='213'/>
+      <part name='01' x='604' y='281'/>
+      <part name='02' x='732' y='470'/>
+      <part name='03' x='601' y='566'/>
+      <part name='04' x='579' y='546'/>
+      <part name='05' x='580' y='734'/>
+      <part name='06' x='581' y='944'/>
+      <part name='07' x='383' y='933'/>
+      <part name='08' x='183' y='933'/>
+      <part name='09' x='183' y='720'/>
+      <part name='10' x='182' y='544'/>
+      <part name='11' x='160' y='558'/>
+      <part name='12' x='36' y='470'/>
+      <part name='13' x='157' y='282'/>
+      <part name='14' x='299' y='210'/>
+      <part name='15' x='381' y='229'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0386859010/0386859010.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='468' y='204'/>
+      <part name='01' x='608' y='271'/>
+      <part name='02' x='731' y='453'/>
+      <part name='03' x='615' y='548'/>
+      <part name='04' x='591' y='531'/>
+      <part name='05' x='597' y='721'/>
+      <part name='06' x='607' y='941'/>
+      <part name='07' x='394' y='943'/>
+      <part name='08' x='179' y='948'/>
+      <part name='09' x='182' y='716'/>
+      <part name='10' x='186' y='522'/>
+      <part name='11' x='153' y='554'/>
+      <part name='12' x='36' y='462'/>
+      <part name='13' x='162' y='281'/>
+      <part name='14' x='308' y='207'/>
+      <part name='15' x='386' y='222'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0413001003/0413001003.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='465' y='223'/>
+      <part name='01' x='602' y='289'/>
+      <part name='02' x='730' y='454'/>
+      <part name='03' x='604' y='555'/>
+      <part name='04' x='579' y='533'/>
+      <part name='05' x='581' y='724'/>
+      <part name='06' x='584' y='931'/>
+      <part name='07' x='387' y='923'/>
+      <part name='08' x='185' y='924'/>
+      <part name='09' x='185' y='712'/>
+      <part name='10' x='185' y='520'/>
+      <part name='11' x='155' y='546'/>
+      <part name='12' x='35' y='438'/>
+      <part name='13' x='171' y='282'/>
+      <part name='14' x='311' y='220'/>
+      <part name='15' x='387' y='242'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0413001005/0413001005.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='468' y='210'/>
+      <part name='01' x='615' y='281'/>
+      <part name='02' x='732' y='468'/>
+      <part name='03' x='613' y='561'/>
+      <part name='04' x='586' y='538'/>
+      <part name='05' x='586' y='725'/>
+      <part name='06' x='589' y='942'/>
+      <part name='07' x='389' y='945'/>
+      <part name='08' x='182' y='943'/>
+      <part name='09' x='181' y='726'/>
+      <part name='10' x='181' y='533'/>
+      <part name='11' x='161' y='549'/>
+      <part name='12' x='36' y='463'/>
+      <part name='13' x='157' y='282'/>
+      <part name='14' x='302' y='212'/>
+      <part name='15' x='384' y='229'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0425290001/0425290001.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='477' y='216'/>
+      <part name='01' x='607' y='282'/>
+      <part name='02' x='732' y='417'/>
+      <part name='03' x='626' y='536'/>
+      <part name='04' x='595' y='530'/>
+      <part name='05' x='594' y='710'/>
+      <part name='06' x='602' y='933'/>
+      <part name='07' x='385' y='930'/>
+      <part name='08' x='162' y='927'/>
+      <part name='09' x='166' y='697'/>
+      <part name='10' x='170' y='523'/>
+      <part name='11' x='143' y='537'/>
+      <part name='12' x='37' y='405'/>
+      <part name='13' x='158' y='283'/>
+      <part name='14' x='289' y='217'/>
+      <part name='15' x='381' y='247'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0425290002/0425290002.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='490' y='211'/>
+      <part name='01' x='619' y='276'/>
+      <part name='02' x='733' y='420'/>
+      <part name='03' x='613' y='539'/>
+      <part name='04' x='596' y='530'/>
+      <part name='05' x='595' y='707'/>
+      <part name='06' x='598' y='940'/>
+      <part name='07' x='395' y='933'/>
+      <part name='08' x='177' y='936'/>
+      <part name='09' x='181' y='696'/>
+      <part name='10' x='179' y='521'/>
+      <part name='11' x='155' y='535'/>
+      <part name='12' x='37' y='407'/>
+      <part name='13' x='160' y='274'/>
+      <part name='14' x='291' y='213'/>
+      <part name='15' x='384' y='243'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0439816001/0439816001.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='471' y='219'/>
+      <part name='01' x='609' y='282'/>
+      <part name='02' x='732' y='446'/>
+      <part name='03' x='598' y='553'/>
+      <part name='04' x='583' y='542'/>
+      <part name='05' x='586' y='718'/>
+      <part name='06' x='590' y='928'/>
+      <part name='07' x='393' y='931'/>
+      <part name='08' x='177' y='928'/>
+      <part name='09' x='182' y='718'/>
+      <part name='10' x='183' y='546'/>
+      <part name='11' x='167' y='556'/>
+      <part name='12' x='37' y='454'/>
+      <part name='13' x='154' y='290'/>
+      <part name='14' x='286' y='221'/>
+      <part name='15' x='378' y='245'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0447292002/0447292002.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='465' y='204'/>
+      <part name='01' x='603' y='267'/>
+      <part name='02' x='734' y='442'/>
+      <part name='03' x='615' y='542'/>
+      <part name='04' x='594' y='524'/>
+      <part name='05' x='589' y='718'/>
+      <part name='06' x='592' y='950'/>
+      <part name='07' x='387' y='950'/>
+      <part name='08' x='186' y='950'/>
+      <part name='09' x='187' y='714'/>
+      <part name='10' x='181' y='540'/>
+      <part name='11' x='157' y='564'/>
+      <part name='12' x='38' y='475'/>
+      <part name='13' x='147' y='277'/>
+      <part name='14' x='285' y='209'/>
+      <part name='15' x='376' y='232'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0456581001/0456581001.jpg'>
+    <box top='154' left='35' width='697' height='837'/>
+      <part name='00' x='484' y='225'/>
+      <part name='01' x='608' y='288'/>
+      <part name='02' x='734' y='493'/>
+      <part name='03' x='597' y='588'/>
+      <part name='04' x='585' y='578'/>
+      <part name='05' x='586' y='736'/>
+      <part name='06' x='585' y='927'/>
+      <part name='07' x='388' y='930'/>
+      <part name='08' x='187' y='926'/>
+      <part name='09' x='190' y='741'/>
+      <part name='10' x='189' y='580'/>
+      <part name='11' x='169' y='592'/>
+      <part name='12' x='37' y='480'/>
+      <part name='13' x='165' y='294'/>
+      <part name='14' x='300' y='223'/>
+      <part name='15' x='391' y='249'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0456581002/0456581002.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='473' y='230'/>
+      <part name='01' x='604' y='294'/>
+      <part name='02' x='732' y='467'/>
+      <part name='03' x='599' y='564'/>
+      <part name='04' x='581' y='548'/>
+      <part name='05' x='582' y='712'/>
+      <part name='06' x='583' y='918'/>
+      <part name='07' x='392' y='923'/>
+      <part name='08' x='200' y='920'/>
+      <part name='09' x='198' y='715'/>
+      <part name='10' x='195' y='550'/>
+      <part name='11' x='175' y='570'/>
+      <part name='12' x='37' y='473'/>
+      <part name='13' x='161' y='293'/>
+      <part name='14' x='299' y='230'/>
+      <part name='15' x='383' y='251'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0464952001/0464952001.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='459' y='232'/>
+      <part name='01' x='587' y='302'/>
+      <part name='02' x='732' y='515'/>
+      <part name='03' x='593' y='615'/>
+      <part name='04' x='578' y='594'/>
+      <part name='05' x='581' y='734'/>
+      <part name='06' x='582' y='903'/>
+      <part name='07' x='379' y='914'/>
+      <part name='08' x='178' y='905'/>
+      <part name='09' x='182' y='737'/>
+      <part name='10' x='186' y='605'/>
+      <part name='11' x='175' y='624'/>
+      <part name='12' x='36' y='528'/>
+      <part name='13' x='169' y='307'/>
+      <part name='14' x='303' y='234'/>
+      <part name='15' x='378' y='245'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/hm/products/0467659001/0467659001.jpg'>
+    <box top='174' left='35' width='697' height='837'/>
+      <part name='00' x='462' y='229'/>
+      <part name='01' x='604' y='302'/>
+      <part name='02' x='731' y='518'/>
+      <part name='03' x='603' y='595'/>
+      <part name='04' x='573' y='565'/>
+      <part name='05' x='579' y='735'/>
+      <part name='06' x='580' y='926'/>
+      <part name='07' x='382' y='915'/>
+      <part name='08' x='187' y='917'/>
+      <part name='09' x='189' y='718'/>
+      <part name='10' x='192' y='565'/>
+      <part name='11' x='168' y='589'/>
+      <part name='12' x='36' y='515'/>
+      <part name='13' x='157' y='296'/>
+      <part name='14' x='296' y='227'/>
+      <part name='15' x='379' y='248'/>
+    </box>
+  </image>
+</images>
+</dataset>

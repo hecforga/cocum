@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>imglab dataset</name>
+<comment>Created by imglab tool.</comment>
+<images>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg'>
+    <box top='113' left='106' width='427' height='534'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237518250_2_1_2/5237518250_2_1_2.jpg'>
+    <box top='112' left='91' width='442' height='533'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237519800_2_1_2/5237519800_2_1_2.jpg'>
+    <box top='111' left='89' width='449' height='534'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237520250_2_1_2/5237520250_2_1_2.jpg'>
+    <box top='109' left='87' width='447' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237521800_2_1_2/5237521800_2_1_2.jpg'>
+    <box top='112' left='91' width='438' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237542505_2_1_2/5237542505_2_1_2.jpg'>
+    <box top='112' left='66' width='492' height='534'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237549800_2_1_2/5237549800_2_1_2.jpg'>
+    <box top='112' left='80' width='449' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5238504250_2_1_2/5238504250_2_1_2.jpg'>
+    <box top='113' left='80' width='444' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239500810_2_1_2/5239500810_2_1_2.jpg'>
+    <box top='113' left='97' width='443' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239530827_2_1_2/5239530827_2_1_2.jpg'>
+    <box top='111' left='77' width='459' height='537'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239534401_2_1_2/5239534401_2_1_2.jpg'>
+    <box top='109' left='56' width='483' height='542'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239535250_2_1_2/5239535250_2_1_2.jpg'>
+    <box top='109' left='54' width='502' height='551'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239547513_2_1_2/5239547513_2_1_2.jpg'>
+    <box top='114' left='78' width='455' height='533'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239555250_2_1_2/5239555250_2_1_2.jpg'>
+    <box top='108' left='79' width='485' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239555800_2_1_2/5239555800_2_1_2.jpg'>
+    <box top='110' left='68' width='478' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5244501803_2_1_2/5244501803_2_1_2.jpg'>
+    <box top='109' left='89' width='444' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5244510423_2_1_2/5244510423_2_1_2.jpg'>
+    <box top='111' left='72' width='484' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5246501505_2_1_2/5246501505_2_1_2.jpg'>
+    <box top='112' left='90' width='434' height='535'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5591571802_2_1_2/5591571802_2_1_2.jpg'>
+    <box top='109' left='77' width='480' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237500500_2_1_2/9237500500_2_1_2.jpg'>
+    <box top='118' left='65' width='487' height='532'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237504250_2_1_2/9237504250_2_1_2.jpg'>
+    <box top='117' left='57' width='501' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237506401_2_1_2/9237506401_2_1_2.jpg'>
+    <box top='107' left='69' width='479' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237508250_2_1_2/9237508250_2_1_2.jpg'>
+    <box top='114' left='74' width='482' height='547'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237511250_2_1_2/9237511250_2_1_2.jpg'>
+    <box top='111' left='61' width='478' height='531'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237527401_2_1_2/9237527401_2_1_2.jpg'>
+    <box top='113' left='76' width='457' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237533250_2_1_2/9237533250_2_1_2.jpg'>
+    <box top='109' left='71' width='463' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237534531_2_1_2/9237534531_2_1_2.jpg'>
+    <box top='110' left='84' width='443' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237535250_2_1_2/9237535250_2_1_2.jpg'>
+    <box top='114' left='79' width='460' height='534'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237536250_2_1_2/9237536250_2_1_2.jpg'>
+    <box top='104' left='65' width='480' height='548'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545250_2_1_2/9237545250_2_1_2.jpg'>
+    <box top='111' left='93' width='434' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545251_2_1_2/9237545251_2_1_2.jpg'>
+    <box top='111' left='108' width='422' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545633_2_1_2/9237545633_2_1_2.jpg'>
+    <box top='109' left='95' width='435' height='551'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545800_2_1_2/9237545800_2_1_2.jpg'>
+    <box top='111' left='107' width='404' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237547800_2_1_2/9237547800_2_1_2.jpg'>
+    <box top='109' left='84' width='442' height='537'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237549250_2_1_2/9237549250_2_1_2.jpg'>
+    <box top='114' left='76' width='480' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237552251_2_1_2/9237552251_2_1_2.jpg'>
+    <box top='114' left='107' width='391' height='532'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237558250_2_1_2/9237558250_2_1_2.jpg'>
+    <box top='114' left='106' width='421' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237562250_2_1_2/9237562250_2_1_2.jpg'>
+    <box top='110' left='67' width='473' height='548'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237565250_2_1_2/9237565250_2_1_2.jpg'>
+    <box top='112' left='74' width='474' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237573401_2_1_2/9237573401_2_1_2.jpg'>
+    <box top='110' left='71' width='474' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237584800_2_1_2/9237584800_2_1_2.jpg'>
+    <box top='110' left='89' width='457' height='542'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237585250_2_1_2/9237585250_2_1_2.jpg'>
+    <box top='112' left='102' width='417' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9238565811_2_1_2/9238565811_2_1_2.jpg'>
+    <box top='113' left='84' width='460' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239503250_2_1_2/9239503250_2_1_2.jpg'>
+    <box top='105' left='86' width='443' height='551'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239513800_2_1_2/9239513800_2_1_2.jpg'>
+    <box top='106' left='69' width='491' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239514250_2_1_2/9239514250_2_1_2.jpg'>
+    <box top='110' left='63' width='484' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239515827_2_1_2/9239515827_2_1_2.jpg'>
+    <box top='115' left='65' width='467' height='531'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239516800_2_1_2/9239516800_2_1_2.jpg'>
+    <box top='110' left='89' width='435' height='535'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239522827_2_1_2/9239522827_2_1_2.jpg'>
+    <box top='112' left='59' width='499' height='542'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239526251_2_1_2/9239526251_2_1_2.jpg'>
+    <box top='112' left='90' width='430' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239533401_2_1_2/9239533401_2_1_2.jpg'>
+    <box top='114' left='74' width='466' height='530'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239533827_2_1_2/9239533827_2_1_2.jpg'>
+    <box top='112' left='73' width='463' height='535'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239537622_2_1_2/9239537622_2_1_2.jpg'>
+    <box top='107' left='80' width='481' height='545'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239552800_2_1_2/9239552800_2_1_2.jpg'>
+    <box top='106' left='80' width='475' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239553250_2_1_2/9239553250_2_1_2.jpg'>
+    <box top='100' left='60' width='499' height='557'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239570412_2_1_2/9239570412_2_1_2.jpg'>
+    <box top='112' left='74' width='479' height='537'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239573401_2_1_2/9239573401_2_1_2.jpg'>
+    <box top='108' left='76' width='458' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239574505_2_1_2/9239574505_2_1_2.jpg'>
+    <box top='112' left='73' width='469' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239575401_2_1_2/9239575401_2_1_2.jpg'>
+    <box top='107' left='81' width='449' height='550'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239578251_2_1_2/9239578251_2_1_2.jpg'>
+    <box top='113' left='82' width='462' height='547'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239578401_2_1_2/9239578401_2_1_2.jpg'>
+    <box top='115' left='71' width='474' height='537'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239587250_2_1_2/9239587250_2_1_2.jpg'>
+    <box top='114' left='99' width='433' height='529'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239587800_2_1_2/9239587800_2_1_2.jpg'>
+    <box top='112' left='97' width='424' height='529'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239590250_2_1_2/9239590250_2_1_2.jpg'>
+    <box top='104' left='88' width='461' height='555'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9242553438_2_1_2/9242553438_2_1_2.jpg'>
+    <box top='113' left='80' width='457' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244508811_2_1_2/9244508811_2_1_2.jpg'>
+    <box top='109' left='72' width='474' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244516250_2_1_2/9244516250_2_1_2.jpg'>
+    <box top='115' left='75' width='482' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244518250_2_1_2/9244518250_2_1_2.jpg'>
+    <box top='115' left='84' width='464' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244519800_2_1_2/9244519800_2_1_2.jpg'>
+    <box top='117' left='86' width='460' height='530'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244520250_2_1_2/9244520250_2_1_2.jpg'>
+    <box top='115' left='98' width='439' height='535'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244528250_2_1_2/9244528250_2_1_2.jpg'>
+    <box top='114' left='85' width='460' height='535'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244535505_2_1_2/9244535505_2_1_2.jpg'>
+    <box top='113' left='92' width='438' height='538'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244536250_2_1_2/9244536250_2_1_2.jpg'>
+    <box top='114' left='92' width='434' height='531'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244537401_2_1_2/9244537401_2_1_2.jpg'>
+    <box top='111' left='58' width='497' height='547'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244538250_2_1_2/9244538250_2_1_2.jpg'>
+    <box top='96' left='63' width='487' height='556'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244541800_2_1_2/9244541800_2_1_2.jpg'>
+    <box top='108' left='83' width='457' height='543'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244542250_2_1_2/9244542250_2_1_2.jpg'>
+    <box top='115' left='100' width='417' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244543800_2_1_2/9244543800_2_1_2.jpg'>
+    <box top='112' left='85' width='453' height='536'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244547800_2_1_2/9244547800_2_1_2.jpg'>
+    <box top='113' left='68' width='477' height='534'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244550807_2_1_2/9244550807_2_1_2.jpg'>
+    <box top='113' left='97' width='423' height='542'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244551250_2_1_2/9244551250_2_1_2.jpg'>
+    <box top='107' left='99' width='417' height='540'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244553824_2_1_2/9244553824_2_1_2.jpg'>
+    <box top='109' left='77' width='461' height='539'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244556800_2_1_2/9244556800_2_1_2.jpg'>
+    <box top='107' left='86' width='447' height='544'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244557807_2_1_2/9244557807_2_1_2.jpg'>
+    <box top='108' left='114' width='409' height='541'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9590548824_2_1_2/9590548824_2_1_2.jpg'>
+    <box top='109' left='91' width='439' height='540'/>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9591502707_2_1_2/9591502707_2_1_2.jpg'>
+    <box top='101' left='78' width='484' height='550'/>
+  </image>
+</images>
+</dataset>

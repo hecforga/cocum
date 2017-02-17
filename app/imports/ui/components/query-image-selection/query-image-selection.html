@@ -1,0 +1,23 @@
+<template name="Query_image_selection">
+  <div class="col s12 m4 l3">
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input id="file-input" type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form>
+    {{#if currentQuery}}
+      {{#if currentQuery.imagePath}}
+        <img class="responsive-img" src="{{currentQuery.imagePath}}">
+        <div class="center-align">
+          <a id="search-button" class="waves-effect waves-light btn">search</a>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+</template>

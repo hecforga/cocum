@@ -1,0 +1,13 @@
+<template name="Query_results_list">
+  <div class="col s12 m8 l9">
+    {{#each productsArray in getProductsInArraysOf3}}
+      <div class="row">
+        {{#each product in productsArray}}
+          <div class="col s12 m4">
+            <img class="responsive-img" src="{{product.imagePath}}">
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</template>

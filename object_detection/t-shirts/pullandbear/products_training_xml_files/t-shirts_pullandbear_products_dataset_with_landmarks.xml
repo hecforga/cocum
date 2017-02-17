@@ -1,0 +1,1728 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>imglab dataset</name>
+<comment>Created by imglab tool.</comment>
+<images>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='386' y='117'/>
+      <part name='01' x='463' y='157'/>
+      <part name='02' x='528' y='321'/>
+      <part name='03' x='464' y='341'/>
+      <part name='04' x='464' y='341'/>
+      <part name='05' x='461' y='487'/>
+      <part name='06' x='465' y='637'/>
+      <part name='07' x='324' y='640'/>
+      <part name='08' x='180' y='640'/>
+      <part name='09' x='178' y='490'/>
+      <part name='10' x='178' y='343'/>
+      <part name='11' x='178' y='343'/>
+      <part name='12' x='112' y='323'/>
+      <part name='13' x='173' y='170'/>
+      <part name='14' x='255' y='120'/>
+      <part name='15' x='319' y='131'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237518250_2_1_2/5237518250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='380' y='122'/>
+      <part name='01' x='453' y='158'/>
+      <part name='02' x='528' y='296'/>
+      <part name='03' x='456' y='322'/>
+      <part name='04' x='456' y='322'/>
+      <part name='05' x='456' y='474'/>
+      <part name='06' x='457' y='638'/>
+      <part name='07' x='316' y='634'/>
+      <part name='08' x='164' y='634'/>
+      <part name='09' x='170' y='468'/>
+      <part name='10' x='166' y='326'/>
+      <part name='11' x='166' y='326'/>
+      <part name='12' x='98' y='295'/>
+      <part name='13' x='164' y='166'/>
+      <part name='14' x='243' y='119'/>
+      <part name='15' x='309' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237519800_2_1_2/5237519800_2_1_2.jpg'>
+    <box top='54' left='74' width='519' height='619'>
+      <part name='00' x='382' y='118'/>
+      <part name='01' x='466' y='160'/>
+      <part name='02' x='532' y='296'/>
+      <part name='03' x='468' y='327'/>
+      <part name='04' x='468' y='327'/>
+      <part name='05' x='467' y='471'/>
+      <part name='06' x='469' y='636'/>
+      <part name='07' x='315' y='636'/>
+      <part name='08' x='170' y='634'/>
+      <part name='09' x='175' y='471'/>
+      <part name='10' x='172' y='334'/>
+      <part name='11' x='172' y='334'/>
+      <part name='12' x='96' y='295'/>
+      <part name='13' x='159' y='173'/>
+      <part name='14' x='241' y='117'/>
+      <part name='15' x='314' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237520250_2_1_2/5237520250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='383' y='121'/>
+      <part name='01' x='461' y='161'/>
+      <part name='02' x='528' y='295'/>
+      <part name='03' x='462' y='329'/>
+      <part name='04' x='462' y='329'/>
+      <part name='05' x='462' y='478'/>
+      <part name='06' x='466' y='639'/>
+      <part name='07' x='315' y='639'/>
+      <part name='08' x='170' y='634'/>
+      <part name='09' x='169' y='484'/>
+      <part name='10' x='165' y='328'/>
+      <part name='11' x='165' y='328'/>
+      <part name='12' x='96' y='297'/>
+      <part name='13' x='157' y='169'/>
+      <part name='14' x='244' y='120'/>
+      <part name='15' x='310' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237521800_2_1_2/5237521800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='382' y='123'/>
+      <part name='01' x='459' y='165'/>
+      <part name='02' x='520' y='311'/>
+      <part name='03' x='458' y='331'/>
+      <part name='04' x='458' y='331'/>
+      <part name='05' x='457' y='479'/>
+      <part name='06' x='458' y='637'/>
+      <part name='07' x='305' y='639'/>
+      <part name='08' x='158' y='639'/>
+      <part name='09' x='161' y='480'/>
+      <part name='10' x='160' y='327'/>
+      <part name='11' x='160' y='327'/>
+      <part name='12' x='99' y='300'/>
+      <part name='13' x='155' y='172'/>
+      <part name='14' x='238' y='120'/>
+      <part name='15' x='309' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237542505_2_1_2/5237542505_2_1_2.jpg'>
+    <box top='74' left='74' width='520' height='618'>
+      <part name='00' x='379' y='119'/>
+      <part name='01' x='473' y='170'/>
+      <part name='02' x='548' y='293'/>
+      <part name='03' x='461' y='343'/>
+      <part name='04' x='461' y='343'/>
+      <part name='05' x='459' y='479'/>
+      <part name='06' x='461' y='637'/>
+      <part name='07' x='312' y='639'/>
+      <part name='08' x='165' y='634'/>
+      <part name='09' x='170' y='475'/>
+      <part name='10' x='171' y='352'/>
+      <part name='11' x='171' y='352'/>
+      <part name='12' x='76' y='291'/>
+      <part name='13' x='157' y='168'/>
+      <part name='14' x='249' y='122'/>
+      <part name='15' x='312' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5237549800_2_1_2/5237549800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='368' y='120'/>
+      <part name='01' x='455' y='175'/>
+      <part name='02' x='519' y='337'/>
+      <part name='03' x='445' y='357'/>
+      <part name='04' x='445' y='357'/>
+      <part name='05' x='445' y='494'/>
+      <part name='06' x='448' y='639'/>
+      <part name='07' x='309' y='642'/>
+      <part name='08' x='168' y='635'/>
+      <part name='09' x='172' y='495'/>
+      <part name='10' x='175' y='360'/>
+      <part name='11' x='175' y='360'/>
+      <part name='12' x='88' y='333'/>
+      <part name='13' x='162' y='175'/>
+      <part name='14' x='241' y='120'/>
+      <part name='15' x='303' y='127'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5238504250_2_1_2/5238504250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='363' y='121'/>
+      <part name='01' x='451' y='180'/>
+      <part name='02' x='517' y='290'/>
+      <part name='03' x='442' y='345'/>
+      <part name='04' x='442' y='345'/>
+      <part name='05' x='443' y='479'/>
+      <part name='06' x='443' y='638'/>
+      <part name='07' x='301' y='640'/>
+      <part name='08' x='161' y='635'/>
+      <part name='09' x='161' y='478'/>
+      <part name='10' x='161' y='345'/>
+      <part name='11' x='161' y='345'/>
+      <part name='12' x='86' y='291'/>
+      <part name='13' x='151' y='181'/>
+      <part name='14' x='231' y='123'/>
+      <part name='15' x='292' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239500810_2_1_2/5239500810_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='388' y='120'/>
+      <part name='01' x='466' y='160'/>
+      <part name='02' x='534' y='329'/>
+      <part name='03' x='462' y='360'/>
+      <part name='04' x='462' y='360'/>
+      <part name='05' x='460' y='491'/>
+      <part name='06' x='461' y='641'/>
+      <part name='07' x='320' y='640'/>
+      <part name='08' x='176' y='640'/>
+      <part name='09' x='179' y='492'/>
+      <part name='10' x='176' y='374'/>
+      <part name='11' x='176' y='374'/>
+      <part name='12' x='105' y='337'/>
+      <part name='13' x='178' y='164'/>
+      <part name='14' x='249' y='122'/>
+      <part name='15' x='316' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239530827_2_1_2/5239530827_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='378' y='117'/>
+      <part name='01' x='472' y='197'/>
+      <part name='02' x='528' y='317'/>
+      <part name='03' x='447' y='362'/>
+      <part name='04' x='447' y='362'/>
+      <part name='05' x='445' y='482'/>
+      <part name='06' x='446' y='637'/>
+      <part name='07' x='311' y='639'/>
+      <part name='08' x='169' y='638'/>
+      <part name='09' x='170' y='482'/>
+      <part name='10' x='167' y='351'/>
+      <part name='11' x='167' y='351'/>
+      <part name='12' x='85' y='325'/>
+      <part name='13' x='146' y='193'/>
+      <part name='14' x='234' y='120'/>
+      <part name='15' x='307' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239534401_2_1_2/5239534401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='367' y='114'/>
+      <part name='01' x='439' y='149'/>
+      <part name='02' x='531' y='279'/>
+      <part name='03' x='446' y='350'/>
+      <part name='04' x='440' y='349'/>
+      <part name='05' x='443' y='484'/>
+      <part name='06' x='446' y='639'/>
+      <part name='07' x='303' y='638'/>
+      <part name='08' x='155' y='641'/>
+      <part name='09' x='155' y='485'/>
+      <part name='10' x='150' y='346'/>
+      <part name='11' x='150' y='346'/>
+      <part name='12' x='64' y='283'/>
+      <part name='13' x='143' y='156'/>
+      <part name='14' x='225' y='117'/>
+      <part name='15' x='293' y='132'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239535250_2_1_2/5239535250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='382' y='117'/>
+      <part name='01' x='465' y='172'/>
+      <part name='02' x='549' y='288'/>
+      <part name='03' x='449' y='352'/>
+      <part name='04' x='449' y='352'/>
+      <part name='05' x='451' y='490'/>
+      <part name='06' x='454' y='639'/>
+      <part name='07' x='305' y='640'/>
+      <part name='08' x='160' y='644'/>
+      <part name='09' x='161' y='488'/>
+      <part name='10' x='158' y='352'/>
+      <part name='11' x='158' y='352'/>
+      <part name='12' x='62' y='284'/>
+      <part name='13' x='146' y='170'/>
+      <part name='14' x='236' y='117'/>
+      <part name='15' x='302' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239547513_2_1_2/5239547513_2_1_2.jpg'>
+    <box top='54' left='54' width='519' height='619'>
+      <part name='00' x='366' y='120'/>
+      <part name='01' x='444' y='156'/>
+      <part name='02' x='525' y='276'/>
+      <part name='03' x='448' y='317'/>
+      <part name='04' x='448' y='317'/>
+      <part name='05' x='450' y='465'/>
+      <part name='06' x='454' y='623'/>
+      <part name='07' x='309' y='638'/>
+      <part name='08' x='166' y='620'/>
+      <part name='09' x='169' y='467'/>
+      <part name='10' x='168' y='326'/>
+      <part name='11' x='168' y='326'/>
+      <part name='12' x='87' y='277'/>
+      <part name='13' x='165' y='157'/>
+      <part name='14' x='244' y='122'/>
+      <part name='15' x='299' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239555250_2_1_2/5239555250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='386' y='114'/>
+      <part name='01' x='473' y='172'/>
+      <part name='02' x='555' y='293'/>
+      <part name='03' x='458' y='340'/>
+      <part name='04' x='458' y='340'/>
+      <part name='05' x='458' y='479'/>
+      <part name='06' x='460' y='639'/>
+      <part name='07' x='320' y='641'/>
+      <part name='08' x='182' y='641'/>
+      <part name='09' x='182' y='480'/>
+      <part name='10' x='180' y='340'/>
+      <part name='11' x='180' y='340'/>
+      <part name='12' x='87' y='291'/>
+      <part name='13' x='161' y='172'/>
+      <part name='14' x='247' y='117'/>
+      <part name='15' x='314' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5239555800_2_1_2/5239555800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='375' y='117'/>
+      <part name='01' x='473' y='183'/>
+      <part name='02' x='537' y='306'/>
+      <part name='03' x='449' y='346'/>
+      <part name='04' x='449' y='346'/>
+      <part name='05' x='444' y='481'/>
+      <part name='06' x='445' y='638'/>
+      <part name='07' x='304' y='634'/>
+      <part name='08' x='167' y='641'/>
+      <part name='09' x='167' y='490'/>
+      <part name='10' x='167' y='355'/>
+      <part name='11' x='167' y='355'/>
+      <part name='12' x='77' y='302'/>
+      <part name='13' x='142' y='189'/>
+      <part name='14' x='232' y='116'/>
+      <part name='15' x='307' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5244501803_2_1_2/5244501803_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='385' y='118'/>
+      <part name='01' x='448' y='160'/>
+      <part name='02' x='526' y='356'/>
+      <part name='03' x='452' y='386'/>
+      <part name='04' x='452' y='386'/>
+      <part name='05' x='454' y='488'/>
+      <part name='06' x='463' y='614'/>
+      <part name='07' x='313' y='608'/>
+      <part name='08' x='171' y='612'/>
+      <part name='09' x='174' y='486'/>
+      <part name='10' x='174' y='381'/>
+      <part name='11' x='174' y='381'/>
+      <part name='12' x='96' y='353'/>
+      <part name='13' x='178' y='162'/>
+      <part name='14' x='254' y='117'/>
+      <part name='15' x='314' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5244510423_2_1_2/5244510423_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='377' y='117'/>
+      <part name='01' x='451' y='153'/>
+      <part name='02' x='547' y='298'/>
+      <part name='03' x='453' y='343'/>
+      <part name='04' x='453' y='343'/>
+      <part name='05' x='455' y='477'/>
+      <part name='06' x='456' y='641'/>
+      <part name='07' x='308' y='640'/>
+      <part name='08' x='167' y='636'/>
+      <part name='09' x='169' y='481'/>
+      <part name='10' x='170' y='346'/>
+      <part name='11' x='170' y='346'/>
+      <part name='12' x='79' y='295'/>
+      <part name='13' x='170' y='154'/>
+      <part name='14' x='260' y='118'/>
+      <part name='15' x='315' y='127'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5246501505_2_1_2/5246501505_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='369' y='118'/>
+      <part name='01' x='452' y='170'/>
+      <part name='02' x='517' y='288'/>
+      <part name='03' x='440' y='320'/>
+      <part name='04' x='440' y='320'/>
+      <part name='05' x='438' y='461'/>
+      <part name='06' x='441' y='620'/>
+      <part name='07' x='315' y='614'/>
+      <part name='08' x='180' y='626'/>
+      <part name='09' x='181' y='459'/>
+      <part name='10' x='178' y='324'/>
+      <part name='11' x='178' y='324'/>
+      <part name='12' x='98' y='294'/>
+      <part name='13' x='164' y='172'/>
+      <part name='14' x='239' y='120'/>
+      <part name='15' x='302' y='141'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/5591571802_2_1_2/5591571802_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='396' y='116'/>
+      <part name='01' x='463' y='160'/>
+      <part name='02' x='551' y='361'/>
+      <part name='03' x='461' y='408'/>
+      <part name='04' x='461' y='408'/>
+      <part name='05' x='459' y='509'/>
+      <part name='06' x='465' y='639'/>
+      <part name='07' x='315' y='637'/>
+      <part name='08' x='175' y='637'/>
+      <part name='09' x='176' y='512'/>
+      <part name='10' x='178' y='411'/>
+      <part name='11' x='178' y='411'/>
+      <part name='12' x='87' y='366'/>
+      <part name='13' x='174' y='152'/>
+      <part name='14' x='236' y='116'/>
+      <part name='15' x='311' y='139'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237500500_2_1_2/9237500500_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='369' y='125'/>
+      <part name='01' x='477' y='198'/>
+      <part name='02' x='546' y='328'/>
+      <part name='03' x='454' y='366'/>
+      <part name='04' x='454' y='366'/>
+      <part name='05' x='452' y='490'/>
+      <part name='06' x='454' y='639'/>
+      <part name='07' x='310' y='639'/>
+      <part name='08' x='168' y='640'/>
+      <part name='09' x='169' y='493'/>
+      <part name='10' x='170' y='373'/>
+      <part name='11' x='170' y='373'/>
+      <part name='12' x='72' y='330'/>
+      <part name='13' x='144' y='202'/>
+      <part name='14' x='246' y='124'/>
+      <part name='15' x='304' y='131'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237504250_2_1_2/9237504250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='373' y='120'/>
+      <part name='01' x='456' y='163'/>
+      <part name='02' x='550' y='299'/>
+      <part name='03' x='452' y='355'/>
+      <part name='04' x='452' y='355'/>
+      <part name='05' x='457' y='486'/>
+      <part name='06' x='462' y='638'/>
+      <part name='07' x='309' y='635'/>
+      <part name='08' x='160' y='649'/>
+      <part name='09' x='160' y='489'/>
+      <part name='10' x='156' y='352'/>
+      <part name='11' x='156' y='352'/>
+      <part name='12' x='63' y='305'/>
+      <part name='13' x='148' y='166'/>
+      <part name='14' x='224' y='122'/>
+      <part name='15' x='294' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237506401_2_1_2/9237506401_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='376' y='113'/>
+      <part name='01' x='467' y='173'/>
+      <part name='02' x='543' y='298'/>
+      <part name='03' x='451' y='351'/>
+      <part name='04' x='451' y='351'/>
+      <part name='05' x='453' y='490'/>
+      <part name='06' x='458' y='639'/>
+      <part name='07' x='309' y='635'/>
+      <part name='08' x='168' y='637'/>
+      <part name='09' x='170' y='478'/>
+      <part name='10' x='170' y='347'/>
+      <part name='11' x='170' y='347'/>
+      <part name='12' x='77' y='297'/>
+      <part name='13' x='158' y='175'/>
+      <part name='14' x='248' y='119'/>
+      <part name='15' x='307' y='135'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237508250_2_1_2/9237508250_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='387' y='121'/>
+      <part name='01' x='460' y='160'/>
+      <part name='02' x='549' y='331'/>
+      <part name='03' x='463' y='357'/>
+      <part name='04' x='463' y='357'/>
+      <part name='05' x='463' y='489'/>
+      <part name='06' x='463' y='646'/>
+      <part name='07' x='322' y='629'/>
+      <part name='08' x='172' y='641'/>
+      <part name='09' x='170' y='490'/>
+      <part name='10' x='171' y='364'/>
+      <part name='11' x='171' y='364'/>
+      <part name='12' x='82' y='334'/>
+      <part name='13' x='175' y='155'/>
+      <part name='14' x='237' y='123'/>
+      <part name='15' x='308' y='148'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237511250_2_1_2/9237511250_2_1_2.jpg'>
+    <box top='66' left='-30' width='646' height='741'>
+      <part name='00' x='370' y='119'/>
+      <part name='01' x='462' y='180'/>
+      <part name='02' x='531' y='302'/>
+      <part name='03' x='439' y='350'/>
+      <part name='04' x='439' y='350'/>
+      <part name='05' x='437' y='485'/>
+      <part name='06' x='436' y='632'/>
+      <part name='07' x='300' y='628'/>
+      <part name='08' x='159' y='628'/>
+      <part name='09' x='160' y='477'/>
+      <part name='10' x='154' y='340'/>
+      <part name='11' x='154' y='340'/>
+      <part name='12' x='68' y='303'/>
+      <part name='13' x='137' y='182'/>
+      <part name='14' x='233' y='118'/>
+      <part name='15' x='301' y='135'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237527401_2_1_2/9237527401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='372' y='121'/>
+      <part name='01' x='444' y='153'/>
+      <part name='02' x='526' y='301'/>
+      <part name='03' x='441' y='338'/>
+      <part name='04' x='441' y='338'/>
+      <part name='05' x='441' y='471'/>
+      <part name='06' x='442' y='618'/>
+      <part name='07' x='308' y='639'/>
+      <part name='08' x='175' y='613'/>
+      <part name='09' x='175' y='466'/>
+      <part name='10' x='176' y='338'/>
+      <part name='11' x='168' y='344'/>
+      <part name='12' x='81' y='299'/>
+      <part name='13' x='170' y='162'/>
+      <part name='14' x='253' y='120'/>
+      <part name='15' x='308' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237533250_2_1_2/9237533250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='375' y='118'/>
+      <part name='01' x='445' y='154'/>
+      <part name='02' x='527' y='280'/>
+      <part name='03' x='444' y='326'/>
+      <part name='04' x='444' y='326'/>
+      <part name='05' x='441' y='469'/>
+      <part name='06' x='437' y='634'/>
+      <part name='07' x='304' y='635'/>
+      <part name='08' x='164' y='633'/>
+      <part name='09' x='163' y='469'/>
+      <part name='10' x='158' y='332'/>
+      <part name='11' x='158' y='332'/>
+      <part name='12' x='78' y='284'/>
+      <part name='13' x='153' y='168'/>
+      <part name='14' x='232' y='119'/>
+      <part name='15' x='300' y='135'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237534531_2_1_2/9237534531_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='372' y='119'/>
+      <part name='01' x='448' y='168'/>
+      <part name='02' x='520' y='278'/>
+      <part name='03' x='446' y='344'/>
+      <part name='04' x='442' y='345'/>
+      <part name='05' x='445' y='486'/>
+      <part name='06' x='443' y='638'/>
+      <part name='07' x='310' y='636'/>
+      <part name='08' x='172' y='632'/>
+      <part name='09' x='174' y='482'/>
+      <part name='10' x='168' y='342'/>
+      <part name='11' x='168' y='342'/>
+      <part name='12' x='89' y='283'/>
+      <part name='13' x='160' y='168'/>
+      <part name='14' x='239' y='116'/>
+      <part name='15' x='303' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237535250_2_1_2/9237535250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='377' y='121'/>
+      <part name='01' x='459' y='170'/>
+      <part name='02' x='529' y='283'/>
+      <part name='03' x='446' y='334'/>
+      <part name='04' x='446' y='334'/>
+      <part name='05' x='443' y='477'/>
+      <part name='06' x='445' y='638'/>
+      <part name='07' x='308' y='636'/>
+      <part name='08' x='176' y='633'/>
+      <part name='09' x='173' y='473'/>
+      <part name='10' x='171' y='333'/>
+      <part name='11' x='168' y='333'/>
+      <part name='12' x='86' y='272'/>
+      <part name='13' x='167' y='170'/>
+      <part name='14' x='251' y='122'/>
+      <part name='15' x='310' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237536250_2_1_2/9237536250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='369' y='113'/>
+      <part name='01' x='452' y='168'/>
+      <part name='02' x='535' y='277'/>
+      <part name='03' x='454' y='342'/>
+      <part name='04' x='445' y='338'/>
+      <part name='05' x='447' y='474'/>
+      <part name='06' x='449' y='638'/>
+      <part name='07' x='303' y='640'/>
+      <part name='08' x='157' y='639'/>
+      <part name='09' x='161' y='471'/>
+      <part name='10' x='158' y='341'/>
+      <part name='11' x='151' y='343'/>
+      <part name='12' x='72' y='277'/>
+      <part name='13' x='155' y='164'/>
+      <part name='14' x='236' y='116'/>
+      <part name='15' x='297' y='129'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545250_2_1_2/9237545250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='368' y='122'/>
+      <part name='01' x='430' y='147'/>
+      <part name='02' x='516' y='304'/>
+      <part name='03' x='426' y='346'/>
+      <part name='04' x='426' y='346'/>
+      <part name='05' x='423' y='471'/>
+      <part name='06' x='424' y='615'/>
+      <part name='07' x='302' y='616'/>
+      <part name='08' x='191' y='607'/>
+      <part name='09' x='187' y='469'/>
+      <part name='10' x='187' y='335'/>
+      <part name='11' x='187' y='335'/>
+      <part name='12' x='103' y='311'/>
+      <part name='13' x='189' y='148'/>
+      <part name='14' x='245' y='118'/>
+      <part name='15' x='308' y='141'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545251_2_1_2/9237545251_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='368' y='117'/>
+      <part name='01' x='435' y='145'/>
+      <part name='02' x='522' y='312'/>
+      <part name='03' x='441' y='344'/>
+      <part name='04' x='441' y='344'/>
+      <part name='05' x='438' y='474'/>
+      <part name='06' x='435' y='614'/>
+      <part name='07' x='314' y='619'/>
+      <part name='08' x='203' y='614'/>
+      <part name='09' x='193' y='471'/>
+      <part name='10' x='188' y='336'/>
+      <part name='11' x='188' y='336'/>
+      <part name='12' x='114' y='302'/>
+      <part name='13' x='189' y='147'/>
+      <part name='14' x='248' y='117'/>
+      <part name='15' x='311' y='144'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545633_2_1_2/9237545633_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='371' y='115'/>
+      <part name='01' x='436' y='144'/>
+      <part name='02' x='519' y='305'/>
+      <part name='03' x='438' y='339'/>
+      <part name='04' x='438' y='339'/>
+      <part name='05' x='440' y='473'/>
+      <part name='06' x='429' y='623'/>
+      <part name='07' x='310' y='635'/>
+      <part name='08' x='189' y='641'/>
+      <part name='09' x='189' y='474'/>
+      <part name='10' x='187' y='341'/>
+      <part name='11' x='187' y='341'/>
+      <part name='12' x='103' y='306'/>
+      <part name='13' x='185' y='150'/>
+      <part name='14' x='250' y='118'/>
+      <part name='15' x='310' y='144'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237545800_2_1_2/9237545800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='363' y='117'/>
+      <part name='01' x='426' y='150'/>
+      <part name='02' x='500' y='304'/>
+      <part name='03' x='428' y='339'/>
+      <part name='04' x='428' y='339'/>
+      <part name='05' x='430' y='461'/>
+      <part name='06' x='431' y='607'/>
+      <part name='07' x='314' y='610'/>
+      <part name='08' x='188' y='609'/>
+      <part name='09' x='190' y='461'/>
+      <part name='10' x='189' y='330'/>
+      <part name='11' x='189' y='330'/>
+      <part name='12' x='116' y='304'/>
+      <part name='13' x='188' y='152'/>
+      <part name='14' x='245' y='120'/>
+      <part name='15' x='306' y='147'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237547800_2_1_2/9237547800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='364' y='115'/>
+      <part name='01' x='448' y='162'/>
+      <part name='02' x='516' y='287'/>
+      <part name='03' x='441' y='330'/>
+      <part name='04' x='441' y='329'/>
+      <part name='05' x='441' y='476'/>
+      <part name='06' x='439' y='631'/>
+      <part name='07' x='316' y='636'/>
+      <part name='08' x='184' y='634'/>
+      <part name='09' x='180' y='476'/>
+      <part name='10' x='179' y='340'/>
+      <part name='11' x='178' y='340'/>
+      <part name='12' x='92' y='286'/>
+      <part name='13' x='166' y='163'/>
+      <part name='14' x='245' y='116'/>
+      <part name='15' x='305' y='126'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237549250_2_1_2/9237549250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='386' y='121'/>
+      <part name='01' x='468' y='161'/>
+      <part name='02' x='548' y='283'/>
+      <part name='03' x='465' y='329'/>
+      <part name='04' x='465' y='329'/>
+      <part name='05' x='466' y='462'/>
+      <part name='06' x='469' y='640'/>
+      <part name='07' x='318' y='638'/>
+      <part name='08' x='163' y='638'/>
+      <part name='09' x='168' y='465'/>
+      <part name='10' x='172' y='333'/>
+      <part name='11' x='172' y='333'/>
+      <part name='12' x='86' y='278'/>
+      <part name='13' x='169' y='160'/>
+      <part name='14' x='250' y='122'/>
+      <part name='15' x='314' y='135'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237552251_2_1_2/9237552251_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='362' y='122'/>
+      <part name='01' x='420' y='150'/>
+      <part name='02' x='489' y='266'/>
+      <part name='03' x='418' y='310'/>
+      <part name='04' x='418' y='310'/>
+      <part name='05' x='417' y='449'/>
+      <part name='06' x='416' y='608'/>
+      <part name='07' x='301' y='599'/>
+      <part name='08' x='185' y='609'/>
+      <part name='09' x='186' y='453'/>
+      <part name='10' x='189' y='308'/>
+      <part name='11' x='189' y='308'/>
+      <part name='12' x='115' y='265'/>
+      <part name='13' x='192' y='146'/>
+      <part name='14' x='243' y='120'/>
+      <part name='15' x='306' y='143'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237558250_2_1_2/9237558250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='382' y='120'/>
+      <part name='01' x='432' y='145'/>
+      <part name='02' x='519' y='308'/>
+      <part name='03' x='431' y='350'/>
+      <part name='04' x='431' y='350'/>
+      <part name='05' x='431' y='468'/>
+      <part name='06' x='422' y='624'/>
+      <part name='07' x='310' y='601'/>
+      <part name='08' x='192' y='618'/>
+      <part name='09' x='194' y='468'/>
+      <part name='10' x='195' y='341'/>
+      <part name='11' x='195' y='341'/>
+      <part name='12' x='113' y='303'/>
+      <part name='13' x='198' y='147'/>
+      <part name='14' x='255' y='119'/>
+      <part name='15' x='315' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237562250_2_1_2/9237562250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='376' y='121'/>
+      <part name='01' x='459' y='164'/>
+      <part name='02' x='532' y='287'/>
+      <part name='03' x='447' y='340'/>
+      <part name='04' x='447' y='340'/>
+      <part name='05' x='443' y='477'/>
+      <part name='06' x='442' y='645'/>
+      <part name='07' x='309' y='643'/>
+      <part name='08' x='172' y='644'/>
+      <part name='09' x='171' y='475'/>
+      <part name='10' x='170' y='332'/>
+      <part name='11' x='170' y='332'/>
+      <part name='12' x='78' y='286'/>
+      <part name='13' x='160' y='161'/>
+      <part name='14' x='248' y='116'/>
+      <part name='15' x='307' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237565250_2_1_2/9237565250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='381' y='120'/>
+      <part name='01' x='456' y='149'/>
+      <part name='02' x='539' y='303'/>
+      <part name='03' x='459' y='346'/>
+      <part name='04' x='459' y='346'/>
+      <part name='05' x='461' y='484'/>
+      <part name='06' x='467' y='641'/>
+      <part name='07' x='309' y='643'/>
+      <part name='08' x='160' y='643'/>
+      <part name='09' x='163' y='479'/>
+      <part name='10' x='164' y='345'/>
+      <part name='11' x='164' y='345'/>
+      <part name='12' x='83' y='299'/>
+      <part name='13' x='162' y='159'/>
+      <part name='14' x='242' y='120'/>
+      <part name='15' x='312' y='132'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237573401_2_1_2/9237573401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='372' y='119'/>
+      <part name='01' x='466' y='183'/>
+      <part name='02' x='536' y='304'/>
+      <part name='03' x='445' y='349'/>
+      <part name='04' x='445' y='349'/>
+      <part name='05' x='442' y='491'/>
+      <part name='06' x='443' y='640'/>
+      <part name='07' x='304' y='642'/>
+      <part name='08' x='171' y='639'/>
+      <part name='09' x='172' y='491'/>
+      <part name='10' x='170' y='362'/>
+      <part name='11' x='170' y='362'/>
+      <part name='12' x='79' y='306'/>
+      <part name='13' x='149' y='185'/>
+      <part name='14' x='242' y='119'/>
+      <part name='15' x='304' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237584800_2_1_2/9237584800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='381' y='119'/>
+      <part name='01' x='468' y='172'/>
+      <part name='02' x='534' y='282'/>
+      <part name='03' x='454' y='335'/>
+      <part name='04' x='454' y='335'/>
+      <part name='05' x='454' y='482'/>
+      <part name='06' x='456' y='633'/>
+      <part name='07' x='324' y='623'/>
+      <part name='08' x='185' y='638'/>
+      <part name='09' x='183' y='480'/>
+      <part name='10' x='178' y='334'/>
+      <part name='11' x='178' y='334'/>
+      <part name='12' x='100' y='285'/>
+      <part name='13' x='166' y='176'/>
+      <part name='14' x='247' y='121'/>
+      <part name='15' x='311' y='141'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9237585250_2_1_2/9237585250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='370' y='118'/>
+      <part name='01' x='452' y='171'/>
+      <part name='02' x='510' y='300'/>
+      <part name='03' x='440' y='330'/>
+      <part name='04' x='440' y='330'/>
+      <part name='05' x='439' y='470'/>
+      <part name='06' x='442' y='638'/>
+      <part name='07' x='307' y='633'/>
+      <part name='08' x='169' y='634'/>
+      <part name='09' x='168' y='480'/>
+      <part name='10' x='164' y='325'/>
+      <part name='11' x='164' y='325'/>
+      <part name='12' x='106' y='303'/>
+      <part name='13' x='156' y='171'/>
+      <part name='14' x='235' y='119'/>
+      <part name='15' x='298' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9238565811_2_1_2/9238565811_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='377' y='120'/>
+      <part name='01' x='461' y='158'/>
+      <part name='02' x='536' y='275'/>
+      <part name='03' x='457' y='318'/>
+      <part name='04' x='457' y='318'/>
+      <part name='05' x='455' y='470'/>
+      <part name='06' x='453' y='637'/>
+      <part name='07' x='317' y='636'/>
+      <part name='08' x='169' y='634'/>
+      <part name='09' x='166' y='468'/>
+      <part name='10' x='166' y='325'/>
+      <part name='11' x='166' y='325'/>
+      <part name='12' x='85' y='272'/>
+      <part name='13' x='164' y='158'/>
+      <part name='14' x='246' y='123'/>
+      <part name='15' x='308' y='129'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239503250_2_1_2/9239503250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='369' y='113'/>
+      <part name='01' x='440' y='149'/>
+      <part name='02' x='520' y='279'/>
+      <part name='03' x='447' y='329'/>
+      <part name='04' x='447' y='329'/>
+      <part name='05' x='448' y='477'/>
+      <part name='06' x='447' y='642'/>
+      <part name='07' x='313' y='641'/>
+      <part name='08' x='179' y='640'/>
+      <part name='09' x='177' y='479'/>
+      <part name='10' x='172' y='319'/>
+      <part name='11' x='172' y='319'/>
+      <part name='12' x='94' y='277'/>
+      <part name='13' x='168' y='158'/>
+      <part name='14' x='249' y='114'/>
+      <part name='15' x='306' y='125'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239513800_2_1_2/9239513800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='389' y='115'/>
+      <part name='01' x='483' y='184'/>
+      <part name='02' x='552' y='299'/>
+      <part name='03' x='459' y='352'/>
+      <part name='04' x='459' y='352'/>
+      <part name='05' x='460' y='481'/>
+      <part name='06' x='459' y='635'/>
+      <part name='07' x='324' y='630'/>
+      <part name='08' x='173' y='632'/>
+      <part name='09' x='173' y='487'/>
+      <part name='10' x='172' y='348'/>
+      <part name='11' x='166' y='353'/>
+      <part name='12' x='77' y='305'/>
+      <part name='13' x='144' y='177'/>
+      <part name='14' x='236' y='117'/>
+      <part name='15' x='312' y='141'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239514250_2_1_2/9239514250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='375' y='119'/>
+      <part name='01' x='471' y='184'/>
+      <part name='02' x='538' y='300'/>
+      <part name='03' x='449' y='342'/>
+      <part name='04' x='449' y='342'/>
+      <part name='05' x='445' y='480'/>
+      <part name='06' x='447' y='636'/>
+      <part name='07' x='302' y='631'/>
+      <part name='08' x='170' y='637'/>
+      <part name='09' x='169' y='482'/>
+      <part name='10' x='163' y='347'/>
+      <part name='11' x='163' y='347'/>
+      <part name='12' x='74' y='304'/>
+      <part name='13' x='142' y='190'/>
+      <part name='14' x='233' y='119'/>
+      <part name='15' x='302' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239515827_2_1_2/9239515827_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='364' y='121'/>
+      <part name='01' x='453' y='185'/>
+      <part name='02' x='524' y='299'/>
+      <part name='03' x='440' y='355'/>
+      <part name='04' x='440' y='355'/>
+      <part name='05' x='441' y='488'/>
+      <part name='06' x='444' y='638'/>
+      <part name='07' x='301' y='632'/>
+      <part name='08' x='162' y='635'/>
+      <part name='09' x='162' y='490'/>
+      <part name='10' x='160' y='353'/>
+      <part name='11' x='160' y='353'/>
+      <part name='12' x='70' y='303'/>
+      <part name='13' x='139' y='187'/>
+      <part name='14' x='223' y='124'/>
+      <part name='15' x='292' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239516800_2_1_2/9239516800_2_1_2.jpg'>
+    <box top='54' left='74' width='519' height='619'>
+      <part name='00' x='363' y='119'/>
+      <part name='01' x='446' y='157'/>
+      <part name='02' x='515' y='279'/>
+      <part name='03' x='443' y='312'/>
+      <part name='04' x='443' y='312'/>
+      <part name='05' x='444' y='459'/>
+      <part name='06' x='452' y='615'/>
+      <part name='07' x='318' y='618'/>
+      <part name='08' x='181' y='616'/>
+      <part name='09' x='183' y='460'/>
+      <part name='10' x='180' y='326'/>
+      <part name='11' x='180' y='326'/>
+      <part name='12' x='97' y='280'/>
+      <part name='13' x='169' y='166'/>
+      <part name='14' x='250' y='120'/>
+      <part name='15' x='306' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239522827_2_1_2/9239522827_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='381' y='121'/>
+      <part name='01' x='466' y='189'/>
+      <part name='02' x='549' y='305'/>
+      <part name='03' x='450' y='357'/>
+      <part name='04' x='450' y='357'/>
+      <part name='05' x='448' y='496'/>
+      <part name='06' x='449' y='645'/>
+      <part name='07' x='312' y='635'/>
+      <part name='08' x='164' y='640'/>
+      <part name='09' x='159' y='488'/>
+      <part name='10' x='156' y='349'/>
+      <part name='11' x='156' y='349'/>
+      <part name='12' x='66' y='312'/>
+      <part name='13' x='133' y='187'/>
+      <part name='14' x='222' y='119'/>
+      <part name='15' x='299' y='140'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239526251_2_1_2/9239526251_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='370' y='120'/>
+      <part name='01' x='447' y='168'/>
+      <part name='02' x='511' y='290'/>
+      <part name='03' x='433' y='329'/>
+      <part name='04' x='433' y='329'/>
+      <part name='05' x='439' y='480'/>
+      <part name='06' x='445' y='637'/>
+      <part name='07' x='317' y='638'/>
+      <part name='08' x='188' y='635'/>
+      <part name='09' x='185' y='480'/>
+      <part name='10' x='185' y='337'/>
+      <part name='11' x='185' y='337'/>
+      <part name='12' x='98' y='295'/>
+      <part name='13' x='168' y='177'/>
+      <part name='14' x='251' y='120'/>
+      <part name='15' x='305' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239533401_2_1_2/9239533401_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='378' y='121'/>
+      <part name='01' x='465' y='177'/>
+      <part name='02' x='532' y='297'/>
+      <part name='03' x='455' y='344'/>
+      <part name='04' x='455' y='344'/>
+      <part name='05' x='453' y='478'/>
+      <part name='06' x='457' y='634'/>
+      <part name='07' x='314' y='634'/>
+      <part name='08' x='172' y='634'/>
+      <part name='09' x='174' y='481'/>
+      <part name='10' x='172' y='351'/>
+      <part name='11' x='172' y='351'/>
+      <part name='12' x='83' y='301'/>
+      <part name='13' x='156' y='177'/>
+      <part name='14' x='246' y='122'/>
+      <part name='15' x='311' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239533827_2_1_2/9239533827_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='375' y='118'/>
+      <part name='01' x='461' y='174'/>
+      <part name='02' x='529' y='288'/>
+      <part name='03' x='442' y='340'/>
+      <part name='04' x='442' y='340'/>
+      <part name='05' x='440' y='476'/>
+      <part name='06' x='441' y='637'/>
+      <part name='07' x='308' y='638'/>
+      <part name='08' x='171' y='634'/>
+      <part name='09' x='172' y='478'/>
+      <part name='10' x='168' y='336'/>
+      <part name='11' x='168' y='336'/>
+      <part name='12' x='77' y='291'/>
+      <part name='13' x='157' y='172'/>
+      <part name='14' x='238' y='122'/>
+      <part name='15' x='304' y='139'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239537622_2_1_2/9239537622_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='385' y='115'/>
+      <part name='01' x='477' y='170'/>
+      <part name='02' x='553' y='299'/>
+      <part name='03' x='456' y='353'/>
+      <part name='04' x='456' y='353'/>
+      <part name='05' x='457' y='487'/>
+      <part name='06' x='458' y='642'/>
+      <part name='07' x='324' y='635'/>
+      <part name='08' x='185' y='635'/>
+      <part name='09' x='188' y='491'/>
+      <part name='10' x='189' y='357'/>
+      <part name='11' x='185' y='359'/>
+      <part name='12' x='87' y='298'/>
+      <part name='13' x='171' y='173'/>
+      <part name='14' x='266' y='115'/>
+      <part name='15' x='322' y='131'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239552800_2_1_2/9239552800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='383' y='115'/>
+      <part name='01' x='472' y='177'/>
+      <part name='02' x='548' y='310'/>
+      <part name='03' x='459' y='352'/>
+      <part name='04' x='459' y='352'/>
+      <part name='05' x='460' y='483'/>
+      <part name='06' x='462' y='637'/>
+      <part name='07' x='319' y='637'/>
+      <part name='08' x='178' y='640'/>
+      <part name='09' x='176' y='484'/>
+      <part name='10' x='174' y='348'/>
+      <part name='11' x='174' y='348'/>
+      <part name='12' x='89' y='315'/>
+      <part name='13' x='156' y='180'/>
+      <part name='14' x='242' y='116'/>
+      <part name='15' x='311' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239553250_2_1_2/9239553250_2_1_2.jpg'>
+    <box top='42' left='18' width='622' height='741'>
+      <part name='00' x='380' y='108'/>
+      <part name='01' x='477' y='176'/>
+      <part name='02' x='550' y='319'/>
+      <part name='03' x='454' y='369'/>
+      <part name='04' x='454' y='369'/>
+      <part name='05' x='452' y='496'/>
+      <part name='06' x='453' y='643'/>
+      <part name='07' x='303' y='641'/>
+      <part name='08' x='159' y='644'/>
+      <part name='09' x='158' y='499'/>
+      <part name='10' x='152' y='352'/>
+      <part name='11' x='152' y='352'/>
+      <part name='12' x='67' y='323'/>
+      <part name='13' x='137' y='174'/>
+      <part name='14' x='228' y='108'/>
+      <part name='15' x='305' y='127'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239570412_2_1_2/9239570412_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='384' y='118'/>
+      <part name='01' x='479' y='173'/>
+      <part name='02' x='544' y='285'/>
+      <part name='03' x='462' y='329'/>
+      <part name='04' x='462' y='329'/>
+      <part name='05' x='463' y='472'/>
+      <part name='06' x='467' y='637'/>
+      <part name='07' x='326' y='636'/>
+      <part name='08' x='177' y='638'/>
+      <part name='09' x='173' y='472'/>
+      <part name='10' x='170' y='327'/>
+      <part name='11' x='170' y='327'/>
+      <part name='12' x='83' y='277'/>
+      <part name='13' x='160' y='165'/>
+      <part name='14' x='257' y='120'/>
+      <part name='15' x='317' y='135'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239573401_2_1_2/9239573401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='362' y='117'/>
+      <part name='01' x='460' y='177'/>
+      <part name='02' x='526' y='295'/>
+      <part name='03' x='447' y='335'/>
+      <part name='04' x='447' y='335'/>
+      <part name='05' x='447' y='475'/>
+      <part name='06' x='451' y='640'/>
+      <part name='07' x='312' y='638'/>
+      <part name='08' x='166' y='642'/>
+      <part name='09' x='168' y='479'/>
+      <part name='10' x='168' y='336'/>
+      <part name='11' x='168' y='336'/>
+      <part name='12' x='86' y='297'/>
+      <part name='13' x='153' y='172'/>
+      <part name='14' x='245' y='120'/>
+      <part name='15' x='303' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239574505_2_1_2/9239574505_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='375' y='119'/>
+      <part name='01' x='464' y='186'/>
+      <part name='02' x='534' y='303'/>
+      <part name='03' x='445' y='356'/>
+      <part name='04' x='445' y='356'/>
+      <part name='05' x='444' y='496'/>
+      <part name='06' x='447' y='638'/>
+      <part name='07' x='306' y='638'/>
+      <part name='08' x='179' y='636'/>
+      <part name='09' x='179' y='494'/>
+      <part name='10' x='179' y='362'/>
+      <part name='11' x='177' y='365'/>
+      <part name='12' x='82' y='305'/>
+      <part name='13' x='159' y='184'/>
+      <part name='14' x='251' y='120'/>
+      <part name='15' x='309' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239575401_2_1_2/9239575401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='366' y='115'/>
+      <part name='01' x='457' y='182'/>
+      <part name='02' x='520' y='290'/>
+      <part name='03' x='440' y='334'/>
+      <part name='04' x='440' y='334'/>
+      <part name='05' x='444' y='480'/>
+      <part name='06' x='449' y='646'/>
+      <part name='07' x='306' y='645'/>
+      <part name='08' x='163' y='646'/>
+      <part name='09' x='164' y='479'/>
+      <part name='10' x='160' y='325'/>
+      <part name='11' x='160' y='325'/>
+      <part name='12' x='89' y='287'/>
+      <part name='13' x='145' y='174'/>
+      <part name='14' x='236' y='118'/>
+      <part name='15' x='298' y='137'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239578251_2_1_2/9239578251_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='385' y='119'/>
+      <part name='01' x='466' y='164'/>
+      <part name='02' x='536' y='294'/>
+      <part name='03' x='459' y='330'/>
+      <part name='04' x='459' y='330'/>
+      <part name='05' x='460' y='477'/>
+      <part name='06' x='462' y='646'/>
+      <part name='07' x='312' y='640'/>
+      <part name='08' x='170' y='642'/>
+      <part name='09' x='171' y='479'/>
+      <part name='10' x='170' y='336'/>
+      <part name='11' x='170' y='336'/>
+      <part name='12' x='90' y='297'/>
+      <part name='13' x='162' y='165'/>
+      <part name='14' x='238' y='119'/>
+      <part name='15' x='309' y='145'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239578401_2_1_2/9239578401_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='386' y='121'/>
+      <part name='01' x='467' y='166'/>
+      <part name='02' x='538' y='298'/>
+      <part name='03' x='459' y='340'/>
+      <part name='04' x='459' y='340'/>
+      <part name='05' x='455' y='477'/>
+      <part name='06' x='464' y='641'/>
+      <part name='07' x='310' y='642'/>
+      <part name='08' x='159' y='636'/>
+      <part name='09' x='169' y='485'/>
+      <part name='10' x='169' y='357'/>
+      <part name='11' x='169' y='357'/>
+      <part name='12' x='79' y='305'/>
+      <part name='13' x='155' y='171'/>
+      <part name='14' x='234' y='124'/>
+      <part name='15' x='305' y='146'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239587250_2_1_2/9239587250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='376' y='121'/>
+      <part name='01' x='463' y='172'/>
+      <part name='02' x='524' y='272'/>
+      <part name='03' x='445' y='315'/>
+      <part name='04' x='445' y='315'/>
+      <part name='05' x='442' y='451'/>
+      <part name='06' x='454' y='607'/>
+      <part name='07' x='317' y='636'/>
+      <part name='08' x='187' y='595'/>
+      <part name='09' x='194' y='449'/>
+      <part name='10' x='193' y='320'/>
+      <part name='11' x='190' y='322'/>
+      <part name='12' x='108' y='284'/>
+      <part name='13' x='173' y='175'/>
+      <part name='14' x='262' y='121'/>
+      <part name='15' x='316' y='142'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239587800_2_1_2/9239587800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='368' y='120'/>
+      <part name='01' x='455' y='174'/>
+      <part name='02' x='514' y='284'/>
+      <part name='03' x='441' y='326'/>
+      <part name='04' x='441' y='326'/>
+      <part name='05' x='440' y='451'/>
+      <part name='06' x='453' y='593'/>
+      <part name='07' x='314' y='635'/>
+      <part name='08' x='165' y='595'/>
+      <part name='09' x='182' y='452'/>
+      <part name='10' x='183' y='319'/>
+      <part name='11' x='183' y='319'/>
+      <part name='12' x='105' y='285'/>
+      <part name='13' x='165' y='174'/>
+      <part name='14' x='256' y='120'/>
+      <part name='15' x='309' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9239590250_2_1_2/9239590250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='386' y='116'/>
+      <part name='01' x='488' y='189'/>
+      <part name='02' x='541' y='313'/>
+      <part name='03' x='463' y='334'/>
+      <part name='04' x='463' y='334'/>
+      <part name='05' x='463' y='482'/>
+      <part name='06' x='465' y='648'/>
+      <part name='07' x='322' y='645'/>
+      <part name='08' x='178' y='645'/>
+      <part name='09' x='179' y='486'/>
+      <part name='10' x='176' y='349'/>
+      <part name='11' x='176' y='349'/>
+      <part name='12' x='97' y='313'/>
+      <part name='13' x='152' y='189'/>
+      <part name='14' x='252' y='114'/>
+      <part name='15' x='316' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9242553438_2_1_2/9242553438_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='378' y='121'/>
+      <part name='01' x='452' y='161'/>
+      <part name='02' x='529' y='256'/>
+      <part name='03' x='458' y='327'/>
+      <part name='04' x='452' y='324'/>
+      <part name='05' x='450' y='448'/>
+      <part name='06' x='447' y='595'/>
+      <part name='07' x='320' y='597'/>
+      <part name='08' x='176' y='598'/>
+      <part name='09' x='175' y='445'/>
+      <part name='10' x='174' y='314'/>
+      <part name='11' x='159' y='321'/>
+      <part name='12' x='90' y='259'/>
+      <part name='13' x='167' y='166'/>
+      <part name='14' x='238' y='121'/>
+      <part name='15' x='305' y='145'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244508811_2_1_2/9244508811_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='388' y='121'/>
+      <part name='01' x='470' y='181'/>
+      <part name='02' x='538' y='293'/>
+      <part name='03' x='447' y='342'/>
+      <part name='04' x='447' y='342'/>
+      <part name='05' x='447' y='478'/>
+      <part name='06' x='445' y='633'/>
+      <part name='07' x='310' y='629'/>
+      <part name='08' x='163' y='631'/>
+      <part name='09' x='163' y='471'/>
+      <part name='10' x='165' y='350'/>
+      <part name='11' x='165' y='350'/>
+      <part name='12' x='81' y='288'/>
+      <part name='13' x='146' y='177'/>
+      <part name='14' x='229' y='118'/>
+      <part name='15' x='302' y='141'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244516250_2_1_2/9244516250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='383' y='121'/>
+      <part name='01' x='470' y='173'/>
+      <part name='02' x='549' y='285'/>
+      <part name='03' x='461' y='339'/>
+      <part name='04' x='461' y='339'/>
+      <part name='05' x='464' y='478'/>
+      <part name='06' x='471' y='640'/>
+      <part name='07' x='322' y='641'/>
+      <part name='08' x='172' y='642'/>
+      <part name='09' x='174' y='477'/>
+      <part name='10' x='171' y='328'/>
+      <part name='11' x='171' y='328'/>
+      <part name='12' x='84' y='283'/>
+      <part name='13' x='162' y='170'/>
+      <part name='14' x='256' y='124'/>
+      <part name='15' x='317' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244518250_2_1_2/9244518250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='385' y='122'/>
+      <part name='01' x='472' y='182'/>
+      <part name='02' x='541' y='300'/>
+      <part name='03' x='459' y='343'/>
+      <part name='04' x='459' y='343'/>
+      <part name='05' x='460' y='484'/>
+      <part name='06' x='461' y='641'/>
+      <part name='07' x='322' y='640'/>
+      <part name='08' x='179' y='639'/>
+      <part name='09' x='178' y='481'/>
+      <part name='10' x='178' y='337'/>
+      <part name='11' x='178' y='337'/>
+      <part name='12' x='90' y='294'/>
+      <part name='13' x='166' y='179'/>
+      <part name='14' x='254' y='123'/>
+      <part name='15' x='318' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244519800_2_1_2/9244519800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='379' y='126'/>
+      <part name='01' x='465' y='172'/>
+      <part name='02' x='537' y='283'/>
+      <part name='03' x='451' y='333'/>
+      <part name='04' x='451' y='333'/>
+      <part name='05' x='451' y='481'/>
+      <part name='06' x='452' y='638'/>
+      <part name='07' x='313' y='638'/>
+      <part name='08' x='172' y='637'/>
+      <part name='09' x='172' y='479'/>
+      <part name='10' x='171' y='336'/>
+      <part name='11' x='171' y='336'/>
+      <part name='12' x='93' y='285'/>
+      <part name='13' x='161' y='176'/>
+      <part name='14' x='242' y='124'/>
+      <part name='15' x='311' y='140'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244520250_2_1_2/9244520250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='384' y='122'/>
+      <part name='01' x='451' y='161'/>
+      <part name='02' x='529' y='307'/>
+      <part name='03' x='450' y='341'/>
+      <part name='04' x='450' y='341'/>
+      <part name='05' x='445' y='490'/>
+      <part name='06' x='445' y='640'/>
+      <part name='07' x='308' y='639'/>
+      <part name='08' x='175' y='637'/>
+      <part name='09' x='177' y='488'/>
+      <part name='10' x='174' y='328'/>
+      <part name='11' x='174' y='328'/>
+      <part name='12' x='101' y='304'/>
+      <part name='13' x='173' y='160'/>
+      <part name='14' x='240' y='122'/>
+      <part name='15' x='311' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244528250_2_1_2/9244528250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='372' y='121'/>
+      <part name='01' x='463' y='174'/>
+      <part name='02' x='535' y='312'/>
+      <part name='03' x='457' y='342'/>
+      <part name='04' x='457' y='342'/>
+      <part name='05' x='456' y='483'/>
+      <part name='06' x='457' y='638'/>
+      <part name='07' x='318' y='635'/>
+      <part name='08' x='177' y='632'/>
+      <part name='09' x='175' y='485'/>
+      <part name='10' x='170' y='356'/>
+      <part name='11' x='170' y='356'/>
+      <part name='12' x='93' y='325'/>
+      <part name='13' x='157' y='183'/>
+      <part name='14' x='245' y='120'/>
+      <part name='15' x='306' y='131'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244535505_2_1_2/9244535505_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='371' y='124'/>
+      <part name='01' x='468' y='194'/>
+      <part name='02' x='520' y='317'/>
+      <part name='03' x='449' y='348'/>
+      <part name='04' x='449' y='348'/>
+      <part name='05' x='450' y='485'/>
+      <part name='06' x='457' y='642'/>
+      <part name='07' x='303' y='625'/>
+      <part name='08' x='156' y='626'/>
+      <part name='09' x='167' y='477'/>
+      <part name='10' x='170' y='332'/>
+      <part name='11' x='170' y='332'/>
+      <part name='12' x='100' y='288'/>
+      <part name='13' x='166' y='173'/>
+      <part name='14' x='257' y='120'/>
+      <part name='15' x='311' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244536250_2_1_2/9244536250_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='372' y='122'/>
+      <part name='01' x='464' y='185'/>
+      <part name='02' x='518' y='312'/>
+      <part name='03' x='448' y='344'/>
+      <part name='04' x='448' y='344'/>
+      <part name='05' x='444' y='476'/>
+      <part name='06' x='445' y='634'/>
+      <part name='07' x='310' y='627'/>
+      <part name='08' x='170' y='631'/>
+      <part name='09' x='169' y='475'/>
+      <part name='10' x='168' y='346'/>
+      <part name='11' x='168' y='346'/>
+      <part name='12' x='96' y='308'/>
+      <part name='13' x='153' y='185'/>
+      <part name='14' x='245' y='121'/>
+      <part name='15' x='306' y='134'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244537401_2_1_2/9244537401_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='368' y='117'/>
+      <part name='01' x='471' y='179'/>
+      <part name='02' x='545' y='299'/>
+      <part name='03' x='452' y='357'/>
+      <part name='04' x='452' y='357'/>
+      <part name='05' x='453' y='494'/>
+      <part name='06' x='454' y='645'/>
+      <part name='07' x='310' y='637'/>
+      <part name='08' x='167' y='646'/>
+      <part name='09' x='166' y='492'/>
+      <part name='10' x='163' y='357'/>
+      <part name='11' x='163' y='357'/>
+      <part name='12' x='67' y='307'/>
+      <part name='13' x='138' y='182'/>
+      <part name='14' x='239' y='119'/>
+      <part name='15' x='302' y='136'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244538250_2_1_2/9244538250_2_1_2.jpg'>
+    <box top='54' left='54' width='519' height='619'>
+      <part name='00' x='365' y='106'/>
+      <part name='01' x='462' y='163'/>
+      <part name='02' x='542' y='276'/>
+      <part name='03' x='449' y='333'/>
+      <part name='04' x='449' y='333'/>
+      <part name='05' x='450' y='475'/>
+      <part name='06' x='456' y='641'/>
+      <part name='07' x='312' y='639'/>
+      <part name='08' x='168' y='639'/>
+      <part name='09' x='170' y='482'/>
+      <part name='10' x='167' y='339'/>
+      <part name='11' x='167' y='339'/>
+      <part name='12' x='71' y='275'/>
+      <part name='13' x='147' y='161'/>
+      <part name='14' x='238' y='104'/>
+      <part name='15' x='300' y='120'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244541800_2_1_2/9244541800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='368' y='117'/>
+      <part name='01' x='451' y='148'/>
+      <part name='02' x='532' y='263'/>
+      <part name='03' x='460' y='301'/>
+      <part name='04' x='460' y='301'/>
+      <part name='05' x='456' y='472'/>
+      <part name='06' x='452' y='640'/>
+      <part name='07' x='304' y='640'/>
+      <part name='08' x='166' y='638'/>
+      <part name='09' x='167' y='470'/>
+      <part name='10' x='167' y='308'/>
+      <part name='11' x='167' y='308'/>
+      <part name='12' x='91' y='276'/>
+      <part name='13' x='166' y='155'/>
+      <part name='14' x='249' y='117'/>
+      <part name='15' x='308' y='125'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244542250_2_1_2/9244542250_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='369' y='125'/>
+      <part name='01' x='444' y='168'/>
+      <part name='02' x='510' y='299'/>
+      <part name='03' x='447' y='324'/>
+      <part name='04' x='447' y='324'/>
+      <part name='05' x='441' y='472'/>
+      <part name='06' x='446' y='648'/>
+      <part name='07' x='309' y='639'/>
+      <part name='08' x='172' y='640'/>
+      <part name='09' x='175' y='469'/>
+      <part name='10' x='176' y='324'/>
+      <part name='11' x='176' y='324'/>
+      <part name='12' x='105' y='298'/>
+      <part name='13' x='181' y='169'/>
+      <part name='14' x='267' y='123'/>
+      <part name='15' x='317' y='127'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244543800_2_1_2/9244543800_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='381' y='121'/>
+      <part name='01' x='447' y='162'/>
+      <part name='02' x='529' y='313'/>
+      <part name='03' x='442' y='352'/>
+      <part name='04' x='442' y='352'/>
+      <part name='05' x='439' y='487'/>
+      <part name='06' x='440' y='633'/>
+      <part name='07' x='315' y='640'/>
+      <part name='08' x='186' y='630'/>
+      <part name='09' x='182' y='488'/>
+      <part name='10' x='178' y='347'/>
+      <part name='11' x='178' y='347'/>
+      <part name='12' x='91' y='297'/>
+      <part name='13' x='180' y='155'/>
+      <part name='14' x='254' y='120'/>
+      <part name='15' x='311' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244547800_2_1_2/9244547800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='370' y='123'/>
+      <part name='01' x='445' y='161'/>
+      <part name='02' x='536' y='294'/>
+      <part name='03' x='447' y='356'/>
+      <part name='04' x='447' y='356'/>
+      <part name='05' x='449' y='478'/>
+      <part name='06' x='454' y='639'/>
+      <part name='07' x='305' y='638'/>
+      <part name='08' x='168' y='637'/>
+      <part name='09' x='167' y='482'/>
+      <part name='10' x='164' y='354'/>
+      <part name='11' x='164' y='354'/>
+      <part name='12' x='75' y='292'/>
+      <part name='13' x='156' y='174'/>
+      <part name='14' x='242' y='124'/>
+      <part name='15' x='304' y='140'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244550807_2_1_2/9244550807_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='367' y='123'/>
+      <part name='01' x='461' y='179'/>
+      <part name='02' x='509' y='288'/>
+      <part name='03' x='449' y='315'/>
+      <part name='04' x='449' y='315'/>
+      <part name='05' x='445' y='467'/>
+      <part name='06' x='445' y='641'/>
+      <part name='07' x='309' y='642'/>
+      <part name='08' x='178' y='643'/>
+      <part name='09' x='178' y='469'/>
+      <part name='10' x='175' y='328'/>
+      <part name='11' x='175' y='328'/>
+      <part name='12' x='104' y='290'/>
+      <part name='13' x='150' y='188'/>
+      <part name='14' x='238' y='122'/>
+      <part name='15' x='301' y='138'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244551250_2_1_2/9244551250_2_1_2.jpg'>
+    <box top='54' left='54' width='519' height='619'>
+      <part name='00' x='370' y='113'/>
+      <part name='01' x='441' y='153'/>
+      <part name='02' x='508' y='299'/>
+      <part name='03' x='442' y='319'/>
+      <part name='04' x='442' y='319'/>
+      <part name='05' x='443' y='457'/>
+      <part name='06' x='447' y='616'/>
+      <part name='07' x='301' y='608'/>
+      <part name='08' x='165' y='609'/>
+      <part name='09' x='170' y='453'/>
+      <part name='10' x='167' y='317'/>
+      <part name='11' x='167' y='317'/>
+      <part name='12' x='103' y='297'/>
+      <part name='13' x='168' y='153'/>
+      <part name='14' x='239' y='117'/>
+      <part name='15' x='301' y='133'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244553824_2_1_2/9244553824_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='372' y='117'/>
+      <part name='01' x='450' y='154'/>
+      <part name='02' x='531' y='322'/>
+      <part name='03' x='448' y='362'/>
+      <part name='04' x='448' y='362'/>
+      <part name='05' x='448' y='492'/>
+      <part name='06' x='448' y='636'/>
+      <part name='07' x='308' y='637'/>
+      <part name='08' x='171' y='638'/>
+      <part name='09' x='172' y='491'/>
+      <part name='10' x='165' y='360'/>
+      <part name='11' x='165' y='360'/>
+      <part name='12' x='83' y='317'/>
+      <part name='13' x='167' y='159'/>
+      <part name='14' x='244' y='116'/>
+      <part name='15' x='311' y='130'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244556800_2_1_2/9244556800_2_1_2.jpg'>
+    <box top='74' left='54' width='519' height='618'>
+      <part name='00' x='372' y='116'/>
+      <part name='01' x='469' y='179'/>
+      <part name='02' x='522' y='319'/>
+      <part name='03' x='450' y='346'/>
+      <part name='04' x='450' y='346'/>
+      <part name='05' x='448' y='480'/>
+      <part name='06' x='447' y='637'/>
+      <part name='07' x='306' y='639'/>
+      <part name='08' x='175' y='638'/>
+      <part name='09' x='172' y='496'/>
+      <part name='10' x='173' y='359'/>
+      <part name='11' x='173' y='359'/>
+      <part name='12' x='92' y='320'/>
+      <part name='13' x='148' y='183'/>
+      <part name='14' x='239' y='119'/>
+      <part name='15' x='301' y='128'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9244557807_2_1_2/9244557807_2_1_2.jpg'>
+    <box top='74' left='74' width='519' height='618'>
+      <part name='00' x='371' y='115'/>
+      <part name='01' x='456' y='168'/>
+      <part name='02' x='512' y='306'/>
+      <part name='03' x='443' y='331'/>
+      <part name='04' x='443' y='331'/>
+      <part name='05' x='447' y='468'/>
+      <part name='06' x='449' y='609'/>
+      <part name='07' x='315' y='609'/>
+      <part name='08' x='171' y='607'/>
+      <part name='09' x='185' y='462'/>
+      <part name='10' x='186' y='336'/>
+      <part name='11' x='186' y='336'/>
+      <part name='12' x='121' y='310'/>
+      <part name='13' x='183' y='161'/>
+      <part name='14' x='253' y='118'/>
+      <part name='15' x='310' y='129'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9590548824_2_1_2/9590548824_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='375' y='117'/>
+      <part name='01' x='450' y='151'/>
+      <part name='02' x='522' y='329'/>
+      <part name='03' x='449' y='356'/>
+      <part name='04' x='449' y='356'/>
+      <part name='05' x='447' y='491'/>
+      <part name='06' x='450' y='636'/>
+      <part name='07' x='306' y='639'/>
+      <part name='08' x='165' y='636'/>
+      <part name='09' x='168' y='489'/>
+      <part name='10' x='168' y='341'/>
+      <part name='11' x='168' y='341'/>
+      <part name='12' x='97' y='325'/>
+      <part name='13' x='155' y='167'/>
+      <part name='14' x='246' y='118'/>
+      <part name='15' x='305' y='127'/>
+    </box>
+  </image>
+  <image file='../../../../dataset/t-shirts/pullandbear/products/9591502707_2_1_2/9591502707_2_1_2.jpg'>
+    <box top='66' left='18' width='622' height='741'>
+      <part name='00' x='392' y='110'/>
+      <part name='01' x='500' y='238'/>
+      <part name='02' x='556' y='373'/>
+      <part name='03' x='462' y='422'/>
+      <part name='04' x='462' y='422'/>
+      <part name='05' x='459' y='519'/>
+      <part name='06' x='455' y='642'/>
+      <part name='07' x='315' y='639'/>
+      <part name='08' x='189' y='639'/>
+      <part name='09' x='187' y='517'/>
+      <part name='10' x='181' y='398'/>
+      <part name='11' x='181' y='398'/>
+      <part name='12' x='87' y='368'/>
+      <part name='13' x='146' y='226'/>
+      <part name='14' x='249' y='111'/>
+      <part name='15' x='314' y='128'/>
+    </box>
+  </image>
+</images>
+</dataset>
