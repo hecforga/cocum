@@ -69,8 +69,8 @@ public class Searcher {
         BufferedImage croppedQueryImage = null;
         boolean croppedQueryImageExists = false;
         // Get the path to the cropped version of the query image from MongoDB
-        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017/?replicaSet=rs0"));
-        MongoDatabase database = mongoClient.getDatabase("mytest");
+        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://meteor:PasswordForMeteor@cluster1-shard-00-00-dmovm.mongodb.net:27017,cluster1-shard-00-01-dmovm.mongodb.net:27017,cluster1-shard-00-02-dmovm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster1-shard-0&authSource=admin"));
+        MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> queriesCollection = database.getCollection("queries");
         String queryId = args[0];
         Document queryDocument = queriesCollection.find(eq("_id", queryId)).first();
