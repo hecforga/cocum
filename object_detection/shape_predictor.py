@@ -60,13 +60,13 @@ detector = dlib.simple_object_detector(detector_file)
 
 # Run the detector and shape_predictor over the images in the images
 # folder and display the results.
-# print("Showing detections and predictions...")
-# win = dlib.image_window()
+print("Showing detections and predictions...")
+win = dlib.image_window()
 print("Processing file: {}".format(image_path))
 img = io.imread(image_path)
 
-# win.clear_overlay()
-# win.set_image(img)
+win.clear_overlay()
+win.set_image(img)
 
 # Ask the detector to find the bounding boxes of each object.
 rectangles = detector(img)
@@ -77,8 +77,7 @@ print("Detection: Left: {} Top: {} Right: {} Bottom: {}".format(r.left(), r.top(
 # Get the landmarks/parts for the object in box d.
 full_object_detection = predictor(img, r)
 # Draw the object landmarks on the screen.
-# win.add_overlay(full_object_detection)
+win.add_overlay(full_object_detection)
 
-dlib.save_detection_results(full_object_detection, image_path)
-
-# win.add_overlay(rectangles)
+win.add_overlay(rectangles)
+dlib.hit_enter_to_continue()

@@ -14,7 +14,7 @@ import cv2
 if len(sys.argv) != 5:
     print(
         "Example execution:\n"
-        "    ./shape_predictor.py t-shirts/pullandbear/detector.svm t-shirts/pullandbear/predictor.dat ../dataset/t-shirts/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg ../dataset/t-shirts/CROPPED/")
+        "    ./shape_predictor_single.py t-shirts/pullandbear/detector.svm t-shirts/pullandbear/predictor.dat ../dataset/t-shirts/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg ../dataset/t-shirts/CROPPED/")
     exit()
 detector_file = sys.argv[1]
 predictor_file = sys.argv[2]
