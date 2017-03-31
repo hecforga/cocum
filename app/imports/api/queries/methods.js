@@ -25,7 +25,6 @@ export const createQuery = new ValidatedMethod({
     const imageName = queryId + '.' + extension;
     const imageAbsolutePath = storagePath + imageName;
     const imageRelativePath = relativePath + imageName;
-    const imageRelativePathForImageCropper = '../app/public' + imageRelativePath;
 
     if (!this.isSimulation) {
       const toBuffer = Npm.require('typedarray-to-buffer');
@@ -37,12 +36,6 @@ export const createQuery = new ValidatedMethod({
 
       fs.writeFileSync(imageAbsolutePath, queryImageBuffer);
       Queries.update(queryId, { $set: { imagePath: imageRelativePath }});
-
-      const json = [imageRelativePathForImageCropper];
-      const jsonString = JSON.stringify(json);
-      const jsonUint8Array = Buffer.from(jsonString);
-      const jsonPath = storagePath + queryId + '.json';
-      fs.writeFileSync(jsonPath, jsonUint8Array);
 
       Meteor._sleepForMs(500);
     }
@@ -61,8 +54,7 @@ export const performQuery = new ValidatedMethod({
       const exec = Npm.require('child_process').exec;
       const runCmd = Meteor.wrapAsync(exec);
       runCmd('cd ../../../../../../object_detection;' +
-        './shape_predictor.py t-shirts/pullandbear/detector_t-shirts_pullandbear_products_squares10x12_53560c1.svm t-shirts/pullandbear/predictor_t-shirts_pullandbear_products_squares10x12.dat ../app/public/queries/' + queryId + '/' + queryId + '.jpg;' +
-        './image_cropper.py ../app/public/queries/' + queryId + '/' + queryId + '.json ../app/public/queries/' + queryId + '/;' +
+        './shape_predictor_single.py t-shirts/pullandbear/detector_t-shirts_pullandbear_products_squares10x12_53560c1.svm t-shirts/pullandbear/predictor_t-shirts_pullandbear_products_squares10x12.dat ../app/public/queries/' + queryId + '/' + queryId + '.jpg ../app/public/queries/' + queryId + '/;' +
         'cd ../lire;' +
         './gradlew runSearch -PappArgs="[' + "'" + queryId + "'" + ']"');
     }

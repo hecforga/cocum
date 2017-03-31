@@ -76,7 +76,7 @@ public class Searcher {
         Document queryDocument = queriesCollection.find(eq("_id", queryId)).first();
         System.out.println(queryDocument);
         String queryImagePath = queryDocument.getString("imagePath");
-        String croppedQueryImagePath = "../app/public" + queryImagePath.substring(0, queryImagePath.length() - 4) + "_CROPPED.jpg"; // - 4 because length of ".jpg" is 4
+        String croppedQueryImagePath = "../app/public" + queryImagePath.substring(0, queryImagePath.length() - 4) + "_CROPPED.png"; // - 4 because length of ".png" is 4
 
         File f = new File(croppedQueryImagePath);
         if (f.exists()) {
