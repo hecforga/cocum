@@ -1,14 +1,14 @@
 import { Queries } from '../../../queries/queries.js';
 
-let modulee;
+let action;
 
 const handler = (data, promise) => {
   try {
-    modulee = promise;
+    action = promise;
     console.log(data);
     // TODO: Call liresolr with the url of the cropped image as parameter, get the results and update the queries collection with them
   } catch (exception) {
-    modulee.reject(`[querySucceeded.handler] ${exception}`);
+    action.reject(`[querySucceeded.handler] ${exception}`);
   }
 };
 

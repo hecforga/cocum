@@ -1,6 +1,6 @@
 import { lambdaHandler } from './providers/lambda';
 
-let modulee;
+let action;
 
 const providers = {
   lambda: lambdaHandler,
@@ -8,12 +8,12 @@ const providers = {
 
 const handler = ({ provider, request }, promise) => {
   try {
-    modulee = promise;
+    action = promise;
     const targetProvider = providers[provider];
     if (targetProvider) targetProvider({ body: request.body });
-    modulee.resolve('Webhook received!');
+    action.resolve('Webhook received!');
   } catch (exception) {
-    modulee.reject(`[handleWebhook.handler] ${exception}`);
+    action.reject(`[handleWebhook.handler] ${exception}`);
   }
 };
 
