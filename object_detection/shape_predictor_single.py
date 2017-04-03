@@ -26,7 +26,7 @@ detector = dlib.simple_object_detector(detector_file)
 
 # Get the image from image_path
 print("Processing file: {}".format(image_path))
-img = io.imread(image_path)
+img = cv2.imread(image_path)
 
 # Ask the detector to find the bounding boxes of each object
 rectangles = detector(img)

@@ -32,7 +32,7 @@ for image_path_unicode in images_to_be_cropped:
 
     # Get the image from image_path
     print("Processing file: {}".format(image_path))
-    img = io.imread(image_path)
+    img = cv2.imread(image_path)
 
     # Ask the detector to find the bounding boxes of each object
     rectangles = detector(img)
