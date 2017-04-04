@@ -1,6 +1,6 @@
 <template name="Home_page">
   <div class="row">
-    {{> Query_image_selection currentQueryId=getCurrentQueryId currentQuery=getCurrentQuery}}
-    {{> Query_results_list currentQuery=getCurrentQuery products=getCurrentProducts}}
+    {{> Query_image_selection currentQuery=getCurrentQuery currentQueryId=getCurrentQueryId queries=getQueries }}
+    {{> Query_results_list products=getCurrentProducts}}
   </div>
 </template>

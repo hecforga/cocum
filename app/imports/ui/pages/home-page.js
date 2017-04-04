@@ -11,11 +11,18 @@ import '../components/query-results-list/query-results-list.js';
 
 Template.Home_page.onCreated(function() {
   this.currentQueryId = new ReactiveVar('');
+  this.currentQueryId.cleanResultsAndSet = (newId) => {
+    const oldId = this.currentQueryId.get();
+    Queries.update(oldId, { $set: { results: [] } });
+    this.currentQueryId.set(newId);
+  };
+
+  this.getCurrentQuery = () => {
+    return Queries.findOne(this.currentQueryId.get());
+  };
 
   this.autorun(() => {
-    this.subscribe('queries.all');
-
-    const currentQuery = Queries.findOne(this.currentQueryId.get());
+    const currentQuery = this.getCurrentQuery();
     this.subscribe('products.byIds', currentQuery ? currentQuery.results : []);
   });
 });
@@ -23,12 +30,16 @@ Template.Home_page.onCreated(function() {
 Template.Home_page.helpers({
   getCurrentQuery() {
     const instance = Template.instance();
-    return Queries.findOne(instance.currentQueryId.get());
+    return instance.getCurrentQuery();
   },
 
   getCurrentQueryId() {
     const instance = Template.instance();
     return instance.currentQueryId;
+  },
+
+  getQueries() {
+    return Queries.find();
   },
 
   getCurrentProducts() {

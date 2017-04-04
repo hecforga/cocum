@@ -1,10 +1,21 @@
 import { Mongo } from 'meteor/mongo';
 
-export const Queries = new Mongo.Collection('queries');
+export const Queries = new Mongo.Collection(null);
 
-// Deny all client-side updates since we will be using methods to manage this collection
-Queries.deny({
-  insert() { return true; },
-  update() { return true; },
-  remove() { return true; },
+Queries.insert({
+  imageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491210829/5237518250_2_1_2.jpg",
+  croppedImageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491224013/5237518250_2_1_2_CROPPED.png",
+  results : []
+});
+
+Queries.insert({
+  imageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491210829/9237500500_2_1_2.jpg",
+  croppedImageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491224013/9237500500_2_1_2_CROPPED.png",
+  results : []
+});
+
+Queries.insert({
+  imageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491210829/9237506401_2_1_2.jpg",
+  croppedImageUrl : "http://res.cloudinary.com/ddjzq70ve/image/upload/v1491224013/9237506401_2_1_2_CROPPED.png",
+  results : []
 });

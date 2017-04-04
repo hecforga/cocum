@@ -1,5 +1,5 @@
 <template name="Query_results_list">
-  <div class="col s12 m8 l9">
+  <div class="col s12 m8 l9" style="overflow-y: auto; height: 100vh">
     {{#each productsArray in getProductsInArraysOf3}}
       <div class="row">
         {{#each product in productsArray}}

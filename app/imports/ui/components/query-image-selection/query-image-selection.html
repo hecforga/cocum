@@ -1,23 +1,19 @@
 <template name="Query_image_selection">
-  <div class="col s12 m4 l3">
-    <form action="#">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>File</span>
-          <input id="file-input" type="file">
+  <div class="col s12 m4 l3" style="overflow-y: auto; height: 100vh">
+    <div class="row">
+      {{#each query in queries}}
+        <div class="col s4">
+          <a href="">
+            <img class="responsive-img example-img" id="{{query._id}}" src="{{query.imageUrl}}">
+          </a>
         </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
-      </div>
-    </form>
+      {{/each}}
+    </div>
     {{#if currentQuery}}
-      {{#if currentQuery.imagePath}}
-        <img class="responsive-img" src="{{currentQuery.imagePath}}">
-        <div class="center-align">
-          <a id="search-button" class="waves-effect waves-light btn">search</a>
-        </div>
-      {{/if}}
+      <img class="responsive-img" src="{{currentQuery.imageUrl}}">
+      <div class="center-align">
+        <a id="search-button" class="waves-effect waves-light btn">buscar</a>
+      </div>
     {{/if}}
   </div>
 </template>
