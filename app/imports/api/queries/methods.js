@@ -9,7 +9,7 @@ export const performQuery = new ValidatedMethod({
   }).validator(),
   run({ croppedImageUrl }) {
     if (!this.isSimulation) {
-      const url = 'http://139.59.155.103:8983/solr/lire/lireq?url=' + croppedImageUrl + '&field=ce&ms=false';
+      const url = 'http://139.59.155.103:8983/solr/lire/lireq?url=' + croppedImageUrl + '&field=ce&ms=false&rows=12';
       return HTTP.get(url);
     }
   }
