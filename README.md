@@ -82,7 +82,7 @@ sudo apt-get install libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev lib
 sudo apt-get install libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
 ```
 
-Instalar opencv
+Instalar opencv:
 
 ```bash
 cd ~/<my-working-directory>
