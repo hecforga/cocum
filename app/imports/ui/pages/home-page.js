@@ -23,7 +23,7 @@ Template.Home_page.onCreated(function() {
 
   this.autorun(() => {
     const currentQuery = this.getCurrentQuery();
-    this.subscribe('products.byIds', currentQuery ? currentQuery.results : []);
+    this.subscribe('products.byCurrentQuery', currentQuery);
   });
 });
 
