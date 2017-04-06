@@ -43,7 +43,13 @@ Template.Home_page.helpers({
   },
 
   getCurrentProducts() {
-    return Products.find();
-
+    const instance = Template.instance();
+    const currentQuery = instance.getCurrentQuery();
+    const results = currentQuery ? currentQuery.results : [];
+    const currentProducts = [];
+    results.forEach(result =>  {
+      currentProducts.push(Products.findOne({ id: result }));
+    });
+    return currentProducts;
   }
 });
