@@ -38,9 +38,7 @@
 #       pip install scikit-image
 #   Or downloaded from http://scikit-image.org/download.html. 
 
-import os
 import sys
-import glob
 
 import dlib
 from skimage import io

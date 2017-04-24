@@ -24,16 +24,9 @@ meteor npm start
 
 ## Dataset
 
-Existe un dataset con imágenes de prendas de ropa de diferentes categorías.
+Existe un dataset con imágenes de prendas de ropa de diferentes tiendas online. Está estructurado por categorías (camisetas, pantalones, vestidos, etc.) y tiendas (pullandbear, zara, mango, etc.). Además de las imágenes, también contiene información adicional de cada prenda, como la url de compra del producto o su precio.
 
-Se encuentra en [esta carpeta compartida de Google Drive](https://drive.google.com/open?id=0B229wR-YZUYoUURtb1ZsSF9Edm8). (Descargar en `~/<my-working-directory>/cocum/`).
-
-Al no encontrarse en este repositorio Git, debe mantenerse actualizada de forma manual una copia local, necesaria para los algoritmos de detección de objetos y la creación de los índices de LireSolr.
-
-Todo este proceso es una solución temporal. Tareas:
-
-- Implementar los "web crawlers" para descargar las imágenes de las tiendas online y mantener el dataset actualizado, todo de forma automática.
-- Estudiar opciones de almacenamiento online (Cloudinary, AWS S3, etc.).
+El dataset se encuentra en [esta carpeta compartida de Google Drive](https://drive.google.com/open?id=0B229wR-YZUYoUURtb1ZsSF9Edm8). (Descargar en `~/<my-working-directory>/cocum/`), y debe mantenerse actualizado de forma manual tras la ejecución de los web crawlers.
 
 ## Object detection
 
