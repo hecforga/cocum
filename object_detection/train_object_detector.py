@@ -42,7 +42,7 @@ if len(sys.argv) != 2:
     print(
         "Give the path to the directory containing the file training.xml "
         "as the argument to this program. Example execution:\n"
-        "    ./train_object_detector.py t-shirts/pullandbear/products_training_xml_files/t-shirts_pullandbear_products_dataset.xml")
+        "    ./train_object_detector.py camisetas_tops_bodies/pullandbear/products_training_xml_files/camisetas_tops_bodies_pullandbear_products_dataset.xml")
     exit()
 training_xml_path = sys.argv[1]
 

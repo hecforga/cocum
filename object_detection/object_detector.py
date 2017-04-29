@@ -10,7 +10,7 @@ from skimage import io
 if len(sys.argv) != 3:
     print(
         "Example execution:\n"
-        "    ./object_detector.py t-shirts/pullandbear/detector.svm ../dataset/t-shirts/pullandbear/products/")
+        "    ./object_detector.py camisetas_tops_bodies/pullandbear/detector.svm ../dataset/hombre/camisetas_tops_bodies/pullandbear/products/")
     exit()
 detector_file = sys.argv[1]
 images_folder = sys.argv[2]

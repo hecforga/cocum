@@ -47,7 +47,7 @@ from skimage import io
 if len(sys.argv) != 4:
     print(
         "Example execution:\n"
-        "    ./shape_predictor.py t-shirts/pullandbear/detector.svm t-shirts/pullandbear/predictor.dat ../dataset/t-shirts/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg")
+        "    ./shape_predictor.py camisetas_tops_bodies/pullandbear/detector.svm camisetas_tops_bodies/pullandbear/predictor.dat ../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg")
     exit()
 detector_file = sys.argv[1]
 predictor_file = sys.argv[2]

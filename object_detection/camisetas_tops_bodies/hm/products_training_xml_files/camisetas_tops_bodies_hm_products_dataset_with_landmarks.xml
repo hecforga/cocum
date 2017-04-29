@@ -4,7 +4,7 @@
 <name>imglab dataset</name>
 <comment>Created by imglab tool.</comment>
 <images>
-  <image file='../../../../dataset/t-shirts/hm/products/0141643001/0141643001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0141643001/0141643001.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='473' y='202'/>
       <part name='01' x='609' y='257'/>
@@ -24,7 +24,7 @@
       <part name='15' x='381' y='229'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0141643002/0141643002.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0141643002/0141643002.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='473' y='209'/>
       <part name='01' x='604' y='263'/>
@@ -44,7 +44,7 @@
       <part name='15' x='380' y='230'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0219154017/0219154017.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0219154017/0219154017.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='474' y='215'/>
       <part name='01' x='614' y='285'/>
@@ -63,7 +63,7 @@
       <part name='15' x='372' y='236'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0336530007/0336530007.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0336530007/0336530007.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='456' y='220'/>
       <part name='01' x='609' y='290'/>
@@ -83,7 +83,7 @@
       <part name='15' x='375' y='245'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0336530008/0336530008.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0336530008/0336530008.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='460' y='211'/>
       <part name='01' x='600' y='277'/>
@@ -103,7 +103,7 @@
       <part name='15' x='379' y='227'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0336530009/0336530009.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0336530009/0336530009.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='456' y='232'/>
       <part name='01' x='603' y='301'/>
@@ -123,7 +123,7 @@
       <part name='15' x='375' y='255'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0375323010/0375323010.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0375323010/0375323010.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='466' y='210'/>
       <part name='01' x='617' y='290'/>
@@ -143,7 +143,7 @@
       <part name='15' x='380' y='226'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0386859005/0386859005.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0386859005/0386859005.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='461' y='214'/>
       <part name='01' x='606' y='285'/>
@@ -163,7 +163,7 @@
       <part name='15' x='378' y='232'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0386859006/0386859006.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0386859006/0386859006.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='460' y='226'/>
       <part name='01' x='600' y='294'/>
@@ -183,7 +183,7 @@
       <part name='15' x='374' y='253'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0386859007/0386859007.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0386859007/0386859007.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='462' y='213'/>
       <part name='01' x='604' y='281'/>
@@ -203,7 +203,7 @@
       <part name='15' x='381' y='229'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0386859010/0386859010.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0386859010/0386859010.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='468' y='204'/>
       <part name='01' x='608' y='271'/>
@@ -223,7 +223,7 @@
       <part name='15' x='386' y='222'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0413001003/0413001003.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0413001003/0413001003.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='465' y='223'/>
       <part name='01' x='602' y='289'/>
@@ -243,7 +243,7 @@
       <part name='15' x='387' y='242'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0413001005/0413001005.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0413001005/0413001005.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='468' y='210'/>
       <part name='01' x='615' y='281'/>
@@ -263,7 +263,7 @@
       <part name='15' x='384' y='229'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0425290001/0425290001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0425290001/0425290001.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='477' y='216'/>
       <part name='01' x='607' y='282'/>
@@ -283,7 +283,7 @@
       <part name='15' x='381' y='247'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0425290002/0425290002.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0425290002/0425290002.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='490' y='211'/>
       <part name='01' x='619' y='276'/>
@@ -303,7 +303,7 @@
       <part name='15' x='384' y='243'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0439816001/0439816001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0439816001/0439816001.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='471' y='219'/>
       <part name='01' x='609' y='282'/>
@@ -323,7 +323,7 @@
       <part name='15' x='378' y='245'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0447292002/0447292002.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0447292002/0447292002.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='465' y='204'/>
       <part name='01' x='603' y='267'/>
@@ -343,7 +343,7 @@
       <part name='15' x='376' y='232'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0456581001/0456581001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0456581001/0456581001.jpg'>
     <box top='154' left='35' width='697' height='837'/>
       <part name='00' x='484' y='225'/>
       <part name='01' x='608' y='288'/>
@@ -363,7 +363,7 @@
       <part name='15' x='391' y='249'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0456581002/0456581002.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0456581002/0456581002.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='473' y='230'/>
       <part name='01' x='604' y='294'/>
@@ -383,7 +383,7 @@
       <part name='15' x='383' y='251'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0464952001/0464952001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0464952001/0464952001.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='459' y='232'/>
       <part name='01' x='587' y='302'/>
@@ -403,7 +403,7 @@
       <part name='15' x='378' y='245'/>
     </box>
   </image>
-  <image file='../../../../dataset/t-shirts/hm/products/0467659001/0467659001.jpg'>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/hm/products/0467659001/0467659001.jpg'>
     <box top='174' left='35' width='697' height='837'/>
       <part name='00' x='462' y='229'/>
       <part name='01' x='604' y='302'/>

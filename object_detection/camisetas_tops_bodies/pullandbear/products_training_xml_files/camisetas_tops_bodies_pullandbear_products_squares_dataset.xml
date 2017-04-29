@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>imglab dataset</name>
+<comment>Created by imglab tool.</comment>
+<images>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg'>
+    <box top='113' left='52' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237518250_2_1_2/5237518250_2_1_2.jpg'>
+    <box top='112' left='46' width='532' height='532'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237519800_2_1_2/5237519800_2_1_2.jpg'>
+    <box top='111' left='46' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237520250_2_1_2/5237520250_2_1_2.jpg'>
+    <box top='109' left='41' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237520250_2_1_2/5237520250_2_1_2.jpg'>
+    <box top='112' left='41' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237542505_2_1_2/5237542505_2_1_2.jpg'>
+    <box top='112' left='45' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237549800_2_1_2/5237549800_2_1_2.jpg'>
+    <box top='112' left='36' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5238504250_2_1_2/5238504250_2_1_2.jpg'>
+    <box top='113' left='34' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239500810_2_1_2/5239500810_2_1_2.jpg'>
+    <box top='113' left='50' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239530827_2_1_2/5239530827_2_1_2.jpg'>
+    <box top='111' left='38' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239534401_2_1_2/5239534401_2_1_2.jpg'>
+    <box top='109' left='26' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239535250_2_1_2/5239535250_2_1_2.jpg'>
+    <box top='109' left='30' width='550' height='550'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239547513_2_1_2/5239547513_2_1_2.jpg'>
+    <box top='114' left='40' width='532' height='532'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239555250_2_1_2/5239555250_2_1_2.jpg'>
+    <box top='108' left='51' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5239555800_2_1_2/5239555800_2_1_2.jpg'>
+    <box top='110' left='37' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5244501803_2_1_2/5244501803_2_1_2.jpg'>
+    <box top='109' left='42' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5244510423_2_1_2/5244510423_2_1_2.jpg'>
+    <box top='111' left='44' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5246501505_2_1_2/5246501505_2_1_2.jpg'>
+    <box top='112' left='40' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5591571802_2_1_2/5591571802_2_1_2.jpg'>
+    <box top='109' left='48' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237500500_2_1_2/9237500500_2_1_2.jpg'>
+    <box top='118' left='43' width='532' height='532'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237504250_2_1_2/9237504250_2_1_2.jpg'>
+    <box top='117' left='37' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237506401_2_1_2/9237506401_2_1_2.jpg'>
+    <box top='107' left='38' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237508250_2_1_2/9237508250_2_1_2.jpg'>
+    <box top='114' left='42' width='546' height='546'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237511250_2_1_2/9237511250_2_1_2.jpg'>
+    <box top='111' left='35' width='530' height='530'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237527401_2_1_2/9237527401_2_1_2.jpg'>
+    <box top='113' left='37' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237533250_2_1_2/9237533250_2_1_2.jpg'>
+    <box top='109' left='34' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237534531_2_1_2/9237534531_2_1_2.jpg'>
+    <box top='110' left='36' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237535250_2_1_2/9237535250_2_1_2.jpg'>
+    <box top='114' left='42' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237536250_2_1_2/9237536250_2_1_2.jpg'>
+    <box top='104' left='31' width='548' height='548'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237545250_2_1_2/9237545250_2_1_2.jpg'>
+    <box top='111' left='38' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237545251_2_1_2/9237545251_2_1_2.jpg'>
+    <box top='111' left='47' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237545633_2_1_2/9237545633_2_1_2.jpg'>
+    <box top='109' left='38' width='550' height='550'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237545800_2_1_2/9237545800_2_1_2.jpg'>
+    <box top='111' left='37' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237547800_2_1_2/9237547800_2_1_2.jpg'>
+    <box top='109' left='37' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237549250_2_1_2/9237549250_2_1_2.jpg'>
+    <box top='114' left='47' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237552251_2_1_2/9237552251_2_1_2.jpg'>
+    <box top='114' left='37' width='532' height='532'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237558250_2_1_2/9237558250_2_1_2.jpg'>
+    <box top='114' left='49' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237562250_2_1_2/9237562250_2_1_2.jpg'>
+    <box top='110' left='30' width='548' height='548'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237565250_2_1_2/9237565250_2_1_2.jpg'>
+    <box top='112' left='39' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237573401_2_1_2/9237573401_2_1_2.jpg'>
+    <box top='110' left='36' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237584800_2_1_2/9237584800_2_1_2.jpg'>
+    <box top='110' left='47' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9237585250_2_1_2/9237585250_2_1_2.jpg'>
+    <box top='112' left='43' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9238565811_2_1_2/9238565811_2_1_2.jpg'>
+    <box top='113' left='45' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239503250_2_1_2/9239503250_2_1_2.jpg'>
+    <box top='105' left='33' width='550' height='550'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239513800_2_1_2/9239513800_2_1_2.jpg'>
+    <box top='106' left='44' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239514250_2_1_2/9239514250_2_1_2.jpg'>
+    <box top='110' left='36' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239515827_2_1_2/9239515827_2_1_2.jpg'>
+    <box top='115' left='33' width='530' height='530'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239516800_2_1_2/9239516800_2_1_2.jpg'>
+    <box top='110' left='40' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239522827_2_1_2/9239522827_2_1_2.jpg'>
+    <box top='112' left='38' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239526251_2_1_2/9239526251_2_1_2.jpg'>
+    <box top='112' left='37' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239533401_2_1_2/9239533401_2_1_2.jpg'>
+    <box top='114' left='42' width='530' height='530'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239533827_2_1_2/9239533827_2_1_2.jpg'>
+    <box top='112' left='38' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239537622_2_1_2/9239537622_2_1_2.jpg'>
+    <box top='107' left='49' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239552800_2_1_2/9239552800_2_1_2.jpg'>
+    <box top='106' left='47' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239553250_2_1_2/9239553250_2_1_2.jpg'>
+    <box top='100' left='32' width='556' height='556'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239570412_2_1_2/9239570412_2_1_2.jpg'>
+    <box top='112' left='46' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239573401_2_1_2/9239573401_2_1_2.jpg'>
+    <box top='108' left='34' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239574505_2_1_2/9239574505_2_1_2.jpg'>
+    <box top='112' left='40' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239575401_2_1_2/9239575401_2_1_2.jpg'>
+    <box top='107' left='30' width='550' height='550'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239578251_2_1_2/9239578251_2_1_2.jpg'>
+    <box top='113' left='40' width='546' height='546'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239578401_2_1_2/9239578401_2_1_2.jpg'>
+    <box top='115' left='40' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239587250_2_1_2/9239587250_2_1_2.jpg'>
+    <box top='114' left='51' width='528' height='528'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239587800_2_1_2/9239587800_2_1_2.jpg'>
+    <box top='112' left='45' width='528' height='528'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9239590250_2_1_2/9239590250_2_1_2.jpg'>
+    <box top='104' left='42' width='554' height='554'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9242553438_2_1_2/9242553438_2_1_2.jpg'>
+    <box top='113' left='40' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244508811_2_1_2/9244508811_2_1_2.jpg'>
+    <box top='109' left='39' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244516250_2_1_2/9244516250_2_1_2.jpg'>
+    <box top='115' left='47' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244518250_2_1_2/9244518250_2_1_2.jpg'>
+    <box top='115' left='48' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244519800_2_1_2/9244519800_2_1_2.jpg'>
+    <box top='117' left='51' width='530' height='530'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244520250_2_1_2/9244520250_2_1_2.jpg'>
+    <box top='115' left='51' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244528250_2_1_2/9244528250_2_1_2.jpg'>
+    <box top='114' left='48' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244535505_2_1_2/9244535505_2_1_2.jpg'>
+    <box top='113' left='42' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244536250_2_1_2/9244536250_2_1_2.jpg'>
+    <box top='114' left='44' width='530' height='530'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244537401_2_1_2/9244537401_2_1_2.jpg'>
+    <box top='111' left='33' width='546' height='546'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244538250_2_1_2/9244538250_2_1_2.jpg'>
+    <box top='96' left='28' width='556' height='556'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244541800_2_1_2/9244541800_2_1_2.jpg'>
+    <box top='108' left='40' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244542250_2_1_2/9244542250_2_1_2.jpg'>
+    <box top='115' left='38' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244543800_2_1_2/9244543800_2_1_2.jpg'>
+    <box top='112' left='43' width='536' height='536'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244547800_2_1_2/9244547800_2_1_2.jpg'>
+    <box top='113' left='39' width='534' height='534'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244550807_2_1_2/9244550807_2_1_2.jpg'>
+    <box top='113' left='37' width='542' height='542'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244551250_2_1_2/9244551250_2_1_2.jpg'>
+    <box top='107' left='37' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244553824_2_1_2/9244553824_2_1_2.jpg'>
+    <box top='109' left='38' width='538' height='538'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244556800_2_1_2/9244556800_2_1_2.jpg'>
+    <box top='107' left='37' width='544' height='544'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9244557807_2_1_2/9244557807_2_1_2.jpg'>
+    <box top='108' left='48' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9590548824_2_1_2/9590548824_2_1_2.jpg'>
+    <box top='109' left='40' width='540' height='540'/>
+  </image>
+  <image file='../../../../dataset/hombre/camisetas_tops_bodies/pullandbear/products/9591502707_2_1_2/9591502707_2_1_2.jpg'>
+    <box top='101' left='45' width='550' height='550'/>
+  </image>
+</images>
+</dataset>
