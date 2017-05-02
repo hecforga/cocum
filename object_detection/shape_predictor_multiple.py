@@ -11,21 +11,30 @@ import numpy as np
 import cv2
 
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 6:
     print(
         "Example execution:\n"
-        "    ./shape_predictor_multiple.py camisetas_tops_bodies/pullandbear/detector.svm camisetas_tops_bodies/pullandbear/predictor.dat")
+        "    ./shape_predictor_multiple.py camisetas_tops_bodies/pullandbear/detector.svm camisetas_tops_bodies/pullandbear/predictor.dat all all all")
     exit()
 detector_file = sys.argv[1]
 predictor_file = sys.argv[2]
 
+dataset_folder = "../dataset"
+if sys.argv[3] == 'all':
+    genders = ["hombre", "mujer"]
+else:
+    genders = [sys.argv[3]]
+if sys.argv[4] == 'all':
+    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos_monos"]
+else:
+    categories = [sys.argv[4]]
+if sys.argv[5] == 'all':
+    shops = ["pullandbear", "zara"]
+else:
+    shops = [sys.argv[5]]
+
 predictor = dlib.shape_predictor(predictor_file)
 detector = dlib.simple_object_detector(detector_file)
-
-dataset_folder = "../dataset"
-genders = ["hombre", "mujer"]
-categories = ["camisetas_tops_bodies"]
-shops = ["pullandbear"]
 
 for gender in genders:
     for category in categories:
