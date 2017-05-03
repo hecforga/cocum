@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
 
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import ActionShoppingCartIcon from 'material-ui/svg-icons/action/shopping-cart';
+
 export default class QueryResultsList extends Component {
-  getProductsInArraysOf3() {
-    const products = this.props.products;
-    const productsInArraysOf3 = [];
-    let auxArray = [];
-    let count = 0;
-    products.forEach(product => {
-      if (count > 0 && count % 3 === 0) {
-        productsInArraysOf3.push(auxArray);
-        auxArray = [];
-      }
-      auxArray.push(product);
-      count++;
-    });
-    if (auxArray.length) {
-      productsInArraysOf3.push(auxArray);
-    }
-    return productsInArraysOf3;
-  }
-
   render() {
-    const productsInArraysOf3 = this.getProductsInArraysOf3();
-    const productsList = productsInArraysOf3.map((productsArray) => {
-      const auxList = productsArray.map((product) =>
-        <div key={product._id} className="col s12 m4">
-          <a href={product.productUrl} target="_blank">
-            <img className="responsive-img" src={product.imageUrl} />
-          </a>
-        </div>
-      );
-      return (
-        <div key={productsArray[0]._id} className="row">
-          {auxList}
-        </div>
-      )
-    });
-
     return (
-      <div className="col s12 m8 l9" style={{overflowY: 'auto', height: '100vh'}}>
-        {productsList}
+      <div className="col-xs-12 col-md-8 col-lg-9" style={{overflow: 'auto', height: '97vh'}}>
+        <div className="box">
+          <GridList cellHeight={'auto'} cols={3} padding={8}>
+            {this.props.products.map((product) =>
+              <GridTile
+                key={product._id}
+                title={product.shop.toUpperCase()}
+                subtitle={<span><b>{product.price}€</b></span>}
+                actionIcon={<IconButton href={product.productUrl} target="_blank"><ActionShoppingCartIcon color="white" /></IconButton>}
+              >
+                <a href={product.productUrl} target="_blank">
+                  <img src={product.imageUrl} style={{width: '100%'}} />
+                </a>
+              </GridTile>
+            )}
+          </GridList>
+        </div>
       </div>
     );
   }

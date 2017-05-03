@@ -1,11 +1,9 @@
 #!/usr/bin/python
 
 import sys
-import os
 import json
 
 import dlib
-from skimage import io
 
 import numpy as np
 import cv2

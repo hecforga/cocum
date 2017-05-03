@@ -12,36 +12,49 @@ export default class HomePageStateHolder extends Component {
       currentQuery: null
     };
 
-    this.onNewQuery = this.onNewQuery.bind(this);
+    this.onUpdateCurrentQuery = this.onUpdateCurrentQuery.bind(this);
+    this.onUpdateCurrentQueryCategory = this.onUpdateCurrentQueryCategory.bind(this);
     this.onUpdateCurrentQueryResults = this.onUpdateCurrentQueryResults.bind(this);
   }
 
-  onNewQuery(id, imageUrl) {
-    const newQueryId = Queries.insert({
-      id: id,
-      imageUrl: imageUrl,
-      results: []
-    });
-
-    const currentQuery = Queries.findOne(newQueryId);
+  setCurrentQuery(id) {
+    const currentQuery = Queries.findOne(id);
     this.setState({
       currentQuery: currentQuery
     });
   }
 
-  onUpdateCurrentQueryResults(results) {
-    const currentQueryId= this.state.currentQuery._id;
-    Queries.update(currentQueryId, {$set: {results: results}});
+  onUpdateCurrentQuery(_id) {
+    if (this.state.currentQuery) {
+      const previousQueryId = this.state.currentQuery._id;
+      Queries.update(previousQueryId, {$set: {results: []}});
+    }
 
-    const currentQuery = Queries.findOne(currentQueryId);
-    this.setState({
-      currentQuery: currentQuery
-    });
+    this.setCurrentQuery(_id);
+  }
+
+  onUpdateCurrentQueryCategory(category) {
+    const currentQueryId = this.state.currentQuery._id;
+    Queries.update(currentQueryId, { $set: {category: category } });
+
+    this.setCurrentQuery(currentQueryId);
+  }
+
+  onUpdateCurrentQueryResults(results) {
+    const currentQueryId = this.state.currentQuery._id;
+    Queries.update(currentQueryId, { $set: {results: results } });
+
+    this.setCurrentQuery(currentQueryId);
   }
 
   render() {
     return (
-      <HomePageContainer currentQuery={this.state.currentQuery} onNewQuery={this.onNewQuery} onUpdateCurrentQueryResults={this.onUpdateCurrentQueryResults} />
+      <HomePageContainer
+        currentQuery={this.state.currentQuery}
+        onUpdateCurrentQuery={this.onUpdateCurrentQuery}
+        onUpdateCurrentQueryCategory={this.onUpdateCurrentQueryCategory}
+        onUpdateCurrentQueryResults={this.onUpdateCurrentQueryResults}
+      />
     );
   }
 }
