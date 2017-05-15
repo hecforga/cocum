@@ -2,7 +2,7 @@
 
 ## Demo
 
-[https://cocum.herokuapp.com](https://cocum.herokuapp.com)
+[http://cocum.es](http://cocum.es)
 
 ## Meteor
 
@@ -17,7 +17,7 @@ Clonar este repositorio, instalar dependencias y listo para ejecutar!
 ```bash
 cd ~/<my-working-directory>
 git clone https://github.com/hecforga/cocum.git
-cd cocum
+cd cocum/app
 meteor npm install
 meteor npm start
 ```
