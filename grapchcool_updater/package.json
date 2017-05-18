@@ -1,0 +1,14 @@
+{
+  "name": "grapchcool_updater",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node graphcool_updater.js mujer all all"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lokka": "^1.7.0",
+    "lokka-transport-http": "^1.6.1"
+  }
+}
