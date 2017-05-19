@@ -90,7 +90,7 @@ export default class QueryImageSelection extends Component {
     ];
 
     return (
-      <div className="col-xs-12 col-md-4 col-lg-3" style={{overflow: 'auto', height: '97vh'}}>
+      <div className="col-xs-3" style={{overflow: 'auto', height: '97vh'}}>
         <div className="box">
           <div className="row">
             <div className="col-xs-3">

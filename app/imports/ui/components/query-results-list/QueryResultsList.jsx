@@ -7,7 +7,7 @@ import ActionShoppingCartIcon from 'material-ui/svg-icons/action/shopping-cart';
 export default class QueryResultsList extends Component {
   render() {
     return (
-      <div className="col-xs-12 col-md-8 col-lg-9" style={{overflow: 'auto', height: '97vh'}}>
+      <div className="col-xs-9" style={{overflow: 'auto', height: '97vh'}}>
         <div className="box">
           <GridList cellHeight={'auto'} cols={3} padding={8}>
             {this.props.products.map((product) =>
