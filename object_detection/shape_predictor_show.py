@@ -38,7 +38,9 @@
 #       pip install scikit-image
 #   Or downloaded from http://scikit-image.org/download.html. 
 
+import os
 import sys
+import glob
 
 import dlib
 from skimage import io
@@ -47,11 +49,11 @@ from skimage import io
 if len(sys.argv) != 4:
     print(
         "Example execution:\n"
-        "    ./shape_predictor.py camisetas_tops_bodies/pullandbear/detector.svm camisetas_tops_bodies/pullandbear/predictor.dat ../dataset/hombre/camisetas_tops_bodies/pullandbear/products/5237502800_2_1_2/5237502800_2_1_2.jpg")
+        "    ./shape_predictor_show.py camisetas_tops_bodies/pullandbear/detector.svm camisetas_tops_bodies/pullandbear/predictor.dat ../dataset/hombre/camisetas_tops_bodies/pullandbear/products/")
     exit()
 detector_file = sys.argv[1]
 predictor_file = sys.argv[2]
-image_path = sys.argv[3]
+images_folder = sys.argv[3]
 
 predictor = dlib.shape_predictor(predictor_file)
 detector = dlib.simple_object_detector(detector_file)
@@ -60,22 +62,24 @@ detector = dlib.simple_object_detector(detector_file)
 # folder and display the results.
 print("Showing detections and predictions...")
 win = dlib.image_window()
-print("Processing file: {}".format(image_path))
-img = io.imread(image_path)
+# We know all images are inside its own directory, so we use an extra "*"
+for f in glob.glob(os.path.join(images_folder, "*", "*.jpg")):
+    print("Processing file: {}".format(f))
+    img = io.imread(f)
 
-win.clear_overlay()
-win.set_image(img)
+    win.clear_overlay()
+    win.set_image(img)
 
-# Ask the detector to find the bounding boxes of each object.
-rectangles = detector(img)
-print("Number of detections: {}".format(len(rectangles)))
-# We only use the first detection
-r = rectangles[0]
-print("Detection: Left: {} Top: {} Right: {} Bottom: {}".format(r.left(), r.top(), r.right(), r.bottom()))
-# Get the landmarks/parts for the object in box d.
-full_object_detection = predictor(img, r)
-# Draw the object landmarks on the screen.
-win.add_overlay(full_object_detection)
+    # Ask the detector to find the bounding boxes of each object.
+    rectangles = detector(img)
+    print("Number of detections: {}".format(len(rectangles)))
+    # We only use the first detection
+    r = rectangles[0]
+    print("Detection: Left: {} Top: {} Right: {} Bottom: {}".format(r.left(), r.top(), r.right(), r.bottom()))
+    # Get the landmarks/parts for the object in box d.
+    full_object_detection = predictor(img, r)
+    # Draw the object landmarks on the screen.
+    win.add_overlay(full_object_detection)
 
-win.add_overlay(rectangles)
-dlib.hit_enter_to_continue()
+    win.add_overlay(rectangles)
+    dlib.hit_enter_to_continue()

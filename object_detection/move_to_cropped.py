@@ -12,7 +12,7 @@ import cv2
 if len(sys.argv) != 4:
     print(
         "Example execution:\n"
-        "    ./shape_predictor_multiple.py all all all")
+        "    ./move_to_cropped.py all all all")
     exit()
 
 dataset_folder = "../dataset"
@@ -25,7 +25,7 @@ if sys.argv[2] == 'all':
 else:
     categories = [sys.argv[2]]
 if sys.argv[3] == 'all':
-    shops = ["pullandbear", "zara"]
+    shops = ["mango", "pullandbear", "zara"]
 else:
     shops = [sys.argv[3]]
 
