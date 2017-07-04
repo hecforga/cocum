@@ -14,7 +14,7 @@ if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["pullandbear", "zara"];
+let shops = ["mango", "pullandbear", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }
