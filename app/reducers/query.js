@@ -1,7 +1,16 @@
-const query = (state = null, action) => {
+const initialState = {
+  category: '',
+  imageUri: '',
+  imageUrl: ''
+};
+
+const query = (state = initialState, action) => {
   switch (action.type) {
     case 'NEW_QUERY':
-      return action.query;
+      return {
+        ...state,
+        imageUri: action.imageUri
+      };
     case 'SET_QUERY_CATEGORY':
       return {
         ...state,

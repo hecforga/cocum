@@ -1,15 +1,11 @@
 import * as fromQuery from './query.js';
-import * as fromQueries from './queries.js';
 import * as fromResults from './results.js';
 
 export const getQuery = (state) =>
   fromQuery.getQuery(state.query);
 
-export const getQueries = (state) =>
-  fromQueries.getQueries(state.queries);
-
-export const getSelectedQuery = (state) =>
-  fromQueries.getSelectedQuery(state.queries);
+export const getImageUri = (state) =>
+  fromImageUri.getImageUri(state.imageUri);
 
 export const getResultsIds = (state) =>
   fromResults.getIds(state.results);

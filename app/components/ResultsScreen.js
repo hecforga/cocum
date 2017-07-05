@@ -16,8 +16,7 @@ ResultsScreen.navigationOptions = ({ navigation }) => ({
       onPress={() => {
         navigation.goBack();
         navigation.goBack(null);
-        navigation.goBack(null);
-        navigation.navigate('ImageSelection');
+        navigation.navigate('CategorySelection');
       }}
     />),
   headerStyle: { marginTop: Constants.statusBarHeight }

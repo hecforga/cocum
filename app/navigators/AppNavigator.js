@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 import HomeScreen from '../components/HomeScreen.js';
-import ImageSelectionScreen from '../components/ImageSelectionScreen.js';
 import CategorySelectionScreen from '../components/CategorySelectionScreen.js';
 import ResultsScreen from '../components/ResultsScreen.js';
 
 export const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
-  ImageSelection: { screen: ImageSelectionScreen },
   CategorySelection: { screen: CategorySelectionScreen },
   Results: { screen: ResultsScreen }
 });
