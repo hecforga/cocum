@@ -1,13 +1,9 @@
 import * as liresolr_api from '../liresolr_api';
 
-export const setSelectedQuery = (id) => ({
-  type: 'SET_SELECTED_QUERY',
-  id
-});
 
-export const newQuery = (query) => ({
+export const newQuery = (imageUri) => ({
   type: 'NEW_QUERY',
-  query
+  imageUri
 });
 
 export const setQueryCategory = (category) => ({
