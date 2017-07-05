@@ -6,10 +6,15 @@ export const newQuery = (imageUri) => ({
   imageUri
 });
 
+export const resetQuery = () => ({
+  type: 'RESET_QUERY'
+});
+
 export const setQueryCategory = (category) => ({
   type: 'SET_QUERY_CATEGORY',
   category
 });
+
 
 export const fetchResults = (gender, category, imageUrl) => (dispatch, getState) => {
   dispatch({

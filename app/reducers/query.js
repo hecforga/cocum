@@ -11,6 +11,8 @@ const query = (state = initialState, action) => {
         ...state,
         imageUri: action.imageUri
       };
+    case 'RESET_QUERY':
+      return initialState;  
     case 'SET_QUERY_CATEGORY':
       return {
         ...state,

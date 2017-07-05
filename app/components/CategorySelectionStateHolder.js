@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { ImagePicker } from 'expo';
 
 import { getQuery} from '../reducers';
-import { newQuery, setQueryCategory } from '../actions';
+import { newQuery, setQueryCategory, resetQuery } from '../actions';
 
 import SelectedImage from './SelectedImage.js'; 
 import CategoriesList from './CategoriesList.js';
 
 class CategorySelectionStateHolder extends Component {
 
-  componentWillMount() { 
-    const { onImageSelected } = this.props; 
+  componentWillMount() {     
+    const { onImageSelected, onComponentWillMount } = this.props; 
+    onComponentWillMount();
     ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
         onImageSelected(pickedImage.uri);
@@ -54,7 +55,8 @@ const mapStateToProps = (state) => ({
 
 CategorySelectionStateHolder = connect(
   mapStateToProps,
-  {    
+  {  
+    onComponentWillMount : resetQuery,  
     onCategoryChange : setQueryCategory,
     onImageSelected : newQuery
   }
