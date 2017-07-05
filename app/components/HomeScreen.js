@@ -12,13 +12,14 @@ const HomeScreen = ({ navigation }) => (
       <Text style={ styles.centerText }>Escoge una y empieza a buscar</Text>
     </View>
     <View style={ styles.bottomContainer }>
-      <Button
-        title={'Seleccionar'}
-        onPress={() => navigation.navigate('ImageSelection')}
-      />
+       <Button 
+        title={'Abrir galería'} 
+        onPress={() => navigation.navigate('CategorySelection')} 
+      /> 
     </View>
   </View>
 );
+
 
 HomeScreen.navigationOptions = {
   title: 'Cocum',
@@ -50,5 +51,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
 
 export default HomeScreen;
