@@ -11,8 +11,11 @@ const ids = (state = [], action) => {
 
 const isFetching = (state = false, action) => {
   switch (action.type) {
+    case 'UPLOAD_IMAGE_REQUEST':
     case 'FETCH_RESULTS_REQUEST':
       return true;
+    case 'UPLOAD_IMAGE_SUCCESS':
+    case 'UPLOAD_IMAGE_FAILURE':
     case 'FETCH_RESULTS_SUCCESS':
     case 'FETCH_RESULTS_FAILURE':
       return false;
@@ -23,8 +26,11 @@ const isFetching = (state = false, action) => {
 
 const errorMessage = (state = null, action) => {
   switch (action.type) {
+    case 'UPLOAD_IMAGE_FAILURE':
     case 'FETCH_RESULTS_FAILURE':
       return action.message;
+    case 'UPLOAD_IMAGE_REQUEST':
+    case 'UPLOAD_IMAGE_SUCCESS':  
     case 'FETCH_RESULTS_REQUEST':
     case 'FETCH_RESULTS_SUCCESS':
       return null;

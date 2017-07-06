@@ -24,6 +24,7 @@
     "react": "16.0.0-alpha.6",
     "react-apollo": "^1.2.0",
     "react-native": "^0.43.4",
+    "react-native-aws3": "0.0.8",
     "react-navigation": "^1.0.0-beta.9",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",

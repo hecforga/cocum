@@ -18,6 +18,11 @@ const query = (state = initialState, action) => {
         ...state,
         category: action.category
       };
+    case 'UPLOAD_IMAGE_SUCCESS':
+      return {
+        ...state,
+        imageUrl: action.response.imageUrl
+      };
     default:
       return state;
   }
