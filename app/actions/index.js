@@ -1,13 +1,25 @@
 import * as liresolr_api from '../liresolr_api';
 
 
-export const newQuery = (imageUri) => ({
-  type: 'NEW_QUERY',
-  imageUri
+export const selectImage = (imageUri, width, height) => ({
+  type: 'SELECT_IMAGE',
+  imageUri,
+  width,
+  height
 });
 
-export const resetQuery = () => ({
-  type: 'RESET_QUERY'
+export const setSelectedImageLayout = (layout) => ({
+  type: 'SET_SELECTED_IMAGE_LAYOUT',
+  layout
+});
+
+export const setSelectedImageCropData = (cropData) => ({
+  type: 'SET_SELECTED_IMAGE_CROP_DATA',
+  cropData
+});
+
+export const resetSelectedImage = () => ({
+  type: 'RESET_SELECTED_IMAGE'
 });
 
 export const setQueryCategory = (category) => ({
