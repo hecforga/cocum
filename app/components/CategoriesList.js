@@ -18,7 +18,7 @@ class CategoriesList extends Component {
     return (
       <ScrollView
         horizontal={true}
-        showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={true}
         onScroll={(e) => this.scrollViewPosition = e.nativeEvent.contentOffset.x}
         scrollEventThrottle={16}
         ref={(scrollView) => this._scrollView = scrollView}
