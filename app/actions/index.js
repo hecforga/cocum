@@ -1,6 +1,5 @@
 import * as liresolr_api from '../liresolr_api';
 
-
 export const selectImage = (imageUri, width, height) => ({
   type: 'SELECT_IMAGE',
   imageUri,
@@ -27,6 +26,25 @@ export const setQueryCategory = (category) => ({
   category
 });
 
+export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState) => {
+  dispatch({
+    type: 'FETCH_RESULTS_REQUEST',
+  });
+
+  return new Promise((resolve, reject) => {
+    cropImageMethod(uri, cropData, resolve, reject);
+  }).then(
+    response => {
+      dispatch({
+        type: 'SET_QUERY_IMAGE_URI',
+        imageUri: response
+      });
+    },
+    error => {
+      console.log(error);
+    }
+  );
+};
 
 export const fetchResults = (gender, category, imageUrl) => (dispatch, getState) => {
   dispatch({

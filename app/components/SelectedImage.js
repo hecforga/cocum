@@ -25,10 +25,10 @@ const computeSelectedImageLayout = (containerLayout, originalWidth, originalHeig
   let width = containerLayout.width;
   let height = containerLayout.height;
   if (imageAspectRatio < containerAspectRatio) {
-    width = imageAspectRatio * height;
+    width = height * imageAspectRatio;
     x += (containerLayout.width - width) / 2;
   } else {
-    height = imageAspectRatio * width;
+    height = width / imageAspectRatio;
     y += (containerLayout.height - height) / 2;
   }
 

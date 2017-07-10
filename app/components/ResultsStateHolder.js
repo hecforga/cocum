@@ -1,37 +1,50 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ImageEditor } from 'react-native';
 import { connect } from 'react-redux';
 
-import { getQuery, getResultsIds, getResultsIsFetching, getResultsErrorMessage } from '../reducers';
-import { fetchResults } from '../actions';
+import { getSelectedImage, getQuery, getResultsIds, getResultsStatus, getResultsErrorMessage } from '../reducers';
+import { fetchResults, cropImage } from '../actions';
 
 import ResultsListWithData from './ResultsList.js';
 
 class ResultsStateHolder extends Component {
   componentDidMount() {
-    this.fetchData();
+    this.cropImage();
+  }
+
+  componentWillUpdate(nextProps) {
+    switch (nextProps.status) {
+      case 'image_cropped':
+        this.fetchData();
+    }
+  }
+
+  cropImage() {
+    const { selectedImage, cropImage } = this.props;
+    cropImage(ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
   }
 
   fetchData() {
     const { query, fetchResults } = this.props;
-    fetchResults(query.gender, query.category, query.imageUrl);
+    fetchResults(query.gender, query.category, 'https://res.cloudinary.com/ddjzq70ve/image/upload/v1493830905/5710189427_2_6_2.jpg');
+    //fetchResults(query.gender, query.category, query.imageUrl);
   }
 
   render() {
-    const { ids, isFetching, errorMessage } = this.props;
+    const { status, ids, errorMessage } = this.props;
 
-    if (isFetching) {
+    if (status === 'error') {
       return (
         <View style={styles.container}>
-          <Text>Cargando...</Text>
+          <Text>{errorMessage}</Text>
         </View>
       );
     }
 
-    if (errorMessage) {
+    if (status !== 'results_ready') {
       return (
         <View style={styles.container}>
-          <Text>{errorMessage}</Text>
+          <Text>Cargando...</Text>
         </View>
       );
     }
@@ -53,15 +66,17 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
+  selectedImage: getSelectedImage(state),
   query: getQuery(state),
   ids: getResultsIds(state),
-  isFetching: getResultsIsFetching(state),
+  status: getResultsStatus(state),
   errorMessage: getResultsErrorMessage(state)
 });
 
 ResultsStateHolder = connect(
   mapStateToProps,
   {
+    cropImage,
     fetchResults
   }
 )(ResultsStateHolder);

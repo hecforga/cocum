@@ -11,8 +11,8 @@ export const getQuery = (state) =>
 export const getResultsIds = (state) =>
   fromResults.getIds(state.results);
 
-export const getResultsIsFetching = (state) =>
-  fromResults.getIsFetching(state.results);
+export const getResultsStatus = (state) =>
+  fromResults.getStatus(state.results);
 
 export const getResultsErrorMessage = (state) =>
   fromResults.getErrorMessage(state.results);
