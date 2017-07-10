@@ -2,12 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Button, Image } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
-import ActionButton from 'react-native-action-button';
-
 const HomeScreen = ({ navigation }) => (
   <View style={ styles.container }>
     <View style={ styles.topContainer }>
-      <View style={styles.topBlankSpace}/> 
+      <View style={styles.logoTopMargin}/> 
       <Image 
         source= {require('./img/logococum.png')} 
         style={ styles.imageLogo}
@@ -20,21 +18,16 @@ const HomeScreen = ({ navigation }) => (
       <Text style={ styles.centerText }>¡Elije una foto!</Text>
     </View>    
     <View style={ styles.bottomContainer }>
-      <TouchableHighlight onPress={ () => navigation.navigate('Results') }> 
-        <FontAwesome name='search' style={styles.actionButtonIcon} />
-      </TouchableHighlight> 
-      <ActionButton 
-        buttonColor="rgba(231,76,60,1)"
-        elevation={1000}
-        zIndex={5}
-        icon= {
-          <MaterialCommunityIcons
+      <TouchableHighlight 
+        style={styles.galleryButton} 
+        onPress={ () => navigation.navigate('CategorySelection') }> 
+        <MaterialCommunityIcons
           name='folder-multiple-image'
-          size={50} style={styles.actionButtonIcon} /> 
-        }
-        onPress={ () => navigation.navigate('CategorySelection') }      
-      >     
-      </ActionButton>
+          size={60}
+          style={styles.galleryIcon} />
+      </TouchableHighlight>
+    </View>
+    <View style={ styles.bottomMargin}>
     </View>
   </View>
 );
@@ -51,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5'
   },
   topContainer: {
-    flex: 2,
+    flex: 0.35,
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
@@ -60,12 +53,12 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-condensed'
   },
   centerContainer1: {
-    flex: 2,
+    flex: 0.225,
     alignItems: 'center',
     justifyContent: 'center'
   },
   centerContainer2: {
-    flex: 1,
+    flex: 0.225,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 0,
@@ -75,7 +68,7 @@ const styles = StyleSheet.create({
   fontSize: 16
   },
   bottomContainer: {
-    flex: 1,
+    flex: 0.15,
     alignItems: 'center'
   },
   imageLogo: {
@@ -85,8 +78,23 @@ const styles = StyleSheet.create({
     height: undefined,
     alignSelf: 'stretch'
   },
-  topBlankSpace: {
+  logoTopMargin: {
     flex: 0.2
+  },
+  galleryButton: {
+    flex: 1,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#03a9f4',
+    borderRadius: 5,
+    width:110  
+  },
+  galleryIcon:{
+    flex:1,
+    color:'black'
+  },
+  bottomMargin:{
+    flex:0.05
   }
 });
 

@@ -14,11 +14,11 @@ class CategorySelectionStateHolder extends Component {
   componentWillMount() {     
     const { onImageSelected, onComponentWillMount } = this.props; 
     onComponentWillMount();
-    ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
+    /*ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
         onImageSelected(pickedImage.uri);
       }
-    });
+    });*/
   }   
 
   render() {
