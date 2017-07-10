@@ -12,13 +12,16 @@ import CategoriesList from './CategoriesList.js';
 class CategorySelectionStateHolder extends Component {
 
   componentWillMount() {     
-    const { onImageSelected, onComponentWillMount } = this.props; 
+    const { onImageSelected, onComponentWillMount, navigation } = this.props; 
     onComponentWillMount();
-    /*ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
+    ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
         onImageSelected(pickedImage.uri);
-      }
-    });*/
+      } 
+      else{
+      navigation.goBack(null);
+      }     
+    });
   }   
 
   render() {

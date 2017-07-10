@@ -1,35 +1,43 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 const HomeScreen = ({ navigation }) => (
-  <View style={ styles.container }>
-    <View style={ styles.topContainer }>
-      <View style={styles.logoTopMargin}/> 
-      <Image 
-        source= {require('./img/logococum.png')} 
-        style={ styles.imageLogo}
-      />
+  <Image 
+    source={require('./img/palms.jpg')} 
+    style={ styles.backgroundImage}>
+    <View style={styles.backgroundMargin}/>
+    <View style={ styles.container }>
+      <View style={ styles.topContainer }>
+        <View style={styles.logoTopMargin}/> 
+        <Image 
+          source= {require('./img/logococum.png')} 
+          style={ styles.imageLogo}
+        />
+      </View>
+      <View style={ styles.centerContainer1 }>
+        <Text style={ styles.topText }>Encuentra la ropa que</Text>
+        <Text style={ styles.topText }>te inspira</Text>
+      </View> 
+      <View style={ styles.centerContainer2 }>
+        <Text style={ styles.centerText }>¡Elige una foto!</Text>
+      </View>    
+      <View style={ styles.bottomContainer }>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.galleryButton} 
+          onPress={ () => navigation.navigate('CategorySelection') }> 
+          <Entypo
+            name='images'//folder-multiple-image
+            size={60}
+            style={styles.galleryIcon} />
+        </TouchableOpacity>
+      </View>
+      <View style={ styles.bottomMargin}>
+      </View>
     </View>
-    <View style={ styles.centerContainer1 }>
-      <Text style={ styles.topText }>Encuentra la ropa que te inspira</Text>
-    </View> 
-    <View style={ styles.centerContainer2 }>
-      <Text style={ styles.centerText }>¡Elije una foto!</Text>
-    </View>    
-    <View style={ styles.bottomContainer }>
-      <TouchableHighlight 
-        style={styles.galleryButton} 
-        onPress={ () => navigation.navigate('CategorySelection') }> 
-        <MaterialCommunityIcons
-          name='folder-multiple-image'
-          size={60}
-          style={styles.galleryIcon} />
-      </TouchableHighlight>
-    </View>
-    <View style={ styles.bottomMargin}>
-    </View>
-  </View>
+    <View style={styles.backgroundMargin}/>
+  </Image>
 );
 
 
@@ -39,12 +47,24 @@ HomeScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundImage:{
     flex: 1,
+    flexDirection:'row',
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backgroundMargin:{
+    flex:0.075
+  },
+  container: {
+    flex: 0.85,
     backgroundColor: '#f5f5f5'
   },
   topContainer: {
-    flex: 0.35,
+    flex: 0.375,
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
@@ -68,7 +88,7 @@ const styles = StyleSheet.create({
   fontSize: 16
   },
   bottomContainer: {
-    flex: 0.15,
+    flex: 0.125,
     alignItems: 'center'
   },
   imageLogo: {
@@ -83,15 +103,17 @@ const styles = StyleSheet.create({
   },
   galleryButton: {
     flex: 1,
-    justifyContent:'center',
+    justifyContent:'flex-end',
     alignItems:'center',
-    backgroundColor:'#03a9f4',
+    backgroundColor:'#039be5', //03a9f4,
     borderRadius: 5,
-    width:110  
+    borderWidth: 0.8,
+    borderColor: '#01579b',
+    width:130  
   },
   galleryIcon:{
-    flex:1,
-    color:'black'
+    flex:0.8,
+    color:'white',
   },
   bottomMargin:{
     flex:0.05

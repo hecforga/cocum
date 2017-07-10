@@ -1,23 +1,23 @@
 import React from 'react';
-import { Button, StyleSheet, View, TouchableHighlight } from 'react-native';
+import { Button, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 
 import CategorySelectionStateHolder from './CategorySelectionStateHolder.js';
 
 const CategorySelectionScreen = ({ navigation }) => (
-  <CategorySelectionStateHolder />
+  <CategorySelectionStateHolder navigation= {navigation} />
 );
 
 CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Selecciona una categoría',
+  title: 'Recortar',
   headerRight: (
     <View style={styles.searchButtonWrapper}>
-      <View style={styles.searchMargin}/>
-      <TouchableHighlight style={styles.searchButton} onPress={ () => navigation.navigate('Results') }> 
+      <View style={styles.searchButtonMargin}/>
+      <TouchableOpacity activeOpacity={1} style={styles.searchButton} onPress={ () => navigation.navigate('Results') }> 
         <FontAwesome name='search' style={styles.searchIcon} />
-      </TouchableHighlight>
-      <View style={styles.searchMargin}/>
+      </TouchableOpacity>
+      <View style={styles.searchButtonMargin}/>
     </View>    
   ),
   headerStyle: { marginTop: Constants.statusBarHeight}
@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     width:50,
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'#03a9f4',
+    backgroundColor:'#039be5',
     borderRadius: 5
   },  
   searchIcon: {
     fontSize: 20,
-    color: 'black'
+    color: 'white'
   },
-  searchMargin:{
+  searchButtonMargin:{
     flex:0.20
   }
 });
