@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, PanResponder, Platform } from 'react-native';
+import { StyleSheet, View, PanResponder, Platform } from 'react-native';
 import { Constants } from 'expo';
 
 const STATUSBAR_HEIGHT = Constants.statusBarHeight;
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 const TOP_OFFSET = STATUSBAR_HEIGHT + APPBAR_HEIGHT;
-const PADDING = 20;
-const MIN_GRID_SIZE = 80;
+const PADDING = 30;
+const MIN_GRID_SIZE = 70;
 
 class CropRectangle extends Component {
   componentWillMount() {
@@ -54,19 +54,64 @@ class CropRectangle extends Component {
     this.y0 = imageLayout.y + initialHeight - PADDING;
     this.x1 = this.x0 + initialWidth + 2 * PADDING;
     this.y1 = this.y0 + initialHeight + 2 * PADDING;
-
-    this.rectStyles = {
-      style: {
-        left: this.x0,
-        top: this.y0,
-        width: this.x1 - this.x0,
-        height: this.y1 - this.y0
-      }
-    };
   }
 
   componentDidUpdate() {
-    this.updateNativeStyles();
+    this.rectStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.insideStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.topStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.rightStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.bottomStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.leftStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.updateNativeStyles(this.x0, this.y0, this.x1, this.y1);
   }
 
   render() {
@@ -77,24 +122,85 @@ class CropRectangle extends Component {
     }
 
     return (
-      <View
-        ref={(rect) => {
-          this._rect = rect;
-        }}
-        style={styles.rect}
-        {...this.panResponder.panHandlers}
-      >
-        <Image
-          source={require('./img/grid.png')}
-          style={styles.grid}
-          resizeMode={'stretch'}
+      <View>
+        <View
+          ref={(inside) => {
+            this._inside = inside;
+          }}
+          style={styles.inside}
+        />
+        <View
+          ref={(top) => {
+            this._top = top;
+          }}
+          style={styles.surround}
+        />
+        <View
+          ref={(right) => {
+            this._right = right;
+          }}
+          style={styles.surround}
+        />
+        <View
+          ref={(bottom) => {
+            this._bottom = bottom;
+          }}
+          style={styles.surround}
+        />
+        <View
+          ref={(left) => {
+            this._left = left;
+          }}
+          style={styles.surround}
+        />
+        <View
+          ref={(rect) => {
+            this._rect = rect;
+          }}
+          style={styles.rect}
+          {...this.panResponder.panHandlers}
         />
       </View>
     );
   }
 
-  updateNativeStyles() {
+  updateNativeStyles(x0, y0, x1, y1) {
+    this.rectStyles.style.left = x0;
+    this.rectStyles.style.top = y0;
+    this.rectStyles.style.width = x1 - x0;
+    this.rectStyles.style.height = y1 - y0;
+
+    this.insideStyles.style.left = x0 + PADDING;
+    this.insideStyles.style.top = y0 + PADDING;
+    this.insideStyles.style.width = x1 - x0 - 2 * PADDING;
+    this.insideStyles.style.height = y1 - y0 - 2 * PADDING;
+
+    this.topStyles.style.left = this.imageLayout.x;
+    this.topStyles.style.top = this.imageLayout.y;
+    this.topStyles.style.width = this.imageLayout.width;
+    this.topStyles.style.height = y0 + PADDING - this.topStyles.style.top;
+
+    this.rightStyles.style.left = x1 - PADDING;
+    this.rightStyles.style.top = y0 + PADDING;
+    this.rightStyles.style.width = this.imageLayout.x + this.imageLayout.width - this.rightStyles.style.left;
+    this.rightStyles.style.height = y1 - PADDING - this.rightStyles.style.top;
+
+    this.bottomStyles.style.left = this.imageLayout.x;
+    this.bottomStyles.style.top = y1 - PADDING;
+    this.bottomStyles.style.width = this.imageLayout.width;
+    this.bottomStyles.style.height = this.imageLayout.y + this.imageLayout.height - this.bottomStyles.style.top;
+
+    this.leftStyles.style.left = this.imageLayout.x;
+    this.leftStyles.style.top = y0 + PADDING;
+    this.leftStyles.style.width = x0 + PADDING - this.imageLayout.x;
+    this.leftStyles.style.height = y1 - PADDING - this.rightStyles.style.top;
+
     this._rect && this._rect.setNativeProps(this.rectStyles);
+    this._inside && this._inside.setNativeProps(this.insideStyles);
+    this._top && this._top.setNativeProps(this.topStyles);
+    this._right && this._right.setNativeProps(this.rightStyles);
+    this._bottom && this._bottom.setNativeProps(this.bottomStyles);
+    this._left && this._left.setNativeProps(this.leftStyles);
   }
 
   handlePanResponderGrant(e, gestureState) {
@@ -164,12 +270,7 @@ class CropRectangle extends Component {
       y1Aux += gestureState.dy;
     }
 
-    this.rectStyles.style.left = x0Aux;
-    this.rectStyles.style.top = y0Aux;
-    this.rectStyles.style.width = x1Aux - x0Aux;
-    this.rectStyles.style.height = y1Aux - y0Aux;
-
-    this.updateNativeStyles();
+    this.updateNativeStyles(x0Aux, y0Aux, x1Aux, y1Aux);
   }
 
   handlePanResponderEnd(e, gestureState, onPanResponderEnd) {
@@ -197,14 +298,17 @@ class CropRectangle extends Component {
 const styles = StyleSheet.create({
   rect: {
     position: 'absolute',
-    flex: 1,
-    padding: PADDING,
+    backgroundColor: 'green',
+    opacity: 0
   },
-  grid: {
-    flex: 1,
-    alignSelf: 'stretch',
-    width: undefined,
-    height: undefined
+  inside: {
+    borderColor: 'white',
+    borderWidth: 1
+  },
+  surround: {
+    position: 'absolute',
+    backgroundColor: 'black',
+    opacity: 0.7
   }
 });
 
