@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { ImagePicker } from 'expo';
 
-import { getQuery} from '../reducers';
-import { newQuery, setQueryCategory, resetQuery } from '../actions';
+import { getSelectedImage, getQuery } from '../reducers';
+import * as actions from '../actions';
 
 import SelectedImage from './SelectedImage.js'; 
 import CategoriesList from './CategoriesList.js';
@@ -12,28 +12,37 @@ import CategoriesList from './CategoriesList.js';
 class CategorySelectionStateHolder extends Component {
 
   componentWillMount() {     
-    const { onImageSelected, onComponentWillMount, navigation } = this.props; 
-    onComponentWillMount();
+    const { selectImage, resetSelectedImage, navigation } = this.props; 
+    resetSelectedImage();
     ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
-        onImageSelected(pickedImage.uri);
-      } 
-      else{
-      navigation.goBack(null);
-      }     
+        selectImage(pickedImage.uri, pickedImage.width, pickedImage.height);
+      } else {
+        navigation.goBack(null);
+      }
     });
   }   
 
   render() {
-    const { query, onCategoryChange } = this.props;
+    const {
+      selectedImage,
+      setSelectedImageLayout,
+      setSelectedImageCropData,
+      query,
+      setQueryCategory,
+    } = this.props;
 
-    return query.imageUri ? (
+    return selectedImage.imageUri ? (
       <View style={ styles.container }>
-        <View style={ styles.topContainer }>        
-          <SelectedImage imageUrl={query.imageUri} />
+        <View style={ styles.topContainer }>
+          <SelectedImage
+            selectedImage={selectedImage}
+            onSelectedImageLayoutComputed={setSelectedImageLayout}
+            setSelectedImageCropData={setSelectedImageCropData}
+          />
         </View>
         <View style={ styles.bottomContainer }>
-          <CategoriesList selectedCategory={query.category} onCategoryChange={onCategoryChange} />
+          <CategoriesList selectedCategory={query.category} onCategoryChange={setQueryCategory} />
         </View>
       </View>
     ) : null;
@@ -53,16 +62,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
+  selectedImage: getSelectedImage(state),
   query: getQuery(state)  
 });
 
 CategorySelectionStateHolder = connect(
   mapStateToProps,
-  {  
-    onComponentWillMount : resetQuery,  
-    onCategoryChange : setQueryCategory,
-    onImageSelected : newQuery
-  }
+  actions
 )(CategorySelectionStateHolder);
 
 export default CategorySelectionStateHolder;
