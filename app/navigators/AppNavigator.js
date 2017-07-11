@@ -27,7 +27,7 @@ class AppWithNavigationState extends Component{
         'Exit App',
         'Exiting the application?',
         [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'Cancel', onPress: () =>  true, style: 'cancel'},
         {text: 'OK', onPress: () => BackAndroid.exitApp() },
         ],
         { cancelable: false }
