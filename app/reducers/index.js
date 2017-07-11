@@ -1,6 +1,7 @@
 import * as fromSelectedImage from './selectedImage.js';
 import * as fromQuery from './query.js';
 import * as fromResults from './results.js';
+import * as fromCanGoNext from './canGoNext.js';
 
 export const getSelectedImage = (state) =>
   fromSelectedImage.getSelectedImage(state.selectedImage);
@@ -16,3 +17,6 @@ export const getResultsStatus = (state) =>
 
 export const getResultsErrorMessage = (state) =>
   fromResults.getErrorMessage(state.results);
+
+export const getCanGoNext = (state) =>
+  fromCanGoNext.getCanGoNext(state.canGoNext);

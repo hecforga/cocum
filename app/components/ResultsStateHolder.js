@@ -3,11 +3,16 @@ import { StyleSheet, View, Text, ImageEditor } from 'react-native';
 import { connect } from 'react-redux';
 
 import { getSelectedImage, getQuery, getResultsIds, getResultsStatus, getResultsErrorMessage } from '../reducers';
-import { cropImage, uploadImage, fetchResults } from '../actions';
+import * as actions from '../actions';
 
 import ResultsListWithData from './ResultsList.js';
 
 class ResultsStateHolder extends Component {
+  componentWillMount() {
+    const { setCanGoNext } = this.props;
+    setCanGoNext(true);
+  }
+
   componentDidMount() {
     this.cropImage();
   }
@@ -85,11 +90,7 @@ const mapStateToProps = (state) => ({
 
 ResultsStateHolder = connect(
   mapStateToProps,
-  {
-    cropImage,
-    uploadImage,
-    fetchResults
-  }
+  actions
 )(ResultsStateHolder);
 
 export default ResultsStateHolder;

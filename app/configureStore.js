@@ -6,6 +6,7 @@ import nav from './reducers/navigation.js';
 import selectedImage from './reducers/selectedImage.js';
 import query from './reducers/query.js';
 import results from './reducers/results.js';
+import canGoNext from './reducers/canGoNext.js';
 
 const configureStore = (client) => {
 
@@ -17,6 +18,7 @@ const configureStore = (client) => {
       selectedImage,
       query,
       results,
+      canGoNext,
       apollo: client.reducer()
     }),
     applyMiddleware(...middlewares)

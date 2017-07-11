@@ -13,7 +13,7 @@ class CategoriesList extends Component {
   }
 
   render() {
-    const { selectedCategory, onCategoryChange } = this.props;
+    const { selectedCategory, setQueryCategory, setCanGoNext } = this.props;
 
     return (
       <ScrollView
@@ -27,7 +27,7 @@ class CategoriesList extends Component {
         {categories.map((category, index) =>
           <TouchableOpacity
             key={ index }
-            onPress={ () => onCategoryClick(this.scrollViewPosition, index, categories.length, SCROLL_VIEW_ITEM_WIDTH, this.screenWidth, this._scrollView, category.name, onCategoryChange)}
+            onPress={ () => onCategoryClick(this.scrollViewPosition, index, categories.length, SCROLL_VIEW_ITEM_WIDTH, this.screenWidth, this._scrollView, category.name, setQueryCategory, setCanGoNext)}
             activeOpacity={1}
             style={ styles.scrollViewItem }
           >
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const onCategoryClick = (scrollViewPosition, index, numberOfItems, scrollViewItemWidth, scrollViewWidth, scrollView, categoryName, onCategoryChange) => {
+const onCategoryClick = (scrollViewPosition, index, numberOfItems, scrollViewItemWidth, scrollViewWidth, scrollView, categoryName, setQueryCategory, setCanGoNext) => {
   const scrollViewPositionAtMiddle = scrollViewPosition + scrollViewWidth / 2;
   const clickedCategoryMiddle = index * scrollViewItemWidth + scrollViewItemWidth / 2;
   const scrollViewMaxOffset = numberOfItems * scrollViewItemWidth - scrollViewWidth;
@@ -160,7 +160,8 @@ const onCategoryClick = (scrollViewPosition, index, numberOfItems, scrollViewIte
     scrollView.scrollTo({ x: newScrollViewPosition, y: 0, animated: false });
   }
 
-  onCategoryChange(categoryName);
+  setQueryCategory(categoryName);
+  setCanGoNext(true);
 };
 
 export default CategoriesList;

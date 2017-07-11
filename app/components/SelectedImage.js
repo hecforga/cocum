@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
 import CropRectangle from './CropRectangle.js';
 
-const SelectedImage = ({ selectedImage, onSelectedImageLayoutComputed, setSelectedImageCropData }) => (
+const SelectedImage = ({ selectedImage, category, onSelectedImageLayoutComputed, setSelectedImageCropData }) => (
   <View style={ styles.container }>
     <Image
       source={ {uri : selectedImage.imageUri} }
@@ -11,7 +11,13 @@ const SelectedImage = ({ selectedImage, onSelectedImageLayoutComputed, setSelect
       resizeMode={'contain'}
       style={ styles.image }
     >
-      <CropRectangle imageLayout={selectedImage.layout} onPanResponderEnd={setSelectedImageCropData} />
+      {category ?
+        <CropRectangle imageLayout={selectedImage.layout} onPanResponderEnd={setSelectedImageCropData}/>
+        :
+        <View style={styles.opacityContainer}>
+          <Text style={styles.opacityText}>Selecciona una categoría</Text>
+        </View>
+      }
     </Image>
   </View>
 );
@@ -42,6 +48,17 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1
+  },
+  opacityContainer: {
+    flex: 1,
+    backgroundColor: 'black',
+    opacity: 0.7,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  opacityText: {
+    fontSize: 16,
+    color: 'white'
   }
 });
 

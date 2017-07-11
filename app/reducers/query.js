@@ -22,6 +22,8 @@ const query = (state = initialState, action) => {
         ...state,
         imageUrl: action.response.imageUrl
       };
+    case 'RESET_QUERY':
+      return initialState;
     default:
       return state;
   }

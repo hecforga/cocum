@@ -27,6 +27,10 @@ export const setQueryCategory = (category) => ({
   category
 });
 
+export const resetQuery = () => ({
+  type: 'RESET_QUERY'
+});
+
 export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState) => {
   dispatch({
     type: 'FETCH_RESULTS_REQUEST',
@@ -87,4 +91,9 @@ const handleFetchResultsFailure = (dispatch, error) => {
     type: 'FETCH_RESULTS_FAILURE',
     message: error.message || 'Algo ha ido mal.'
   });
-}
+};
+
+export const setCanGoNext = (goNext) => ({
+  type: 'SET_CAN_GO_NEXT',
+  goNext
+});

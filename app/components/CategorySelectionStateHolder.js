@@ -10,10 +10,11 @@ import SelectedImage from './SelectedImage.js';
 import CategoriesList from './CategoriesList.js';
 
 class CategorySelectionStateHolder extends Component {
-
   componentWillMount() {     
-    const { selectImage, resetSelectedImage, navigation } = this.props; 
+    const { selectImage, resetSelectedImage, setCanGoNext, resetQuery, navigation } = this.props;
+    setCanGoNext(false);
     resetSelectedImage();
+    resetQuery();
     ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
         selectImage(pickedImage.uri, pickedImage.width, pickedImage.height);
@@ -30,6 +31,7 @@ class CategorySelectionStateHolder extends Component {
       setSelectedImageCropData,
       query,
       setQueryCategory,
+      setCanGoNext
     } = this.props;
 
     return selectedImage.imageUri ? (
@@ -37,12 +39,13 @@ class CategorySelectionStateHolder extends Component {
         <View style={ styles.topContainer }>
           <SelectedImage
             selectedImage={selectedImage}
+            category={query.category}
             onSelectedImageLayoutComputed={setSelectedImageLayout}
             setSelectedImageCropData={setSelectedImageCropData}
           />
         </View>
         <View style={ styles.bottomContainer }>
-          <CategoriesList selectedCategory={query.category} onCategoryChange={setQueryCategory} />
+          <CategoriesList selectedCategory={query.category} setQueryCategory={setQueryCategory} setCanGoNext={setCanGoNext} />
         </View>
       </View>
     ) : null;

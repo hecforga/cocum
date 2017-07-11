@@ -31,18 +31,6 @@ class CropRectangle extends Component {
       },
     });
 
-    this.movingSides = [];
-  }
-
-  componentWillUpdate(newProps) {
-    const { imageLayout } = newProps;
-
-    if (this.imageLayout === imageLayout) {
-      return;
-    }
-
-    this.imageLayout = imageLayout;
-
     this.leftLimit = imageLayout.x;
     this.topLimit = imageLayout.y;
     this.rightLimit = imageLayout.x + imageLayout.width;
@@ -54,9 +42,11 @@ class CropRectangle extends Component {
     this.y0 = imageLayout.y + initialHeight - PADDING;
     this.x1 = this.x0 + initialWidth + 2 * PADDING;
     this.y1 = this.y0 + initialHeight + 2 * PADDING;
+
+    this.movingSides = [];
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     this.rectStyles = {
       style: {
         left: 0,
@@ -308,7 +298,7 @@ const styles = StyleSheet.create({
   surround: {
     position: 'absolute',
     backgroundColor: 'black',
-    opacity: 0.7
+    opacity: 0.5
   }
 });
 
