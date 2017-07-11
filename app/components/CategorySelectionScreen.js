@@ -11,6 +11,7 @@ const CategorySelectionScreen = ({ navigation }) => (
 
 CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   title: 'Recortar',
+  index: 1,
   headerRight: (
     <View style={styles.searchButtonWrapper}>
       <View style={styles.searchButtonMargin}/>

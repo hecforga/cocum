@@ -11,6 +11,7 @@ const ResultsScreen = ({ navigation }) => (
 
 ResultsScreen.navigationOptions = ({ navigation }) => ({
   title: 'Resultados',
+  index: 2,
   headerRight: (
     <View style={styles.homeButtonWrapper}>
       <View style={styles.homeButtonMargin}/>
