@@ -3,6 +3,7 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import nav from './reducers/navigation.js';
+import selectedImage from './reducers/selectedImage.js';
 import query from './reducers/query.js';
 import results from './reducers/results.js';
 
@@ -13,6 +14,7 @@ const configureStore = (client) => {
   return createStore(
     combineReducers({
       nav,
+      selectedImage,
       query,
       results,
       apollo: client.reducer()

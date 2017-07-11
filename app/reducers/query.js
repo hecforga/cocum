@@ -1,4 +1,5 @@
 const initialState = {
+  gender: 'mujer',
   category: '',
   imageUri: '',
   imageUrl: ''
@@ -6,17 +7,15 @@ const initialState = {
 
 const query = (state = initialState, action) => {
   switch (action.type) {
-    case 'NEW_QUERY':
-      return {
-        ...state,
-        imageUri: action.imageUri
-      };
-    case 'RESET_QUERY':
-      return initialState;  
     case 'SET_QUERY_CATEGORY':
       return {
         ...state,
         category: action.category
+      };
+    case 'CROP_IMAGE_SUCCESS':
+      return {
+        ...state,
+        imageUri: action.imageUri
       };
     case 'UPLOAD_IMAGE_SUCCESS':
       return {

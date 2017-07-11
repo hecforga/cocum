@@ -9,16 +9,16 @@ const ids = (state = [], action) => {
   }
 };
 
-const isFetching = (state = false, action) => {
+const status = (state = 'init', action) => {
   switch (action.type) {
-    case 'UPLOAD_IMAGE_REQUEST':
-    case 'FETCH_RESULTS_REQUEST':
-      return true;
+    case 'CROP_IMAGE_SUCCESS':
+      return 'image_cropped';
     case 'UPLOAD_IMAGE_SUCCESS':
-    case 'UPLOAD_IMAGE_FAILURE':
+      return 'image_uploaded';
     case 'FETCH_RESULTS_SUCCESS':
+      return 'results_ready';
     case 'FETCH_RESULTS_FAILURE':
-      return false;
+      return 'error';
     default:
       return state;
   }
@@ -26,11 +26,8 @@ const isFetching = (state = false, action) => {
 
 const errorMessage = (state = null, action) => {
   switch (action.type) {
-    case 'UPLOAD_IMAGE_FAILURE':
     case 'FETCH_RESULTS_FAILURE':
-      return action.message;
-    case 'UPLOAD_IMAGE_REQUEST':
-    case 'UPLOAD_IMAGE_SUCCESS':  
+      return action.message; 
     case 'FETCH_RESULTS_REQUEST':
     case 'FETCH_RESULTS_SUCCESS':
       return null;
@@ -41,12 +38,12 @@ const errorMessage = (state = null, action) => {
 
 const results = combineReducers({
   ids,
-  isFetching,
+  status,
   errorMessage
 });
 
 export default results;
 
 export const getIds = (state) => state.ids;
-export const getIsFetching = (state) => state.isFetching;
+export const getStatus = (state) => state.status;
 export const getErrorMessage = (state) => state.errorMessage;
