@@ -20,7 +20,7 @@ const query = (state = initialState, action) => {
     case 'UPLOAD_IMAGE_SUCCESS':
       return {
         ...state,
-        imageUrl: action.response.imageUrl
+        imageUrl: action.imageUrl
       };
     case 'RESET_QUERY':
       return initialState;

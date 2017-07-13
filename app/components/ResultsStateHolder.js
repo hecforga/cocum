@@ -20,11 +20,10 @@ class ResultsStateHolder extends Component {
   componentWillUpdate(nextProps) {
     switch (nextProps.status) {
       case 'image_cropped':
-        this.fetchResults();
-        //this.uploadImage();
+        this.uploadImage(nextProps.query.imageUri);
         break;
       case 'image_uploaded':
-        this.fetchResults();
+        this.fetchResults(nextProps.query);
         break;
     }
   }
@@ -34,15 +33,14 @@ class ResultsStateHolder extends Component {
     cropImage(ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
   }
 
-  uploadImage() {
-    const { query, uploadImage } = this.props;
-    uploadImage(query.imageUri);
+  uploadImage(imageUri) {
+    const { uploadImage } = this.props;
+    uploadImage(imageUri);
   }
 
-  fetchResults() {
-    const { query, fetchResults } = this.props;
-    fetchResults(query.gender, query.category, 'https://res.cloudinary.com/ddjzq70ve/image/upload/v1493830905/5710189427_2_6_2.jpg');
-    //fetchResults(query.gender, query.category, query.imageUrl);
+  fetchResults(query) {
+    const { fetchResults } = this.props;
+    fetchResults(query.gender, query.category, query.imageUrl);
   }
 
   render() {
