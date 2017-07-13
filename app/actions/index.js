@@ -1,6 +1,8 @@
 import * as liresolr_api from '../liresolr_api';
 import { RNS3 } from 'react-native-aws3';
 
+import {accessKey, secretKey} from '../credentials/s3credentials.js';
+
 export const selectImage = (imageUri, width, height) => ({
   type: 'SELECT_IMAGE',
   imageUri,
@@ -44,34 +46,44 @@ export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState
         type: 'CROP_IMAGE_SUCCESS',
         imageUri: response
       });
-    },
+    }
+  ).catch(
     error => handleFetchResultsFailure(dispatch, error)
   );
 };
 
 // TODO
 export const uploadImage = (imageUri) => (dispatch, getState) => {
-  /**return RNS3.put(file, options).then(
+
+  const file = {
+    // `uri` can also be a file system path (i.e. file://)
+    uri: imageUri,
+    name: 'image.jpg',
+    type: 'image/jpg'
+  }
+
+  const options = {
+    keyPrefix: 'queryImages/',
+    bucket: 'cocumapp',
+    region: 'eu-central-1',
+    accessKey: accessKey,
+    secretKey: secretKey,
+    successActionStatus: 201
+  }
+
+  return RNS3.put(file, options).then(
     response => {
       if (response.status !== 201) {
-        throw new Error(null);
+        throw new Error();
       }
       dispatch({
         type: 'UPLOAD_IMAGE_SUCCESS',
-        response
+        imageUrl: response.body.postResponse.location
       });
-      
-       {
-         postResponse: {
-           bucket: "your-bucket",
-           etag : "9f620878e06d28774406017480a59fd4",
-           key: "uploads/image.png",
-           location: "https://your-bucket.s3.amazonaws.com/uploads%2Fimage.png"
-         }
-       }
-    },
+    }
+  ).catch(
     error => handleFetchResultsFailure(dispatch, error)
-  );*/
+  );
 };
 
 export const fetchResults = (gender, category, imageUrl) => (dispatch, getState) => {
@@ -81,7 +93,8 @@ export const fetchResults = (gender, category, imageUrl) => (dispatch, getState)
         type: 'FETCH_RESULTS_SUCCESS',
         response
       });
-    },
+    }
+  ).catch(
     error => handleFetchResultsFailure(dispatch, error)
   );
 };
@@ -89,7 +102,7 @@ export const fetchResults = (gender, category, imageUrl) => (dispatch, getState)
 const handleFetchResultsFailure = (dispatch, error) => {
   dispatch({
     type: 'FETCH_RESULTS_FAILURE',
-    message: error.message || 'Algo ha ido mal.'
+    message: error.message  || 'Algo ha ido mal.'
   });
 };
 
