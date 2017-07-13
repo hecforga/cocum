@@ -44,6 +44,8 @@ class CropRectangle extends Component {
     this.x1 = this.x0 + initialWidth + 2 * PADDING;
     this.y1 = this.y0 + initialHeight + 2 * PADDING;
 
+    setSelectedImageCropData(computeCropData(this.selectedImage, this.x0, this.y0, this.x1, this.y1));
+
     this.movingSides = [];
   }
 
@@ -271,22 +273,26 @@ class CropRectangle extends Component {
     this.x1 = this.x0 + this.rectStyles.style.width;
     this.y1 = this.y0 + this.rectStyles.style.height;
 
-    const resizeRatio = this.selectedImage.originalWidth / this.selectedImage.layout.width;
-    const cropData = {
-      offset: {
-        x: (this.x0 + PADDING - this.selectedImage.layout.x) * resizeRatio,
-        y: (this.y0 + PADDING - this.selectedImage.layout.y) * resizeRatio
-      },
-      size: {
-        width: (this.x1 - this.x0 - 2 * PADDING) * resizeRatio,
-        height: (this.y1 - this.y0 - 2 * PADDING) * resizeRatio
-      }
-    };
-    setSelectedImageCropData(cropData);
+
+    setSelectedImageCropData(computeCropData(this.selectedImage, this.x0, this.y0, this.x1, this.y1));
 
     this.movingSides = [];
   }
 }
+
+const computeCropData = (selectedImage, x0, y0, x1, y1) => {
+  const resizeRatio = selectedImage.originalWidth / selectedImage.layout.width;
+  return {
+    offset: {
+      x: (x0 + PADDING - selectedImage.layout.x) * resizeRatio,
+      y: (y0 + PADDING - selectedImage.layout.y) * resizeRatio
+    },
+    size: {
+      width: (x1 - x0 - 2 * PADDING) * resizeRatio,
+      height: (y1 - y0 - 2 * PADDING) * resizeRatio
+    }
+  };
+};
 
 const styles = StyleSheet.create({
   rect: {
