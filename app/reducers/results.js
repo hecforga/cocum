@@ -1,15 +1,19 @@
 import { combineReducers } from 'redux';
 
-const ids = (state = [], action) => {
+const idsInitialState = [];
+const ids = (state = idsInitialState, action) => {
   switch (action.type) {
     case 'FETCH_RESULTS_SUCCESS':
       return action.response.map(id => id);
+    case 'RESET_RESULTS':
+      return idsInitialState;
     default:
       return state;
   }
 };
 
-const status = (state = 'init', action) => {
+const statusInitialState = 'init';
+const status = (state = statusInitialState, action) => {
   switch (action.type) {
     case 'CROP_IMAGE_SUCCESS':
       return 'image_cropped';
@@ -19,18 +23,23 @@ const status = (state = 'init', action) => {
       return 'results_ready';
     case 'FETCH_RESULTS_FAILURE':
       return 'error';
+    case 'RESET_RESULTS':
+      return statusInitialState;
     default:
       return state;
   }
 };
 
-const errorMessage = (state = null, action) => {
+const errorMessageInitialState = null;
+const errorMessage = (state = errorMessageInitialState, action) => {
   switch (action.type) {
     case 'FETCH_RESULTS_FAILURE':
       return action.message; 
     case 'FETCH_RESULTS_REQUEST':
     case 'FETCH_RESULTS_SUCCESS':
       return null;
+    case 'RESET_RESULTS':
+      return errorMessageInitialState;
     default:
       return state;
   }

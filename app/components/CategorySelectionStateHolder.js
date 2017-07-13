@@ -11,10 +11,10 @@ import CategoriesList from './CategoriesList.js';
 
 class CategorySelectionStateHolder extends Component {
   componentWillMount() {     
-    const { selectImage, resetSelectedImage, setCanGoNext, resetQuery, navigation } = this.props;
+    const { selectImage, setCanGoNext, navigation } = this.props;
+
     setCanGoNext(false);
-    resetSelectedImage();
-    resetQuery();
+
     ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
       if(!pickedImage.cancelled){
         selectImage(pickedImage.uri, pickedImage.width, pickedImage.height);
@@ -22,7 +22,14 @@ class CategorySelectionStateHolder extends Component {
         navigation.goBack(null);
       }
     });
-  }   
+  }
+
+  componentWillUnmount() {
+    const { resetSelectedImage, resetQuery } = this.props;
+
+    resetSelectedImage();
+    resetQuery();
+  }
 
   render() {
     const {

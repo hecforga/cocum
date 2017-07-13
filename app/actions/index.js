@@ -106,6 +106,10 @@ const handleFetchResultsFailure = (dispatch, error) => {
   });
 };
 
+export const resetResults = () => ({
+  type: 'RESET_RESULTS'
+});
+
 export const setCanGoNext = (goNext) => ({
   type: 'SET_CAN_GO_NEXT',
   goNext

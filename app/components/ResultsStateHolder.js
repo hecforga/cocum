@@ -28,6 +28,12 @@ class ResultsStateHolder extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const { resetResults } = this.props;
+
+    resetResults();
+  }
+
   cropImage() {
     const { selectedImage, cropImage } = this.props;
     cropImage(ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
