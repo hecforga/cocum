@@ -12,7 +12,7 @@ const SelectedImage = ({ selectedImage, category, onSelectedImageLayoutComputed,
       style={ styles.image }
     >
       {category ?
-        <CropRectangle imageLayout={selectedImage.layout} onPanResponderEnd={setSelectedImageCropData}/>
+        <CropRectangle selectedImage={selectedImage} setSelectedImageCropData={setSelectedImageCropData}/>
         :
         <View style={styles.opacityContainer}>
           <Text style={styles.opacityText}>Selecciona una categoría</Text>

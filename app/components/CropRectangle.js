@@ -10,9 +10,10 @@ const MIN_GRID_SIZE = 70;
 
 class CropRectangle extends Component {
   componentWillMount() {
-    const { imageLayout, onPanResponderEnd } = this.props;
+    const { selectedImage, setSelectedImageCropData } = this.props;
 
-    this.imageLayout = imageLayout;
+    this.selectedImage = selectedImage;
+    const imageLayout = selectedImage.layout;
 
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (e, gestureState) => true,
@@ -24,10 +25,10 @@ class CropRectangle extends Component {
         this.handlePanResponderMove(e, gestureState);
       },
       onPanResponderRelease: (e, gestureState) => {
-        this.handlePanResponderEnd(e, gestureState, onPanResponderEnd);
+        this.handlePanResponderEnd(e, gestureState, setSelectedImageCropData);
       },
       onPanResponderTerminate: (e, gestureState) => {
-        this.handlePanResponderEnd(e, gestureState, onPanResponderEnd);
+        this.handlePanResponderEnd(e, gestureState, setSelectedImageCropData);
       },
     });
 
@@ -105,7 +106,8 @@ class CropRectangle extends Component {
   }
 
   render() {
-    const { imageLayout } = this.props;
+    const { selectedImage } = this.props;
+    const imageLayout = selectedImage.layout;
 
     if (!imageLayout) {
       return null;
@@ -165,24 +167,24 @@ class CropRectangle extends Component {
     this.insideStyles.style.width = x1 - x0 - 2 * PADDING;
     this.insideStyles.style.height = y1 - y0 - 2 * PADDING;
 
-    this.topStyles.style.left = this.imageLayout.x;
-    this.topStyles.style.top = this.imageLayout.y;
-    this.topStyles.style.width = this.imageLayout.width;
+    this.topStyles.style.left = this.selectedImage.layout.x;
+    this.topStyles.style.top = this.selectedImage.layout.y;
+    this.topStyles.style.width = this.selectedImage.layout.width;
     this.topStyles.style.height = y0 + PADDING - this.topStyles.style.top;
 
     this.rightStyles.style.left = x1 - PADDING;
     this.rightStyles.style.top = y0 + PADDING;
-    this.rightStyles.style.width = this.imageLayout.x + this.imageLayout.width - this.rightStyles.style.left;
+    this.rightStyles.style.width = this.selectedImage.layout.x + this.selectedImage.layout.width - this.rightStyles.style.left;
     this.rightStyles.style.height = y1 - PADDING - this.rightStyles.style.top;
 
-    this.bottomStyles.style.left = this.imageLayout.x;
+    this.bottomStyles.style.left = this.selectedImage.layout.x;
     this.bottomStyles.style.top = y1 - PADDING;
-    this.bottomStyles.style.width = this.imageLayout.width;
-    this.bottomStyles.style.height = this.imageLayout.y + this.imageLayout.height - this.bottomStyles.style.top;
+    this.bottomStyles.style.width = this.selectedImage.layout.width;
+    this.bottomStyles.style.height = this.selectedImage.layout.y + this.selectedImage.layout.height - this.bottomStyles.style.top;
 
-    this.leftStyles.style.left = this.imageLayout.x;
+    this.leftStyles.style.left = this.selectedImage.layout.x;
     this.leftStyles.style.top = y0 + PADDING;
-    this.leftStyles.style.width = x0 + PADDING - this.imageLayout.x;
+    this.leftStyles.style.width = x0 + PADDING - this.selectedImage.layout.x;
     this.leftStyles.style.height = y1 - PADDING - this.rightStyles.style.top;
 
     this._rect && this._rect.setNativeProps(this.rectStyles);
@@ -263,23 +265,24 @@ class CropRectangle extends Component {
     this.updateNativeStyles(x0Aux, y0Aux, x1Aux, y1Aux);
   }
 
-  handlePanResponderEnd(e, gestureState, onPanResponderEnd) {
+  handlePanResponderEnd(e, gestureState, setSelectedImageCropData) {
     this.x0 = this.rectStyles.style.left;
     this.y0 = this.rectStyles.style.top;
     this.x1 = this.x0 + this.rectStyles.style.width;
     this.y1 = this.y0 + this.rectStyles.style.height;
 
+    const resizeRatio = this.selectedImage.originalWidth / this.selectedImage.layout.width;
     const cropData = {
       offset: {
-        x: this.x0 + PADDING,
-        y: this.y0 + PADDING
+        x: (this.x0 + PADDING - this.selectedImage.layout.x) * resizeRatio,
+        y: (this.y0 + PADDING - this.selectedImage.layout.y) * resizeRatio
       },
       size: {
-        width: this.x1 - this.x0 - 2 * PADDING,
-        height: this.y1 - this.y0 - 2 * PADDING
+        width: (this.x1 - this.x0 - 2 * PADDING) * resizeRatio,
+        height: (this.y1 - this.y0 - 2 * PADDING) * resizeRatio
       }
     };
-    onPanResponderEnd(cropData);
+    setSelectedImageCropData(cropData);
 
     this.movingSides = [];
   }
