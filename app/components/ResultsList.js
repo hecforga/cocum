@@ -6,9 +6,7 @@ const CONTAINER_PADDING = 16;
 const PRODUCT_CONTAINER_MARGIN = 8;
 
 class ResultsList extends Component {
-  constructor(props) {
-    super(props);
-
+  componentWillMount() {
     const { height, width } = Dimensions.get('window');
     this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_CONTAINER_MARGIN) / 2;
     this.imageWidth = this.imageWidth | 0;

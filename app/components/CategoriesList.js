@@ -4,9 +4,7 @@ import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image, Dimensions
 const SCROLL_VIEW_ITEM_WIDTH = 112;
 
 class CategoriesList extends Component {
-  constructor(props) {
-    super(props);
-
+  componentWillMount() {
     this.scrollViewPosition = 0;
     const { height, width } = Dimensions.get('window');
     this.screenWidth = width;
@@ -16,35 +14,41 @@ class CategoriesList extends Component {
     const { selectedCategory, setQueryCategory, setCanGoNext } = this.props;
 
     return (
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={true}
-        onScroll={(e) => this.scrollViewPosition = e.nativeEvent.contentOffset.x}
-        scrollEventThrottle={16}
-        ref={(scrollView) => this._scrollView = scrollView}
-        style={styles.container}
-      >
-        {categories.map((category, index) =>
-          <TouchableOpacity
-            key={ index }
-            onPress={ () => onCategoryClick(this.scrollViewPosition, index, categories.length, SCROLL_VIEW_ITEM_WIDTH, this.screenWidth, this._scrollView, category.name, setQueryCategory, setCanGoNext)}
-            activeOpacity={1}
-            style={ styles.scrollViewItem }
-          >
-            <View style={ styles.categoryNameContainer }>
-              {category.labels.map((label) =>
-                <Text key={ label }>{label}</Text>
-              )}
-            </View>
-            <Image source={ category.icon }>
-              {category.name === selectedCategory ?
-                <Image source={require('./img/circle_blue.png')} /> :
-                <Image source={require('./img/circle_grey.png')} />
-              }
-            </Image>
-          </TouchableOpacity>
-        )}
-      </ScrollView>
+      <View style={styles.container}>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          onScroll={(e) => this.scrollViewPosition = e.nativeEvent.contentOffset.x}
+          scrollEventThrottle={16}
+          ref={(scrollView) => this._scrollView = scrollView}
+        >
+          {categories.map((category, index) =>
+            <TouchableOpacity
+              key={ index }
+              onPress={ () => onCategoryClick(this.scrollViewPosition, index, categories.length, SCROLL_VIEW_ITEM_WIDTH, this.screenWidth, this._scrollView, category.name, setQueryCategory, setCanGoNext)}
+              activeOpacity={1}
+              style={ styles.scrollViewItem }
+            >
+              <View style={ styles.categoryNameContainer }>
+                {category.labels.map((label) =>
+                  <Text key={ label }>{label}</Text>
+                )}
+              </View>
+              <Image source={ category.icon }>
+                {category.name === selectedCategory ?
+                  <Image source={require('./img/circle_blue.png')} /> :
+                  <Image source={require('./img/circle_grey.png')} />
+                }
+              </Image>
+            </TouchableOpacity>
+          )}
+        </ScrollView>
+        <View style={styles.titleContainer}>
+          <Image source={require('./img/scroll-arrow-to-left.png')} />
+          <Text style={styles.title}>Categorías</Text>
+          <Image source={require('./img/scroll-arrow-to-right.png')} />
+        </View>
+      </View>
     );
   }
 }
@@ -116,18 +120,28 @@ const categories = [
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    marginBottom: 4
+  },
+  title: {
+    marginRight: 80,
+    marginLeft: 80
   },
   scrollViewItem: {
     flex: 1,
     width: SCROLL_VIEW_ITEM_WIDTH,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   categoryNameContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 48
+    height: 40,
+    marginBottom: 4
   },
 });
 

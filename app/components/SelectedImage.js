@@ -43,8 +43,7 @@ const computeSelectedImageLayout = (containerLayout, originalWidth, originalHeig
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginBottom: 4
+    flex: 1
   },
   image: {
     flex: 1
