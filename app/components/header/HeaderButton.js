@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 const HeaderButton = ({ iconName, iconSize, onPress, canGoNext }) => (
   <View style={styles.searchButtonWrapper}>
