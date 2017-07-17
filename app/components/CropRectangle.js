@@ -282,14 +282,23 @@ class CropRectangle extends Component {
 
 const computeCropData = (selectedImage, x0, y0, x1, y1) => {
   const resizeRatio = selectedImage.originalWidth / selectedImage.layout.width;
+  const width = Math.round((x1 - x0 - 2 * PADDING) * resizeRatio);
+  const height = Math.round((y1 - y0 - 2 * PADDING) * resizeRatio);
+  const sizeRatio = width / height;
+  const displaySizeWidth = Math.min(width, 560);
+  const displaySizeHeight = Math.round(displaySizeWidth / sizeRatio);
   return {
     offset: {
       x: (x0 + PADDING - selectedImage.layout.x) * resizeRatio,
       y: (y0 + PADDING - selectedImage.layout.y) * resizeRatio
     },
     size: {
-      width: (x1 - x0 - 2 * PADDING) * resizeRatio,
-      height: (y1 - y0 - 2 * PADDING) * resizeRatio
+      width: width,
+      height: height
+    },
+    displaySize: {
+      width: displaySizeWidth,
+      height: displaySizeHeight
     }
   };
 };

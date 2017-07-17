@@ -3,16 +3,7 @@ const initialState = {
   originalWidth: 0,
   originalHeight: 0,
   layout: null,
-  cropData: {
-    offset: {
-      x: 0,
-      y: 0
-    },
-    size: {
-      width: 80,
-      height: 80
-    }
-  }
+  cropData: null
 };
 
 const selectedImage = (state = initialState, action) => {
