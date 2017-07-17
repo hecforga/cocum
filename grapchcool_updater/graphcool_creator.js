@@ -28,9 +28,9 @@ genders.forEach((gender) => {
     const categoryFolder = datasetFolder + '/' + gender + '/' + category;
     shops.forEach((shop) => {
       const productsFolder = categoryFolder + '/' + shop + '/products';
-      const currentProductsFilePath = productsFolder + '/current_products.json';
-      const currentProducts = JSON.parse(fs.readFileSync(currentProductsFilePath, 'utf8'));
-      currentProducts.forEach((productId) => {
+      const newProductsFilePath = productsFolder + '/new_products.json';
+      const newProducts = JSON.parse(fs.readFileSync(newProductsFilePath, 'utf8'));
+      newProducts.forEach((productId) => {
         const productInfoPath = productsFolder + '/' + productId + '/' + productId + '.json';
         const productInfo = JSON.parse(fs.readFileSync(productInfoPath, 'utf8'));
 
