@@ -1,27 +1,5 @@
 # COCUM
 
-## Demo
-
-[http://cocum.es](http://cocum.es)
-
-## Meteor
-
-Instalar Meteor:
-
-```bash
-curl https://install.meteor.com/ | sh
-```
-
-Clonar este repositorio, instalar dependencias y listo para ejecutar!
-
-```bash
-cd ~/<my-working-directory>
-git clone https://github.com/hecforga/cocum.git
-cd cocum/app
-meteor npm install
-meteor npm start
-```
-
 ## Dataset
 
 Existe un dataset con imágenes de prendas de ropa de diferentes tiendas online. Está estructurado por categorías (camisetas, pantalones, vestidos, etc.) y tiendas (pullandbear, zara, mango, etc.). Además de las imágenes, también contiene información adicional de cada prenda, como la url de compra del producto o su precio.
@@ -105,8 +83,24 @@ TODO
 
 ### Ejecución
 
-TODO
+```bash
+./main_cropper.py mujer all all
+```
 
 ## LireSolr
 
-TODO
+Abrir el proyecto liresolr con Intellij y ejecutar ParallelSolrIndexer.java
+
+## Graphcool
+
+### Fase de creación
+
+```bash
+node graphcool_creator.js mujer all all
+```
+
+### Fase de borrado
+
+```bash
+node graphcool_deleter.js mujer all all
+```
