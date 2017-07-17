@@ -2,6 +2,7 @@
 
 import sys
 import json
+import os
 
 import numpy as np
 import cv2
@@ -10,7 +11,7 @@ import cv2
 if len(sys.argv) != 4:
     print(
         "Example execution:\n"
-        "    ./shape_predictor_multiple_nodlib.py all all all")
+        "    ./main_cropper.py all all all")
     exit()
 
 dataset_folder = "../dataset"
@@ -29,21 +30,29 @@ else:
 
 for gender in genders:
     for category in categories:
+        print("Processing category: " + category)
         category_folder = dataset_folder + "/" + gender + "/" + category
         output_folder = category_folder + "/" + "CROPPED"
         for shop in shops:
             products_folder = category_folder + "/" + shop + "/products"
-            current_products_file_path = products_folder + "/current_products.json"
 
+            # Remove previous products
+            previous_products_file_path = products_folder + "/previous_products.json"
+            with open(previous_products_file_path) as previous_products_file:    
+                previous_products = json.load(previous_products_file)
+            for product_id in previous_products:
+                os.remove(output_folder + "/" + product_id + "_CROPPED.png")
+
+            # Crop new products            
+            new_products_file_path = products_folder + "/new_products.json"
             # Traverse images in json file passed as argument
-            with open(current_products_file_path) as current_products_file:    
-                current_products = json.load(current_products_file)
+            with open(new_products_file_path) as new_products_file:    
+                new_products = json.load(new_products_file)
 
-            for product_id in current_products:
+            for product_id in new_products:
                 image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
 
                 # Get the image from image_path
-                print("Processing file: {}".format(image_path))
                 img = cv2.imread(image_path)
                 imggray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 thresh_value = 260

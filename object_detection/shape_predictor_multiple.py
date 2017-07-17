@@ -27,7 +27,7 @@ if sys.argv[4] == 'all':
 else:
     categories = [sys.argv[4]]
 if sys.argv[5] == 'all':
-    shops = ["pullandbear", "zara"]
+    shops = ["mango", "pullandbear", "zara"]
 else:
     shops = [sys.argv[5]]
 
