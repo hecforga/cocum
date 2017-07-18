@@ -89,6 +89,8 @@ TODO
 
 ## LireSolr
 
+[Github de LireSolr](https://github.com/dermotte/liresolr)
+
 Abrir el proyecto liresolr con Intellij y ejecutar ParallelSolrIndexer.java
 
 ## Graphcool
