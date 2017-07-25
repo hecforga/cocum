@@ -81,27 +81,27 @@ Debería ejecutarse sin errores y crear una imagen PNG con la camiseta recortada
 
 TODO
 
-### Ejecución
+## Actualizar índices
+
+### Recortar
 
 ```bash
-./main_cropper.py mujer all all
+~/object_detection/main_cropper.py mujer all all
 ```
 
-## LireSolr
-
-[Github de LireSolr](https://github.com/dermotte/liresolr)
-
-Abrir el proyecto liresolr con Intellij y ejecutar ParallelSolrIndexer.java
-
-## Graphcool
-
-### Fase de creación
+### Añadir a Graphcool
 
 ```bash
 node graphcool_creator.js mujer all all
 ```
 
-### Fase de borrado
+### Calcular y subir índices a LireSolr
+
+Abrir el proyecto liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java
+
+Argumentos: /path/to/dataset mujer all
+
+### Eliminar de Grapcool
 
 ```bash
 node graphcool_deleter.js mujer all all
