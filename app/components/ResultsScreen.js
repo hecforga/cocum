@@ -1,17 +1,17 @@
 import React from 'react';
 import { Constants } from 'expo';
 
-import ResultsStateHolder from './ResultsStateHolder.js';
-import HeaderButtonStateHolder from './header/HeaderButtonStateHolder.js';
+import ResultsContainerWithDataAndState from './ResultsContainer.js';
+import HeaderButtonContainerWithState from './header/HeaderButtonContainer.js';
 
 const ResultsScreen = ({ navigation }) => (
-  <ResultsStateHolder />
+  <ResultsContainerWithDataAndState />
 );
 
 ResultsScreen.navigationOptions = ({ navigation }) => ({
   title: 'Resultados',
   headerRight: (
-  <HeaderButtonStateHolder
+  <HeaderButtonContainerWithState
     iconName='home'
     iconSize={30}
     onPress={() => {
