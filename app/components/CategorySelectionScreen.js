@@ -1,17 +1,17 @@
 import React from 'react';
 import { Constants } from 'expo';
 
-import CategorySelectionStateHolder from './CategorySelectionStateHolder.js';
-import HeaderButtonStateHolder from './header/HeaderButtonStateHolder.js';
+import CategorySelectionContainerWithState from './CategorySelectionContainer.js';
+import HeaderButtonContainerWithState from './header/HeaderButtonContainer.js';
 
 const CategorySelectionScreen = ({ navigation }) => (
-  <CategorySelectionStateHolder navigation= {navigation} />
+  <CategorySelectionContainerWithState navigation= {navigation} />
 );
 
 CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   title: 'Recortar',
   headerRight: (
-    <HeaderButtonStateHolder
+    <HeaderButtonContainerWithState
       iconName='search'
       iconSize={20}
       onPress={() => {

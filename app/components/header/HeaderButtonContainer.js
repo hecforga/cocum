@@ -6,7 +6,7 @@ import * as actions from '../../actions';
 
 import HeaderButton from './HeaderButton.js';
 
-let HeaderButtonStateHolder = ({ iconName, iconSize, onPress, canGoNext }) => (
+let HeaderButtonContainer = ({ iconName, iconSize, onPress, canGoNext }) => (
   <HeaderButton
     iconName={iconName}
     iconSize={iconSize}
@@ -19,9 +19,9 @@ const mapStateToProps = (state) => ({
   canGoNext: getCanGoNext(state)
 });
 
-HeaderButtonStateHolder = connect(
+HeaderButtonContainerWithState = connect(
   mapStateToProps,
   actions
-)(HeaderButtonStateHolder);
+)(HeaderButtonContainer);
 
-export default HeaderButtonStateHolder;
+export default HeaderButtonContainerWithState;

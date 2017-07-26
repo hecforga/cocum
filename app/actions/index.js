@@ -29,6 +29,17 @@ export const setQueryCategory = (category) => ({
   category
 });
 
+export const generateQueryId = (mutate) => (dispatch, getState) => {
+  mutate().then((response) => {
+    dispatch({
+      type: 'SET_QUERY_ID',
+      id: response.data.createMyQuery.id
+    })
+  }).catch(
+    error => handleFetchResultsFailure(dispatch, error)
+  );
+};
+
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });
@@ -53,17 +64,17 @@ export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState
 };
 
 // TODO
-export const uploadImage = (imageUri) => (dispatch, getState) => {
+export const uploadImage = (queryID, imageUri, category) => (dispatch, getState) => {
 
   const file = {
     // `uri` can also be a file system path (i.e. file://)
     uri: imageUri,
-    name: 'image.jpg',
+    name: queryID+='.jpg',
     type: 'image/jpg'
   }
 
   const options = {
-    keyPrefix: 'queryImages/',
+    keyPrefix: 'queryImages/'.concat(category).concat('/'),
     bucket: 'cocumapp',
     region: 'eu-central-1',
     accessKey: accessKey,
@@ -100,6 +111,7 @@ export const fetchResults = (gender, category, imageUrl) => (dispatch, getState)
 };
 
 const handleFetchResultsFailure = (dispatch, error) => {
+  console.log(error);
   dispatch({
     type: 'FETCH_RESULTS_FAILURE',
     message: error.message  || 'Algo ha ido mal.'

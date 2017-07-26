@@ -17,6 +17,8 @@ const status = (state = statusInitialState, action) => {
   switch (action.type) {
     case 'CROP_IMAGE_SUCCESS':
       return 'image_cropped';
+    case 'SET_QUERY_ID':
+      return 'id_generated';
     case 'UPLOAD_IMAGE_SUCCESS':
       return 'image_uploaded';
     case 'FETCH_RESULTS_SUCCESS':

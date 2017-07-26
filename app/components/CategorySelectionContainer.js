@@ -9,7 +9,7 @@ import * as actions from '../actions';
 import SelectedImage from './SelectedImage.js'; 
 import CategoriesList from './CategoriesList.js';
 
-class CategorySelectionStateHolder extends Component {
+class CategorySelectionContainer extends Component {
   componentWillMount() {     
     const { selectImage, setCanGoNext, navigation } = this.props;
 
@@ -76,9 +76,9 @@ const mapStateToProps = (state) => ({
   query: getQuery(state)  
 });
 
-CategorySelectionStateHolder = connect(
+CategorySelectionContainerWithState = connect(
   mapStateToProps,
   actions
-)(CategorySelectionStateHolder);
+)(CategorySelectionContainer);
 
-export default CategorySelectionStateHolder;
+export default CategorySelectionContainerWithState;

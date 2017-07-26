@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ImageEditor } from 'react-native';
 import { connect } from 'react-redux';
+import { gql, graphql } from 'react-apollo';
 
 import { getSelectedImage, getQuery, getResultsIds, getResultsStatus, getResultsErrorMessage } from '../reducers';
 import * as actions from '../actions';
 
 import ResultsListWithData from './ResultsList.js';
 
-class ResultsStateHolder extends Component {
+class ResultsContainer extends Component {
   componentWillMount() {
     const { setCanGoNext } = this.props;
     setCanGoNext(true);
@@ -20,7 +21,10 @@ class ResultsStateHolder extends Component {
   componentWillUpdate(nextProps) {
     switch (nextProps.status) {
       case 'image_cropped':
-        this.uploadImage(nextProps.query.imageUri);
+        this.generateQueryId();
+        break;
+      case 'id_generated':
+        this.uploadImage(nextProps.query);
         break;
       case 'image_uploaded':
         this.fetchResults(nextProps.query);
@@ -39,9 +43,14 @@ class ResultsStateHolder extends Component {
     cropImage(ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
   }
 
-  uploadImage(imageUri) {
+  generateQueryId() {
+    const { generateQueryId, mutate } = this.props;
+    generateQueryId(mutate);
+  }
+
+  uploadImage(query) {
     const { uploadImage } = this.props;
-    uploadImage(imageUri);
+    uploadImage(query.ID, query.imageUri, query.category);
   }
 
   fetchResults(query) {
@@ -84,6 +93,18 @@ const styles = StyleSheet.create({
   }
 });
 
+const CreateMyQueryMutation = gql`
+  mutation CreateMyQueryMutation ($gender: String!, $category: String!) {
+    createMyQuery(gender: $gender, category: $category ) {
+      id
+    }
+  }
+`;
+
+const ResultsContainerWithData = graphql(CreateMyQueryMutation, {
+  options: ({query}) => ({variables: {gender: query.gender, category: query.category}})
+})(ResultsContainer);
+
 const mapStateToProps = (state) => ({
   selectedImage: getSelectedImage(state),
   query: getQuery(state),
@@ -92,9 +113,9 @@ const mapStateToProps = (state) => ({
   errorMessage: getResultsErrorMessage(state)
 });
 
-ResultsStateHolder = connect(
+ResultsContainerWithDataAndState = connect(
   mapStateToProps,
   actions
-)(ResultsStateHolder);
+)(ResultsContainerWithData);
 
-export default ResultsStateHolder;
+export default ResultsContainerWithDataAndState;
