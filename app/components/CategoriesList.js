@@ -43,11 +43,6 @@ class CategoriesList extends Component {
             </TouchableOpacity>
           )}
         </ScrollView>
-        <View style={styles.titleContainer}>
-          <Image source={require('./img/scroll-arrow-to-left.png')} />
-          <Text style={styles.title}>Categorías</Text>
-          <Image source={require('./img/scroll-arrow-to-right.png')} />
-        </View>
       </View>
     );
   }
@@ -122,14 +117,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center'
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    marginBottom: 4
-  },
-  title: {
-    marginRight: 80,
-    marginLeft: 80
   },
   scrollViewItem: {
     flex: 1,
