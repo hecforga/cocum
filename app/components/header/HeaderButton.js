@@ -2,17 +2,17 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-const HeaderButton = ({ iconName, iconSize, onPress, canGoNext }) => (
-  <View style={styles.searchButtonWrapper}>
-    <View style={styles.searchButtonMargin}/>
+const HeaderButton = ({ iconName, onPress, canGoNext }) => (
+  <View style={styles.buttonWrapper}>
+    <View style={styles.buttonMargin}/>
     <TouchableOpacity
       activeOpacity={1}
-      style={[styles.searchButton, {backgroundColor: getTouchableOpacityBackgroundColor(canGoNext)}]}
+      style={[styles.button, {backgroundColor: getTouchableOpacityBackgroundColor(canGoNext)}]}
       onPress={() => handleOnPress(canGoNext, onPress)}
     >
-      <FontAwesome name={iconName} style={[styles.searchIcon, {fontSize: iconSize}]} />
+      <FontAwesome name={iconName} style={styles.icon} />
     </TouchableOpacity>
-    <View style={styles.searchButtonMargin}/>
+    <View style={styles.buttonMargin}/>
   </View>
 );
 
@@ -27,26 +27,26 @@ const getTouchableOpacityBackgroundColor = (canGoNext) => (
 )
 
 const styles = StyleSheet.create({
-  searchButtonWrapper:{
-    flex:1,
-    marginRight:5,
-    marginLeft:5,
-    backgroundColor:'white'
+  buttonWrapper:{
+    flex: 1,
+    marginRight: 5,
+    marginLeft: 5
   },
-  searchButton:{
-    flex:0.60,
-    marginRight:5,
-    marginLeft:5,
-    width:50,
-    justifyContent:'center',
-    alignItems:'center',
+  button:{
+    flex: 0.60,
+    marginRight: 5,
+    marginLeft: 5,
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 5
   },
-  searchIcon: {
-    color: 'white'
+  icon: {
+    color: 'white',
+    fontSize: 24
   },
-  searchButtonMargin:{
-    flex:0.20
+  buttonMargin:{
+    flex: 0.20
   }
 });
 
