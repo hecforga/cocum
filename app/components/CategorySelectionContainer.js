@@ -15,13 +15,15 @@ class CategorySelectionContainer extends Component {
 
     setCanGoNext(false);
 
-    ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
-      if(!pickedImage.cancelled){
-        selectImage(pickedImage.uri, pickedImage.width, pickedImage.height);
-      } else {
-        navigation.goBack(null);
-      }
-    });
+    if (navigation.state.params.imagePickerMode === 'gallery') {
+      ImagePicker.launchImageLibraryAsync({allowsEditing: false}).then((pickedImage) => {
+        this.handleImagePicked(pickedImage, navigation, selectImage);
+      });
+    } else {
+      ImagePicker.launchCameraAsync({allowsEditing: false}).then((pickedImage) => {
+        this.handleImagePicked(pickedImage, navigation, selectImage);
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -56,6 +58,14 @@ class CategorySelectionContainer extends Component {
         </View>
       </View>
     ) : null;
+  }
+
+  handleImagePicked(pickedImage, navigation, selectImage) {
+    if (pickedImage.cancelled) {
+      navigation.goBack(null);
+    } else {
+      selectImage(pickedImage.uri, pickedImage.width, pickedImage.height);
+    }
   }
 }
 

@@ -27,10 +27,19 @@ const HomeScreen = ({ navigation }) => (
         <TouchableOpacity
           activeOpacity={1}
           style={styles.galleryButton} 
-          onPress={ () => navigation.navigate('CategorySelection') }> 
+          onPress={() => navigation.navigate('CategorySelection', { imagePickerMode: 'gallery' })}>
           <Entypo
-            name='images'//folder-multiple-image
-            size={60}
+            name='images'
+            size={56}
+            style={styles.galleryIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.galleryButton}
+          onPress={() => navigation.navigate('CategorySelection', { imagePickerMode: 'camera' })}>
+          <Entypo
+            name='camera'
+            size={56}
             style={styles.galleryIcon} />
         </TouchableOpacity>
       </View>
@@ -89,7 +98,10 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 0.125,
-    alignItems: 'center'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginLeft: 24,
+    marginRight: 24
   },
   imageLogo: {
     flex:0.8,
@@ -102,21 +114,20 @@ const styles = StyleSheet.create({
     flex: 0.2
   },
   galleryButton: {
-    flex: 1,
-    justifyContent:'flex-end',
-    alignItems:'center',
-    backgroundColor:'#039be5', //03a9f4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#039be5', //03a9f4,
     borderRadius: 5,
     borderWidth: 0.8,
     borderColor: '#01579b',
-    width:130  
+    paddingLeft: 32,
+    paddingRight: 32
   },
   galleryIcon:{
-    flex:0.8,
-    color:'white',
+    color: 'white'
   },
   bottomMargin:{
-    flex:0.05
+    flex: 0.05
   }
 });
 
