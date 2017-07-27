@@ -6,9 +6,10 @@ import * as actions from '../../actions';
 
 import HeaderButton from './HeaderButton.js';
 
-let HeaderButtonContainer = ({ iconName, onPress, canGoNext }) => (
+let HeaderButtonContainer = ({ iconName, title, onPress, canGoNext }) => (
   <HeaderButton
     iconName={iconName}
+    title={title}
     onPress={onPress}
     canGoNext={canGoNext}
   />

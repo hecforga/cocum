@@ -13,7 +13,7 @@ CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   title: 'Recortar',
   headerRight: (
     <HeaderButtonContainerWithState
-      iconName='search'
+      title='BUSCAR'
       onPress={() => {
         navigation.navigate('Results');
       }}

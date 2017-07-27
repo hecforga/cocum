@@ -1,18 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-const HeaderButton = ({ iconName, onPress, canGoNext }) => (
+const HeaderButton = ({ iconName, title, onPress, canGoNext }) => (
   <View style={styles.buttonWrapper}>
-    <View style={styles.buttonMargin}/>
     <TouchableOpacity
       activeOpacity={1}
       style={[styles.button, {backgroundColor: getTouchableOpacityBackgroundColor(canGoNext)}]}
       onPress={() => handleOnPress(canGoNext, onPress)}
     >
-      <FontAwesome name={iconName} style={styles.icon} />
+      {iconName ?
+        <FontAwesome name={iconName} style={styles.icon} />
+          :
+        <Text style={[styles.title, {color: getTextColor(canGoNext)}]}>{title}</Text>}
     </TouchableOpacity>
-    <View style={styles.buttonMargin}/>
   </View>
 );
 
@@ -24,29 +25,31 @@ const handleOnPress = (canGoNext, onPress) => {
 
 const getTouchableOpacityBackgroundColor = (canGoNext) => (
   canGoNext ? '#039be5' : '#cfd8dc'
-)
+);
+
+const getTextColor = (canGoNext) => (
+  canGoNext ? 'white' : '#a1a1a1'
+);
 
 const styles = StyleSheet.create({
   buttonWrapper:{
-    flex: 1,
-    marginRight: 5,
-    marginLeft: 5
+    marginRight: 8,
   },
   button:{
-    flex: 0.60,
-    marginRight: 5,
-    marginLeft: 5,
-    width: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 2,
+    padding: 2,
+    minWidth: 80
   },
   icon: {
     color: 'white',
-    fontSize: 24
+    fontSize: 32
   },
-  buttonMargin:{
-    flex: 0.20
+  title: {
+    textAlign: 'center',
+    padding: 8,
+    fontWeight: '500'
   }
 });
 
