@@ -50,7 +50,7 @@ class ResultsContainer extends Component {
 
   uploadImage(query) {
     const { uploadImage } = this.props;
-    uploadImage(query.ID, query.imageUri, query.category);
+    uploadImage(query.id, query.imageUri, query.category);
   }
 
   fetchResults(query) {

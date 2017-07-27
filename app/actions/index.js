@@ -29,17 +29,6 @@ export const setQueryCategory = (category) => ({
   category
 });
 
-export const generateQueryId = (mutate) => (dispatch, getState) => {
-  mutate().then((response) => {
-    dispatch({
-      type: 'SET_QUERY_ID',
-      id: response.data.createMyQuery.id
-    })
-  }).catch(
-    error => handleFetchResultsFailure(dispatch, error)
-  );
-};
-
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });
@@ -63,13 +52,22 @@ export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState
   );
 };
 
-// TODO
-export const uploadImage = (queryID, imageUri, category) => (dispatch, getState) => {
+export const generateQueryId = (mutate) => (dispatch, getState) => {
+  mutate().then((response) => {
+    dispatch({
+      type: 'SET_QUERY_ID',
+      id: response.data.createMyQuery.id
+    })
+  }).catch(
+    error => handleFetchResultsFailure(dispatch, error)
+  );
+};
 
+export const uploadImage = (queryId, imageUri, category) => (dispatch, getState) => {
   const file = {
     // `uri` can also be a file system path (i.e. file://)
     uri: imageUri,
-    name: queryID+='.jpg',
+    name: queryId+='.jpg',
     type: 'image/jpg'
   }
 
