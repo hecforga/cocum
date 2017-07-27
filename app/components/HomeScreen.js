@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo } from '@expo/vector-icons';
 
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => (
 
 HomeScreen.navigationOptions = {
   title: 'Cocum',
-  headerStyle: { marginTop: Constants.statusBarHeight }
+  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 };
 
 const styles = StyleSheet.create({
@@ -70,8 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   topText: {
-    fontSize: 24,
-    fontFamily: 'sans-serif-condensed'
+    fontSize: 24
   },
   centerContainer1: {
     flex: 0.225,

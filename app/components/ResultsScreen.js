@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import ResultsContainerWithDataAndState from './ResultsContainer.js';
@@ -13,14 +14,13 @@ ResultsScreen.navigationOptions = ({ navigation }) => ({
   headerRight: (
   <HeaderButtonContainerWithState
     iconName='home'
-    iconSize={30}
     onPress={() => {
       navigation.goBack(null);
       navigation.goBack(null);
     }}
   />
   ),
-  headerStyle: { marginTop: Constants.statusBarHeight }
+  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 });
 
 export default ResultsScreen;

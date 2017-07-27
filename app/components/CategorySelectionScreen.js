@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import CategorySelectionContainerWithState from './CategorySelectionContainer.js';
@@ -13,13 +14,12 @@ CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <HeaderButtonContainerWithState
       iconName='search'
-      iconSize={20}
       onPress={() => {
         navigation.navigate('Results');
       }}
     />
   ),
-  headerStyle: { marginTop: Constants.statusBarHeight}
+  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 });
 
 export default CategorySelectionScreen;
