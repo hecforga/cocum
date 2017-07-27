@@ -11,6 +11,10 @@ export const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   CategorySelection: { screen: CategorySelectionScreen},
   Results: { screen: ResultsScreen}
+}, {
+  navigationOptions: {
+    headerBackTitle: null
+  }
 });
 
 class AppWithNavigationState extends Component{
