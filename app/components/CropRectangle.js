@@ -7,6 +7,7 @@ const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 const TOP_OFFSET = STATUSBAR_HEIGHT + APPBAR_HEIGHT;
 const PADDING = 30;
 const MIN_GRID_SIZE = 70;
+const CORNER_WIDTH = 3;
 
 class CropRectangle extends Component {
   componentWillMount() {
@@ -60,6 +61,15 @@ class CropRectangle extends Component {
     };
 
     this.insideStyles = {
+      style: {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      }
+    };
+
+    this.borderContainerStyles = {
       style: {
         left: 0,
         top: 0,
@@ -148,6 +158,21 @@ class CropRectangle extends Component {
           style={styles.surround}
         />
         <View
+          ref={(borderContainer) => {
+            this._borderContainer = borderContainer;
+          }}
+          style={styles.borderContainer}
+        >
+          <View style={{borderLeftWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', top: 0, left: 0, height: 20}} />
+          <View style={{borderTopWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', top: 0, left: 0, width: 20}} />
+          <View style={{borderTopWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', top: 0, right: 0, width: 20}} />
+          <View style={{borderRightWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', top: 0, right: 0, height: 20}} />
+          <View style={{borderRightWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', bottom: 0, right: 0, height: 20}} />
+          <View style={{borderBottomWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', bottom: 0, right: 0, width: 20}} />
+          <View style={{borderBottomWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', bottom: 0, left: 0, width: 20}} />
+          <View style={{borderLeftWidth: CORNER_WIDTH, borderColor: 'white', position: 'absolute', bottom: 0, left: 0, height: 20}} />
+        </View>
+        <View
           ref={(rect) => {
             this._rect = rect;
           }}
@@ -168,6 +193,11 @@ class CropRectangle extends Component {
     this.insideStyles.style.top = y0 + PADDING;
     this.insideStyles.style.width = x1 - x0 - 2 * PADDING;
     this.insideStyles.style.height = y1 - y0 - 2 * PADDING;
+
+    this.borderContainerStyles.style.left = x0 + PADDING - CORNER_WIDTH;
+    this.borderContainerStyles.style.top = y0 + PADDING - CORNER_WIDTH;
+    this.borderContainerStyles.style.width = x1 - x0 - 2 * PADDING + 2 * CORNER_WIDTH;
+    this.borderContainerStyles.style.height = y1 - y0 - 2 * PADDING + 2 * CORNER_WIDTH;
 
     this.topStyles.style.left = this.selectedImage.layout.x;
     this.topStyles.style.top = this.selectedImage.layout.y;
@@ -191,6 +221,7 @@ class CropRectangle extends Component {
 
     this._rect && this._rect.setNativeProps(this.rectStyles);
     this._inside && this._inside.setNativeProps(this.insideStyles);
+    this._borderContainer && this._borderContainer.setNativeProps(this.borderContainerStyles);
     this._top && this._top.setNativeProps(this.topStyles);
     this._right && this._right.setNativeProps(this.rightStyles);
     this._bottom && this._bottom.setNativeProps(this.bottomStyles);
@@ -198,16 +229,19 @@ class CropRectangle extends Component {
   }
 
   handlePanResponderGrant(e, gestureState) {
-    if (gestureState.x0 < this.x0 + 2 * PADDING) {
+    const widthDividedBy5 = 0.2 * (this.x1 - this.x0);
+    const heightDividedBy5 = 0.2 * (this.y1 - this.y0);
+
+    if (gestureState.x0 < this.x0 + PADDING + Math.min(widthDividedBy5, PADDING)) {
       this.movingSides.push('left');
     }
-    if (gestureState.y0 - TOP_OFFSET < this.y0 + 2 * PADDING) {
+    if (gestureState.y0 - TOP_OFFSET < this.y0 + PADDING + Math.min(heightDividedBy5, PADDING)) {
       this.movingSides.push('top');
     }
-    if (gestureState.x0 > this.x1 - 2 * PADDING) {
+    if (gestureState.x0 > this.x1 - PADDING - Math.min(widthDividedBy5, PADDING)) {
       this.movingSides.push('right');
     }
-    if (gestureState.y0 - TOP_OFFSET > this.y1 - 2 * PADDING) {
+    if (gestureState.y0 - TOP_OFFSET > this.y1 - PADDING - Math.min(heightDividedBy5, PADDING)) {
       this.movingSides.push('bottom');
     }
     if (this.movingSides.length === 0) {
@@ -306,12 +340,15 @@ const computeCropData = (selectedImage, x0, y0, x1, y1) => {
 const styles = StyleSheet.create({
   rect: {
     position: 'absolute',
-    backgroundColor: 'green',
     opacity: 0
   },
   inside: {
+    position: 'absolute',
     borderColor: 'white',
     borderWidth: 1
+  },
+  borderContainer: {
+    position: 'absolute'
   },
   surround: {
     position: 'absolute',
