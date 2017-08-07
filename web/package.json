@@ -1,16 +1,23 @@
 {
   "name": "web",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start": "MONGO_URL='mongodb://meteor:PasswordForMeteor@cluster1-shard-00-00-dmovm.mongodb.net:27017,cluster1-shard-00-01-dmovm.mongodb.net:27017,cluster1-shard-00-02-dmovm.mongodb.net:27017/test?ssl=true&replicaSet=Cluster1-shard-0&authSource=admin' meteor"
-  },
   "dependencies": {
-    "babel-runtime": "^6.22.0",
-    "material-ui": "^0.18.0",
-    "meteor-node-stubs": "~0.2.0",
-    "react": "^15.5.4",
-    "react-addons-pure-render-mixin": "^15.5.2",
-    "react-dom": "^15.5.4",
-    "react-tap-event-plugin": "^2.0.1"
+    "material-ui": "^0.18.6",
+    "react": "^15.6.1",
+    "react-apollo": "^1.4.4",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-scripts": "1.0.10",
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
