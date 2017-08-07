@@ -29,6 +29,27 @@ export const setQueryCategory = (category) => ({
   category
 });
 
+//para la beta
+export const setQueryRating = (mutate) => (dispatch, getState) => {
+  mutate().catch(
+    error => console.log(error)
+  );
+};
+
+export const setGivenRating = (givenRating) => ({
+  type: 'SET_GIVEN_RATING',
+  givenRating
+});
+
+export const resetRatingBarState = () => ({
+  type: 'RESET_RATINGBAR_STATE'
+});
+
+export const setRatingBarVisibility = (isVisible) => ({
+  type: 'SET_RATINGBAR_VISIBILITY',
+  isVisible
+});//
+
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });
