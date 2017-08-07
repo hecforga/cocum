@@ -8,6 +8,8 @@ import * as actions from '../actions';
 
 import ResultsListWithData from './ResultsList.js';
 
+import ResultsRatingBarContainerWithDataAndState from './results_rating/ResultsRatingBarContainer.js';//para la beta
+
 class ResultsContainer extends Component {
   componentWillMount() {
     const { setCanGoNext } = this.props;
@@ -79,6 +81,7 @@ class ResultsContainer extends Component {
 
     return (
       <View style={ styles.container }>
+        <ResultsRatingBarContainerWithDataAndState /> 
         <ResultsListWithData ids={ids} />
       </View>
     );
