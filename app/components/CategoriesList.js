@@ -50,19 +50,11 @@ class CategoriesList extends Component {
 
 const categories = [
   {
-    name: 'abrigos_chaquetas',
+    name: 'vestidos',
     labels: [
-      'Abrigos y',
-      'chaquetas'
+      'Vestidos',
     ],
-    icon: require('./img/abrigos_chaquetas.png')
-  }, {
-    name: 'camisas_blusas',
-    labels: [
-      'Camisas y',
-      'blusas'
-    ],
-    icon: require('./img/camisas_blusas.png')
+    icon: require('./img/vestidos.png')
   }, {
     name: 'camisetas_tops_bodies',
     labels: [
@@ -70,6 +62,19 @@ const categories = [
       'tops y bodies'
     ],
     icon: require('./img/camisetas_tops_bodies.png')
+  }, {
+    name: 'monos',
+    labels: [
+      'Monos',
+    ],
+    icon: require('./img/monos.png')
+  }, {
+    name: 'camisas_blusas',
+    labels: [
+      'Camisas y',
+      'blusas'
+    ],
+    icon: require('./img/camisas_blusas.png')
   }, {
     name: 'faldas',
     labels: [
@@ -104,12 +109,12 @@ const categories = [
     ],
     icon: require('./img/sudaderas_jerseis.png')
   }, {
-    name: 'vestidos_monos',
+    name: 'abrigos_chaquetas',
     labels: [
-      'Vestidos y',
-      'monos'
+      'Abrigos y',
+      'chaquetas'
     ],
-    icon: require('./img/vestidos_monos.png')
+    icon: require('./img/abrigos_chaquetas.png')
   }
 ];
 
