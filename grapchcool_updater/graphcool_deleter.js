@@ -9,12 +9,12 @@ if (process.argv[2] !== 'all') {
   genders = [process.argv[2]];
 }
 
-let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos_monos"];
+let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"];
 if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["mango", "pullandbear", "zara"];
+let shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }

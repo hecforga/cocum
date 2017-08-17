@@ -9,12 +9,12 @@ if (process.argv[2] !== 'all') {
   genders = [process.argv[2]];
 }
 
-let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos_monos"];
+let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"];
 if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["mango", "pullandbear", "zara"];
+let shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }
@@ -23,31 +23,50 @@ const client = new Lokka({
   transport: new Transport('https://api.graph.cool/simple/v1/cj2grdzj0e72c0123e02e884g')
 });
 
+const newProducts = {};
+
+const createProduct = (productsFolder, category, shop, index) => {
+  const productId = newProducts[category][shop][index];
+  const productInfoPath = productsFolder + '/' + productId + '/' + productId + '.json';
+  const productInfo = JSON.parse(fs.readFileSync(productInfoPath, 'utf8'));
+
+  client.mutate(`
+    {
+      createProduct(
+        productId: "${productInfo.id}",
+        imageUrl: "${productInfo.imageUrl}",
+        productUrl: "${productInfo.productUrl}",
+        shop: "${productInfo.shop}",
+        price: "${productInfo.price}"
+      ) {
+        productId
+      }
+    }
+  `)
+  .then(() => {
+    if (index % 100 === 0) {
+      console.log(category + ', ' + shop + ': analyzed ' + (index + 1) + ' of ' + newProducts[category][shop].length);
+    }
+  })
+  .catch((error) => console.log(error.rawError[0].message))
+  .finally(() => {
+    if (index < newProducts[category][shop].length - 1) {
+      createProduct(productsFolder, category, shop, index + 1);
+    }
+  });
+}
+
 genders.forEach((gender) => {
   categories.forEach((category) => {
+    newProducts[category] = {};
     const categoryFolder = datasetFolder + '/' + gender + '/' + category;
     shops.forEach((shop) => {
       const productsFolder = categoryFolder + '/' + shop + '/products';
       const newProductsFilePath = productsFolder + '/new_products.json';
-      const newProducts = JSON.parse(fs.readFileSync(newProductsFilePath, 'utf8'));
-      newProducts.forEach((productId) => {
-        const productInfoPath = productsFolder + '/' + productId + '/' + productId + '.json';
-        const productInfo = JSON.parse(fs.readFileSync(productInfoPath, 'utf8'));
-
-        client.mutate(`
-          {
-            createProduct(
-              productId: "${productInfo.id}",
-              imageUrl: "${productInfo.imageUrl}",
-              productUrl: "${productInfo.productUrl}",
-              shop: "${productInfo.shop}",
-              price: "${productInfo.price}"
-            ) {
-              productId
-            }
-          }
-        `);
-      });
+      newProducts[category][shop] = JSON.parse(fs.readFileSync(newProductsFilePath, 'utf8'));
+      if (newProducts[category][shop].length) {
+        createProduct(productsFolder, category, shop, 0);
+      }
     });
   });
 });
