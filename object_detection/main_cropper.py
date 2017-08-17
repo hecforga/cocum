@@ -20,11 +20,11 @@ if sys.argv[1] == 'all':
 else:
     genders = [sys.argv[1]]
 if sys.argv[2] == 'all':
-    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos_monos"]
+    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"]
 else:
     categories = [sys.argv[2]]
 if sys.argv[3] == 'all':
-    shops = ["mango", "pullandbear", "zara"]
+    shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"]
 else:
     shops = [sys.argv[3]]
 
@@ -38,15 +38,15 @@ for gender in genders:
 
             # Remove previous products
             previous_products_file_path = products_folder + "/previous_products.json"
-            with open(previous_products_file_path) as previous_products_file:    
+            with open(previous_products_file_path) as previous_products_file:
                 previous_products = json.load(previous_products_file)
             for product_id in previous_products:
                 os.remove(output_folder + "/" + product_id + "_CROPPED.png")
 
-            # Crop new products            
+            # Crop new products
             new_products_file_path = products_folder + "/new_products.json"
             # Traverse images in json file passed as argument
-            with open(new_products_file_path) as new_products_file:    
+            with open(new_products_file_path) as new_products_file:
                 new_products = json.load(new_products_file)
 
             for product_id in new_products:
@@ -66,7 +66,7 @@ for gender in genders:
                             if hierarchy[0][i][3] == 0 and hierarchy[0][i][2] > 0:
                                 aux_contours.append(contours[i])
                     thresh_value -= 1
-                
+                    
                 if len(aux_contours) > 0:
                     # Compute output image dimensions
                     contour = sorted(aux_contours, key = cv2.contourArea, reverse = True)[0]
