@@ -1,4 +1,4 @@
-const LIRESOLR_SERVER_URL = 'http://139.59.155.103:8983/solr/';
+const LIRESOLR_SERVER_URL = 'http://54.93.254.52:8983/solr/';
 
 export const fetchResults = (gender, category, imageUrl) => {
   const url = LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?url=' + imageUrl + '&field=ce&ms=false&rows=12';
