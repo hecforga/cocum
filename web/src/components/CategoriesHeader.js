@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 
-const INITIAL_CATEGORY = 'vestidos_monos';
+const INITIAL_CATEGORY = 'vestidos';
 
 class CategoriesHeader extends Component {
   componentWillMount() {
@@ -53,6 +53,10 @@ const categories = [
     label: 'Faldas'
   },
   {
+    name: 'monos',
+    label: 'Monos'
+  },
+  {
     name: 'pantalones_cortos',
     label: 'Pantalones cortos'
   },
@@ -61,16 +65,12 @@ const categories = [
     label: 'Pantalones largos'
   },
   {
-    name: 'punto',
-    label: 'Punto'
-  },
-  {
     name: 'sudaderas_jerseis',
     label: 'Sudaderas y jerseis'
   },
   {
-    name: 'vestidos_monos',
-    label: 'Vestidos y monos'
+    name: 'vestidos',
+    label: 'Vestidos'
   }
 ];
 

@@ -23,7 +23,7 @@ class QueEsCocum extends Component {
           Con nuestro algoritmo, buscamos entre un sinfín de marcas de ropa, te encontramos la que más te gusta y te decimos dónde puedes conseguirla, tanto ella como otras visualmente similares
         </div>
         <h3>
-          Descubrirás lo último de Zara, Mando, El Corte Inglés, Stradivarius... ¡y muchas tiendas más! Y todo esto con un propósito, ¡convertirnos en el futuro Shazam de la moda!
+          Descubrirás lo último de Zara, Mango, El Corte Inglés, Stradivarius... ¡y muchas tiendas más! Y todo esto con un propósito, ¡convertirnos en el futuro Shazam de la moda!
         </h3>
       </div>
     );

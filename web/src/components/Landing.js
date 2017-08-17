@@ -50,7 +50,7 @@ const Landing = () => {
             fontFamily: 'Roboto'
           }}
         >
-          <p>Entontrar la ropa que te inspira...</p>
+          <p>Encontrar la ropa que te inspira...</p>
         </div>
         <div
           style={{
