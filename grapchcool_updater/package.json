@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babyparse": "^0.4.6",
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.6.1"
   }
