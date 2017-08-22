@@ -61,7 +61,7 @@ class ResultsContainer extends Component {
   }
 
   render() {
-    const { status, ids, errorMessage, setQueryResultsList } = this.props;
+    const { status, ids, errorMessage, setQueryResultsList, setProductTimesVisited} = this.props;
 
     if (status === 'error') {
       return (
@@ -82,7 +82,11 @@ class ResultsContainer extends Component {
     return (
       <View style={ styles.container }>
         <ResultsRatingBarContainerWithDataAndState /> 
-        <ResultsListWithData ids={ids} setQueryResultsList={setQueryResultsList}/>
+        <ResultsListWithData
+         ids={ids} 
+         setQueryResultsList={setQueryResultsList}
+         setProductTimesVisited={setProductTimesVisited}
+         />
       </View>
     );
   }
@@ -90,6 +94,12 @@ class ResultsContainer extends Component {
   setQueryResultsList(resultsProductUrl) {
     const {setQueryResultsList} = this.props;
     setQueryResultsList(resultsProductUrl);
+  }
+
+  setProductTimesVisited(resultsTimesVisited){
+    const { setProductTimesVisited, mutate } = this.props;
+    this.resultsTimesVisited = resultsTimesVisited;
+    setProductTimesVisited(mutate);
   }//beta
 }
 
@@ -111,9 +121,22 @@ const CreateMyQueryMutation = gql`
   }
 `;
 
+const UpdateProductTimesVisited = gql`
+  mutation updateTimesVisitedMutation ($ids: [String!], $timesVisited: [String!]) {
+    updateProduct(gender: $gender, category: $category ) {
+      id
+    }
+  }
+`;
+
 const ResultsContainerWithData = graphql(CreateMyQueryMutation, {
   options: ({query}) => ({variables: {gender: query.gender, category: query.category}})
-})(ResultsContainer);
+})(
+  graphql(UpdateProductTimesVisited, {
+    //comprobar como pasarle una variable global 
+    options: ({ids, resultsTimesVisited}) => ({variables: {id: query.gender, category: query.category}})
+  })
+)(ResultsContainer);
 
 const mapStateToProps = (state) => ({
   selectedImage: getSelectedImage(state),
