@@ -24,7 +24,7 @@ class ResultsRatingBarContainer extends Component {
               onPress={setGivenRating}
             />
             <Button
-              title="Aceptar" 
+              title="Enviar"
               onPress={()=> this.setQueryRating()}
             />
           </View>

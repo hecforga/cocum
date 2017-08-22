@@ -65,7 +65,7 @@ class ResultsContainer extends Component {
 
     if (status === 'error') {
       return (
-        <View style={styles.container}>
+        <View style={styles.centeredContainer}>
           <Text>{errorMessage}</Text>
         </View>
       );
@@ -73,7 +73,7 @@ class ResultsContainer extends Component {
 
     if (status !== 'results_ready') {
       return (
-        <View style={styles.container}>
+        <View style={styles.centeredContainer}>
           <Text>Cargando...</Text>
         </View>
       );
@@ -96,10 +96,15 @@ class ResultsContainer extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
+  centeredContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
   }
 });
 

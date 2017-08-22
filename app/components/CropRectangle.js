@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, PanResponder, Platform } from 'react-native';
+import { StyleSheet, View, PanResponder, Platform, Text } from 'react-native';
 import { Constants } from 'expo';
+import {setSelectedImageClicked} from "../actions/index";
 
 const STATUSBAR_HEIGHT = Constants.statusBarHeight;
 const APPBAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 const TOP_OFFSET = STATUSBAR_HEIGHT + APPBAR_HEIGHT;
 const PADDING = 30;
+const INFO_BAR_HEIGHT = 28;
 const MIN_GRID_SIZE = 70;
 const CORNER_WIDTH = 3;
 
@@ -36,7 +38,7 @@ class CropRectangle extends Component {
     this.leftLimit = imageLayout.x;
     this.topLimit = imageLayout.y;
     this.rightLimit = imageLayout.x + imageLayout.width;
-    this.bottomLimit = imageLayout.y + imageLayout.height;
+    this.bottomLimit = imageLayout.y + imageLayout.height - INFO_BAR_HEIGHT;
 
     const initialWidth = Math.max(imageLayout.width / 3, MIN_GRID_SIZE);
     const initialHeight = Math.max(imageLayout.height / 3, MIN_GRID_SIZE);
@@ -126,7 +128,7 @@ class CropRectangle extends Component {
     }
 
     return (
-      <View>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
         <View
           ref={(inside) => {
             this._inside = inside;
@@ -179,6 +181,22 @@ class CropRectangle extends Component {
           style={styles.rect}
           {...this.panResponder.panHandlers}
         />
+        {selectedImage.clicked ?
+          null
+          :
+          <View style={{flexDirection: 'row'}}>
+            <View style={{
+              flex: 1,
+              backgroundColor: 'black',
+              opacity: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: INFO_BAR_HEIGHT
+            }}>
+              <Text style={{color: 'white'}}>Ajusta al máximo la prenda para mejores resultados</Text>
+            </View>
+          </View>
+        }
       </View>
     );
   }
@@ -306,7 +324,6 @@ class CropRectangle extends Component {
     this.y0 = this.rectStyles.style.top;
     this.x1 = this.x0 + this.rectStyles.style.width;
     this.y1 = this.y0 + this.rectStyles.style.height;
-
 
     setSelectedImageCropData(computeCropData(this.selectedImage, this.x0, this.y0, this.x1, this.y1));
 
