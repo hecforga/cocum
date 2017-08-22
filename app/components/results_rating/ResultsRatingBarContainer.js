@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
 });
 
 const UpdateMyQueryResultsRating = gql`
-  mutation UpdateMyQueryResultsRating($id: ID!, $rating: Int!) {
-    updateMyQuery(id: $id, rating: $rating ) {
+  mutation UpdateMyQueryResultsRating($id: ID!, $imageUrl: String!, $rating: Int!, $resultsList: [String!]) {
+    updateMyQuery(id: $id, imageUrl: $imageUrl, rating: $rating, resultsList: $resultsList ) {
       id
     }
   }
@@ -73,7 +73,14 @@ const UpdateMyQueryResultsRating = gql`
 
 
 const ResultsRatingBarContainerWithData = graphql(UpdateMyQueryResultsRating, {
-  options: ({query, ratingBarState}) => ({variables: {id : query.id, rating : ratingBarState.givenRating}})
+  options: ({query, ratingBarState}) => ({
+    variables: {
+      id : query.id, 
+      imageUrl : query.imageUrl, //para la beta
+      rating : ratingBarState.givenRating,
+      resultsList : query.resultsList //para la beta
+    }
+  })
 })(ResultsRatingBarContainer);
 
 const mapStateToProps = (state) => ({

@@ -36,6 +36,11 @@ export const setQueryRating = (mutate) => (dispatch, getState) => {
   );
 };
 
+export const setQueryResultsList = (resultsProductUrl) => ({
+  type: 'SET_QUERY_RESULTSLIST',
+  resultsProductUrl
+});
+
 export const setGivenRating = (givenRating) => ({
   type: 'SET_GIVEN_RATING',
   givenRating
@@ -48,7 +53,7 @@ export const resetRatingBarState = () => ({
 export const setRatingBarVisibility = (isVisible) => ({
   type: 'SET_RATINGBAR_VISIBILITY',
   isVisible
-});//
+});// beta
 
 export const resetQuery = () => ({
   type: 'RESET_QUERY'

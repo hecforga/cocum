@@ -3,7 +3,8 @@ const initialState = {
   gender: 'mujer',
   category: '',
   imageUri: '',
-  imageUrl: ''
+  imageUrl: '',
+  resultsList: []
 };
 
 const query = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const query = (state = initialState, action) => {
       };
     case 'RESET_QUERY':
       return initialState;
+
+    case 'SET_QUERY_RESULTSLIST':
+      return {
+        ...state,
+        resultsList: action.resultsProductUrl
+      };
     default:
       return state;
   }

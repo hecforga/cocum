@@ -61,7 +61,7 @@ class ResultsContainer extends Component {
   }
 
   render() {
-    const { status, ids, errorMessage } = this.props;
+    const { status, ids, errorMessage, setQueryResultsList } = this.props;
 
     if (status === 'error') {
       return (
@@ -82,11 +82,18 @@ class ResultsContainer extends Component {
     return (
       <View style={ styles.container }>
         <ResultsRatingBarContainerWithDataAndState /> 
-        <ResultsListWithData ids={ids} />
+        <ResultsListWithData ids={ids} setQueryResultsList={setQueryResultsList}/>
       </View>
     );
   }
+  //para la beta
+  setQueryResultsList(resultsProductUrl) {
+    const {setQueryResultsList} = this.props;
+    setQueryResultsList(resultsProductUrl);
+  }//beta
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
