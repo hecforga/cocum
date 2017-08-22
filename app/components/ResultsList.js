@@ -6,10 +6,15 @@ const CONTAINER_PADDING = 16;
 const PRODUCT_CONTAINER_MARGIN = 8;
 
 class ResultsList extends Component {
+
   componentWillMount() {
     const { height, width } = Dimensions.get('window');
     this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_CONTAINER_MARGIN) / 2;
     this.imageWidth = this.imageWidth | 0;
+    this.resultsProductUrl = [];//para la beta
+  }
+  componentDidMount() {
+    this.setQueryResultsList(this.resultsProductUrl);//para la beta
   }
 
   render() {
@@ -25,12 +30,13 @@ class ResultsList extends Component {
     ids.forEach((id) => {
       const product = data.allProducts.find((p) => p.productId === id);
       aux.push(product);
+      this.resultsProductUrl.push(product.productUrl);//para la beta
       if (count % 2 === 1) {
         productsInArraysOf2.push(aux);
         aux = [];
       }
       count++;
-    });
+    });    
 
     return (
       <ScrollView style={styles.container}>
@@ -56,6 +62,11 @@ class ResultsList extends Component {
         )}
       </ScrollView>
     );
+  }
+
+  setQueryResultsList(resultsProductUrl){
+    const { setQueryResultsList } = this.props;
+    setQueryResultsList(resultsProductUrl);
   }
 }
 
