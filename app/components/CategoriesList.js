@@ -52,22 +52,28 @@ const categories = [
   {
     name: 'vestidos',
     labels: [
-      'Vestidos',
+      'Vestidos'
     ],
     icon: require('./img/vestidos.png')
   }, {
-    name: 'camisetas_tops_bodies',
-    labels: [
-      'Camisetas,',
-      'tops y bodies'
-    ],
-    icon: require('./img/camisetas_tops_bodies.png')
-  }, {
     name: 'monos',
     labels: [
-      'Monos',
+      'Monos'
     ],
     icon: require('./img/monos.png')
+  }, {
+    name: 'tops_bodies',
+    labels: [
+      'Tops y',
+      'bodies'
+    ],
+    icon: require('./img/tops_bodies.png')
+  }, {
+    name: 'camisetas',
+    labels: [
+      'Camisetas'
+    ],
+    icon: require('./img/camisetas.png')
   }, {
     name: 'camisas_blusas',
     labels: [
@@ -78,7 +84,7 @@ const categories = [
   }, {
     name: 'faldas',
     labels: [
-      'Faldas',
+      'Faldas'
     ],
     icon: require('./img/faldas.png')
   }, {
@@ -98,7 +104,7 @@ const categories = [
   }, {
     name: 'punto',
     labels: [
-      'Punto',
+      'Punto'
     ],
     icon: require('./img/punto.png')
   }, {
