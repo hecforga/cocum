@@ -45,8 +45,8 @@ const categories = [
     label: 'Camisas y blusas'
   },
   {
-    name: 'camisetas_tops_bodies',
-    label: 'Camisetas, tops y bodies'
+    name: 'camisetas',
+    label: 'Camisetas'
   },
   {
     name: 'faldas',
@@ -67,6 +67,10 @@ const categories = [
   {
     name: 'sudaderas_jerseis',
     label: 'Sudaderas y jerseis'
+  },
+  {
+    name: 'tops_bodies',
+    label: 'Tops y bodies'
   },
   {
     name: 'vestidos',
