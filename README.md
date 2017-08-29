@@ -99,7 +99,7 @@ node graphcool_creator.js mujer all all
 
 Abrir el proyecto liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java
 
-Argumentos: /path/to/dataset mujer all
+Argumentos: /path/to/dataset mujer all all
 
 ### Eliminar de Grapcool
 

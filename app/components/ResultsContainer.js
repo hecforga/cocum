@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ImageEditor } from 'react-native';
 import { connect } from 'react-redux';
-import { gql, graphql } from 'react-apollo';
+import { gql, graphql, compose } from 'react-apollo';
 
 import { getSelectedImage, getQuery, getResultsIds, getResultsStatus, getResultsErrorMessage } from '../reducers';
 import * as actions from '../actions';
@@ -13,7 +13,7 @@ import ResultsRatingBarContainerWithDataAndState from './results_rating/ResultsR
 class ResultsContainer extends Component {
   componentWillMount() {
     const { setCanGoNext } = this.props;
-    setCanGoNext(true);
+    setCanGoNext(true);    
   }
 
   componentDidMount() {
@@ -46,8 +46,8 @@ class ResultsContainer extends Component {
   }
 
   generateQueryId() {
-    const { generateQueryId, mutate } = this.props;
-    generateQueryId(mutate);
+    const { generateQueryId, createMyQueryMutate } = this.props;
+    generateQueryId(createMyQueryMutate);
   }
 
   uploadImage(query) {
@@ -58,10 +58,15 @@ class ResultsContainer extends Component {
   fetchResults(query) {
     const { fetchResults } = this.props;
     fetchResults(query.gender, query.category, query.imageUrl);
+  }  
+
+  setProductTimesVisited(product, timesVisited){
+    const { setProductTimesVisited, updateTimesVisitedMutate} = this.props;
+    setProductTimesVisited(updateTimesVisitedMutate, product, timesVisited);
   }
 
   render() {
-    const { status, ids, errorMessage, setQueryResultsList } = this.props;
+    const { status, ids, errorMessage, setQueryResultsList} = this.props;
 
     if (status === 'error') {
       return (
@@ -82,15 +87,14 @@ class ResultsContainer extends Component {
     return (
       <View style={ styles.container }>
         <ResultsRatingBarContainerWithDataAndState /> 
-        <ResultsListWithData ids={ids} setQueryResultsList={setQueryResultsList}/>
+        <ResultsListWithData
+         ids={ids} 
+         setQueryResultsList={setQueryResultsList}
+         setProductTimesVisited={(product, timesVisited) => this.setProductTimesVisited(product, timesVisited)}
+         />
       </View>
     );
   }
-  //para la beta
-  setQueryResultsList(resultsProductUrl) {
-    const {setQueryResultsList} = this.props;
-    setQueryResultsList(resultsProductUrl);
-  }//beta
 }
 
 
@@ -109,16 +113,27 @@ const styles = StyleSheet.create({
 });
 
 const CreateMyQueryMutation = gql`
-  mutation CreateMyQueryMutation ($gender: String!, $category: String!) {
+  mutation createMyQueryMutation ($gender: String!, $category: String!) {
     createMyQuery(gender: $gender, category: $category ) {
       id
     }
   }
 `;
 
-const ResultsContainerWithData = graphql(CreateMyQueryMutation, {
-  options: ({query}) => ({variables: {gender: query.gender, category: query.category}})
-})(ResultsContainer);
+const UpdateProductTimesVisited = gql`
+  mutation updateTimesVisitedMutation ($id: ID!, $timesVisited: Int!) {
+    updateProduct(id: $id, timesVisited: $timesVisited ) {
+      id
+    }
+  }
+`;
+
+const ResultsContainerWithData = compose(
+  graphql(UpdateProductTimesVisited, {name: 'updateTimesVisitedMutate'}),
+  graphql(CreateMyQueryMutation,  { name: 'createMyQueryMutate',
+    options: ({query}) => ({ variables: {gender: query.gender, category: query.category}})
+  })
+)(ResultsContainer);
 
 const mapStateToProps = (state) => ({
   selectedImage: getSelectedImage(state),

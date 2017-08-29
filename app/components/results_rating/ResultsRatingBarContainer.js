@@ -40,13 +40,6 @@ class ResultsRatingBarContainer extends Component {
     resetRatingBarState();
   }
 
-  setGivenRating(givenRating) {
-
-    const { setGivenRating } = this.props;
-    setGivenRating(givenRating);
-
-  }
-
   setQueryRating() {
     const { setQueryRating, setRatingBarVisibility, mutate } = this.props;
     setRatingBarVisibility(false);
