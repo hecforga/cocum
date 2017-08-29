@@ -15,7 +15,6 @@ class ResultsList extends Component {
 
   }
   componentDidMount() {
-    const {ids} = this.props;
     this.setQueryResultsList(this.resultsProductUrl);//para la beta
   }
 
@@ -51,7 +50,7 @@ class ResultsList extends Component {
               <TouchableHighlight
                 key={product.productId}
                 style={{ margin: PRODUCT_CONTAINER_MARGIN, width: this.imageWidth }}
-                onPress={() =>  this.setProductTimesVisited(product)}//;Linking.openURL(product.productUrl);}}
+                onPress={() => { this.setProductTimesVisited(product); Linking.openURL(product.productUrl); }}
               >
                 <View style={styles.productContainer}>
                   <Image source={{ uri: product.imageUrl }} style={{ width: this.imageWidth, height: this.imageWidth * 1.2 }} />
@@ -76,8 +75,8 @@ class ResultsList extends Component {
 
   setProductTimesVisited(product){
     const { setProductTimesVisited } = this.props;
-    timesVisited = product.timesVisited;
-    if(timesVisited == null){
+    let timesVisited = product.timesVisited;
+    if(!timesVisited){
       timesVisited = 0;
     }
     timesVisited++;
