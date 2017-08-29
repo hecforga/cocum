@@ -55,6 +55,14 @@ export const setRatingBarVisibility = (isVisible) => ({
   isVisible
 });// beta
 
+export const setProductTimesVisited = (mutate, product, timesVisited) => (dispatch, getState) => {
+  mutate({
+    variables: { id: product.id, timesVisited: timesVisited}
+    }).catch(
+    error => console.log("SET TIMES VISITED ERROR")
+  );
+};
+
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });

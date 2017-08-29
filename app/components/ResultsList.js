@@ -12,13 +12,11 @@ class ResultsList extends Component {
     this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_CONTAINER_MARGIN) / 2;
     this.imageWidth = this.imageWidth | 0;
     this.resultsProductUrl = [];//para la beta
-    this.resultsTimesVisited = [];//para la beta
 
   }
   componentDidMount() {
     const {ids} = this.props;
     this.setQueryResultsList(this.resultsProductUrl);//para la beta
-    this.setProductTimesVisited(ids, this.resultsTimesVisited);//para la beta
   }
 
   render() {
@@ -34,13 +32,7 @@ class ResultsList extends Component {
     ids.forEach((id) => {
       const product = data.allProducts.find((p) => p.productId === id);
       aux.push(product);
-
-      this.resultsProductUrl.push(product.productUrl);//para la beta
-      timesVisited = product.timesVisited;//para la beta
-      if(timesVisited == null)://para la beta
-        timesVisited = 1;//para la beta
-      this.resultsTimesVisited.push(timesVisited+1);//para la beta
-
+      this.resultsProductUrl.push(product.productUrl);//para la beta 
       if (count % 2 === 1) {
         productsInArraysOf2.push(aux);
         aux = [];
@@ -59,7 +51,7 @@ class ResultsList extends Component {
               <TouchableHighlight
                 key={product.productId}
                 style={{ margin: PRODUCT_CONTAINER_MARGIN, width: this.imageWidth }}
-                onPress={() => Linking.openURL(product.productUrl)}
+                onPress={() =>  this.setProductTimesVisited(product)}//;Linking.openURL(product.productUrl);}}
               >
                 <View style={styles.productContainer}>
                   <Image source={{ uri: product.imageUrl }} style={{ width: this.imageWidth, height: this.imageWidth * 1.2 }} />
@@ -74,15 +66,23 @@ class ResultsList extends Component {
     );
   }
 
+
   //para la beta
   setQueryResultsList(resultsProductUrl){
     const { setQueryResultsList } = this.props;
     setQueryResultsList(resultsProductUrl);
-  }
-  setProductTimesVisited(ids, resultsTimesVisited){
-    const { setProductTimesVisited } = this.props;
-    setProductTimesVisited(ids, resultsTimesVisited);
   }//beta
+
+
+  setProductTimesVisited(product){
+    const { setProductTimesVisited } = this.props;
+    timesVisited = product.timesVisited;
+    if(timesVisited == null){
+      timesVisited = 0;
+    }
+    timesVisited++;
+    setProductTimesVisited(product, timesVisited);
+  }
 }
 
 const styles = StyleSheet.create({
@@ -106,6 +106,7 @@ const gqlQuery = gql`query getProductsByIds($ids: [String!]) {
   allProducts(filter: {
     productId_in: $ids
   }) {
+    id,
     productId,
     imageUrl,
     productUrl,
