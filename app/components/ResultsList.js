@@ -1,43 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableHighlight, ScrollView, Image, Text, Dimensions, Linking } from 'react-native';
-import { gql, graphql } from 'react-apollo';
+import { StyleSheet, View, TouchableHighlight, ScrollView, Image, Text, Dimensions } from 'react-native';
 
 const CONTAINER_PADDING = 16;
-const PRODUCT_CONTAINER_MARGIN = 8;
+const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
 
 class ResultsList extends Component {
-
   componentWillMount() {
     const { height, width } = Dimensions.get('window');
-    this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_CONTAINER_MARGIN) / 2;
+    this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_THUMBNAIL_CONTAINER_MARGIN) / 2;
     this.imageWidth = this.imageWidth | 0;
-    this.resultsProductUrl = [];//para la beta
-
-  }
-  componentDidMount() {
-    this.setQueryResultsList(this.resultsProductUrl);//para la beta
   }
 
   render() {
-    const {ids, data} = this.props;
-
-    if (data.loading) {
-      return <Text>Cargando...</Text>
-    }
-
-    const productsInArraysOf2 = [];
-    let aux = [];
-    let count = 0;
-    ids.forEach((id) => {
-      const product = data.allProducts.find((p) => p.productId === id);
-      aux.push(product);
-      this.resultsProductUrl.push(product.productUrl);//para la beta 
-      if (count % 2 === 1) {
-        productsInArraysOf2.push(aux);
-        aux = [];
-      }
-      count++;
-    });    
+    const { productsInArraysOf2, onProductPress } = this.props;
 
     return (
       <ScrollView style={styles.container}>
@@ -49,10 +24,10 @@ class ResultsList extends Component {
             {arrayOf2Products.map((product) =>
               <TouchableHighlight
                 key={product.productId}
-                style={{ margin: PRODUCT_CONTAINER_MARGIN, width: this.imageWidth }}
-                onPress={() => { this.setProductTimesVisited(product); Linking.openURL(product.productUrl); }}
+                style={styles.productThumbnailContainer}
+                onPress={() => onProductPress(product) }
               >
-                <View style={styles.productContainer}>
+                <View style={styles.productThumbnail}>
                   <Image source={{ uri: product.imageUrl }} style={{ width: this.imageWidth, height: this.imageWidth * 1.2 }} />
                   <Text>{product.shop.toUpperCase()}</Text>
                   <Text style={styles.price}>{product.price + ' €'}</Text>
@@ -63,24 +38,6 @@ class ResultsList extends Component {
         )}
       </ScrollView>
     );
-  }
-
-
-  //para la beta
-  setQueryResultsList(resultsProductUrl){
-    const { setQueryResultsList } = this.props;
-    setQueryResultsList(resultsProductUrl);
-  }//beta
-
-
-  setProductTimesVisited(product){
-    const { setProductTimesVisited } = this.props;
-    let timesVisited = product.timesVisited;
-    if(!timesVisited){
-      timesVisited = 0;
-    }
-    timesVisited++;
-    setProductTimesVisited(product, timesVisited);
   }
 }
 
@@ -93,7 +50,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  productContainer: {
+  productThumbnailContainer: {
+    margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN
+  },
+  productThumbnail: {
     backgroundColor: '#e8e8ee'
   },
   price: {
@@ -101,20 +61,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const gqlQuery = gql`query getProductsByIds($ids: [String!]) {
-  allProducts(filter: {
-    productId_in: $ids
-  }) {
-    id,
-    productId,
-    imageUrl,
-    productUrl,
-    price,
-    shop,
-    timesVisited
-  }
-}`;
-
-const ResultsListWithData = graphql(gqlQuery)(ResultsList);
-
-export default ResultsListWithData;
+export default ResultsList;

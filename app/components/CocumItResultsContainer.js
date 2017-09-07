@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ImageEditor, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
 
-import { getSelectedImage, getQuery, getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../reducers';
+import { getSelectedImage, getQuery, getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getSelectedProductAtLevel, getAppliedFiltersAtLevel } from '../reducers';
 import * as actions from '../actions';
 
 import NoResultsMessage from './results/NoResultsMessage.js';
 import ResultsHeader from './results/ResultsHeader.js';
 import ResultsList from './ResultsList.js';
 import ProductDetailContainer from './product_detail/ProductDetailContainer.js';
-import ResultsRatingBarContainerWithDataAndState from './results_rating/ResultsRatingBarContainer.js';//para la beta
 
-class ResultsContainer extends Component {
+class CocumItResultsContainer extends Component {
   componentWillMount() {
     const { setCanGoNext, onResultsWillMount } = this.props;
     setCanGoNext(true);
@@ -23,22 +22,9 @@ class ResultsContainer extends Component {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
         case 'init':
-          this.cropImage();
-          break;
-        case 'image_cropped':
-          this.generateQueryId();
-          break;
-        case 'id_generated':
-          this.uploadImage(nextProps.query);
-          break;
-        case 'image_uploaded':
         case 'filters_applied':
-          this.fetchResults(nextProps.query, nextProps.appliedFilters);
+          this.fetchResults(nextProps.query, nextProps.previousLevelSelectedProduct, nextProps.appliedFilters);
           break;
-        //para la beta
-        case 'apollo_results_ready':
-          this.setQueryResultsList(nextProps.ids, nextProps.data);
-          break;//beta
       }
     }
   }
@@ -48,34 +34,11 @@ class ResultsContainer extends Component {
     onResultsWillUnmount();
   }
 
-  cropImage() {
-    const { selectedImage, cropImage } = this.props;
-    cropImage(ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
-  }
-
-  generateQueryId() {
-    const { query, generateQueryId, createMyQueryMutate } = this.props;
-    generateQueryId(createMyQueryMutate, query);
-  }
-
-  uploadImage(query) {
-    const { uploadImage } = this.props;
-    uploadImage(query.id, query.imageUri, query.category);
-  }
-
-  fetchResults(query, appliedFilters) {
+  fetchResults(query, previousLevelSelectedProduct, appliedFilters) {
     const { fetchResults } = this.props;
-    const params = { query, filters: appliedFilters };
-    fetchResults('url', params);
+    const params = { query, product: previousLevelSelectedProduct, filters: appliedFilters };
+    fetchResults('id', params);
   }
-
-  //para la beta
-  setQueryResultsList(ids, data) {
-    const { setQueryResultsList } = this.props;
-
-    const resultsList = this.getProducts(ids, data).map((product) => product.productUrl);
-    setQueryResultsList(resultsList);
-  }//beta
 
   render() {
     const {
@@ -84,7 +47,6 @@ class ResultsContainer extends Component {
       status,
       errorMessage,
       setSelectedProduct,
-      upd
     } = this.props;
 
     if (status === 'error') {
@@ -108,7 +70,6 @@ class ResultsContainer extends Component {
     return (
       <View style={styles.container}>
         <ResultsHeader navigation={navigation} level={level} />
-        <ResultsRatingBarContainerWithDataAndState />
         {productsInArraysOf2.length ?
           <ResultsList
             productsInArraysOf2={productsInArraysOf2}
@@ -125,7 +86,9 @@ class ResultsContainer extends Component {
     );
   }
 
-  getProducts(ids, data) {
+  getProducts() {
+    const { ids, data } = this.props;
+
     const products = [];
     ids.forEach((id) => {
       const product = data.allProducts.find((p) => p.productId === id);
@@ -139,9 +102,8 @@ class ResultsContainer extends Component {
   }
 
   getProductsInArraysOf2() {
-    const { ids, data } = this.props;
+    const products = this.getProducts();
 
-    const products = this.getProducts(ids, data);
     const productsInArraysOf2 = [];
     let aux = [];
     let count = 0;
@@ -184,7 +146,8 @@ const mapStateToProps = (state, ownProps) => ({
   ids: getResultsIdsAtLevel(state, ownProps.level),
   status: getResultsStatusAtLevel(state, ownProps.level),
   errorMessage: getResultsErrorMessage(state),
-  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.level)
+  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.level),
+  previousLevelSelectedProduct: getSelectedProductAtLevel(state, ownProps.level - 1)
 });
 
 const getProductsByIds = gql`
@@ -203,14 +166,6 @@ const getProductsByIds = gql`
   }
 `;
 
-const createMyQuery = gql`
-  mutation createMyQuery ($gender: String!, $category: String!) {
-    createMyQuery(gender: $gender, category: $category ) {
-      id
-    }
-  }
-`;
-
 const updateProductTimesVisited = gql`
   mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
     updateProduct(id: $id, timesVisited: $timesVisited ) {
@@ -225,6 +180,5 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
-  graphql(createMyQuery, { name: 'createMyQueryMutate' }),
   graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
-)(ResultsContainer);
+)(CocumItResultsContainer);

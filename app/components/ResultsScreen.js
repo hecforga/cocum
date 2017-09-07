@@ -1,24 +1,37 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { Constants } from 'expo';
 
-import ResultsContainerWithDataAndState from './ResultsContainer.js';
+import { getCategoryLabel } from '../utilities/categoriesInfo.js';
+
+import ResultsContainer from './ResultsContainer.js';
+import CocumItResultsContainer from './CocumItResultsContainer.js';
 import HeaderButtonContainerWithState from './header/HeaderButtonContainer.js';
 
 const ResultsScreen = ({ navigation }) => (
-  <ResultsContainerWithDataAndState />
+  <View style={{flex: 1}}>
+    {navigation.state.params.level === 0 ?
+      <ResultsContainer navigation={navigation} level={navigation.state.params.level} />
+      :
+      <CocumItResultsContainer navigation={navigation} level={navigation.state.params.level} />
+    }
+  </View>
 );
 
 ResultsScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Resultados',
+  title: getCategoryLabel(navigation.state.params.category),
   headerRight: (
-  <HeaderButtonContainerWithState
-    iconName='home'
-    onPress={() => {
-      navigation.goBack(null);
-      navigation.goBack(null);
-    }}
-  />
+    <HeaderButtonContainerWithState
+      iconName='home'
+      onPress={(state) => {
+        let i = navigation.state.params.level;
+        while (i >= 0) {
+          navigation.goBack(null);
+          i--;
+        }
+        navigation.goBack(null);
+      }}
+    />
   ),
   headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 });

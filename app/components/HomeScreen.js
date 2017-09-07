@@ -3,6 +3,8 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react
 import { Constants } from 'expo';
 import { Entypo } from '@expo/vector-icons';
 
+import MyButton from './common/MyButton.js';
+
 const HomeScreen = ({ navigation }) => (
   <Image 
     source={require('./img/palms.jpg')} 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, TouchableOpacity, Text, Image, Dimensions } from 'react-native';
 
+import categories from '../utilities/categoriesInfo.js';
+
 const SCROLL_VIEW_ITEM_WIDTH = 112;
 
 class CategoriesList extends Component {
@@ -47,82 +49,6 @@ class CategoriesList extends Component {
     );
   }
 }
-
-const categories = [
-  {
-    name: 'vestidos',
-    labels: [
-      'Vestidos'
-    ],
-    icon: require('./img/vestidos.png')
-  }, {
-    name: 'monos',
-    labels: [
-      'Monos'
-    ],
-    icon: require('./img/monos.png')
-  }, {
-    name: 'tops_bodies',
-    labels: [
-      'Tops y',
-      'bodies'
-    ],
-    icon: require('./img/tops_bodies.png')
-  }, {
-    name: 'camisetas',
-    labels: [
-      'Camisetas'
-    ],
-    icon: require('./img/camisetas.png')
-  }, {
-    name: 'camisas_blusas',
-    labels: [
-      'Camisas y',
-      'blusas'
-    ],
-    icon: require('./img/camisas_blusas.png')
-  }, {
-    name: 'faldas',
-    labels: [
-      'Faldas'
-    ],
-    icon: require('./img/faldas.png')
-  }, {
-    name: 'pantalones_cortos',
-    labels: [
-      'Pantalones',
-      'cortos'
-    ],
-    icon: require('./img/pantalones_cortos.png')
-  }, {
-    name: 'pantalones_largos',
-    labels: [
-      'Pantalones',
-      'largos'
-    ],
-    icon: require('./img/pantalones_largos.png')
-  }, {
-    name: 'punto',
-    labels: [
-      'Punto'
-    ],
-    icon: require('./img/punto.png')
-  }, {
-    name: 'sudaderas_jerseis',
-    labels: [
-      'Sudaderas y',
-      'jerseis'
-    ],
-    icon: require('./img/sudaderas_jerseis.png')
-  }, {
-    name: 'abrigos_chaquetas',
-    labels: [
-      'Abrigos y',
-      'chaquetas'
-    ],
-    icon: require('./img/abrigos_chaquetas.png')
-  }
-];
 
 const styles = StyleSheet.create({
   container: {

@@ -55,23 +55,11 @@ export const setRatingBarVisibility = (isVisible) => ({
   isVisible
 });// beta
 
-export const setProductTimesVisited = (mutate, product, timesVisited) => (dispatch, getState) => {
-  mutate({
-    variables: { id: product.id, timesVisited: timesVisited}
-    }).catch(
-    error => console.log("SET TIMES VISITED ERROR")
-  );
-};
-
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });
 
 export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState) => {
-  dispatch({
-    type: 'FETCH_RESULTS_REQUEST',
-  });
-
   return new Promise((resolve, reject) => {
     cropImageMethod(uri, cropData, resolve, reject);
   }).then(
@@ -86,8 +74,10 @@ export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState
   );
 };
 
-export const generateQueryId = (mutate) => (dispatch, getState) => {
-  mutate().then((response) => {
+export const generateQueryId = (mutate, query) => (dispatch, getState) => {
+  mutate({
+    variables: { gender: query.gender, category: query.category }
+  }).then((response) => {
     dispatch({
       type: 'SET_QUERY_ID',
       id: response.data.createMyQuery.id
@@ -103,7 +93,7 @@ export const uploadImage = (queryId, imageUri, category) => (dispatch, getState)
     uri: imageUri,
     name: queryId+='.jpg',
     type: 'image/jpg'
-  }
+  };
 
   const options = {
     keyPrefix: 'queryImages/'.concat(category).concat('/'),
@@ -112,7 +102,7 @@ export const uploadImage = (queryId, imageUri, category) => (dispatch, getState)
     accessKey: accessKey,
     secretKey: secretKey,
     successActionStatus: 201
-  }
+  };
 
   return RNS3.put(file, options).then(
     response => {
@@ -129,8 +119,17 @@ export const uploadImage = (queryId, imageUri, category) => (dispatch, getState)
   );
 };
 
-export const fetchResults = (gender, category, imageUrl) => (dispatch, getState) => {
-  return liresolr_api.fetchResults(gender, category, imageUrl).then(
+export const fetchResults = (mode, params) => (dispatch, getState) => {
+  dispatch({
+    type: 'FETCH_RESULTS_REQUEST',
+  });
+
+  let liresolrFunction = liresolr_api.fetchResultsWithUrl;
+  if (mode === 'id') {
+    liresolrFunction = liresolr_api.fetchResultsWithId;
+  }
+
+  return liresolrFunction(params).then(
     response => {
       dispatch({
         type: 'FETCH_RESULTS_SUCCESS',
@@ -150,8 +149,67 @@ const handleFetchResultsFailure = (dispatch, error) => {
   });
 };
 
-export const resetResults = () => ({
-  type: 'RESET_RESULTS'
+export const onResultsWillMount = () => ({
+  type: 'ON_RESULTS_WILL_MOUNT'
+});
+
+export const onResultsWillUnmount = () => ({
+  type: 'ON_RESULTS_WILL_UNMOUNT'
+});
+
+export const setSelectedProduct = (product) => ({
+  type: 'SET_SELECTED_PRODUCT',
+  product
+});
+
+export const setProductTimesVisited = (mutate, product) => (dispatch, getState) => {
+  mutate({
+    variables: { id: product.id, timesVisited: product.timesVisited + 1}
+  }).catch(
+    error => console.log(error)
+  );
+};
+
+export const setProductTimesRedirected = (mutate, product) => (dispatch, getState) => {
+  mutate({
+    variables: { id: product.id, timesRedirected: product.timesRe + 1}
+  }).catch(
+    error => console.log(error)
+  );
+};
+
+export const initCurrentFilters = (appliedFilters) => ({
+  type: 'INIT_CURRENT_FILTERS',
+  appliedFilters
+});
+
+export const setMinPriceFilter = (minPrice) => ({
+  type: 'SET_MIN_PRICE_FILTER',
+  minPrice
+});
+
+export const setMaxPriceFilter = (maxPrice) => ({
+  type: 'SET_MAX_PRICE_FILTER',
+  maxPrice
+});
+
+export const addShopFilter = (shop) => ({
+  type: 'ADD_SHOP_FILTER',
+  shop
+});
+
+export const removeShopFilter = (shop) => ({
+  type: 'REMOVE_SHOP_FILTER',
+  shop
+});
+
+export const clearFilters = () => ({
+  type: 'CLEAR_FILTERS'
+});
+
+export const applyFilters = (filters) => ({
+  type: 'APPLY_FILTERS',
+  filters
 });
 
 export const setCanGoNext = (goNext) => ({

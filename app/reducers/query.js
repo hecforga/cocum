@@ -3,8 +3,7 @@ const initialState = {
   gender: 'mujer',
   category: '',
   imageUri: '',
-  imageUrl: '',
-  resultsList: []
+  imageUrl: ''
 };
 
 const query = (state = initialState, action) => {

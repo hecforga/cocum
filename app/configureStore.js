@@ -6,6 +6,8 @@ import nav from './reducers/navigation.js';
 import selectedImage from './reducers/selectedImage.js';
 import query from './reducers/query.js';
 import results from './reducers/results.js';
+import selectedProducts from './reducers/selectedProducts.js';
+import filters from './reducers/filters.js';
 import canGoNext from './reducers/canGoNext.js';
 import ratingBarState from './reducers/ratingBarState.js';
 
@@ -19,6 +21,8 @@ const configureStore = (client) => {
       selectedImage,
       query,
       results,
+      selectedProducts,
+      filters,
       canGoNext,
       ratingBarState,
       apollo: client.reducer()

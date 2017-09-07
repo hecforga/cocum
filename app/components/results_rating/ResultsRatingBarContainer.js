@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ImageEditor, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql } from 'react-apollo';
 
 import { getRatingBarState, getQuery } from '../../reducers';
 import * as actions from '../../actions';
 
+import MyButton from '../common/MyButton.js';
 import ResultsRatingBar from './ResultsRatingBar.js';
 
 class ResultsRatingBarContainer extends Component {
+  componentWillUnmount() {
+    const { resetRatingBarState } = this.props;
+    resetRatingBarState();
+  }
 
-  render(){
-
+  render() {
     const { ratingBarState, setGivenRating } = this.props;
 
-    return(
+    return (
       <View>
         {ratingBarState.isVisible ?
           <View style={ styles.resultsRatingBar }>
@@ -23,7 +27,7 @@ class ResultsRatingBarContainer extends Component {
               givenRating={ratingBarState.givenRating}
               onPress={setGivenRating}
             />
-            <Button
+            <MyButton
               title="Enviar"
               onPress={()=> this.setQueryRating()}
             />
@@ -35,16 +39,10 @@ class ResultsRatingBarContainer extends Component {
     );    
   }
 
-  componentWillUnmount() {
-    const { resetRatingBarState } = this.props;
-    resetRatingBarState();
-  }
-
   setQueryRating() {
     const { setQueryRating, setRatingBarVisibility, mutate } = this.props;
     setRatingBarVisibility(false);
     setQueryRating(mutate);
-
   }
 }
 
@@ -62,8 +60,6 @@ const UpdateMyQueryResultsRating = gql`
     }
   }
 `;
-
-
 
 const ResultsRatingBarContainerWithData = graphql(UpdateMyQueryResultsRating, {
   options: ({query, ratingBarState}) => ({

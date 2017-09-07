@@ -14,8 +14,8 @@ CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <HeaderButtonContainerWithState
       title='BUSCAR'
-      onPress={() => {
-        navigation.navigate('Results');
+      onPress={(state) => {
+        navigation.navigate('Results', { category: state.query.category, level: 0 });
       }}
     />
   ),

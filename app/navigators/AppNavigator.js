@@ -6,11 +6,13 @@ import {BackAndroid, Alert } from 'react-native';
 import HomeScreen from '../components/HomeScreen.js';
 import CategorySelectionScreen from '../components/CategorySelectionScreen.js';
 import ResultsScreen from '../components/ResultsScreen.js';
+import FiltersScreen from '../components/filters/FiltersScreen.js';
 
 export const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
-  CategorySelection: { screen: CategorySelectionScreen},
-  Results: { screen: ResultsScreen}
+  CategorySelection: { screen: CategorySelectionScreen },
+  Results: { screen: ResultsScreen },
+  Filters: { screen: FiltersScreen }
 }, {
   navigationOptions: {
     headerBackTitle: null
@@ -28,11 +30,11 @@ class AppWithNavigationState extends Component{
       const { dispatch, navigation, nav } = this.props;
       if (nav.index == 0) {
         Alert.alert(
-        'Exit App',
-        'Exiting the application?',
+        'Salir',
+        'Salir de la aplicación?',
         [
-        {text: 'Cancel', onPress: () =>  true, style: 'cancel'},
-        {text: 'OK', onPress: () => BackAndroid.exitApp() },
+        {text: 'Cancelar', onPress: () =>  true, style: 'cancel'},
+        {text: 'Aceptar', onPress: () => BackAndroid.exitApp() },
         ],
         { cancelable: false }
         )
