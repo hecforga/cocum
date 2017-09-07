@@ -161,7 +161,8 @@ const getProductsByIds = gql`
       productUrl,
       price,
       shop,
-      timesVisited
+      timesVisited,
+      timesRedirected
     }
   }
 `;

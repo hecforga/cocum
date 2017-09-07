@@ -172,7 +172,7 @@ export const setProductTimesVisited = (mutate, product) => (dispatch, getState) 
 
 export const setProductTimesRedirected = (mutate, product) => (dispatch, getState) => {
   mutate({
-    variables: { id: product.id, timesRedirected: product.timesRe + 1}
+    variables: { id: product.id, timesRedirected: product.timesRedirected + 1}
   }).catch(
     error => console.log(error)
   );
