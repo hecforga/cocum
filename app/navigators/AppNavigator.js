@@ -1,16 +1,32 @@
 import React, { PropTypes, Component } from 'react';
+import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import {BackAndroid, Alert } from 'react-native';
+import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
+import { FontAwesome } from '@expo/vector-icons';
+
+import tabs, { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
 
 import HomeScreen from '../components/HomeScreen.js';
 import CategorySelectionScreen from '../components/CategorySelectionScreen.js';
 import ResultsScreen from '../components/ResultsScreen.js';
 import FiltersScreen from '../components/filters/FiltersScreen.js';
+import TrendingScreen from '../components/trending_tab/TrendingScreen.js';
+import ExploreScreen from '../components/explore_tab/ExploreScreen.js';
 
-export const AppNavigator = StackNavigator({
+const HomeNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   CategorySelection: { screen: CategorySelectionScreen },
+  Results: { screen: ResultsScreen },
+  Filters: { screen: FiltersScreen }
+}, {
+  initialRouteName: 'Home',
+  navigationOptions: {
+    headerBackTitle: null
+  }
+});
+
+const TrendingNavigator = StackNavigator({
+  TrendingHome: { screen: TrendingScreen },
   Results: { screen: ResultsScreen },
   Filters: { screen: FiltersScreen }
 }, {
@@ -19,39 +35,94 @@ export const AppNavigator = StackNavigator({
   }
 });
 
-class AppWithNavigationState extends Component{
-
-  constructor(props) {
-    super(props);
+const ExploreNavigator = StackNavigator({
+  ExploreHome: { screen: ExploreScreen },
+  Results: { screen: ResultsScreen },
+  Filters: { screen: FiltersScreen }
+}, {
+  navigationOptions: {
+    headerBackTitle: null
   }
+});
 
-  componentWillMount() {
-    BackAndroid.addEventListener('hardwareBackPress', function() {
-      const { dispatch, navigation, nav } = this.props;
-      if (nav.index == 0) {
-        Alert.alert(
-        'Salir',
-        'Salir de la aplicación?',
-        [
-        {text: 'Cancelar', onPress: () =>  true, style: 'cancel'},
-        {text: 'Aceptar', onPress: () => BackAndroid.exitApp() },
-        ],
-        { cancelable: false }
-        )
-        return true;
-      }
-      // if (shouldCloseApp(nav)) return false
-      dispatch({ type: 'Navigation/BACK' });
-        return true;
-      }.bind(this));
+export const AppNavigator = TabNavigator({
+  HomeTab: {
+    screen: HomeNavigator,
+    navigationOptions: {
+      tabBarIcon: ({ focused, tintColor }) => (
+        <FontAwesome
+          name='home'
+          color={tintColor}
+          style={{ fontSize: 24}}
+        />
+      )
     }
+  },
+  TrendingTab: {
+    screen: TrendingNavigator,
+    navigationOptions: {
+      tabBarIcon: ({ focused, tintColor }) => (
+        <FontAwesome
+          name='star'
+          color={tintColor}
+          style={{ fontSize: 24}}
+        />
+      )
+    }
+  },
+  ExploreTab: {
+    screen: ExploreNavigator,
+    navigationOptions: {
+      tabBarIcon: ({ focused, tintColor }) => (
+        <FontAwesome
+          name='search'
+          color={tintColor}
+          style={{ fontSize: 24}}
+        />
+      )
+    }
+  }
+}, {
+  tabBarComponent: TabBarTop,
+  tabBarPosition: 'bottom',
+  animationEnabled: false,
+  swipeEnabled: false,
+  initialRouteName: getTabNameForHomeScreen(),
+  order: tabs,
+  lazy: true,
+  tabBarOptions: {
+    activeTintColor: 'black',
+    inactiveTintColor: '#9e9e9e',
+    showIcon: true,
+    showLabel: false,
+    style: { backgroundColor: 'white' },
+    indicatorStyle: { height: 0, width: 0 }
+  }
+});
+
+class AppWithNavigationState extends Component {
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", () => this.onBackPress());
+  }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress');
+    BackHandler.removeEventListener("hardwareBackPress", () => this.onBackPress);
   }
 
+  onBackPress = () => {
+    const { dispatch, nav } = this.props;
+    const homeScreenIndex = tabs.indexOf(getTabNameForHomeScreen());
+    if (nav.index === homeScreenIndex && nav.routes[homeScreenIndex].routes.length === 1) {
+      return false;
+    }
+    dispatch(NavigationActions.back());
+    return true;
+  };
+
   render() {
-    return <AppNavigator navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav })} />
+    const { dispatch, nav } = this.props;
+
+    return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
   }
 }
 

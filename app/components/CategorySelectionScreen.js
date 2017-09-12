@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import CategorySelectionContainerWithState from './CategorySelectionContainer.js';
 import HeaderButtonContainerWithState from './header/HeaderButtonContainer.js';
 
-const CategorySelectionScreen = ({ navigation }) => (
-  <CategorySelectionContainerWithState navigation= {navigation} />
-);
+class CategorySelectionScreen extends Component {
+  render() {
+    const { navigation } = this.props;
+
+    return (
+      <CategorySelectionContainerWithState navigation={navigation} />
+    );
+  }
+}
 
 CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   title: 'Recortar',
   headerRight: (
     <HeaderButtonContainerWithState
-      title='BUSCAR'
+      title='Buscar'
       onPress={(state) => {
-        navigation.navigate('Results', { category: state.query.category, level: 0 });
+        navigation.navigate('Results', {
+          tabName: navigation.state.params.tabName,
+          category: state.query.category,
+          fetchMode: 'url',
+          level: 0
+        });
       }}
     />
   ),
-  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
+  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null,
+  tabBarVisible: false
 });
 
 export default CategorySelectionScreen;

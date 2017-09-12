@@ -1,15 +1,24 @@
 import { pushToArray, popFromArray, updateItemAtPosition } from '../utilities/immutableUpdateFunctions.js';
+import { generateInitialState } from '../utilities/tabsInfo.js';
 
-const selectedProducts = (state = [], action) => {
-  let auxArray = [];
+const selectedProducts = (state = generateInitialState([]), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return pushToArray(state, null);
+      return {
+        ...state,
+        [action.tabName]: pushToArray(state[action.tabName], null)
+      };
     case 'ON_RESULTS_WILL_UNMOUNT':
-      auxArray = popFromArray(state);
-      return updateItemAtPosition(auxArray, auxArray.length - 1, null);
+      const auxArray = popFromArray(state[action.tabName]);
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(auxArray, auxArray.length - 1, null)
+      };
     case 'SET_SELECTED_PRODUCT':
-      return updateItemAtPosition(state, state.length - 1, action.product);
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, action.product)
+      };
     default:
       return state;
   }
@@ -17,5 +26,5 @@ const selectedProducts = (state = [], action) => {
 
 export default selectedProducts;
 
-export const getSelectedProductAtLevel = (state, level) =>
-  state[level];
+export const getSelectedProductAtLevel = (state, tabName, level) =>
+  state[tabName][level];

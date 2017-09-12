@@ -1,6 +1,8 @@
 import { AppNavigator } from '../navigators/AppNavigator.js';
 
-const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
+// Commented because it was causing problems with TabNavigator
+//const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
+const initialNavState = null;
 
 const nav = (state = initialNavState, action) => {
   const nextState = AppNavigator.router.getStateForAction(action, state);

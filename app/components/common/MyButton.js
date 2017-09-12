@@ -21,6 +21,9 @@ class MyButton extends Component {
     const buttonStyles = [styles.button];
     const textStyles = [styles.text];
     const iconStyles = [styles.icon];
+    if (iconName) {
+      buttonStyles.push({ padding: 2 });
+    }
     if (buttonStyle) {
       buttonStyles.push(buttonStyle);
     }
@@ -29,10 +32,6 @@ class MyButton extends Component {
     }
     if (iconStyle) {
       iconStyles.push(iconStyle);
-    }
-
-    if (iconName) {
-      buttonStyles.push({ padding: 2 });
     }
 
     if (disabled) {

@@ -1,28 +1,18 @@
 const LIRESOLR_SERVER_URL = 'http://54.93.254.52:8983/solr/';
 
-export const fetchResultsWithUrl = (params) => {
-  const cloudinaryUrl = 'http://res.cloudinary.com/ddjzq70ve/image/fetch/e_brightness_hsb:20/';
+const addUrlQuery = (url, params) => {
+  const cloudinaryUrl = 'http://res.cloudinary.com/ddjzq70ve/image/fetch/x_0.1,y_0.1,w_0.8,h_0.8,c_crop,e_brightness_hsb:20/';
 
-  let baseUrl = generateBaseUrl(params);
-  let filterQueries = generateFilterQueries(params);
-
-  const url = baseUrl + '&url=' + cloudinaryUrl + params.query.imageUrl + '&field=ce&ms=false' + filterQueries;
-
-  return fetchResults(url);
+  return url + '&url=' + cloudinaryUrl + params.query.imageUrl;
 };
 
-export const fetchResultsWithId = (params) => {
-  let baseUrl = generateBaseUrl(params);
-  let filterQueries = generateFilterQueries(params);
-
-  const url = baseUrl + '&id=' + params.product.productId + '&field=ce&ms=false' + filterQueries;
-
-  return fetchResults(url);
+const addIdQuery = (url, params) => {
+  return url + '&id=' + params.product.productId;
 };
 
 const generateBaseUrl = (params) => {
-  const query = params.query;
-  return LIRESOLR_SERVER_URL + query.gender + '_' + query.category + '/lireq?rows=12'
+  const { gender, category } = params;
+  return LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?rows=12&field=ce&ms=false'
 };
 
 const generateFilterQueries = (params) => {
@@ -39,11 +29,26 @@ const generateFilterQueries = (params) => {
   return filterQueries;
 };
 
-const fetchResults = (url) => {
-  return fetch(url).then((response) => {
-    const docs = JSON.parse(response._bodyText).docs;
+export const fetchResults = (mode, params) => {
+  const baseUrl = generateBaseUrl(params);
+  const filterQueries = generateFilterQueries(params);
+  let url = baseUrl + filterQueries;
+
+  switch (mode) {
+    case 'url':
+      url = addUrlQuery(url, params);
+      break;
+    case 'id':
+      url = addIdQuery(url, params);
+      break;
+  }
+
+  console.log(url);
+
+  return fetch(url).then((response) => response.json().then((json) => {
+    const docs = json.docs || json.response;
     let results = [];
     docs.forEach((doc) => results.push(doc.id));
     return results;
-  });
+  }));
 };

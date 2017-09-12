@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { pushToArray, popFromArray, updateItemAtPosition } from '../utilities/immutableUpdateFunctions.js';
+import { generateInitialState } from '../utilities/tabsInfo.js';
 
 const initialState = {
   minPrice: null,
@@ -49,14 +50,23 @@ const current = (state = initialState, action) => {
   }
 };
 
-const applied = (state = [], action) => {
+const applied = (state = generateInitialState([]), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return pushToArray(state, initialState);
+      return {
+        ...state,
+        [action.tabName]: pushToArray(state[action.tabName], initialState)
+      };
     case 'ON_RESULTS_WILL_UNMOUNT':
-      return popFromArray(state);
+      return {
+        ...state,
+        [action.tabName]: popFromArray(state[action.tabName])
+      };
     case 'APPLY_FILTERS':
-      return updateItemAtPosition(state, state.length - 1, action.filters);
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, action.filters)
+      };
     default:
       return state;
   }
@@ -96,4 +106,4 @@ export const areFiltersValid = (state) => {
 
   return true;
 };
-export const getAppliedFiltersAtLevel = (state, level) => state.applied[level];
+export const getAppliedFiltersAtLevel = (state, tabName, level) => state.applied[tabName][level];

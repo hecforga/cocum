@@ -23,10 +23,7 @@ class FiltersContainer extends Component {
       addShopFilter,
       removeShopFilter,
       areFiltersCleared,
-      areFiltersValid,
       clearFilters,
-      applyFilters,
-      navigation
     } = this.props;
 
     return (
@@ -63,10 +60,10 @@ class FiltersContainer extends Component {
   }
 
   applyFilters() {
-    const { navigation, currentFilters, areFiltersValid, applyFilters } = this.props;
+    const { navigation, tabName, currentFilters, areFiltersValid, applyFilters } = this.props;
 
     if (areFiltersValid) {
-      applyFilters(currentFilters);
+      applyFilters(currentFilters, tabName);
       navigation.goBack(null);
     } else {
       Alert.alert(
@@ -108,7 +105,7 @@ const mapStateToProps = (state, ownProps) => ({
   currentFilters: getCurrentFilters(state),
   areFiltersCleared: areFiltersCleared(state),
   areFiltersValid: areFiltersValid(state),
-  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.level)
+  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.tabName, ownProps.level)
 });
 
 FiltersContainerWithState = connect(

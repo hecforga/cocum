@@ -29,65 +29,42 @@ export const setQueryCategory = (category) => ({
   category
 });
 
-//para la beta
-export const setQueryRating = (mutate) => (dispatch, getState) => {
-  mutate().catch(
-    error => console.log(error)
-  );
-};
-
-export const setQueryResultsList = (resultsProductUrl) => ({
-  type: 'SET_QUERY_RESULTSLIST',
-  resultsProductUrl
-});
-
-export const setGivenRating = (givenRating) => ({
-  type: 'SET_GIVEN_RATING',
-  givenRating
-});
-
-export const resetRatingBarState = () => ({
-  type: 'RESET_RATINGBAR_STATE'
-});
-
-export const setRatingBarVisibility = (isVisible) => ({
-  type: 'SET_RATINGBAR_VISIBILITY',
-  isVisible
-});// beta
-
 export const resetQuery = () => ({
   type: 'RESET_QUERY'
 });
 
-export const cropImage = (cropImageMethod, uri, cropData) => (dispatch, getState) => {
+export const cropImage = (tabName, cropImageMethod, uri, cropData) => (dispatch, getState) => {
   return new Promise((resolve, reject) => {
     cropImageMethod(uri, cropData, resolve, reject);
   }).then(
     response => {
       dispatch({
         type: 'CROP_IMAGE_SUCCESS',
+        tabName,
         imageUri: response
       });
     }
   ).catch(
-    error => handleFetchResultsFailure(dispatch, error)
+    error => handleFetchResultsFailure(dispatch, tabName, error)
   );
 };
 
-export const generateQueryId = (mutate, query) => (dispatch, getState) => {
+export const generateQueryId = (tabName, mutate, query) => (dispatch, getState) => {
   mutate({
     variables: { gender: query.gender, category: query.category }
   }).then((response) => {
     dispatch({
       type: 'SET_QUERY_ID',
+      tabName,
       id: response.data.createMyQuery.id
-    })
+    });
+    setRatingBarVisibility(dispatch, true);
   }).catch(
-    error => handleFetchResultsFailure(dispatch, error)
+    error => handleFetchResultsFailure(dispatch, tabName, error)
   );
 };
 
-export const uploadImage = (queryId, imageUri, category) => (dispatch, getState) => {
+export const uploadImage = (tabName, queryId, imageUri, category) => (dispatch, getState) => {
   const file = {
     // `uri` can also be a file system path (i.e. file://)
     uri: imageUri,
@@ -111,54 +88,64 @@ export const uploadImage = (queryId, imageUri, category) => (dispatch, getState)
       }
       dispatch({
         type: 'UPLOAD_IMAGE_SUCCESS',
+        tabName,
         imageUrl: response.body.postResponse.location
       });
     }
   ).catch(
-    error => handleFetchResultsFailure(dispatch, error)
+    error => handleFetchResultsFailure(dispatch, tabName, error)
   );
 };
 
-export const fetchResults = (mode, params) => (dispatch, getState) => {
+export const fetchResults = (tabName, mode, params) => (dispatch, getState) => {
   dispatch({
     type: 'FETCH_RESULTS_REQUEST',
+    tabName
   });
 
-  let liresolrFunction = liresolr_api.fetchResultsWithUrl;
-  if (mode === 'id') {
-    liresolrFunction = liresolr_api.fetchResultsWithId;
-  }
-
-  return liresolrFunction(params).then(
+  return liresolr_api.fetchResults(mode, params).then(
     response => {
-      dispatch({
-        type: 'FETCH_RESULTS_SUCCESS',
-        response
-      });
+      const idsChanged = response.filter((id) => params.previousIds.indexOf(id) < 0).length > 0;
+      if (idsChanged) {
+        dispatch({
+          type: 'FETCH_RESULTS_SUCCESS',
+          tabName,
+          response
+        });
+      } else {
+        dispatch({
+          type: 'APOLLO_RESULTS_READY_MANUAL',
+          tabName
+        });
+      }
     }
   ).catch(
-    error => handleFetchResultsFailure(dispatch, error)
+    error => handleFetchResultsFailure(dispatch, tabName, error)
   );
 };
 
-const handleFetchResultsFailure = (dispatch, error) => {
+const handleFetchResultsFailure = (dispatch, tabName, error) => {
   console.log(error);
   dispatch({
     type: 'FETCH_RESULTS_FAILURE',
+    tabName,
     message: error.message  || 'Algo ha ido mal.'
   });
 };
 
-export const onResultsWillMount = () => ({
-  type: 'ON_RESULTS_WILL_MOUNT'
+export const onResultsWillMount = (tabName) => ({
+  type: 'ON_RESULTS_WILL_MOUNT',
+  tabName
 });
 
-export const onResultsWillUnmount = () => ({
-  type: 'ON_RESULTS_WILL_UNMOUNT'
+export const onResultsWillUnmount = (tabName) => ({
+  type: 'ON_RESULTS_WILL_UNMOUNT',
+  tabName
 });
 
-export const setSelectedProduct = (product) => ({
+export const setSelectedProduct = (tabName, product) => ({
   type: 'SET_SELECTED_PRODUCT',
+  tabName,
   product
 });
 
@@ -207,9 +194,10 @@ export const clearFilters = () => ({
   type: 'CLEAR_FILTERS'
 });
 
-export const applyFilters = (filters) => ({
+export const applyFilters = (filters, tabName) => ({
   type: 'APPLY_FILTERS',
-  filters
+  filters,
+  tabName
 });
 
 export const setCanGoNext = (goNext) => ({

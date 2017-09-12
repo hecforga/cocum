@@ -30,12 +30,6 @@ const query = (state = initialState, action) => {
       };
     case 'RESET_QUERY':
       return initialState;
-
-    case 'SET_QUERY_RESULTSLIST':
-      return {
-        ...state,
-        resultsList: action.resultsProductUrl
-      };
     default:
       return state;
   }

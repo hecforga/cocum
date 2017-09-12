@@ -1,74 +1,126 @@
 import { combineReducers } from 'redux';
 
 import { pushToArray, popFromArray, updateItemAtPosition } from '../utilities/immutableUpdateFunctions.js';
+import tabs, { generateInitialState } from '../utilities/tabsInfo.js';
 
-const ids = (state = [], action) => {
+const ids = (state = generateInitialState([]), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return pushToArray(state, []);
+      return {
+        ...state,
+        [action.tabName]: pushToArray(state[action.tabName], [])
+      };
     case 'ON_RESULTS_WILL_UNMOUNT':
-      return popFromArray(state);
+      return {
+        ...state,
+        [action.tabName]: popFromArray(state[action.tabName])
+      };
     case 'FETCH_RESULTS_SUCCESS':
-      const pos = state.length - 1;
-      const newItem = action.response.map(id => id);
-      return updateItemAtPosition(state, pos, newItem);
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, action.response)
+      };
     default:
       return state;
   }
 };
 
-const status = (state = [], action) => {
+const status = (state = generateInitialState([]), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return pushToArray(state, 'init');
+      return {
+        ...state,
+        [action.tabName]: pushToArray(state[action.tabName], 'init')
+      };
     case 'ON_RESULTS_WILL_UNMOUNT':
-      return popFromArray(state);
+      return {
+        ...state,
+        [action.tabName]: popFromArray(state[action.tabName])
+      };
     case 'CROP_IMAGE_SUCCESS':
-      return updateItemAtPosition(state, state.length - 1, 'image_cropped');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'image_cropped')
+      };
     case 'SET_QUERY_ID':
-      return updateItemAtPosition(state, state.length - 1, 'id_generated');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'id_generated')
+      };
     case 'UPLOAD_IMAGE_SUCCESS':
-      return updateItemAtPosition(state, state.length - 1, 'image_uploaded');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'image_uploaded')
+      };
     case 'APPLY_FILTERS':
-      return updateItemAtPosition(state, state.length - 1, 'filters_applied');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'filters_applied')
+      };
     case 'FETCH_RESULTS_SUCCESS':
-      return updateItemAtPosition(state, state.length - 1, 'results_ready');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'results_ready')
+      };
     case 'FETCH_RESULTS_FAILURE':
-      return updateItemAtPosition(state, state.length - 1, 'error');
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'error')
+      };
     case 'APOLLO_QUERY_RESULT':
     case 'APOLLO_QUERY_RESULT_CLIENT':
-      let newState = state;
-      if (state[state.length - 1] === 'results_ready' && action.operationName === 'getProductsByIds') {
-        newState = 'apollo_results_ready';
+      let activeTabName;
+      if (action.operationName === 'getProductsByIds') {
+        activeTabName = tabs.find((tabName) => state[tabName][state[tabName].length - 1] === 'results_ready');
+        if (activeTabName) {
+          return {
+            ...state,
+            [activeTabName]: updateItemAtPosition(state[activeTabName], state[activeTabName].length - 1, 'apollo_results_ready')
+          };
+        }
       }
-      return updateItemAtPosition(state, state.length - 1, newState);
+      return state;
+    case 'APOLLO_RESULTS_READY_MANUAL':
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'apollo_results_ready')
+      };
     default:
       return state;
   }
 };
 
-const errorMessageInitialState = null;
-const errorMessage = (state = errorMessageInitialState, action) => {
+const errorMessage = (state = generateInitialState(null), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return errorMessageInitialState;
-    case 'FETCH_RESULTS_FAILURE':
-      return action.message; 
     case 'FETCH_RESULTS_REQUEST':
     case 'FETCH_RESULTS_SUCCESS':
-      return null;
+      return {
+        ...state,
+        [action.tabName]: null
+      };
+    case 'FETCH_RESULTS_FAILURE':
+      return {
+        ...state,
+        [action.tabName]: action.message
+      };
     default:
       return state;
   }
 };
 
-const activeLevelInitialState = -1;
-const activeLevel = (state = activeLevelInitialState, action) => {
+const activeLevel = (state = generateInitialState(-1), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-      return state + 1;
+      return {
+        ...state,
+        [action.tabName]: state[action.tabName] + 1
+      };
     case 'ON_RESULTS_WILL_UNMOUNT':
-      return state - 1;
+      return {
+        ...state,
+        [action.tabName]: state[action.tabName] - 1
+      };
     default:
       return state;
   }
@@ -83,7 +135,7 @@ const results = combineReducers({
 
 export default results;
 
-export const getIdsAtLevel = (state, level) => state.ids[level];
-export const getStatusAtLevel = (state, level) => state.status[level];
-export const getErrorMessage = (state) => state.errorMessage;
-export const getActiveLevel = (state) => state.activeLevel;
+export const getIdsAtLevel = (state, tabName, level) => state.ids[tabName][level];
+export const getStatusAtLevel = (state, tabName, level) => state.status[tabName][level];
+export const getErrorMessage = (state, tabName) => state.errorMessage[tabName];
+export const getActiveLevel = (state, tabName) => state.activeLevel[tabName];

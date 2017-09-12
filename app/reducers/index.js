@@ -4,7 +4,6 @@ import * as fromResults from './results.js';
 import * as fromSelectedProducts from './selectedProducts.js';
 import * as fromFilters from './filters.js';
 import * as fromCanGoNext from './canGoNext.js';
-import * as fromRatingBarState from './ratingBarState.js'; //para la beta
 
 export const getSelectedImage = (state) =>
   fromSelectedImage.getSelectedImage(state.selectedImage);
@@ -12,20 +11,20 @@ export const getSelectedImage = (state) =>
 export const getQuery = (state) =>
   fromQuery.getQuery(state.query);
 
-export const getResultsIdsAtLevel = (state, level) =>
-  fromResults.getIdsAtLevel(state.results, level);
+export const getResultsIdsAtLevel = (state, tabName, level) =>
+  fromResults.getIdsAtLevel(state.results, tabName, level);
 
-export const getResultsStatusAtLevel = (state, level) =>
-  fromResults.getStatusAtLevel(state.results, level);
+export const getResultsStatusAtLevel = (state, tabName, level) =>
+  fromResults.getStatusAtLevel(state.results, tabName, level);
 
-export const getResultsErrorMessage = (state) =>
-  fromResults.getErrorMessage(state.results);
+export const getResultsErrorMessage = (state, tabName) =>
+  fromResults.getErrorMessage(state.results, tabName);
 
-export const getResultsActiveLevel = (state) =>
-  fromResults.getActiveLevel(state.results);
+export const getResultsActiveLevel = (state, tabName) =>
+  fromResults.getActiveLevel(state.results, tabName);
 
-export const getSelectedProductAtLevel = (state, level) =>
-  fromSelectedProducts.getSelectedProductAtLevel(state.selectedProducts, level);
+export const getSelectedProductAtLevel = (state, tabName, level) =>
+  fromSelectedProducts.getSelectedProductAtLevel(state.selectedProducts, tabName, level);
 
 export const getCurrentFilters = (state) =>
   fromFilters.getCurrentFilters(state.filters);
@@ -36,12 +35,8 @@ export const areFiltersCleared = (state) =>
 export const areFiltersValid = (state) =>
   fromFilters.areFiltersValid(state.filters);
 
-export const getAppliedFiltersAtLevel = (state, level) =>
-  fromFilters.getAppliedFiltersAtLevel(state.filters, level);
+export const getAppliedFiltersAtLevel = (state, tabName, level) =>
+  fromFilters.getAppliedFiltersAtLevel(state.filters, tabName, level);
 
 export const getCanGoNext = (state) =>
   fromCanGoNext.getCanGoNext(state.canGoNext);
-
-//para la beta
-export const getRatingBarState = (state) => 
-  fromRatingBarState.getRatingBarState(state.ratingBarState);

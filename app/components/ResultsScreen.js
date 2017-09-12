@@ -1,22 +1,50 @@
-import React from 'react';
-import { Platform, View } from 'react-native';
+import React, { Component } from 'react';
+import { Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import { getCategoryLabel } from '../utilities/categoriesInfo.js';
 
-import ResultsContainer from './ResultsContainer.js';
+import QueryResultsContainer from './QueryResultsContainer.js';
 import CocumItResultsContainer from './CocumItResultsContainer.js';
+import RandomResultsContainer from './RandomResultsContainer.js';
 import HeaderButtonContainerWithState from './header/HeaderButtonContainer.js';
 
-const ResultsScreen = ({ navigation }) => (
-  <View style={{flex: 1}}>
-    {navigation.state.params.level === 0 ?
-      <ResultsContainer navigation={navigation} level={navigation.state.params.level} />
-      :
-      <CocumItResultsContainer navigation={navigation} level={navigation.state.params.level} />
+class ResultsScreen extends Component {
+  render() {
+    const { navigation } = this.props;
+
+    switch (navigation.state.params.fetchMode) {
+      case 'url':
+        return (
+          <QueryResultsContainer
+            navigation={navigation}
+            category={navigation.state.params.category}
+            tabName={navigation.state.params.tabName}
+            level={navigation.state.params.level}
+          />
+        );
+      case 'id':
+        return (
+          <CocumItResultsContainer
+            navigation={navigation}
+            category={navigation.state.params.category}
+            tabName={navigation.state.params.tabName}
+            level={navigation.state.params.level}
+          />
+        );
+      case 'random':
+      default:
+        return (
+          <RandomResultsContainer
+            navigation={navigation}
+            category={navigation.state.params.category}
+            tabName={navigation.state.params.tabName}
+            level={navigation.state.params.level}
+          />
+        );
     }
-  </View>
-);
+  }
+}
 
 ResultsScreen.navigationOptions = ({ navigation }) => ({
   title: getCategoryLabel(navigation.state.params.category),

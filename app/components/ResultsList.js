@@ -8,7 +8,6 @@ class ResultsList extends Component {
   componentWillMount() {
     const { height, width } = Dimensions.get('window');
     this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_THUMBNAIL_CONTAINER_MARGIN) / 2;
-    this.imageWidth = this.imageWidth | 0;
   }
 
   render() {

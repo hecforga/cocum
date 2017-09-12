@@ -1,57 +1,68 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo } from '@expo/vector-icons';
 
+import { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
+
 import MyButton from './common/MyButton.js';
 
-const HomeScreen = ({ navigation }) => (
-  <Image 
-    source={require('./img/palms.jpg')} 
-    style={ styles.backgroundImage}>
-    <View style={styles.backgroundMargin}/>
-    <View style={ styles.container }>
-      <View style={ styles.topContainer }>
-        <View style={styles.logoTopMargin}/> 
-        <Image 
-          source= {require('./img/logococum.png')} 
-          style={ styles.imageLogo}
-        />
-      </View>
-      <View style={ styles.centerContainer1 }>
-        <Text style={ styles.topText }>Encuentra la ropa que</Text>
-        <Text style={ styles.topText }>te inspira</Text>
-      </View> 
-      <View style={ styles.centerContainer2 }>
-        <Text style={ styles.centerText }>¡Elige una foto!</Text>
-      </View>    
-      <View style={ styles.bottomContainer }>
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.galleryButton} 
-          onPress={() => navigation.navigate('CategorySelection', { imagePickerMode: 'gallery' })}>
-          <Entypo
-            name='images'
-            size={56}
-            style={styles.galleryIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.galleryButton}
-          onPress={() => navigation.navigate('CategorySelection', { imagePickerMode: 'camera' })}>
-          <Entypo
-            name='camera'
-            size={56}
-            style={styles.galleryIcon} />
-        </TouchableOpacity>
-      </View>
-      <View style={ styles.bottomMargin}>
-      </View>
-    </View>
-    <View style={styles.backgroundMargin}/>
-  </Image>
-);
+class HomeScreen extends Component {
+  render() {
+    const { navigation } = this.props;
 
+    return (
+      <Image
+        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_background.jpg' }}
+        style={ styles.backgroundImage}>
+        <View style={styles.backgroundMargin}/>
+        <View style={ styles.container }>
+          <View style={ styles.topContainer }>
+            <View style={styles.logoTopMargin}/>
+            <Image
+              source= {require('./img/logococum.png')}
+              style={ styles.imageLogo}
+            />
+          </View>
+          <View style={ styles.centerContainer1 }>
+            <Text style={ styles.topText }>Encuentra la ropa que</Text>
+            <Text style={ styles.topText }>te inspira</Text>
+          </View>
+          <View style={ styles.centerContainer2 }>
+            <Text style={ styles.centerText }>¡Elige una foto!</Text>
+          </View>
+          <View style={ styles.bottomContainer }>
+            <MyButton
+              iconName='images'
+              iconFamily='Entypo'
+              iconStyle={{ fontSize: 56 }}
+              touchableType={'opacity'}
+              onPress={() => navigation.navigate('CategorySelection', {
+                tabName: getTabNameForHomeScreen(),
+                imagePickerMode: 'gallery'
+              })}
+              buttonStyle={styles.galleryButton}
+            />
+            <MyButton
+              iconName='camera'
+              iconFamily='Entypo'
+              iconStyle={{ fontSize: 56 }}
+              touchableType={'opacity'}
+              onPress={() => navigation.navigate('CategorySelection', {
+                tabName: getTabNameForHomeScreen(),
+                imagePickerMode: 'camera'
+              })}
+              buttonStyle={styles.galleryButton}
+            />
+          </View>
+          <View style={ styles.bottomMargin}>
+          </View>
+        </View>
+        <View style={styles.backgroundMargin}/>
+      </Image>
+    );
+  }
+}
 
 HomeScreen.navigationOptions = {
   title: 'Cocum',
@@ -116,14 +127,12 @@ const styles = StyleSheet.create({
     flex: 0.2
   },
   galleryButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#039be5', //03a9f4,
+    flex: 1,
+    paddingLeft: 32,
+    paddingRight: 32,
     borderRadius: 5,
     borderWidth: 0.8,
-    borderColor: '#01579b',
-    paddingLeft: 32,
-    paddingRight: 32
+    borderColor: '#01579b'
   },
   galleryIcon:{
     color: 'white'
@@ -132,6 +141,5 @@ const styles = StyleSheet.create({
     flex: 0.05
   }
 });
-
 
 export default HomeScreen;

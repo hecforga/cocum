@@ -5,6 +5,7 @@ import { gql, graphql, compose } from 'react-apollo';
 
 import { getResultsActiveLevel, getSelectedProductAtLevel } from '../../reducers';
 import * as actions from '../../actions';
+import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
 import ProductDetailModal from './ProductDetailModal.js';
 
@@ -13,8 +14,7 @@ class ProductDetailContainer extends Component {
     const {
       level,
       activeLevel,
-      selectedProduct,
-      setSelectedProduct
+      selectedProduct
     } = this.props;
 
     return (
@@ -22,9 +22,9 @@ class ProductDetailContainer extends Component {
         level={level}
         activeLevel={activeLevel}
         selectedProduct={selectedProduct}
-        setSelectedProduct={setSelectedProduct}
         onVisitShopPress={() => this.onVisitShopPress()}
         onCocumItPress={() => this.onCocumItPress()}
+        onCloseModal={() => this.onCloseModal()}
       />
     );
   }
@@ -32,23 +32,31 @@ class ProductDetailContainer extends Component {
   onVisitShopPress() {
     const { selectedProduct, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
 
-    Linking.openURL(selectedProduct.productUrl);
+    Linking.openURL(fromProductsInfo.getProductUrl(selectedProduct));
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
   }
 
   onCocumItPress() {
-    const { navigation, level } = this.props;
+    const { navigation, tabName, level, selectedProduct } = this.props;
 
     navigation.navigate('Results', {
-      category: navigation.state.params.category,
+      category: selectedProduct.category || 'punto', // TODO: Remove || 'punto' when updating Grapchcool
+      tabName: tabName,
+      fetchMode: 'id',
       level: level + 1
     });
+  }
+
+  onCloseModal() {
+    const { tabName, setSelectedProduct } = this.props;
+
+    setSelectedProduct(tabName, null);
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  activeLevel: getResultsActiveLevel(state),
-  selectedProduct: getSelectedProductAtLevel(state, ownProps.level)
+  activeLevel: getResultsActiveLevel(state, ownProps.tabName),
+  selectedProduct: getSelectedProductAtLevel(state, ownProps.tabName, ownProps.level)
 });
 
 const updateProductTimesRedirected = gql`

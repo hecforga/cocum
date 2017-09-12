@@ -2,27 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
 
-import { getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getSelectedProductAtLevel, getAppliedFiltersAtLevel } from '../reducers';
+import { getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../reducers';
 import * as actions from '../actions';
 
 import ResultsContainer from './ResultsContainer.js';
 
-class CocumItResultsContainer extends Component {
+class RandomResultsContainer extends Component {
   componentWillUpdate(nextProps) {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
         case 'init':
         case 'filters_applied':
-          this.fetchResults(nextProps.previousLevelSelectedProduct, nextProps.appliedFilters, nextProps.ids);
+          this.fetchResults(nextProps.appliedFilters, nextProps.ids);
           break;
       }
     }
   }
 
-  fetchResults(previousLevelSelectedProduct, appliedFilters, ids) {
+  fetchResults(appliedFilters, ids) {
     const { category, tabName, fetchResults } = this.props;
-    const params = { gender: 'mujer', category, product: previousLevelSelectedProduct, filters: appliedFilters, previousIds: ids };
-    fetchResults(tabName, 'id', params);
+    const params = { gender: 'mujer', category, filters: appliedFilters, previousIds: ids };
+    fetchResults(tabName, 'random', params);
   }
 
   render() {
@@ -37,7 +37,6 @@ const mapStateToProps = (state, ownProps) => ({
   status: getResultsStatusAtLevel(state, ownProps.tabName, ownProps.level),
   errorMessage: getResultsErrorMessage(state, ownProps.tabName),
   appliedFilters: getAppliedFiltersAtLevel(state, ownProps.tabName, ownProps.level),
-  previousLevelSelectedProduct: getSelectedProductAtLevel(state, ownProps.tabName, ownProps.level - 1)
 });
 
 const getProductsByIds = gql`
@@ -72,4 +71,4 @@ export default compose(
   ),
   graphql(getProductsByIds),
   graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
-)(CocumItResultsContainer);
+)(RandomResultsContainer);

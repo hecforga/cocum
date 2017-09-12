@@ -9,7 +9,6 @@ import results from './reducers/results.js';
 import selectedProducts from './reducers/selectedProducts.js';
 import filters from './reducers/filters.js';
 import canGoNext from './reducers/canGoNext.js';
-import ratingBarState from './reducers/ratingBarState.js';
 
 const configureStore = (client) => {
 
@@ -24,7 +23,6 @@ const configureStore = (client) => {
       selectedProducts,
       filters,
       canGoNext,
-      ratingBarState,
       apollo: client.reducer()
     }),
     applyMiddleware(...middlewares)

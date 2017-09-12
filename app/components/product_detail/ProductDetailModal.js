@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native'
 import Modal from 'react-native-modal';
 
+import * as fromProductsInfo from '../../utilities/productsInfo.js';
+
 import MyButton from '../common/MyButton.js';
 
 class ProductDetailModal extends Component {
@@ -10,9 +12,9 @@ class ProductDetailModal extends Component {
       activeLevel,
       level,
       selectedProduct,
-      setSelectedProduct,
       onVisitShopPress,
-      onCocumItPress
+      onCocumItPress,
+      onCloseModal
     } = this.props;
 
     const isVisible = activeLevel === level && selectedProduct !== null;
@@ -24,8 +26,8 @@ class ProductDetailModal extends Component {
             isVisible={isVisible}
             backdropColor='black'
             backdropOpacity={0.5}
-            onBackButtonPress={() => setSelectedProduct(null)}
-            onBackdropPress={() => setSelectedProduct(null)}
+            onBackButtonPress={() => onCloseModal()}
+            onBackdropPress={() => onCloseModal()}
             style={styles.modal}
           >
                 <View style={styles.detailTopContainer}>
@@ -33,16 +35,16 @@ class ProductDetailModal extends Component {
                     iconName='close'
                     iconColor='black'
                     buttonStyle={{backgroundColor: 'white', minWidth:50}}
-                    onPress={() => setSelectedProduct(null)}
+                    onPress={() => onCloseModal()}
                   />
                 </View>
                 <Image
                   style={styles.productImage}
-                  source={{uri: selectedProduct.imageUrl}}
+                  source={{ uri: fromProductsInfo.getProductImageUrl(selectedProduct) }}
                 />
                 <View style={styles.detailTextContainer}>
-                  <Text>{selectedProduct.shop.toUpperCase()}</Text>
-                  <Text style={styles.price}>{selectedProduct.price + ' €'}</Text>
+                  <Text>{fromProductsInfo.getShopAndBrandLabel(selectedProduct)}</Text>
+                  <Text style={styles.price}>{fromProductsInfo.getPriceLabel(selectedProduct)}</Text>
                 </View>
                 <View style={styles.detailBottomContainer}>
                   <MyButton

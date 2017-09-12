@@ -5,7 +5,7 @@ import MyButton from '../common/MyButton.js';
 
 class ResultsHeader extends Component {
   render() {
-    const { navigation, level } = this.props;
+    const { navigation, tabName, level } = this.props;
 
     return (
       <View style={styles.container}>
@@ -15,7 +15,7 @@ class ResultsHeader extends Component {
             <MyButton
               touchableType={'highlight'}
               title={'Filtrar'}
-              onPress={() => navigation.navigate('Filters', { level })}
+              onPress={() => navigation.navigate('Filters', { tabName, level })}
               buttonStyle={{ flex: 1, backgroundColor: '#e8e8ee', borderRadius: 0 }}
               textStyle={{ color: 'black' }}
               containerStyle={{ flex: 1 }}
