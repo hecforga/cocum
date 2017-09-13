@@ -21,6 +21,7 @@ class HomeScreen extends Component {
             <View style={styles.logoTopMargin}/>
             <Image
               source= {require('./img/logococum.png')}
+              resizeMode='contain'
               style={ styles.imageLogo}
             />
           </View>
@@ -66,7 +67,7 @@ class HomeScreen extends Component {
 
 HomeScreen.navigationOptions = {
   title: 'Cocum',
-  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
+  header: null
 };
 
 const styles = StyleSheet.create({
@@ -78,13 +79,14 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: Platform.OS === 'android' ? Constants.statusBarHeight : null
   },
   backgroundMargin:{
     flex:0.075
   },
   container: {
     flex: 0.85,
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#fafafa'
   },
   topContainer: {
     flex: 0.375,
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   centerContainer1: {
     flex: 0.225,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-end'
   },
   centerContainer2: {
     flex: 0.225,
@@ -117,11 +119,7 @@ const styles = StyleSheet.create({
     marginRight: 24
   },
   imageLogo: {
-    flex:0.8,
-    resizeMode: 'contain',
-    width: undefined, 
-    height: undefined,
-    alignSelf: 'stretch'
+    flex:0.8
   },
   logoTopMargin: {
     flex: 0.2

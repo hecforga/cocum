@@ -1,8 +1,17 @@
 {
   "expo": {
     "name": "Cocum",
+    "icon": "./components/img/icon.png",
+    "version": "1.0.0",
+    "slug": "Cocum",
     "privacy": "public",
     "sdkVersion": "20.0.0",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "es.cocum"
+    },
+    "android": {
+      "package": "es.cocum"
+    }
   }
 }
