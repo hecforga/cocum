@@ -86,23 +86,27 @@ TODO
 ### Recortar
 
 ```bash
-~/object_detection/main_cropper.py mujer all all
+~/object_detection/main_cropper.py mujer category/all shop/all
 ```
 
 ### Añadir a Graphcool
 
+(Si se han añadido/eliminado tiendas/categorías, editar el archivo graphcool_creator.js con dichas modificaciones antes de ejecutarlo.)
+
 ```bash
-node graphcool_creator.js mujer all all
+node graphcool_creator.js mujer category/all shop/all
 ```
 
 ### Calcular y subir índices a LireSolr
 
-Abrir el proyecto liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java
+Abrir el proyecto liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java. (Si se han añadido/eliminado tiendas/categorías, editar el archivo ParallelSolrIndexer.java con dichas modificaciones antes de ejecutarlo.)
 
-Argumentos: /path/to/dataset mujer all all
+Argumentos: /path/to/dataset mujer category/all shop/all
 
 ### Eliminar de Grapcool
 
+(Si se han añadido/eliminado tiendas/categorías, editar el archivo graphcool_deleter.js con dichas modificaciones antes de ejecutarlo.)
+
 ```bash
-node graphcool_deleter.js mujer all all
+node graphcool_deleter.js mujer category/all shop/all
 ```
