@@ -105,7 +105,8 @@ export const fetchResults = (tabName, mode, params) => (dispatch, getState) => {
 
   return liresolr_api.fetchResults(mode, params).then(
     response => {
-      const idsChanged = response.filter((id) => params.previousIds.indexOf(id) < 0).length > 0;
+      const idsChanged = response.length !== params.previousIds.length ||
+        response.filter((id) => params.previousIds.indexOf(id) < 0).length > 0;
       if (idsChanged) {
         dispatch({
           type: 'FETCH_RESULTS_SUCCESS',

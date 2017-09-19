@@ -2,14 +2,31 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Constants } from 'expo';
 import { Entypo } from '@expo/vector-icons';
+import { GoogleAnalyticsTracker, GoogleAnalyticsSettings } from 'react-native-google-analytics-bridge';
 
 import { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
 
 import MyButton from './common/MyButton.js';
 
 class HomeScreen extends Component {
+
+  componentWillMount() {
+    // Recommend you set this much higher in real app! 30 seconds+
+    // GoogleAnalyticsSettings has static methods and is applied
+    // for all trackers
+    GoogleAnalyticsSettings.setDispatchInterval(30);
+    // for testing:means no data will be sent to GA
+    //GoogleAnalyticsSettings.setDryRun(true);
+    // The tracker is constructed
+    this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
+    this.tracker.trackScreenView('Home');
+
+  }
+
   render() {
     const { navigation } = this.props;
+
+
 
     return (
       <Image
@@ -38,10 +55,14 @@ class HomeScreen extends Component {
               iconFamily='Entypo'
               iconStyle={{ fontSize: 56 }}
               touchableType={'opacity'}
-              onPress={() => navigation.navigate('CategorySelection', {
-                tabName: getTabNameForHomeScreen(),
-                imagePickerMode: 'gallery'
-              })}
+              onPress={() => {
+                this.tracker.trackEvent('button', 'pressed', { label: 'gallery'} );
+
+                navigation.navigate('CategorySelection', {
+                  tabName: getTabNameForHomeScreen(),
+                  imagePickerMode: 'gallery'
+                });
+              }}
               buttonStyle={styles.galleryButton}
             />
             <MyButton
@@ -49,10 +70,14 @@ class HomeScreen extends Component {
               iconFamily='Entypo'
               iconStyle={{ fontSize: 56 }}
               touchableType={'opacity'}
-              onPress={() => navigation.navigate('CategorySelection', {
-                tabName: getTabNameForHomeScreen(),
-                imagePickerMode: 'camera'
-              })}
+              onPress={() => {
+                this.tracker.trackEvent('button', 'pressed', { label: 'camera'} );
+
+                navigation.navigate('CategorySelection', {
+                    tabName: getTabNameForHomeScreen(),
+                    imagePickerMode: 'camera'
+                });
+              }}
               buttonStyle={styles.galleryButton}
             />
           </View>

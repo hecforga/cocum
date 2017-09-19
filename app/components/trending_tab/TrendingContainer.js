@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import * as actions from '../../actions';
+import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
 import ProductsHorizontalList from '../common/ProductsHorizontalList.js';
 import ProductDetailContainer from '../product_detail/ProductDetailContainer.js';
@@ -20,6 +22,8 @@ class TrendingContainer extends Component {
 
     setCanGoNext(true);
     onResultsWillMount(tabName);
+
+    this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
   componentWillUnmount() {
@@ -119,6 +123,14 @@ class TrendingContainer extends Component {
   onProductPress(product) {
     const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
 
+    const labelData = {
+      tabName: tabName,
+      initial: true,
+      category: product.category,
+      shop: product.shop
+    };
+    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
+
     setSelectedProduct(tabName, product);
     setProductTimesVisited(updateProductTimesVisitedMutate, product);
   }
@@ -136,9 +148,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   scrollbarStyle: {
-    marginTop:15,
+    marginTop: 15,
     marginBottom: 15,
-    marginLeft:10
+    marginLeft: 10
   }
 });
 
@@ -147,10 +159,14 @@ const getProductsByTimesRedirected = gql`
     allProducts(orderBy: timesRedirected_DESC, first:5) {
       id,
       productId,
-      imageUrl,
+      productImageUrl,
+      modelImageUrl,
       productUrl,
+      affiliateUrl,
       price,
       shop,
+      brand,
+      category,
       timesVisited,
       timesRedirected
     }
@@ -162,10 +178,14 @@ const getProductsByTimesVisited = gql`
     allProducts(orderBy: timesVisited_DESC, first:5) {
       id,
       productId,
-      imageUrl,
+      productImageUrl,
+      modelImageUrl,
       productUrl,
+      affiliateUrl,
       price,
       shop,
+      brand,
+      category,
       timesVisited,
       timesRedirected
     }
@@ -182,10 +202,14 @@ const getProductsByUpdatedAt = gql`
     }) {
       id,
       productId,
-      imageUrl,
+      productImageUrl,
+      modelImageUrl,
       productUrl,
+      affiliateUrl,
       price,
       shop,
+      brand,
+      category,
       timesVisited,
       timesRedirected
     }
@@ -203,10 +227,14 @@ const getProductsByRandom = gql`
     }) {
       id,
       productId,
-      imageUrl,
+      productImageUrl,
+      modelImageUrl,
       productUrl,
+      affiliateUrl,
       price,
       shop,
+      brand,
+      category,
       timesVisited,
       timesRedirected
     }

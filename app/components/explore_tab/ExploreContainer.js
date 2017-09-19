@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import * as actions from '../../actions';
 import categories, { getCategoryLabel } from '../../utilities/categoriesInfo.js';
+import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
 import ProductsHorizontalList from '../common/ProductsHorizontalList.js';
 import ProductDetailContainer from '../product_detail/ProductDetailContainer.js';
@@ -21,6 +23,8 @@ class ExploreContainer extends Component {
 
     setCanGoNext(true);
     onResultsWillMount(tabName);
+
+    this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
   componentWillUnmount() {
@@ -59,7 +63,7 @@ class ExploreContainer extends Component {
               onProductPress={(product) => this.onProductPress(product)}
               products={this.props[query.queryName].allProducts}
               scrollbarStyle={styles.scrollbarStyle}
-              imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2 }}
+              imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2}}
             />
           ))}
         </ScrollView>
@@ -75,6 +79,11 @@ class ExploreContainer extends Component {
   onShowMorePress(category) {
     const { navigation, tabName, level } = this.props;
 
+    const labelData = {
+      category: category,
+    };
+    this.tracker.trackEvent('button_categoryShowMore', 'pressed', { label: generateEventLabel(labelData) } );
+
     navigation.navigate('Results', {
       tabName: tabName,
       category: category,
@@ -85,6 +94,14 @@ class ExploreContainer extends Component {
 
   onProductPress(product) {
     const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
+
+    const labelData = {
+      tabName: tabName,
+      initial: true,
+      category: product.category,
+      shop: product.shop
+    };
+    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
 
     setSelectedProduct(tabName, product);
     setProductTimesVisited(updateProductTimesVisitedMutate, product);
@@ -102,9 +119,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   scrollbarStyle: {
-    marginTop:15,
+    marginTop: 15,
     marginBottom: 15,
-    marginLeft:10
+    marginLeft: 10
   }
 });
 
@@ -122,18 +139,29 @@ const queries = categories.map((category) => ({
       ) {
         id,
         productId,
-        imageUrl,
-        productUrl,
-        price,
-        shop,
-        timesVisited,
-        timesRedirected
+      productImageUrl,
+      modelImageUrl,
+      productUrl,
+      affiliateUrl,
+      price,
+      shop,
+      brand,
+      category,
+      timesVisited,
+      timesRedirected
       }
     }
   `,
   queryName: category.name
 }));
 
+const updateProductTimesVisited = gql`
+  mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
+    updateProduct(id: $id, timesVisited: $timesVisited ) {
+      id
+    }
+  }
+`;
 
 const mapStateToProps = (state, ownProps) => ({
 });
@@ -143,5 +171,6 @@ export default compose(
     mapStateToProps,
     actions
   ),
-  ...queries.map(query => graphql(query.query, { name: query.queryName }))
+  ...queries.map(query => graphql(query.query, { name: query.queryName })),
+  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
 )(ExploreContainer);

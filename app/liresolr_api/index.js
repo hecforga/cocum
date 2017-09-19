@@ -43,12 +43,12 @@ export const fetchResults = (mode, params) => {
       break;
   }
 
-  console.log(url);
-
   return fetch(url).then((response) => response.json().then((json) => {
     const docs = json.docs || json.response;
     let results = [];
-    docs.forEach((doc) => results.push(doc.id));
+    if (docs) {
+      docs.forEach((doc) => results.push(doc.id));
+    }
     return results;
   }));
 };

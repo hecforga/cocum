@@ -9,8 +9,4 @@ const Root = ({ store, client }) => (
   </ApolloProvider>
 );
 
-Root.propTypes = {
-  store: PropTypes.object.isRequired,
-};
-
 export default Root;

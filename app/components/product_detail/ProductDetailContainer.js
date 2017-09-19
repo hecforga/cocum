@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import { getResultsActiveLevel, getSelectedProductAtLevel } from '../../reducers';
 import * as actions from '../../actions';
 import * as fromProductsInfo from '../../utilities/productsInfo.js';
+import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
 import ProductDetailModal from './ProductDetailModal.js';
 
 class ProductDetailContainer extends Component {
+  componentWillMount() {
+    this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
+  }
+
   render() {
     const {
       level,
@@ -30,7 +36,14 @@ class ProductDetailContainer extends Component {
   }
 
   onVisitShopPress() {
-    const { selectedProduct, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
+    const { tabName, selectedProduct, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
+
+    const labelData = {
+      tabName: tabName,
+      category: selectedProduct.category,
+      shop: selectedProduct.shop
+    };
+    this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(labelData) } );
 
     Linking.openURL(fromProductsInfo.getProductUrl(selectedProduct));
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
@@ -39,8 +52,15 @@ class ProductDetailContainer extends Component {
   onCocumItPress() {
     const { navigation, tabName, level, selectedProduct } = this.props;
 
+    const labelData = {
+      tabName: tabName,
+      category: selectedProduct.category,
+      shop: selectedProduct.shop
+    };
+    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
+
     navigation.navigate('Results', {
-      category: selectedProduct.category || 'punto', // TODO: Remove || 'punto' when updating Grapchcool
+      category: selectedProduct.category,
       tabName: tabName,
       fetchMode: 'id',
       level: level + 1

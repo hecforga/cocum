@@ -7,8 +7,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import tabs, { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
 
 import HomeScreen from '../components/HomeScreen.js';
-import CategorySelectionScreen from '../components/CategorySelectionScreen.js';
-import ResultsScreen from '../components/ResultsScreen.js';
+import CategorySelectionScreen from '../components/category_selection/CategorySelectionScreen.js';
+import ResultsScreen from '../components/results/ResultsScreen.js';
 import FiltersScreen from '../components/filters/FiltersScreen.js';
 import TrendingScreen from '../components/trending_tab/TrendingScreen.js';
 import ExploreScreen from '../components/explore_tab/ExploreScreen.js';
@@ -125,11 +125,6 @@ class AppWithNavigationState extends Component {
     return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
   }
 }
-
-AppWithNavigationState.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = state => ({
   nav: state.nav,

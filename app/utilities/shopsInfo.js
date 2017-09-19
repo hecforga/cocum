@@ -9,8 +9,8 @@ const shops = [
     name: 'mango',
     label: 'MANGO'
   }, {
-    name: 'pullandbear',
-    label: 'PULL&BEAR'
+    name: 'superdry',
+    label: 'Superdry'
   }, {
     name: 'zara',
     label: 'ZARA'
