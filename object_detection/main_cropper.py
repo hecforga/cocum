@@ -20,11 +20,11 @@ if sys.argv[1] == 'all':
 else:
     genders = [sys.argv[1]]
 if sys.argv[2] == 'all':
-    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"]
+    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"]
 else:
     categories = [sys.argv[2]]
 if sys.argv[3] == 'all':
-    shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"]
+    shops = ["asos", "gues", "laredoute", "mango", "superdry", "zara"]
 else:
     shops = [sys.argv[3]]
 
@@ -51,6 +51,7 @@ for gender in genders:
 
             for product_id in new_products:
                 image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
+                print(image_path)
 
                 # Get the image from image_path
                 img = cv2.imread(image_path)
@@ -66,7 +67,7 @@ for gender in genders:
                             if hierarchy[0][i][3] == 0 and hierarchy[0][i][2] > 0:
                                 aux_contours.append(contours[i])
                     thresh_value -= 1
-                    
+
                 if len(aux_contours) > 0:
                     # Compute output image dimensions
                     contour = sorted(aux_contours, key = cv2.contourArea, reverse = True)[0]

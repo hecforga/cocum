@@ -14,7 +14,7 @@ if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["asos", "laredoute", "mango", "pullandbear", "superdry", "zara"];
+let shops = ["asos", "guess", "laredoute", "mango", "superdry", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }

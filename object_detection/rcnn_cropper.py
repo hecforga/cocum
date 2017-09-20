@@ -30,7 +30,7 @@ if sys.argv[2] == 'all':
 else:
     categories = [sys.argv[2]]
 if sys.argv[3] == 'all':
-    shops = ["asos"]
+    shops = ["asos", "superdry"]
 else:
     shops = [sys.argv[3]]
 
