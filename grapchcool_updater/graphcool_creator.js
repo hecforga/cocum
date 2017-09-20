@@ -9,12 +9,12 @@ if (process.argv[2] !== 'all') {
   genders = [process.argv[2]];
 }
 
-let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"];
+let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"];
 if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"];
+let shops = ["asos", "laredoute", "mango", "pullandbear", "superdry", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }
@@ -33,13 +33,21 @@ const createProduct = (productsFolder, category, shop, index) => {
   client.mutate(`
     {
       createProduct(
-        productId: "${productInfo.id}",
-        imageUrl: "${productInfo.imageUrl}",
+        affiliateUrl: "${productInfo.affiliateUrl}",
+        brand: "${productInfo.brand}",
+        category: "${productInfo.category}",
+        color: "${productInfo.color}",
+        discounted: ${productInfo.discounted},
+        gender: "${productInfo.gender}",
+        modelImageUrl: "${productInfo.modelImageUrl}",
+        price: "${productInfo.price}",
+        productId: "${productInfo.productId}",
+        productImageUrl: "${productInfo.productImageUrl}",
         productUrl: "${productInfo.productUrl}",
         shop: "${productInfo.shop}",
-        price: "${productInfo.price}"
+        title: "${productInfo.title}",
       ) {
-        productId
+        id
       }
     }
   `)

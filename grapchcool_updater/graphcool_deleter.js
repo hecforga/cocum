@@ -9,12 +9,12 @@ if (process.argv[2] !== 'all') {
   genders = [process.argv[2]];
 }
 
-let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"];
+let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"];
 if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["asos", "laredoute", "mango", "pullandbear", "zalando", "zara"];
+let shops = ["asos", "laredoute", "mango", "pullandbear", "superdry", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }
@@ -33,17 +33,21 @@ genders.forEach((gender) => {
       previousProducts.forEach((productId) => {
         client.query(`
           query {
-      	    Product(productId: "${productId}") {
+      	    allProducts(filter: {
+              productId: "${productId}"
+              category: "${category}"
+            }) {
               id
       		}
     	  }
         `).then((res) => {
+          console.log(res);
           client.mutate(`
             {
               deleteProduct(
-                id: "${res.Product.id}"
+                id: "${res.allProducts[0].id}"
               ) {
-                productId
+                id
               }
             }
           `);
