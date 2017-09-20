@@ -83,11 +83,19 @@ TODO
 
 ## Actualizar índices
 
+### Scrapear
+
+Ejecutar scrapers.
+
+Antes de recortar, eliminar las imágenes que se hayan descargado mal. Después de esto, editar el archivo "python_utilities/remove_product_folder_if_no_image.py" con el nombre de la tienda en cuestión y ejecutarlo.
+
 ### Recortar
 
 ```bash
-~/object_detection/main_cropper.py mujer category/all shop/all
+./main_cropper.py mujer category/all shop/all
 ```
+
+Despuésde recortar, eliminar las imágenes que se hayan recortado mal (CROPPED). Después de esto, editar el archivo "python_utilities/remove_product_folder_if_not_in_cropped.py" con el nombre de la tienda en cuestión y ejecutarlo.
 
 ### Añadir a Graphcool
 
