@@ -65,7 +65,7 @@ class TrendingContainer extends Component {
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsRedirected()}
             scrollbarStyle={styles.scrollbarStyle}
-            imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2 }}
+            productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
 
           <ProductsHorizontalList
@@ -74,7 +74,7 @@ class TrendingContainer extends Component {
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsVisited()}
             scrollbarStyle={styles.scrollbarStyle}
-            imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2 }}
+            productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
 
           <ProductsHorizontalList
@@ -83,7 +83,7 @@ class TrendingContainer extends Component {
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsUpdated()}
             scrollbarStyle={styles.scrollbarStyle}
-            imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2 }}
+            productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
 
           <ProductsHorizontalList
@@ -92,7 +92,7 @@ class TrendingContainer extends Component {
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsRandom()}
             scrollbarStyle={styles.scrollbarStyle}
-            imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2 }}
+            productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
         </ScrollView>
         <ProductDetailContainer navigation={navigation} tabName={tabName} level={level} />

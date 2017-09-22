@@ -43,7 +43,7 @@ class ProductDetailModal extends Component {
                   source={{ uri: fromProductsInfo.getProductImageUrl(selectedProduct) }}
                 />
                 <View style={styles.detailTextContainer}>
-                  <Text>{fromProductsInfo.getShopAndBrandLabel(selectedProduct)}</Text>
+                  <Text numberOfLines={1}>{fromProductsInfo.getShopAndBrandLabel(selectedProduct)}</Text>
                   <Text style={styles.price}>{fromProductsInfo.getPriceLabel(selectedProduct)}</Text>
                 </View>
                 <View style={styles.detailBottomContainer}>

@@ -3,6 +3,9 @@ const shops = [
     name: 'asos',
     label: 'ASOS'
   }, {
+    name: 'guess',
+    label: 'GUESS'
+  }, {
     name: 'laredoute',
     label: 'La Redoute'
   }, {

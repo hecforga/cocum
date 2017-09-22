@@ -14,7 +14,7 @@ import ProductDetailContainer from '../product_detail/ProductDetailContainer.js'
 const CONTAINER_PADDING = 16;
 const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
 
-class ExploreContainer extends Component {
+class CatalogueContainer extends Component {
   componentWillMount() {
     const { tabName, setCanGoNext, onResultsWillMount } = this.props;
 
@@ -63,7 +63,7 @@ class ExploreContainer extends Component {
               onProductPress={(product) => this.onProductPress(product)}
               products={this.props[query.queryName].allProducts}
               scrollbarStyle={styles.scrollbarStyle}
-              imageStyle={{width: this.imageWidth, height: this.imageWidth * 1.2}}
+              productThumbnailContainerStyle={{ width: this.imageWidth }}
             />
           ))}
         </ScrollView>
@@ -173,4 +173,4 @@ export default compose(
   ),
   ...queries.map(query => graphql(query.query, { name: query.queryName })),
   graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
-)(ExploreContainer);
+)(CatalogueContainer);

@@ -1,11 +1,11 @@
 export const getTabNameForTrendingScreen = () => 'TrendingTab';
 export const getTabNameForHomeScreen = () => 'HomeTab';
-export const getTabNameForExploreScreen = () => 'ExploreTab';
+export const getTabNameForCatalogueScreen = () => 'CatalogueTab';
 
 const tabs = [
   getTabNameForTrendingScreen(),
   getTabNameForHomeScreen(),
-  getTabNameForExploreScreen()
+  getTabNameForCatalogueScreen()
 ]; // order matters
 
 export default tabs;
@@ -13,5 +13,5 @@ export default tabs;
 export const generateInitialState = (initialValue) => ({
   [getTabNameForTrendingScreen()]: initialValue,
   [getTabNameForHomeScreen()]: initialValue,
-  [getTabNameForExploreScreen()]: initialValue
+  [getTabNameForCatalogueScreen()]: initialValue
 });

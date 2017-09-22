@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app may access to your camera for taking pictures</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app doesn&apos;t use the microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app may access to your photo library in order to search similar images</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app doesn&apos;t access to your contacts list</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -34,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>EXClientVersion</key>
 	<string>1.19.2</string>
 	<key>Fabric</key>
@@ -67,9 +75,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

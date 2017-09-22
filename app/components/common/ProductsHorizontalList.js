@@ -14,7 +14,7 @@ class ProductsHorizontalList extends Component {
       onProductPress,
       products,
       scrollbarStyle,
-      imageStyle,
+      productThumbnailContainerStyle
     } = this.props;
 
     return (
@@ -47,12 +47,14 @@ class ProductsHorizontalList extends Component {
             <ProductThumbnail
               key={ product.productId}
               product={product}
-              productThumbnailContainerStyle={{
-                marginTop: 4,
-                marginLeft: index === 0 ? 0 : 4,
-                marginRight: index === (products.length - 1) ? StyleSheet.flatten(scrollbarStyle).marginLeft : 4
-              }}
-              imageStyle={imageStyle}
+              productThumbnailContainerStyle={[
+                {
+                  marginTop: 4,
+                  marginLeft: index === 0 ? 0 : 4,
+                  marginRight: index === (products.length - 1) ? StyleSheet.flatten(scrollbarStyle).marginLeft : 4
+                },
+                productThumbnailContainerStyle
+              ]}
               onPress={onProductPress}
             />
           )}
@@ -71,7 +73,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontWeight: '500',
     fontSize: 20,
-  },
+  }
 });
 
 export default ProductsHorizontalList;

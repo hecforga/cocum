@@ -7,6 +7,6 @@
 	<key>isShell</key>
 	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@hecforga/Cocum</string>
+	<string>https://exp.host/@hecforga/Cocum</string>
 </dict>
 </plist>

@@ -3,32 +3,32 @@ import { Platform } from 'react-native';
 import { Constants } from 'expo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
-import { getTabNameForExploreScreen } from '../../utilities/tabsInfo.js';
+import { getTabNameForCatalogueScreen } from '../../utilities/tabsInfo.js';
 
-import ExploreContainer from './ExploreContainer.js';
+import CatalogueContainer from './CatalogueContainer.js';
 
-class ExploreScreen extends Component {
+class CatalogueScreen extends Component {
   componentWillMount() {
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
-    this.tracker.trackScreenView('Explore');
+    this.tracker.trackScreenView('Catalogue');
   }
 
   render() {
     const { navigation } = this.props;
 
     return (
-      <ExploreContainer
+      <CatalogueContainer
         navigation={navigation}
-        tabName={getTabNameForExploreScreen()}
+        tabName={getTabNameForCatalogueScreen()}
         level={0}
       />
     )
   }
 }
 
-ExploreScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Explorar',
+CatalogueScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Catálogo',
   headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 });
 
-export default ExploreScreen;
+export default CatalogueScreen;

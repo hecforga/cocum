@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import tabs, { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
 
@@ -11,7 +11,7 @@ import CategorySelectionScreen from '../components/category_selection/CategorySe
 import ResultsScreen from '../components/results/ResultsScreen.js';
 import FiltersScreen from '../components/filters/FiltersScreen.js';
 import TrendingScreen from '../components/trending_tab/TrendingScreen.js';
-import ExploreScreen from '../components/explore_tab/ExploreScreen.js';
+import CatalogueScreen from '../components/catalogue_tab/CatalogueScreen.js';
 
 const HomeNavigator = StackNavigator({
   Home: { screen: HomeScreen },
@@ -35,8 +35,8 @@ const TrendingNavigator = StackNavigator({
   }
 });
 
-const ExploreNavigator = StackNavigator({
-  ExploreHome: { screen: ExploreScreen },
+const CatalogueNavigator = StackNavigator({
+  CatalogueHome: { screen: CatalogueScreen },
   Results: { screen: ResultsScreen },
   Filters: { screen: FiltersScreen }
 }, {
@@ -70,12 +70,12 @@ export const AppNavigator = TabNavigator({
       )
     }
   },
-  ExploreTab: {
-    screen: ExploreNavigator,
+  CatalogueTab: {
+    screen: CatalogueNavigator,
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => (
-        <FontAwesome
-          name='search'
+        <MaterialCommunityIcons
+          name='hanger'
           color={tintColor}
           style={{ fontSize: 24}}
         />

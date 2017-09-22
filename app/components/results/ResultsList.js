@@ -27,9 +27,9 @@ class ResultsList extends Component {
                 key={ product.productId}
                 product={product}
                 productThumbnailContainerStyle={{
-                  margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN
+                  margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN,
+                  width: this.imageWidth
                 }}
-                imageStyle={{ width: this.imageWidth, height: this.imageWidth * 1.2 }}
                 onPress={onProductPress}
               />
             )}
@@ -48,9 +48,6 @@ const styles = StyleSheet.create({
   listRow: {
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  productThumbnailContainer: {
-    margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN
   },
   productThumbnail: {
     backgroundColor: '#e8e8ee'

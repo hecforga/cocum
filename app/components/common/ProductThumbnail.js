@@ -8,7 +8,6 @@ class ProductThumbnail extends Component {
     const {
       product,
       productThumbnailContainerStyle,
-      imageStyle,
       onPress,
     } = this.props;
 
@@ -20,9 +19,10 @@ class ProductThumbnail extends Component {
         <View style={styles.productThumbnail}>
           <Image
             source={{ uri: fromProductsInfo.getModelImageUrl(product) }}
-            style={[styles.image, imageStyle]}
+            style={styles.image}
+            resizeMode='cover'
           />
-          <Text>{fromProductsInfo.getShopAndBrandLabel(product)}</Text>
+          <Text numberOfLines={1}>{fromProductsInfo.getShopOrBrandLabel(product)}</Text>
           <Text style={styles.price}>{fromProductsInfo.getPriceLabel(product)}</Text>
         </View>
       </TouchableHighlight>
@@ -34,10 +34,9 @@ const styles = StyleSheet.create({
   productThumbnail: {
     backgroundColor: '#e8e8ee'
   },
-  image:{
-    width:50,
-    height:60,
-    marginBottom:8,
+  image: {
+    aspectRatio: 0.8,
+    marginBottom: 8,
   },
   price: {
     fontWeight: 'bold'
