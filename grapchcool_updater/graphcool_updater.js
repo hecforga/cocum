@@ -25,41 +25,59 @@ const client = new Lokka({
 
 const newProducts = {};
 
-const createProduct = (productsFolder, category, shop, index) => {
+const updateProduct = (productsFolder, category, shop, index) => {
   const productId = newProducts[category][shop][index];
   const productInfoPath = productsFolder + '/' + productId + '/' + productId + '.json';
   const productInfo = JSON.parse(fs.readFileSync(productInfoPath, 'utf8'));
 
-  client.mutate(`
-    {
-      createProduct(
-        affiliateUrl: "${productInfo.affiliateUrl}",
-        brand: "${productInfo.brand}",
-        category: "${productInfo.category}",
-        color: "${productInfo.color}",
-        discounted: ${productInfo.discounted},
-        gender: "${productInfo.gender}",
-        modelImageUrl: "${productInfo.modelImageUrl}",
-        price: "${productInfo.price}",
-        productId: "${productInfo.productId}",
-        productImageUrl: "${productInfo.productImageUrl}",
-        productUrl: "${productInfo.productUrl}",
-        shop: "${productInfo.shop}",
-        title: "${productInfo.title}",
-      ) {
+  client.query(`
+    query {
+      allProducts(filter: {
+        productId: "${productInfo.productId}"
+        category: "${productInfo.category}"
+      }) {
         id
+    }
+  }
+  `).then((res) => {
+    client.mutate(`
+      {
+        updateProduct(
+          id: "${res.allProducts[0].id}",
+          affiliateUrl: "${productInfo.affiliateUrl}",
+          brand: "${productInfo.brand}",
+          category: "${productInfo.category}",
+          color: "${productInfo.color}",
+          discounted: ${productInfo.discounted},
+          gender: "${productInfo.gender}",
+          modelImageUrl: "${productInfo.modelImageUrl}",
+          price: "${productInfo.price}",
+          productId: "${productInfo.productId}",
+          productImageUrl: "${productInfo.productImageUrl}",
+          productUrl: "${productInfo.productUrl}",
+          shop: "${productInfo.shop}",
+          title: "${productInfo.title}",
+        ) {
+          id
+        }
       }
-    }
-  `)
-  .then(() => {
-    if (index % 100 === 0) {
-      console.log(category + ', ' + shop + ': analyzed ' + (index + 1) + ' of ' + newProducts[category][shop].length);
-    }
+    `)
+    .then(() => {
+      if (index % 100 === 0) {
+        console.log(category + ', ' + shop + ': analyzed ' + (index + 1) + ' of ' + newProducts[category][shop].length);
+      }
+    })
+    .catch((error) => {
+      throw error;
+    });
   })
-  .catch((error) => console.log(error))
+  .catch((error) => {
+    console.log(error);
+    console.log(productInfo.productId);
+  })
   .finally(() => {
     if (index < newProducts[category][shop].length - 1) {
-      createProduct(productsFolder, category, shop, index + 1);
+      updateProduct(productsFolder, category, shop, index + 1);
     }
   });
 }
@@ -73,7 +91,7 @@ genders.forEach((gender) => {
       const newProductsFilePath = productsFolder + '/new_products.json';
       newProducts[category][shop] = JSON.parse(fs.readFileSync(newProductsFilePath, 'utf8'));
       if (newProducts[category][shop].length) {
-        createProduct(productsFolder, category, shop, 0);
+        updateProduct(productsFolder, category, shop, 0);
       }
     });
   });

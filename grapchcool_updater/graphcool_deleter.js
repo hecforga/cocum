@@ -14,7 +14,7 @@ if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }
 
-let shops = ["asos", "guess", "laredoute", "mango", "superdry", "zara"];
+let shops = ["asos", "forever21", "guess", "laredoute", "mango", "superdry", "zara"];
 if (process.argv[4] !== 'all') {
     shops = [process.argv[4]];
 }
@@ -41,7 +41,6 @@ genders.forEach((gender) => {
       		}
     	  }
         `).then((res) => {
-          console.log(res);
           client.mutate(`
             {
               deleteProduct(
@@ -50,7 +49,14 @@ genders.forEach((gender) => {
                 id
               }
             }
-          `);
+          `)
+          .catch((error) => {
+            throw error;
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log(productId);
         });
       });
     });
