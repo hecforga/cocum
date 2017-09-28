@@ -3,13 +3,12 @@
 import os
 import json
 
-shops = ['guess']
-categories = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas',
-'faldas', 'monos', 'pantalones_cortos', 'pantalones_largos', 'punto',
-'sudaderas_jerseis', 'tops_bodies', 'vestidos']
+from myargparse import parse_args
 
-for shop in shops:
-    for category in categories:
+args = parse_args()
+
+for shop in args.shops:
+    for category in args.categories:
         dirProducts = '/home/hector/workspace/cocum/dataset/mujer/' + category + '/' + shop + '/products'
 
         for root, dirs, files in os.walk(dirProducts):
@@ -22,10 +21,13 @@ for shop in shops:
                     with open(productJson) as f:
                         data = json.load(f)
 
-                    price = data['price']
-                    price = price.replace('EUR ', '')
+                    productImageUrl = data['productImageUrl']
+                    productImageUrl = productImageUrl.replace('%24category-page__grid--1x%24', '$product-page__thumbnail--3x$')
 
-                    dataToAppend = { 'price': price }
+                    modelImageUrl = data['modelImageUrl']
+                    modelImageUrl = modelImageUrl.replace('%24category-page__grid--1x%24', '$product-page__thumbnail--3x$')
+
+                    dataToAppend = { 'productImageUrl': productImageUrl, 'modelImageUrl': modelImageUrl }
                     data.update(dataToAppend)
                     with open(productJson, 'w') as f:
                         json.dump(data, f, indent = 2, separators = (',',': '))

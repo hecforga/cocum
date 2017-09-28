@@ -5,15 +5,16 @@ import json
 import shutil
 from os.path import isfile
 
-shopList = ['laredoute']
-categoriaList = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas', 'faldas', 'monos', 'pantalones_cortos', 'pantalones_largos', 'punto', 'sudaderas_jerseis', 'tops_bodies', 'vestidos']
+from myargparse import parse_args
 
-base_dir = '/home/hector/workspace/cocum/dataset/mujer'
+args = parse_args()
+
+base_dir = '../dataset/mujer'
 
 dirs_to_remove = []
-for shop in shopList:
-    for categoria in categoriaList:
-        products_folder = base_dir + '/' + categoria + '/' + shop + '/products'
+for shop in args.shops:
+    for category in args.categories:
+        products_folder = base_dir + '/' + category + '/' + shop + '/products'
 
         ids_to_remove = []
         for root, dirs, files in os.walk(products_folder):
@@ -29,7 +30,10 @@ for shop in shopList:
             new_products = json.load(f)
 
         for id_to_remove in ids_to_remove:
-            new_products.remove(id_to_remove)
+            try:
+                new_products.remove(id_to_remove)
+            except ValueError:
+                print('Tried to remove not existing item, continuing...')
 
         with open(new_products_file_path, 'w') as f:
             json.dump(new_products, f, indent=2, separators=(',', ': '))

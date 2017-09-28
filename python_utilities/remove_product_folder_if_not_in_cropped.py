@@ -6,13 +6,14 @@ import shutil
 from os import listdir
 from os.path import isfile, join
 
-shops_list = ['guess']
-categories_list = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas', 'faldas', 'monos', 'pantalones_cortos', 'pantalones_largos', 'punto', 'sudaderas_jerseis', 'tops_bodies', 'vestidos']
+from myargparse import parse_args
+
+args = parse_args()
 
 base_dir = '/home/hector/workspace/cocum/dataset/mujer'
 
-for shop in shops_list:
-    for category in categories_list:
+for shop in args.shops:
+    for category in args.categories:
         dirProducts = "/home/hector/workspace/cocum/dataset/mujer/" + category + '/' + shop + "/products"
         dirCropped = '/home/hector/workspace/cocum/dataset/mujer/' + category + "/CROPPED"
 

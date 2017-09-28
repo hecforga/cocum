@@ -3,14 +3,15 @@
 import os
 import json
 
-shopList = ['superdry']
-categoriaList = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas', 'faldas', 'monos', 'pantalones_cortos', 'pantalones_largos', 'punto', 'sudaderas_jerseis', 'tops_bodies', 'vestidos']
+from myargparse import parse_args
+
+args = parse_args()
 
 base_dir = '/home/hector/workspace/cocum/dataset/mujer'
 
-for shop in shopList:
-    for categoria in categoriaList:
-        products_folder = base_dir + '/' + categoria + '/' + shop + '/products'
+for shop in args.shops:
+    for category in args.categories:
+        products_folder = base_dir + '/' + category + '/' + shop + '/products'
 
         list_of_dirs = []
         for root, dirs, files in os.walk(products_folder):
