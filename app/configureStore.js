@@ -12,7 +12,11 @@ import canGoNext from './reducers/canGoNext.js';
 
 const configureStore = (client) => {
 
-  const middlewares = [thunk, createLogger(), client.middleware()];
+  const middlewares = [thunk];
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger());
+  }
+  middlewares.push(client.middleware());
 
   return createStore(
     combineReducers({
