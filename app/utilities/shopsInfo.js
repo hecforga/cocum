@@ -3,6 +3,9 @@ const shops = [
     name: 'asos',
     label: 'ASOS'
   }, {
+    name: 'forever21',
+    label: 'Forever 21'
+  }, {
     name: 'guess',
     label: 'GUESS'
   }, {
@@ -11,6 +14,9 @@ const shops = [
   }, {
     name: 'mango',
     label: 'MANGO'
+  }, {
+    name: 'missguided',
+    label: 'Missguided'
   }, {
     name: 'superdry',
     label: 'Superdry'
