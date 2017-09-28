@@ -17,7 +17,7 @@ import caffe
 if len(sys.argv) != 4:
     print(
         "Example execution:\n"
-        "    ./main_cropper.py all all all")
+        "    ./rcnn_cropper.py all all all")
     exit()
 
 dataset_folder = "../dataset"
@@ -26,25 +26,27 @@ if sys.argv[1] == 'all':
 else:
     genders = [sys.argv[1]]
 if sys.argv[2] == 'all':
-    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas_tops_bodies", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "vestidos"]
+    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"]
+    #categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "monos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"] #forever21
 else:
     categories = [sys.argv[2]]
 if sys.argv[3] == 'all':
-    shops = ["asos", "superdry"]
+    shops = ["asos", "forever21", "missguided"]
 else:
     shops = [sys.argv[3]]
 
 crop_percentages = { # [x0, y0, x1, y1]
-    "abrigos_chaquetas": [0.6, 0.25, 0.25, 0.4],
-    "camisas_blusas": [0.25, 0.3, 0.25, 0.4],
-    "camisetas_tops_bodies": [0.25, 0.3, 0.25, 0.4],
+    "abrigos_chaquetas": [0.6, 0.2, 0.25, 0.6],
+    "camisas_blusas": [0.25, 0.2, 0.25, 0.6],
+    "camisetas": [0.25, 0.2, 0.25, 0.6],
     "faldas": [0.25, 0.4, 0.25, 0.4],
-    "monos": [0.25, 0.3, 0.25, 0.4],
-    "pantalones_cortos": [0.3, 0.45, 0.3, 0.45],
-    "pantalones_largos": [0.2, 0.5, 0.2, 0.1],
+    "monos": [0.25, 0.25, 0.25, 0.4],
+    "pantalones_cortos": [0.3, 0.4, 0.3, 0.4],
+    "pantalones_largos": [0.2, 0.4, 0.2, 0.1],
     "punto": [0, 0, 0, 0],
-    "sudaderas_jerseis": [0.25, 0.3, 0.25, 0.4],
-    "vestidos": [0.25, 0.3, 0.25, 0.35],
+    "sudaderas_jerseis": [0.25, 0.2, 0.25, 0.6],
+    "tops_bodies": [0.25, 0.25, 0.25, 0.65],
+    "vestidos": [0.25, 0.25, 0.25, 0.4],
 }
 
 # Initialize Net
@@ -84,8 +86,7 @@ for gender in genders:
             for product_id in new_products:
                 image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
                 print(image_path)
-                # Get the image from image_path
-                img = cv2.imread(image_path)
+                img = cv2.imread(image_path.encode('utf-8'))
 
                 PERSON_CLASS_IND = 15
                 CONF_THRESH = 0.8
@@ -106,12 +107,19 @@ for gender in genders:
                     bbox = dets[i, :4]
 
                     # Create output image
-                    width = bbox[2] - bbox[0]
-                    height = bbox[3] - bbox[1]
+                    box_width = bbox[2] - bbox[0]
+                    box_height = bbox[3] - bbox[1]
                     c_p = crop_percentages[category]
-                    output_img = img[int(round(bbox[1] + c_p[1] * height)):int(round(bbox[3] - c_p[3] * height)),int(round(bbox[0] + c_p[0] * width)):int(round(bbox[2] - c_p[2] * width))]
+                    output_y0 = int(round(bbox[1] + c_p[1] * box_height))
+                    output_y1 = int(round(bbox[3] - c_p[3] * box_height))
+                    output_height = output_y1 - output_y0
+                    output_x0 = int(round(bbox[0] + c_p[0] * box_width))
+                    output_x1 = int(round(bbox[2] - c_p[2] * box_width))
+                    output_width= output_x1 - output_x0
+                    output_img = img[output_y0:output_y1,output_x0:output_x1]
+                    output_img = cv2.resize(output_img, (300, int((300.0 / output_width) * output_height)))
 
                     # Save output image to output folder
                     image_name = image_path[image_path.rfind("/") + 1:-4]
                     image_name += "_CROPPED.png"
-                    cv2.imwrite(output_folder + "/" + image_name, output_img)
+                    cv2.imwrite((output_folder + "/" + image_name).encode('utf-8'), output_img)
