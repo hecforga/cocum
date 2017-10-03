@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { ImagePicker } from 'expo';
 
-
 import { getSelectedImage, getQuery } from '../../reducers/index';
 import * as actions from '../../actions/index';
 
@@ -87,9 +86,7 @@ const mapStateToProps = (state) => ({
   query: getQuery(state)  
 });
 
-CategorySelectionContainerWithState = connect(
+export default connect(
   mapStateToProps,
   actions
 )(CategorySelectionContainer);
-
-export default CategorySelectionContainerWithState;

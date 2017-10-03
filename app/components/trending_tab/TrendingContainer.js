@@ -60,7 +60,6 @@ class TrendingContainer extends Component {
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={true}>
           <ProductsHorizontalList
-            key={'Lo mas vendido'}
             title={'Lo más vendido'}
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsRedirected()}
@@ -69,7 +68,6 @@ class TrendingContainer extends Component {
           />
 
           <ProductsHorizontalList
-            key={'Lo mas buscado'}
             title={'Lo más buscado'}
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsVisited()}
@@ -78,7 +76,6 @@ class TrendingContainer extends Component {
           />
 
           <ProductsHorizontalList
-            key={'Lo mas nuevo'}
             title={'Lo más nuevo'}
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsUpdated()}
@@ -87,7 +84,6 @@ class TrendingContainer extends Component {
           />
 
           <ProductsHorizontalList
-            key={'Te puede gustar'}
             title={'Te puede gustar'}
             onProductPress={(product) => this.onProductPress(product)}
             products={this.getProductsRandom()}
@@ -249,12 +245,9 @@ const updateProductTimesVisited = gql`
   }
 `;
 
-const mapStateToProps = (state, ownProps) => ({
-});
-
 export default compose(
   connect(
-    mapStateToProps,
+    null,
     actions
   ),
   graphql(getProductsByTimesRedirected, { name : 'productsByTimesRedirected' }),

@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const excludedShops = ['zara', 'mango', 'pullandbear'];
+const excludedShops = ['zara', 'mango'];
 const queries = categories.map((category) => ({
   query: gql`
     query ${category.name} {
@@ -163,12 +163,9 @@ const updateProductTimesVisited = gql`
   }
 `;
 
-const mapStateToProps = (state, ownProps) => ({
-});
-
 export default compose(
   connect(
-    mapStateToProps,
+    null,
     actions
   ),
   ...queries.map(query => graphql(query.query, { name: query.queryName })),

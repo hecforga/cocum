@@ -12,12 +12,14 @@ import ResultsScreen from '../components/results/ResultsScreen.js';
 import FiltersScreen from '../components/filters/FiltersScreen.js';
 import TrendingScreen from '../components/trending_tab/TrendingScreen.js';
 import CatalogueScreen from '../components/catalogue_tab/CatalogueScreen.js';
+import WebViewScreen from '../components/web_view/WebViewScreen.js';
 
 const HomeNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   CategorySelection: { screen: CategorySelectionScreen },
   Results: { screen: ResultsScreen },
-  Filters: { screen: FiltersScreen }
+  Filters: { screen: FiltersScreen },
+  WebView: { screen: WebViewScreen }
 }, {
   initialRouteName: 'Home',
   navigationOptions: {
@@ -28,7 +30,8 @@ const HomeNavigator = StackNavigator({
 const TrendingNavigator = StackNavigator({
   TrendingHome: { screen: TrendingScreen },
   Results: { screen: ResultsScreen },
-  Filters: { screen: FiltersScreen }
+  Filters: { screen: FiltersScreen },
+  WebView: { screen: WebViewScreen }
 }, {
   navigationOptions: {
     headerBackTitle: null
@@ -38,7 +41,8 @@ const TrendingNavigator = StackNavigator({
 const CatalogueNavigator = StackNavigator({
   CatalogueHome: { screen: CatalogueScreen },
   Results: { screen: ResultsScreen },
-  Filters: { screen: FiltersScreen }
+  Filters: { screen: FiltersScreen },
+  WebView: { screen: WebViewScreen }
 }, {
   navigationOptions: {
     headerBackTitle: null

@@ -9,6 +9,7 @@ import results from './reducers/results.js';
 import selectedProducts from './reducers/selectedProducts.js';
 import filters from './reducers/filters.js';
 import canGoNext from './reducers/canGoNext.js';
+import webView from './reducers/webView.js';
 
 const configureStore = (client) => {
 
@@ -27,6 +28,7 @@ const configureStore = (client) => {
       selectedProducts,
       filters,
       canGoNext,
+      webView,
       apollo: client.reducer()
     }),
     applyMiddleware(...middlewares)

@@ -3,8 +3,8 @@ import { Platform } from 'react-native';
 import { Constants } from 'expo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
-import CategorySelectionContainerWithState from './CategorySelectionContainer.js';
-import HeaderButtonContainerWithState from '../header/HeaderButtonContainer.js';
+import CategorySelectionContainer from './CategorySelectionContainer.js';
+import HeaderButtonContainer from '../header/HeaderButtonContainer.js';
 
 class CategorySelectionScreen extends Component {
 
@@ -18,7 +18,7 @@ class CategorySelectionScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <CategorySelectionContainerWithState navigation={navigation} />
+      <CategorySelectionContainer navigation={navigation} />
     );
   }
 }
@@ -26,7 +26,7 @@ class CategorySelectionScreen extends Component {
 CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
   title: 'Recortar',
   headerRight: (
-    <HeaderButtonContainerWithState
+    <HeaderButtonContainer
       title='Buscar'
       onPress={(state) => {
         navigation.navigate('Results', {
@@ -36,6 +36,9 @@ CategorySelectionScreen.navigationOptions = ({ navigation }) => ({
           level: 0
         });
       }}
+      isDisabled={(state) => !state.canGoNext}
+      buttonStyle={{ minWidth: 80 }}
+      containerStyle={{ marginRight: 8 }}
     />
   ),
   headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null,

@@ -90,8 +90,7 @@ const getProductsByIds = gql`
 const createMyQuery = gql`
   mutation createMyQuery ($gender: String!, $category: String!) {
     createMyQuery(gender: $gender, category: $category ) {
-      id,
-      rating
+      id
     }
   }
 `;

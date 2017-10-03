@@ -6,24 +6,40 @@ import MyButton from '../common/MyButton.js';
 
 class HeaderButtonContainer extends Component {
   render() {
-    const { iconName, title, onPress, state } = this.props;
+    const {
+      iconName,
+      iconFamily,
+      iconColor,
+      title,
+      buttonStyle,
+      containerStyle,
+      onPress,
+      isDisabled,
+      noBackground,
+      state
+    } = this.props;
 
     return (
       <MyButton
         iconName={iconName}
-        iconFamily={'FontAwesome'}
-        touchableType={'opacity'}
+        iconFamily={iconFamily}
+        iconColor={iconColor}
         title={title}
         onPress={() => this.handleOnPress(state, onPress)}
-        disabled={!state.canGoNext}
-        buttonStyle={{ minWidth: 80 }}
-        containerStyle={{ marginRight: 8 }}
+        disabled={this.handleIsDisabled(state, isDisabled)}
+        noBackground={noBackground}
+        buttonStyle={buttonStyle}
+        containerStyle={containerStyle}
       />
     );
   }
 
   handleOnPress(state, onPress) {
     onPress(state);
+  }
+
+  handleIsDisabled(state, isDisabled) {
+    return isDisabled(state);
   }
 }
 

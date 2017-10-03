@@ -12,7 +12,7 @@ export const getShopOrBrandLabel = (product) =>
 
 export const getModelImageUrl = (product) => {
   let imageUrl = product.modelImageUrl || product.productImageUrl;
-  if (product.shop == 'laredoute') {
+  if (product.shop === 'laredoute') {
     imageUrl = cloudinaryUrl + imageUrl;
   }
   return imageUrl;

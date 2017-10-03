@@ -8,7 +8,7 @@ import { getCategoryLabel } from '../../utilities/categoriesInfo.js';
 import QueryResultsContainer from './QueryResultsContainer.js';
 import CocumItResultsContainer from './CocumItResultsContainer.js';
 import RandomResultsContainer from './RandomResultsContainer.js';
-import HeaderButtonContainerWithState from '../header/HeaderButtonContainer.js';
+import HeaderButtonContainer from '../header/HeaderButtonContainer.js';
 
 class ResultsScreen extends Component {
   componentWillMount() {
@@ -61,7 +61,7 @@ const tracker = new GoogleAnalyticsTracker('UA-106460906-1');
 ResultsScreen.navigationOptions = ({ navigation }) => ({
   title: getCategoryLabel(navigation.state.params.category),
   headerRight: (
-    <HeaderButtonContainerWithState
+    <HeaderButtonContainer
       iconName='home'
       onPress={(state) => {
         tracker.trackEvent('button', 'pressed', { label: 'ResultsHeaderHome'} );
@@ -73,6 +73,9 @@ ResultsScreen.navigationOptions = ({ navigation }) => ({
         }
         navigation.goBack(null);
       }}
+      isDisabled={(state) => !state.canGoNext}
+      buttonStyle={{ minWidth: 80 }}
+      containerStyle={{ marginRight: 8 }}
     />
   ),
   headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null

@@ -4,6 +4,7 @@ import * as fromResults from './results.js';
 import * as fromSelectedProducts from './selectedProducts.js';
 import * as fromFilters from './filters.js';
 import * as fromCanGoNext from './canGoNext.js';
+import * as fromWebView from './webView.js';
 
 export const getSelectedImage = (state) =>
   fromSelectedImage.getSelectedImage(state.selectedImage);
@@ -40,3 +41,9 @@ export const getAppliedFiltersAtLevel = (state, tabName, level) =>
 
 export const getCanGoNext = (state) =>
   fromCanGoNext.getCanGoNext(state.canGoNext);
+
+export const getWebViewCanGoBack = (state) =>
+  fromWebView.getCanGoBack(state.webView);
+
+export const getWebViewCanGoForward = (state) =>
+  fromWebView.getCanGoForward(state.webView);

@@ -16,6 +16,7 @@ class MyButton extends Component {
       iconName,
       iconColor,
       disabled,
+      noBackground
     } = this.props;
 
     const buttonStyles = [styles.button];
@@ -35,8 +36,11 @@ class MyButton extends Component {
     }
 
     if (disabled) {
-      buttonStyles.push(styles.buttonDisabled);
+      if (!noBackground) {
+        buttonStyles.push(styles.buttonDisabled);
+      }
       textStyles.push(styles.textDisabled);
+      iconStyles.push(styles.iconDisabled);
     }
 
     let Touchable = TouchableOpacity;
@@ -79,16 +83,19 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     textAlign: 'center',
-    fontWeight: '500',
+    fontWeight: '500'
   },
   icon: {
     fontSize: 32
   },
   buttonDisabled: {
-    backgroundColor: '#dfdfdf',
+    backgroundColor: '#dfdfdf'
   },
   textDisabled: {
-    color: '#a1a1a1',
+    color: '#a1a1a1'
+  },
+  iconDisabled: {
+    opacity: 0.38
   }
 });
 

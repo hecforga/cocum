@@ -1,7 +1,7 @@
-import * as liresolr_api from '../liresolr_api';
 import { RNS3 } from 'react-native-aws3';
 
-import {accessKey, secretKey} from '../credentials/s3credentials.js';
+import { accessKey, secretKey } from '../credentials/s3credentials.js';
+import * as liresolr_api from '../liresolr_api';
 
 export const selectImage = (imageUri, width, height) => ({
   type: 'SELECT_IMAGE',
@@ -58,7 +58,6 @@ export const generateQueryId = (tabName, mutate, query) => (dispatch, getState) 
       tabName,
       id: response.data.createMyQuery.id
     });
-    setRatingBarVisibility(dispatch, true);
   }).catch(
     error => handleFetchResultsFailure(dispatch, tabName, error)
   );
@@ -204,4 +203,18 @@ export const applyFilters = (filters, tabName) => ({
 export const setCanGoNext = (goNext) => ({
   type: 'SET_CAN_GO_NEXT',
   goNext
+});
+
+export const setWebViewCanGoBack = (canGoBack) => ({
+  type: 'SET_WEB_VIEW_CAN_GO_BACK',
+  canGoBack
+});
+
+export const setWebViewCanGoForward = (canGoForward) => ({
+  type: 'SET_WEB_VIEW_CAN_GO_FORWARD',
+  canGoForward
+});
+
+export const resetWebView = () => ({
+  type: 'RESET_WEB_VIEW'
 });

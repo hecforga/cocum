@@ -36,7 +36,13 @@ class ProductDetailContainer extends Component {
   }
 
   onVisitShopPress() {
-    const { tabName, selectedProduct, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
+    const {
+      navigation,
+      tabName,
+      selectedProduct,
+      setProductTimesRedirected,
+      updateProductTimesRedirectedMutate
+    } = this.props;
 
     const labelData = {
       tabName: tabName,
@@ -45,8 +51,15 @@ class ProductDetailContainer extends Component {
     };
     this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(labelData) } );
 
-    Linking.openURL(fromProductsInfo.getProductUrl(selectedProduct));
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
+
+    const url = selectedProduct.productUrl;
+
+    this.onCloseModal();
+
+    navigation.navigate('WebView', {
+      url
+    });
   }
 
   onCocumItPress() {

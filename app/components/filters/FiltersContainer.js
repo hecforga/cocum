@@ -120,9 +120,7 @@ const mapStateToProps = (state, ownProps) => ({
   appliedFilters: getAppliedFiltersAtLevel(state, ownProps.tabName, ownProps.level)
 });
 
-FiltersContainerWithState = connect(
+export default connect(
   mapStateToProps,
   actions
 )(FiltersContainer);
-
-export default FiltersContainerWithState;

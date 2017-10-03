@@ -91,7 +91,6 @@ class HomeScreen extends Component {
 }
 
 HomeScreen.navigationOptions = {
-  title: 'Cocum',
   header: null
 };
 

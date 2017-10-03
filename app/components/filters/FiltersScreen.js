@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Constants } from 'expo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
-import FiltersContainerWithState from './FiltersContainer.js';
+import FiltersContainer from './FiltersContainer.js';
 
 class FiltersScreen extends Component {
   componentWillMount() {
@@ -15,7 +15,7 @@ class FiltersScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <FiltersContainerWithState
+      <FiltersContainer
         navigation={navigation}
         tabName={navigation.state.params.tabName}
         level={navigation.state.params.level}

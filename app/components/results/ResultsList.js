@@ -10,7 +10,6 @@ class ResultsList1 extends Component {
   componentWillMount() {
     const { height, width } = Dimensions.get('window');
     this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_THUMBNAIL_CONTAINER_MARGIN) / 2;
-    console.log('imageWidth: ' + this.imageWidth);
   }
 
   render() {
