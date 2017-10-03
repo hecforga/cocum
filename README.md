@@ -87,7 +87,7 @@ TODO
 
 Ejecutar scrapers.
 
-Antes de recortar, eliminar las imágenes que se hayan descargado mal. Después de esto, editar el archivo "python_utilities/remove_product_folder_if_no_image.py" con el nombre de la tienda en cuestión y ejecutarlo.
+Antes de recortar, eliminar las imágenes (CTRL+F ".jpg") que se hayan descargado mal. Después de esto, ejecutar "python_utilities/remove_product_folder_if_no_image.py" con los argumentos apropiados.
 
 ### Recortar
 
@@ -95,7 +95,7 @@ Antes de recortar, eliminar las imágenes que se hayan descargado mal. Después 
 ./main_cropper.py mujer category/all shop/all
 ```
 
-Despuésde recortar, eliminar las imágenes que se hayan recortado mal (CROPPED). Después de esto, editar el archivo "python_utilities/remove_product_folder_if_not_in_cropped.py" con el nombre de la tienda en cuestión y ejecutarlo.
+Después de recortar, eliminar de CROPPED las imágenes que se hayan recortado mal. Después de esto, ejecutar "python_utilities/remove_product_folder_if_not_in_cropped.py" con los argumentos apropiados.
 
 ### Añadir a Graphcool
 
