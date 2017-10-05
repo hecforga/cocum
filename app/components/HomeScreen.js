@@ -91,7 +91,8 @@ class HomeScreen extends Component {
 }
 
 HomeScreen.navigationOptions = {
-  header: null
+  header: null,
+  tabBarVisible: Platform.OS === 'android'
 };
 
 const styles = StyleSheet.create({
