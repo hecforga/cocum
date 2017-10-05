@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   }
 });
 
+const aWeekAgo = new Date(new Date().getTime() - 604800000).toISOString();
 const excludedShops = ['zara', 'mango'];
 const queries = categories.map((category) => ({
   query: gql`
@@ -134,7 +135,8 @@ const queries = categories.map((category) => ({
         first: 5,
         filter: {
           category: "${category.name}",
-          shop_not_in: ["${excludedShops.join(`", "`)}"]
+          shop_not_in: ["${excludedShops.join(`", "`)}"],
+          updatedAt_gte: "${aWeekAgo}"
         }
       ) {
         id,
