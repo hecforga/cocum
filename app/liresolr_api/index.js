@@ -1,4 +1,4 @@
-const LIRESOLR_SERVER_URL = 'http://54.93.254.52:8983/solr/';
+const LIRESOLR_SERVER_URL = 'http://54.93.254.52/solr/';
 
 const addUrlQuery = (url, params) => {
   const cloudinaryUrl = 'http://res.cloudinary.com/ddjzq70ve/image/fetch/x_0.1,y_0.1,w_0.8,h_0.8,c_crop,e_brightness_hsb:20/';
