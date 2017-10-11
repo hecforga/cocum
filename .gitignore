@@ -1,1 +1,5 @@
 dataset/
+
+python_utilities/__pycache__/
+
+web/\.idea/

@@ -107,7 +107,7 @@ node graphcool_creator.js mujer category/all shop/all
 
 ### Calcular y subir índices a LireSolr
 
-Abrir el proyecto liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java. (Si se han añadido/eliminado tiendas/categorías, editar el archivo ParallelSolrIndexer.java con dichas modificaciones antes de ejecutarlo.)
+Abrir el proyecto my-liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java. (Si se han añadido/eliminado tiendas/categorías, editar el archivo ParallelSolrIndexer.java con dichas modificaciones antes de ejecutarlo.)
 
 Argumentos: /path/to/dataset mujer category/all shop/all
 
