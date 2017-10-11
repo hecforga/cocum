@@ -2,18 +2,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import query from './reducers/query.js';
-import results from './reducers/results.js';
-
-const configureStore = (client) => {
-
-  const middlewares = [thunk, createLogger(), client.middleware()];
+const configureStore = () => {
+  const middlewares = [thunk];
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger());
+  }
 
   return createStore(
     combineReducers({
-      query,
-      results,
-      apollo: client.reducer()
+      // add reducers here
     }),
     applyMiddleware(...middlewares)
   );
