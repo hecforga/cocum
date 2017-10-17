@@ -1,0 +1,10 @@
+hombre/
+
+**/*.png
+**/*.jpg
+**/*.xml
+**/*.json
+
+!**/current_products.json
+!**/previous_products.json
+!**/new_products.json
