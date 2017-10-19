@@ -70,7 +70,7 @@ class AsosSpider(scrapy.Spider):
 
         return categoriaNombre
 
-    def create_files( dirToProducts, current_products_dir, previous_products_dir):
+    def create_files( self, dirToProducts, current_products_dir, previous_products_dir):
 
         new_products_dir = dirToProducts+'new_products.json'
 
@@ -125,13 +125,13 @@ class AsosSpider(scrapy.Spider):
     def parse_category_page(self, response):
         #We obtain the links from each category page
         #Depends on the shop: ASOS
-        productLinks = response.css('a.product.product-link')
+        productContainers = response.css('li.product-container.interactions')
         category = response.meta['category']
 
-        for index, productLink in enumerate(productLinks):
-
-            price = productLink.xpath('//following-sibling::div[1]/div[@class="price-wrap price-current"]/span[@class="price"]/text()').extract_first().strip()
-            productLink = productLink.css('::attr(href)').extract_first()
+        for index, productContainer in enumerate(productContainers):
+                
+            productLink = productContainer.css('a.product.product-link::attr(href)').extract_first()
+            price = productContainer.css('div.scm-pricelist div.price-wrap.price-current span.price::text').extract_first()
 
             if ('-maternity' in productLink or '-tall' in productLink or '-petite' in productLink 
                 or '-curve' in productLink or '-plus' in productLink):
@@ -151,6 +151,7 @@ class AsosSpider(scrapy.Spider):
         # Check if it has pages 
         # It depends on each shop
         # ASOS
+
         second_part_page_link = response.css('ul.pager li.next a::attr(href)').extract_first()
         if second_part_page_link != '':
             first_part_page_link = response.url[:response.url.rfind('/cat/')+5]
@@ -211,9 +212,9 @@ class AsosSpider(scrapy.Spider):
         price = price.replace(",",".")
         #Obtain the name of the file where we will download the image
         #Depends on the shop: ASOS
-        pt1 = modelImageUrl.rfind("/")+1
-        pt2 = modelImageUrl.rfind("?")
-        productImageFile = modelImageUrl[pt1:pt2]+'.jpg'
+        pt1 = productImageUrl.rfind("/")+1
+        pt2 = productImageUrl.rfind("?")
+        productImageFile = productImageUrl[pt1:pt2]+'.jpg'
         #Obtain the product id from the image file name
         productId = productImageFile[:-4]
         #Compute the affiliate url from the affiliate tag
@@ -238,12 +239,14 @@ class AsosSpider(scrapy.Spider):
         }
 
 
-        #Compute product directory depending on the category and the id
-        # in this directory will be stored the image and the details in json
-        productDirectory =  self.product_directory(category, productId)
-        productDetailsFile = productDirectory+productId+'.json'
+        
 
         if productId not in response.meta['previous_products']:
+
+            #Compute product directory depending on the category and the id
+            # in this directory will be stored the image and the details in json
+            productDirectory =  self.product_directory(category, productId)
+            productDetailsFile = productDirectory+productId+'.json'
 
             if not os.path.isfile(productDirectory+productImageFile) :
                 #Check if the product is already in the database so we do not download the image again
@@ -260,6 +263,18 @@ class AsosSpider(scrapy.Spider):
 
                 yield product
         else:
+
+            #DEBUG
+            #Compute product directory depending on the category and the id
+            # in this directory will be stored the image and the details in json
+            productDirectory =  self.product_directory(category, productId)
+            productDetailsFile = productDirectory+productId+'.json'
+
+            #DEBUG
+            #Write JSON data in the details file of the product
+            with open(productDetailsFile, "w") as json_file:
+                json.dump(productDetails, json_file, indent=2)
+
             #Compute Product item for scrapy
             # will be sent to pipelines.py
             product = Product(productId = productId, category = category, new= False)
