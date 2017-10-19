@@ -107,7 +107,7 @@ class JsonWriterPipeline(object):
                     json.dump(list(set(current_products)), f, indent = 2, separators = (',',': '))
 
                 with open(dirToSave+'new_products.json', 'w') as f:
-                    json.dump(new_products, f, indent = 2, separators = (',',': '))
+                    json.dump(list(set(new_products)), f, indent = 2, separators = (',',': '))
 
                 with open(dirToSave+'previous_products.json', 'w') as f:
                     json.dump(aux_previous_products, f, indent = 2, separators = (',',': '))
