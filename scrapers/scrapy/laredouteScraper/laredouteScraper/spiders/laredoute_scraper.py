@@ -245,19 +245,19 @@ class LaredouteSpider(scrapy.Spider):
                 productDirectory =  self.product_directory(category, productId)
                 productDetailsFile = productDirectory+productId+'.json'
 
-                if not os.path.isfile(productDirectory+productImageFile) :
-                    #Check if the product is already in the database so we do not download the image again
-                    #Download image to the correct folder in the dataset
-                    self.Request.retrieve(download_image_url, productDirectory+productImageFile)
-                    #Write JSON data in the details file of the product
-                    with open(productDetailsFile, "w") as json_file:
-                        json.dump(productDetails, json_file, indent=2)
+                #Check if the product is already in the database so we do not download the image again
+                #Download image to the correct folder in the dataset
+                self.Request.retrieve(download_image_url, productDirectory+productImageFile)
+                #Write JSON data in the details file of the product
+                with open(productDetailsFile, "w") as json_file:
+                    json.dump(productDetails, json_file, indent=2)
 
-                    #Compute Product item for scrapy
-                    # will be sent to pipelines.py
-                    product = Product(productId = productId, category = category, new= True)
+                #Compute Product item for scrapy
+                # will be sent to pipelines.py
+                product = Product(productId = productId, category = category, new= True)
 
-                    yield product
+                yield product
+                
             else:
                 #Compute Product item for scrapy
                 # will be sent to pipelines.py
