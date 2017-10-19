@@ -76,7 +76,7 @@ class missguidedSpider(scrapy.Spider):
         return categoriaNombre
 
 
-    def create_files( dirToProducts, current_products_dir, previous_products_dir):
+    def create_files(self, dirToProducts, current_products_dir, previous_products_dir):
 
         new_products_dir = dirToProducts+'new_products.json'
 
@@ -267,12 +267,12 @@ class missguidedSpider(scrapy.Spider):
         }
 
 
-        #Compute product directory depending on the category and the id
-        # in this directory will be stored the image and the details in json
-        productDirectory =  self.product_directory(category, productId)
-        productDetailsFile = productDirectory+productId+'.json'
-
         if productId not in response.meta['previous_products']:
+
+            #Compute product directory depending on the category and the id
+            # in this directory will be stored the image and the details in json
+            productDirectory =  self.product_directory(category, productId)
+            productDetailsFile = productDirectory+productId+'.json'
 
             if not os.path.isfile(productDirectory+productImageFile) :
                 #Check if the product is already in the database so we do not download the image again

@@ -88,7 +88,7 @@ class JsonWriterPipeline(object):
                 current_products =self.current_products_punto                
                 new_products = self.new_products_punto
 
-            if len(current_products > 0):
+            if len(current_products) > 0 :
                 try: 
                     with open(dirToSave+'previous_products.json') as f:
                         previous_products = json.load(f)
@@ -103,7 +103,7 @@ class JsonWriterPipeline(object):
                         aux_previous_products.append(product)
 
                 with open(dirToSave+'current_products.json', 'w') as f:
-                    json.dump(current_products, f, indent = 2, separators = (',',': '))
+                    json.dump(list(set(current_products)), f, indent = 2, separators = (',',': '))
 
                 with open(dirToSave+'new_products.json', 'w') as f:
                     json.dump(new_products, f, indent = 2, separators = (',',': '))

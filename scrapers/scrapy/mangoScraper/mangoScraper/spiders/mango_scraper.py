@@ -74,7 +74,7 @@ class MangoSpider(scrapy.Spider):
         return categoriaNombre
 
 
-    def create_files( dirToProducts, current_products_dir, previous_products_dir):
+    def create_files(self, dirToProducts, current_products_dir, previous_products_dir):
 
         new_products_dir = dirToProducts+'new_products.json'
 
@@ -94,20 +94,20 @@ class MangoSpider(scrapy.Spider):
     def start_requests(self):
 
         urls = [
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=abrigos&menu=familia;2&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=chaquetas&menu=familia;4,304&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=vestidos&menu=familia;32&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=monos&menu=familia;34&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops de camisas
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=camisetas&menu=familia;18,318&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops y bodies de camisetas
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay qu filtrar las camisas y las blusas de los tops
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Tops&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Bodies&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=sudaderas&menu=familia;610,810&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=cardigans&menu=familia;55,355&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=faldas&menu=familia;20&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=pantalones&menu=familia;26,326&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los shorts de los pantalones
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_MSS.prendas/?idSubSection=pantalones&menu=familia;26,326&subMenu=pants26,326;Shorts&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2"
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=abrigos&menu=familia;2&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=chaquetas&menu=familia;4,304&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=vestidos&menu=familia;32&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=monos&menu=familia;34&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops de camisas
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=camisetas&menu=familia;18,318&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops y bodies de camisetas
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay qu filtrar las camisas y las blusas de los tops
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Tops&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Bodies&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=sudaderas&menu=familia;610,810&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=cardigans&menu=familia;55,355&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=faldas&menu=familia;20&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=pantalones&menu=familia;26,326&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los shorts de los pantalones
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she.prendas/?idSubSection=pantalones&menu=familia;26,326&subMenu=pants26,326;Shorts&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2"
                 ]
 
         for index, url in enumerate(urls):
@@ -264,12 +264,12 @@ class MangoSpider(scrapy.Spider):
         }
 
 
-        #Compute product directory depending on the category and the id
-        # in this directory will be stored the image and the details in json
-        productDirectory =  self.product_directory(category, productId)
-        productDetailsFile = productDirectory+productId+'.json'
-
         if productId not in response.meta['previous_products']:
+
+            #Compute product directory depending on the category and the id
+            # in this directory will be stored the image and the details in json
+            productDirectory =  self.product_directory(category, productId)
+            productDetailsFile = productDirectory+productId+'.json'
 
             if not os.path.isfile(productDirectory+productImageFile) :
                 #Check if the product is already in the database so we do not download the image again
