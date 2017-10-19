@@ -1,114 +1,68 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 
-import sys
-import json
 import os
+import json
 
-import numpy as np
-import cv2
+from myargparse import parse_args
 
+import white_background_cropper
+rcnn_cropper = ''
+import absolute_position_cropper
 
-if len(sys.argv) != 4:
-    print(
-        "Example execution:\n"
-        "    ./main_cropper.py all all all")
-    exit()
+top_clothes = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas', 'monos', 'punto', 'sudaderas_jerseis', 'tops_bodies', 'vestidos']
+bottom_clothes = ['faldas', 'pantalones_cortos', 'pantalones_largos']
+all_clothes = top_clothes + bottom_clothes
 
-dataset_folder = "../dataset"
-if sys.argv[1] == 'all':
-    genders = ["hombre", "mujer"]
-else:
-    genders = [sys.argv[1]]
-if sys.argv[2] == 'all':
-    categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"]
-else:
-    categories = [sys.argv[2]]
-if sys.argv[3] == 'all':
-    shops = ["asos", "gues", "laredoute", "mango", "superdry", "zara"]
-else:
-    shops = [sys.argv[3]]
+correlations = {
+    'asos': {
+        'all_clothes': rcnn_cropper
+    },
+    'forever21': {
+        'top_clothes': rcnn_cropper,
+        'bottom_clothes': absolute_position_cropper
+    },
+    'guess': {
+        'all_clothes': white_background_cropper
+    },
+    'laredoute': {
+        'all_clothes': white_background_cropper
+    },
+    'mango': {
+        'all_clothes': white_background_cropper
+    },
+    'missguided': {
+        'all_clothes': rcnn_cropper
+    },
+    'superdry': {
+        'top_clothes': rcnn_cropper,
+        'bottom_clothes': absolute_position_cropper
+    },
+    'zara': {
+        'all_clothes': white_background_cropper
+    }
+}
 
-for gender in genders:
-    for category in categories:
-        print("Processing category: " + category)
-        category_folder = dataset_folder + "/" + gender + "/" + category
-        output_folder = category_folder + "/" + "CROPPED"
-        for shop in shops:
-            products_folder = category_folder + "/" + shop + "/products"
+def crop(gender, shop, category):
+    clothes_group = ''
+    if category in all_clothes:
+        try:
+            aux_check = correlations[shop]['all_clothes']
+            clothes_group = 'all_clothes'
+        except KeyError:
+            if category in top_clothes:
+                clothes_group = 'top_clothes'
+            elif category in bottom_clothes:
+                clothes_group = 'bottom_clothes'
 
-            # Remove previous products
-            previous_products_file_path = products_folder + "/previous_products.json"
-            with open(previous_products_file_path) as previous_products_file:
-                previous_products = json.load(previous_products_file)
-            for product_id in previous_products:
-                os.remove(output_folder + "/" + product_id + "_CROPPED.png")
+    if len(clothes_group) > 0:
+        print(clothes_group)
+        cropper = correlations[shop][clothes_group]
+        cropper.crop(gender, shop, category)
 
-            # Crop new products
-            new_products_file_path = products_folder + "/new_products.json"
-            # Traverse images in json file passed as argument
-            with open(new_products_file_path) as new_products_file:
-                new_products = json.load(new_products_file)
+args = parse_args()
 
-            for product_id in new_products:
-                image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
-                print(image_path)
-
-                # Get the image from image_path
-                img = cv2.imread(image_path.encode('utf-8'))
-
-                imggray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                thresh_value = 260
-                aux_contours = []
-                while len(aux_contours) == 0 and thresh_value > 0:
-                    ret, thresh = cv2.threshold(imggray, thresh_value, 255, cv2.THRESH_BINARY)
-                    img2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-                    aux_contours = []
-                    if hierarchy is not None:
-                        for i in range(len(hierarchy[0])):
-                            if hierarchy[0][i][3] == 0 and hierarchy[0][i][2] > 0:
-                                aux_contours.append(contours[i])
-                    thresh_value -= 1
-
-                if len(aux_contours) > 0:
-                    # Compute output image dimensions
-                    contour = sorted(aux_contours, key = cv2.contourArea, reverse = True)[0]
-                    p = contour[0][0]
-                    minx = p[0]
-                    maxx = p[0]
-                    miny = p[1]
-                    maxy = p[1]
-                    for i in range(len(contour)):
-                        p = contour[i][0]
-                        if p[0] < minx:
-                            minx = p[0];
-                        if p[0] > maxx:
-                            maxx = p[0];
-                        if p[1] < miny:
-                            miny = p[1];
-                        if p[1] > maxy:
-                            maxy = p[1];
-                    output_width = maxx - minx
-                    output_height = maxy - miny
-
-                    # Compute contours and create mask image
-                    mask = np.zeros(img.shape, np.uint8)
-                    cnt = np.empty(len(contour), dtype=(int,2))
-                    for i in range(len(contour)):
-                        cnt[i] = (contour[i][0][0], contour[i][0][1])
-                    cv2.drawContours(mask,[cnt],0,(255,255,255),-1)
-
-                    # Needed for making the background of the output image transparent
-                    b_channel, g_channel, r_channel = cv2.split(img)
-                    alpha_channel = np.ones(b_channel.shape, b_channel.dtype) * 255
-                    img_alpha = cv2.merge((b_channel, g_channel, r_channel, alpha_channel))
-
-                    # Create output image (4 for transparent, 3 for RGB) and apply mask
-                    output_img = np.zeros((output_height, output_width, 4), np.uint8)
-                    locs = np.where(mask != 0)
-                    output_img[locs[0]-miny-1, locs[1]-minx-1] = img_alpha[locs[0], locs[1]]
-                    output_img = cv2.resize(output_img, (300, int((300.0 / output_width) * output_height)))
-
-                    # Save output image to output folder
-                    image_name = image_path[image_path.rfind("/") + 1:-4]
-                    image_name += "_CROPPED.png"
-                    cv2.imwrite((output_folder + "/" + image_name).encode('utf-8'), output_img)
+for gender in args.genders:
+    for shop in args.shops:
+        for category in args.categories:
+            print('Processing: ' + gender + ' - ' + shop + ' - ' + category)
+            crop(gender, shop, category)
