@@ -93,7 +93,7 @@ class AsosSpider(scrapy.Spider):
             "http://www.asos.com/es/mujer/monos-largos-y-cortos/cat/?cid=7618&pge=0&refine=attribute_1027:6764&currentpricerange=10-280&pgesize=36",
             "http://www.asos.com/es/mujer/tops/camisas-y-blusas/cat/?cid=11318&pge=0&refine=attribute_1027:6764&currentpricerange=15-230&pgesize=204",
             "http://www.asos.com/es/mujer/tops/cat/?cid=4169&refine=attribute_989:6807,5306|attribute_1027:6764&currentpricerange=0-405&pgesize=204&sort=priceasc",
-            "http://www.asos.com/es/mujer/tops/cat/?cid=4169&pge=0&refine=attribute_989:5016,6248,6250,6341,6251,6245,6806,6244,6328,6243,5892,5083|attribute_1027:6764&currentpricerange=0-405&pgesize=204&sort=priceasc"
+            "http://www.asos.com/es/mujer/tops/cat/?cid=4169&pge=0&refine=attribute_989:5016,6248,6250,6341,6251,6245,6806,6244,6328,6243,5892,5083|attribute_1027:6764&currentpricerange=0-405&pgesize=204&sort=priceasc",
             "http://www.asos.com/es/mujer/tops/sudaderas-con-y-sin-capucha/cat/?cid=11321&pge=0&refine=attribute_1027:6764&currentpricerange=10-290&pgesize=36&sort=priceasc",
             "http://www.asos.com/es/mujer/jerseis-y-cardigans/cat/?cid=2637&pge=0&refine=attribute_1027:6764&currentpricerange=10-375&pgesize=204",
             "http://www.asos.com/es/mujer/faldas/cat/?cid=2639&pge=0&refine=attribute_1027:6764&currentpricerange=5-265&pgesize=204",
@@ -248,20 +248,19 @@ class AsosSpider(scrapy.Spider):
             productDirectory =  self.product_directory(category, productId)
             productDetailsFile = productDirectory+productId+'.json'
 
-            if not os.path.isfile(productDirectory+productImageFile) :
-                #Check if the product is already in the database so we do not download the image again
-                #Download image to the correct folder in the dataset
-                self.Request.retrieve(download_image_url, productDirectory+productImageFile)
-                
-                #Write JSON data in the details file of the product
-                with open(productDetailsFile, "w") as json_file:
-                    json.dump(productDetails, json_file, indent=2)
+            #Check if the product is already in the database so we do not download the image again
+            #Download image to the correct folder in the dataset
+            self.Request.retrieve(download_image_url, productDirectory+productImageFile)
+            
+            #Write JSON data in the details file of the product
+            with open(productDetailsFile, "w") as json_file:
+                json.dump(productDetails, json_file, indent=2)
 
-                #Compute Product item for scrapy
-                # will be sent to pipelines.py
-                product = Product(productId = productId, category = category, new= True)
+            #Compute Product item for scrapy
+            # will be sent to pipelines.py
+            product = Product(productId = productId, category = category, new= True)
 
-                yield product
+            yield product
         else:
 
             #DEBUG
