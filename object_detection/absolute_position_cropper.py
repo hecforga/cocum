@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 
 import sys
 import json
@@ -41,7 +41,7 @@ def crop(gender, shop, category):
         image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
         print(image_path)
         # Get the image from image_path
-        img = cv2.imread(image_path.encode('utf-8'), 1)
+        img = cv2.imread(image_path.encode('utf-8'))
 
         height, width, channels = img.shape
         c_p = crop_percentages[category]

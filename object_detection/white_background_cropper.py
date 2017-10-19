@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 
 import sys
 import json
@@ -36,7 +36,7 @@ def crop(gender, shop, category):
         print(image_path)
 
         # Get the image from image_path
-        img = cv2.imread(image_path)
+        img = cv2.imread(image_path.encode('utf-8'))
 
         imggray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         thresh_value = 260
@@ -93,4 +93,4 @@ def crop(gender, shop, category):
             # Save output image to output folder
             image_name = image_path[image_path.rfind("/") + 1:-4]
             image_name += "_CROPPED.png"
-            cv2.imwrite((output_folder + "/" + image_name), output_img)
+            cv2.imwrite((output_folder + "/" + image_name).encode('utf-8'), output_img)

@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 
 import os
 import json
@@ -6,7 +6,7 @@ import json
 from myargparse import parse_args
 
 import white_background_cropper
-rcnn_cropper = ''
+import rcnn_cropper
 import absolute_position_cropper
 
 top_clothes = ['abrigos_chaquetas', 'camisas_blusas', 'camisetas', 'monos', 'punto', 'sudaderas_jerseis', 'tops_bodies', 'vestidos']

@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 
 import sys
 import json
@@ -67,7 +67,7 @@ def crop(gender, shop, category):
         for product_id in new_products:
             image_path = products_folder + "/" + product_id + "/" + product_id + ".jpg"
             print(image_path)
-            img = cv2.imread(image_path.encode('utf-8'), 1)
+            img = cv2.imread(image_path.encode('utf-8'))
 
             PERSON_CLASS_IND = 15
             CONF_THRESH = 0.8
