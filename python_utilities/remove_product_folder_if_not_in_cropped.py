@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 
 import os
 import json
@@ -10,25 +10,31 @@ from myargparse import parse_args
 
 args = parse_args()
 
-base_dir = '/home/hector/workspace/cocum/dataset/mujer'
+base_dir = '../dataset/mujer'
 
 for shop in args.shops:
     for category in args.categories:
-        dirProducts = "/home/hector/workspace/cocum/dataset/mujer/" + category + '/' + shop + "/products"
-        dirCropped = '/home/hector/workspace/cocum/dataset/mujer/' + category + "/CROPPED"
+        products_folder = os.path.join(base_dir, category, shop, '/products')
+        cropped_folder = os.path.join(base_dir, category, shop, '/CROPPED')
 
-        new_products_file_path = dirProducts + '/new_products.json'
+        ids_to_remove = []
+        new_products_file_path = products_folder + '/new_products.json'
         with open(new_products_file_path) as f:
             new_products = json.load(f)
 
-        ids_to_remove = []
         for product_id in new_products:
-            if not isfile(dirCropped + '/' + product_id + '_CROPPED.png'):
-                shutil.rmtree(dirProducts +'/' + product_id)
+            if not isfile(cropped_folder + '/' + product_id + '_CROPPED.png'):
+                try:
+                    shutil.rmtree(products_folder +'/' + product_id)
+                except OSError:
+                    pass
                 ids_to_remove.append(product_id)
 
         for id_to_remove in ids_to_remove:
-            new_products.remove(id_to_remove)
+            try:
+                new_products.remove(id_to_remove)
+            except ValueError:
+                print('Tried to remove non-existing item, continuing...')
 
         with open(new_products_file_path, 'w') as f:
             json.dump(new_products, f, indent=2, separators=(',', ': '))

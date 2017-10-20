@@ -7,7 +7,7 @@ def parse_args():
     shops_all = ['all', 'asos', 'forever21', 'guess', 'laredoute', 'mango', 'missguided', 'superdry', 'zara']
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--genders', nargs='+', default='mujer', choices=genders_all)
+    parser.add_argument('--genders', nargs='+', default=['mujer'], choices=genders_all)
     parser.add_argument('--categories', nargs='+', required=True, choices=categories_all)
     parser.add_argument('--shops', nargs='+', required=True, choices=shops_all)
 

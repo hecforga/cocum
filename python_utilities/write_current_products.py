@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.5
 
 import os
 import json
@@ -7,7 +7,7 @@ from myargparse import parse_args
 
 args = parse_args()
 
-base_dir = '/home/hector/workspace/cocum/dataset/mujer'
+base_dir = '../dataset/mujer'
 
 for shop in args.shops:
     for category in args.categories:
