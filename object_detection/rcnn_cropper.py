@@ -30,7 +30,7 @@ crop_percentages = { # [x0, y0, x1, y1]
 
 dataset_folder = '../dataset'
 
-def crop(gender, shop, category):
+def crop(gender, shop, categories):
     # Initialize Net
     cfg.TEST.HAS_RPN = True # Use RPN for proposals
 
@@ -44,19 +44,11 @@ def crop(gender, shop, category):
 
     print '\n\nLoaded network {:s}'.format(caffemodel)
 
-    category_folder = dataset_folder + "/" + gender + "/" + category
-    output_folder = category_folder + '/CROPPED'
-    products_folder = category_folder + '/' + shop + '/products'
-
-    # Remove previous products
-    previous_products_file_path = products_folder + "/previous_products.json"
-    with open(previous_products_file_path) as previous_products_file:
-        previous_products = json.load(previous_products_file)
-    for product_id in previous_products:
-        try:
-            os.remove(output_folder + "/" + product_id + "_CROPPED.png")
-        except OSError:
-            pass
+    for category in categories:
+        print('Processing: ' + gender + ' - ' + shop + ' - ' + category)
+        shop_folder = dataset_folder + "/" + gender + "/" + category + '/' + shop
+        output_folder = shop_folder + '/CROPPED'
+        products_folder = shop_folder + '/products'
 
         # Crop new products
         new_products_file_path = products_folder + "/new_products.json"

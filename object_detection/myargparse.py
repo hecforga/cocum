@@ -20,5 +20,4 @@ def parse_args():
     if 'all' in args.shops:
         args.shops = shops_all[1:]
 
-    print(args)
     return args
