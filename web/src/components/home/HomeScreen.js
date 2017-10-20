@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Landing from './Landing.js';
 import HowItWorks from './HowItWorks.js';
 import FeaturesList from './FeaturesList.js';
+import Footer from '../footer/Footer.js';
 
 class HomeScreen extends Component {
   render() {
@@ -11,6 +12,7 @@ class HomeScreen extends Component {
         <Landing />
         <HowItWorks />
         <FeaturesList />
+        <Footer />
       </div>
     );
   }

@@ -15,7 +15,7 @@ class Description extends Component {
             <div className="col-xs">
               <div className="box">
                 <h2 style={{ color: 'white' }}>
-                  Somos una App que permite encontrar la ropa que busque el usuario, mostrando siempre las alternativas más parecidas</h2>
+                  Cocum, la App que te permite encontrar la ropa que ves en una foto, y además te muestra las alternativas más parecidas</h2>
               </div>
             </div>
           </div>
@@ -28,7 +28,7 @@ class Description extends Component {
               <HowItWorksStep image={howItWorks2} text="Selecciona una categoría y ajusta la prenda" />
             </div>
             <div className="col-xs-12 col-md-4">
-              <HowItWorksStep image={howItWorks3} text="¡Encuentra alternativas a la ropa que te inspira!" />
+              <HowItWorksStep image={howItWorks3} text="¡Encuentra la ropa que te inspira!" />
             </div>
           </div>
         </div>

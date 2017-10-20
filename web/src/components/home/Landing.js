@@ -28,7 +28,7 @@ class Landing extends Component {
                     <Link to="/">
                       <img
                         src={logo}
-                        style={{ height: '84px' }}
+                        style={{ maxHeight: '84px', maxWidth: '100%' }}
                       />
                     </Link>
                   </div>
@@ -39,9 +39,10 @@ class Landing extends Component {
               <div className="row start-xs center-md middle-xs" style={{ height: '100%' }}>
                 <div className="col-xs">
                   <div className="box">
-                    {/*<Link to="/blog">
-                      <FlatButton label="Blog" style={{ color: 'white', backgroundColor: 'transparent' }} />
-                    </Link>*/}
+                    <FlatButton
+                      label="Blog"
+                      href="http://blog.cocum.es"
+                      style={{ color: 'white', backgroundColor: 'transparent' }} />
                   </div>
                 </div>
               </div>
@@ -57,7 +58,7 @@ class Landing extends Component {
                       <FontIcon className="fa fa-instagram"  color="white" />
                     </IconButton>
                     <IconButton
-                      href="https://www.facebook.com/cocumapp/"
+                      href="https://www.facebook.com/cocumtheapp/"
                       target="_blank"
                     >
                       <FontIcon className="fa fa-facebook"  color="white" />
@@ -90,7 +91,36 @@ class Landing extends Component {
                       </div>
                     </div>
                   </div>
+
+                  {/*Store buttons*/}
                   <div className="row middle-xs" style={{ height: '150px' }}>
+                    <div className="col-xs">
+                      <div className="row">
+                        <div className="col-xs-6">
+                          <div className="box end-xs">
+                            <a href="https://itunes.apple.com/es/app/cocum-de-la-foto-a-tu-armario/id1288563446" target="_blank">
+                              <img
+                                src={app_store}
+                                style={{ width: '100%', maxWidth: '216px' }}
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <div className="col-xs-6">
+                          <div className="box start-xs">
+                            <a href="https://play.google.com/store/apps/details?id=com.cocum.app" target="_blank">
+                              <img
+                                src={google_play}
+                                style={{ width: '100%', maxWidth: '216px' }}
+                              />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row top-xs" style={{ height: '150px' }}>
                     <div className="col-xs">
                       <div className="box">
                         <div style={{ fontSize: 24, color: 'white' }}>Encontrar la ropa que te inspira, ¡ahora más fácil que nunca!</div>
@@ -99,40 +129,14 @@ class Landing extends Component {
                   </div>
                 </div>
               </div>
-
-              {/*Store buttons*/}
-              <div className="row middle-xs" style={{ height: '150px' }}>
-                <div className="col-xs">
-                  <div className="row">
-                    <div className="col-xs-6">
-                      <div className="box end-xs">
-                        <img
-                          src={app_store}
-                          style={{ width: '100%', maxWidth: '216px' }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xs-6">
-                      <div className="box start-xs">
-                        <a href="https://play.google.com/store/apps/details?id=com.cocum.app" target="_blank">
-                          <img
-                            src={google_play}
-                            style={{ width: '100%', maxWidth: '216px' }}
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/*Right*/}
-            <div className="col-xs-12 col-md-6" style={{ height: '500px' }}>
+            <div className="col-xs-12 col-md-6 bottom-xs" style={{ maxHeight: '500px' }}>
               <div className="box center-xs">
                 <img
                   src={landing_front}
-                  style={{ height: '500px' }}
+                  style={{ maxHeight: '500px', maxWidth: '100%', verticalAlign: 'bottom' }}
                 />
               </div>
             </div>

@@ -1,3 +1,5 @@
 python_utilities/__pycache__/
 
 web/\.idea/
+
+*.pyc

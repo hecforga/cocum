@@ -85,14 +85,21 @@ TODO
 
 ### Scrapear
 
-Ejecutar scrapers.
+Ejecutar scrapers:
 
-Antes de recortar, eliminar las imágenes (CTRL+F ".jpg") que se hayan descargado mal. Después de esto, ejecutar "python_utilities/remove_product_folder_if_no_image.py" con los argumentos apropiados.
+```bash
+scrapy crawl scraper_name
+```
+
+Después de scrapear, ejecutar "python_utilities/remove_old_products.py" para las tiendas / categorías
+que se hayan scrapeado.
 
 ### Recortar
 
+Antes de recortar, eliminar las imágenes (CTRL+F ".jpg") que se hayan descargado mal. Después de esto, ejecutar "python_utilities/remove_product_folder_if_no_image.py" con los argumentos apropiados.
+
 ```bash
-./main_cropper.py mujer category/all shop/all
+python main_cropper.py --shops varias tiendas o all --categories varias categorías o all
 ```
 
 Después de recortar, eliminar de CROPPED las imágenes que se hayan recortado mal. Después de esto, ejecutar "python_utilities/remove_product_folder_if_not_in_cropped.py" con los argumentos apropiados.

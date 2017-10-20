@@ -17,7 +17,7 @@ class FeaturesList extends Component {
             text={
               <div>
                 <span>
-                  Saber qué ropa llevan tus bloggers favoritas nunca fue tan fácil. Buscamos dentro de las mejores marcas de ropa, te encontramos la que más te gusta y te decimos dónde puedes conseguirla, tanto ella como otras visualmente similares.
+                  Saber qué ropa llevan tus bloggers favoritas nunca fue tan fácil. Buscamos entre las mejores marcas para encontrar la ropa que más te gusta. Te decimos dónde puedes conseguirla y te mostramos las prendas más similares.
                 </span>
                 <br />
                 <br />
@@ -35,7 +35,7 @@ class FeaturesList extends Component {
             text={
               <div>
                 <span>
-                  Compra la ropa que te gusta de manera segura y rápida.
+                  Compra la ropa que te gusta de manera rápida y segura.
                 </span>
                 <br />
                 <br />
@@ -52,12 +52,12 @@ class FeaturesList extends Component {
             text={
               <div>
                 <span>
-                  Sé la primera en enterarte de las nuevas colecciones de las marcas y tiendas más importantes: Zara, Mango, Asos, Forever 21, La Redoute… ¡y muchas más!
+                  Sé la primera en enterarte de las nuevas colecciones de tus tiendas y marcas favoritas: Zara, Mango, Asos, Forever 21, Missguided... ¡y muchas más!
                 </span>
                 <br/>
                 <br/>
                 <span>
-                  Ahorra tiempo y dinero comparando la moda más trendy y filtrando por precio y tienda
+                  Ahorra tiempo y dinero comparando la moda más trendy y filtrando por precios, tiendas y estilos.
                 </span>
               </div>
             }
