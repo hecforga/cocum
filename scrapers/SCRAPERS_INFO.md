@@ -30,7 +30,7 @@
 	 - download ---> 750
  - **Croppers:**
 	 - faldas, pantalones_cortos, pantalones_largos:
-		 - forever21_cropper.py
+		 - absolute_position_cropper.py
 	 - Resto de categorías:
 		 - rcnn_cropper.py
 
@@ -46,7 +46,7 @@
 	 - download ---> 414
  - **Croppers:**
 	 - Todas las categorías:
-		 - main_cropper.py
+		 - white_background_cropper.py
 
 ## La Redoute ##
 
@@ -60,7 +60,7 @@
 	 - download ---> 641
  - **Croppers:**
 	 - Todas las categorías:
-		 - main_cropper.py
+		 - white_background_cropper.py
 
 ## MANGO ##
 
@@ -74,7 +74,7 @@
 	 - download ---> 407
  - **Croppers:**
 	 - Todas las categorías:
-		 - main_cropper.py
+		 - white_background_cropper.py
 
 ## Missguided ##
 
@@ -110,9 +110,11 @@
 	 - download ---> 445
  - **Croppers:**
 	 - faldas, pantalones_cortos, pantalones_largos:
-		 - superdry_cropper.py
+		 - absolute_position_cropper.py
+	 - vestidos:
+	 	 - rcnn_cropper.py
 	 - Resto de categorías:
-		 - main_cropper.py
+		 - white_background_cropper.py
 
 ## ZARA ##
 
@@ -130,4 +132,4 @@
 	 - download ---> 560
  - **Croppers:**
 	 - Todas las categorías:
-		 - main_cropper.py
+		 - white_background_cropper.py
