@@ -167,7 +167,11 @@ class LaredouteSpider(scrapy.Spider):
             and brand != 'TAILLISSIME' 
             and brand != 'MELLEM' 
             and brand != 'KOKO BY KOKO'
-            and brand != 'MAT FASHION'):
+            and brand != 'MAT FASHION'
+            and brand != 'MOLLY BRACKEN'
+            and brand != 'ULLA POPKEN'
+            and brand != 'ANNE WEYBURN'
+            and brand != 'LOVEDROBE'):
 
             #Category of the product
             category = response.meta['category']
@@ -186,14 +190,15 @@ class LaredouteSpider(scrapy.Spider):
                 modelImageUrl = images[1].replace("100by100","641by641")
                 productImageUrl = images[0].replace("100by100","641by641")
 
-            elif brand == "ESPRIT":
+            elif brand == 'MADEMOISELLE R'
+
                 modelImageUrl = images[0].replace("100by100","641by641")
-                productImageUrl= images[2].replace("100by100","641by641")
+                productImageUrl= images[4].replace("100by100","641by641")
 
             else:
                 try:
                     modelImageUrl = images[0].replace("100by100","641by641")
-                    productImageUrl= images[4].replace("100by100","641by641")
+                    productImageUrl= images[-1].replace("100by100","641by641")
                 except:
                     return None
 
@@ -257,7 +262,7 @@ class LaredouteSpider(scrapy.Spider):
                 product = Product(productId = productId, category = category, new= True)
 
                 yield product
-                
+
             else:
                 #Compute Product item for scrapy
                 # will be sent to pipelines.py

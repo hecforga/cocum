@@ -62,17 +62,17 @@ class ZaraSpider(scrapy.Spider):
             categoriaNombre="camisas_blusas"
         elif index == 7:
             categoriaNombre="camisetas"
-        elif index == 8 or index == 9:
+        elif index == 8 or index == 9 or index == 10:
             categoriaNombre= "tops_bodies"
-        elif index == 10: 
+        elif index == 11: 
             categoriaNombre="sudaderas_jerseis"
-        elif index == 11:
-            categoriaNombre="punto"
         elif index == 12:
+            categoriaNombre="punto"
+        elif index == 13:
             categoriaNombre="faldas"
-        elif index == 13 or index == 14:
+        elif index == 14 or index == 15:
             categoriaNombre="pantalones_largos"
-        elif index == 15:
+        elif index == 16:
             categoriaNombre="pantalones_cortos"
 
         return categoriaNombre
@@ -103,13 +103,14 @@ class ZaraSpider(scrapy.Spider):
             "https://www.zara.com/es/es/mujer/monos-c663016.html",
             "https://www.zara.com/es/es/mujer/camisas/ver-todo-c733890.html",
             "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html",
-            "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html",#zara tiene los tops donde las camisetas asi que filtramos más adelante
+            "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
+            "https://www.zara.com/es/es/mujer-camisas-tops-l1249.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante 
             "https://www.zara.com/es/es/mujer/body-c788002.html",
             "https://www.zara.com/es/es/mujer/sudaderas-c733914.html",
             "https://www.zara.com/es/es/mujer/punto/jerseys-c498028.html",
             "https://www.zara.com/es/es/mujer/faldas/ver-todo-c733908.html",
             "https://www.zara.com/es/es/mujer/jeans/ver-todo-c733918.html",
-            "https://www.zara.com/es/es/mujer/pantalones/ver-todo-c733898.html",#zara hay que filtrar los shorts
+            "https://www.zara.com/es/es/mujer/pantalones/ver-todo-c733898.html", #zara hay que filtrar los shorts
             "https://www.zara.com/es/es/mujer/pantalones/shorts-c502001.html"
         ]
         for index, url in enumerate(urls):
@@ -160,6 +161,8 @@ class ZaraSpider(scrapy.Spider):
                         'price' : priceElement
                     }
                 )
+
+
 
     def parse_product_page(self, response):
         #Brand of the product for shops like Asos or Amazon
