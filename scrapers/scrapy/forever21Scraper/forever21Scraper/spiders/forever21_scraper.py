@@ -177,13 +177,13 @@ class Forever21Spider(scrapy.Spider):
         #Extract image src of the clothes with the model
         #Depends on the shop: FOREVER21
         modelImageUrl = response.css('img[alt="full"]::attr(src)').extract_first()
-        modelImageUrl = modelImageUrl.replace('_58', '_330')
         #Extract image src of the clothes alone
         #Depends on the shop: FOREVER21
         productImageUrl = response.css('img[alt="front"]::attr(src)').extract_first()
         if modelImageUrl is None:
             modelImageUrl = productImageUrl
-        else:
+        else:            
+            modelImageUrl = modelImageUrl.replace('_58', '_330')
             productImageUrl = productImageUrl.replace('_58', '_330')
         download_image_url = modelImageUrl.replace('_330', '_750')
         #Check if it has discount
@@ -191,9 +191,13 @@ class Forever21Spider(scrapy.Spider):
         #Depends on the shop: FOREVER21
         discounted = False
         price = response.css('span#priceContainer::text').extract_first()
+
+        if price is None:
+            price = response.css('span.price_c.sale::text').extract_first()
+            discounted = True
         #Remove extra simbols from the price
         #Depends on the shop: FOREVER21
-        price = price[1:-2]
+        price = price[1:]
         price = price.replace(',', '.')
         #Obtain the name of the file where we will download the image
         #Depends on the shop: FOREVER21
