@@ -14,8 +14,8 @@ base_dir = '../dataset/mujer'
 
 for shop in args.shops:
     for category in args.categories:
-        products_folder = os.path.join(base_dir, category, shop, '/products')
-        cropped_folder = os.path.join(base_dir, category, shop, '/CROPPED')
+        products_folder = os.path.join(base_dir, category, shop, 'products')
+        cropped_folder = os.path.join(base_dir, category, shop, 'CROPPED')
 
         ids_to_remove = []
         new_products_file_path = products_folder + '/new_products.json'

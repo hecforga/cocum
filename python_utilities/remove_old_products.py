@@ -27,6 +27,4 @@ for shop in args.shops:
 
         for cropped_image_name in os.listdir(cropped_folder):
             cropped_image = os.path.join(cropped_folder + '/' + cropped_image_name)
-            product_id = cropped_image_name[:-12]
-            if not product_id in current_products):
-                os.remove(cropped_image)
+            os.remove(cropped_image)

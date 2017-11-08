@@ -9,7 +9,7 @@ if (process.argv[2] !== 'all') {
   genders = [process.argv[2]];
 }
 
-let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "punto", "sudaderas_jerseis", "tops_bodies", "vestidos"];
+let categories = ["abrigos_chaquetas", "camisas_blusas", "camisetas", "faldas", "monos", "pantalones_cortos", "pantalones_largos", "sudaderas_jerseis", "tops_bodies", "vestidos"];
 if (process.argv[3] !== 'all') {
     categories = [process.argv[3]]
 }

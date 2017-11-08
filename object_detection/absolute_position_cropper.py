@@ -9,9 +9,16 @@ import cv2
 
 
 crop_percentages = { # [x0, y0, x1, y1]
-    "faldas": [0.25, 0.05, 0.25, 0.6],
-    "pantalones_cortos": [0.25, 0.05, 0.25, 0.7],
-    "pantalones_largos": [0.3, 0.05, 0.3, 0.2]
+    "forever21": {
+        "faldas": [0.25, 0.05, 0.25, 0.6],
+        "pantalones_cortos": [0.25, 0.05, 0.25, 0.7],
+        "pantalones_largos": [0.3, 0.05, 0.3, 0.2]
+    },
+    "superdry": {
+        "faldas": [0.3, 0.05, 0.3, 0.6],
+        "pantalones_cortos": [0.3, 0.05, 0.3, 0.7],
+        "pantalones_largos": [0.3, 0.05, 0.3, 0.2]
+    }
 }
 
 dataset_folder = '../dataset'
@@ -21,6 +28,8 @@ def crop(gender, shop, categories):
         print('Processing: ' + gender + ' - ' + shop + ' - ' + category)
         shop_folder = dataset_folder + "/" + gender + "/" + category + '/' + shop
         output_folder = shop_folder + '/CROPPED'
+        if not os.path.isdir(output_folder):
+            os.makedirs(output_folder)
         products_folder = shop_folder + '/products'
 
         # Crop new products
@@ -36,7 +45,7 @@ def crop(gender, shop, categories):
             img = cv2.imread(image_path.encode('utf-8'))
 
             height, width, channels = img.shape
-            c_p = crop_percentages[category]
+            c_p = crop_percentages[shop][category]
             output_y0 = int(round(c_p[1] * height))
             output_y1 = int(round(height - c_p[3] * height))
             output_height = output_y1 - output_y0

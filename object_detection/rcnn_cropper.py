@@ -20,7 +20,7 @@ crop_percentages = { # [x0, y0, x1, y1]
     "camisetas": [0.25, 0.2, 0.25, 0.6],
     "faldas": [0.25, 0.4, 0.25, 0.4],
     "monos": [0.25, 0.25, 0.25, 0.4],
-    "pantalones_cortos": [0.3, 0.4, 0.3, 0.4],
+    "pantalones_cortos": [0.3, 0.4, 0.3, 0.45],
     "pantalones_largos": [0.2, 0.4, 0.2, 0.1],
     "punto": [0, 0, 0, 0],
     "sudaderas_jerseis": [0.25, 0.2, 0.25, 0.6],
@@ -48,6 +48,8 @@ def crop(gender, shop, categories):
         print('Processing: ' + gender + ' - ' + shop + ' - ' + category)
         shop_folder = dataset_folder + "/" + gender + "/" + category + '/' + shop
         output_folder = shop_folder + '/CROPPED'
+        if not os.path.isdir(output_folder):
+            os.makedirs(output_folder)
         products_folder = shop_folder + '/products'
 
         # Crop new products

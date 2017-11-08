@@ -7,8 +7,10 @@ from myargparse import parse_args
 
 args = parse_args()
 
-input_dir = '/media/hector/HECTOR/dataset/mujer'
+input_dir = '/home/hector/Desktop/dataset/mujer'
 output_dir = '../dataset/mujer'
+#input_dir = '../dataset/mujer'
+#output_dir = '/media/hector/HECTOR/dataset/mujer'
 
 for shop in args.shops:
     for category in args.categories:

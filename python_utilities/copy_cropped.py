@@ -7,10 +7,10 @@ from myargparse import parse_args
 
 args = parse_args()
 
-input_dir = '../dataset/mujer'
-output_dir = '/media/hector/HECTOR/dataset_limpiar/mujer'
-#input_dir = '/media/hector/HECTOR/dataset_limpio/mujer'
-#output_dir = '../dataset/mujer'
+#input_dir = '../dataset/mujer'
+#output_dir = '/media/hector/HECTOR/dataset_limpiar/mujer'
+input_dir = '/media/hector/HECTOR/dataset_limpio/mujer'
+output_dir = '../dataset/mujer'
 
 for shop in args.shops:
     for category in args.categories:
@@ -21,9 +21,7 @@ for shop in args.shops:
 
         src = os.path.join(shop_folder, 'CROPPED')
         dst = os.path.join(dst_shop_folder, 'CROPPED')
-        if os.path.isdir(dst):
-            shutil.rmtree(dst)
-        try:
+        if os.path.isdir(src):
+            if os.path.isdir(dst):
+                shutil.rmtree(dst)
             shutil.copytree(src, dst, False, None)
-        except FileNotFoundException:
-            pass

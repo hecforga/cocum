@@ -49,7 +49,7 @@ correlations = {
     },
     'superdry': {
         'top': {
-            'cropper': rcnn_cropper
+            'cropper': white_background_cropper
         },
         'bottom': {
             'cropper': absolute_position_cropper
@@ -70,10 +70,14 @@ def crop(gender, shop, categories):
         aux_top_categories = []
         aux_bottom_categories = []
         for category in categories:
-            if category in bottom_categories:
-                aux_bottom_categories.append(category)
-            else:
-                aux_top_categories.append(category)
+            try:
+                category_object = correlations[shop][category]
+                category_object['cropper'].crop(gender, shop, [category])
+            except KeyError:
+                if category in bottom_categories:
+                    aux_bottom_categories.append(category)
+                else:
+                    aux_top_categories.append(category)
 
         if len(aux_top_categories) > 0:
             top_object = correlations[shop]['top']

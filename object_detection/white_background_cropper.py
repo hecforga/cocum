@@ -15,6 +15,8 @@ def crop(gender, shop, categories):
         print('Processing: ' + gender + ' - ' + shop + ' - ' + category)
         shop_folder = dataset_folder + "/" + gender + "/" + category + '/' + shop
         output_folder = shop_folder + '/CROPPED'
+        if not os.path.isdir(output_folder):
+            os.makedirs(output_folder)
         products_folder = shop_folder + '/products'
 
         # Crop new products
