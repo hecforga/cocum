@@ -9,6 +9,7 @@ import json
 import os
 import shutil
 import os.path
+import errno
 
 
 
@@ -80,13 +81,16 @@ class MangoSpider(scrapy.Spider):
 
         if not os.path.exists(os.path.dirname(dirToProducts)):
             try:
-                with open(current_products_dir, "w") as outfile:
-                    outfile.write("[]")
-                with open(new_products_dir, "w") as outfile:
-                    outfile.write("[]")
+                os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
                     raise                       
+
+        if not os.path.isfile(current_products_dir):
+            with open(current_products_dir, "w") as outfile:
+                outfile.write("[]")
+            with open(new_products_dir, "w") as outfile:
+                outfile.write("[]")
 
         shutil.copy(current_products_dir, previous_products_dir)
 

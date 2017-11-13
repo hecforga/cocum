@@ -29,7 +29,6 @@ class JsonWriterPipeline(object):
         self.current_products_faldas = []
         self.current_products_pantalones_largos = []
         self.current_products_pantalones_cortos = []
-        self.current_products_punto = []
         self.current_products_sudaderas_jerseis = []
 
         self.new_products_abrigos_chaquetas = []
@@ -41,14 +40,13 @@ class JsonWriterPipeline(object):
         self.new_products_faldas = []
         self.new_products_pantalones_largos = []
         self.new_products_pantalones_cortos = []
-        self.new_products_punto = []
         self.new_products_sudaderas_jerseis = []
 
     def close_spider(self, spider):
 
         categoryList = ['abrigos_chaquetas'
         ,'camisas_blusas','camisetas',
-        'faldas','monos','pantalones_cortos','pantalones_largos','punto','sudaderas_jerseis',
+        'faldas','monos','pantalones_cortos','pantalones_largos','sudaderas_jerseis',
         'tops_bodies', 'vestidos'
         ]
 
@@ -85,9 +83,6 @@ class JsonWriterPipeline(object):
             elif category == 'sudaderas_jerseis':
                 current_products =self.current_products_sudaderas_jerseis                
                 new_products = self.new_products_sudaderas_jerseis
-            elif category == 'punto':
-                current_products =self.current_products_punto                
-                new_products = self.new_products_punto
 
             if len(current_products) > 0:
                 try: 
@@ -153,9 +148,5 @@ class JsonWriterPipeline(object):
             self.current_products_sudaderas_jerseis.append(item['productId'])
             if item['new']:
                 self.new_products_sudaderas_jerseis.append(item['productId'])
-        elif item['category'] == 'punto':
-            self.current_products_punto.append(item['productId'])
-            if item['new']:
-                self.new_products_punto.append(item['productId'])
             
         return item
