@@ -137,13 +137,13 @@ class ZaraSpider(scrapy.Spider):
     def parse_category_page(self, response):
         #We obtain the links from each category page
         #Depends on the shop: zara
-        productLinks = response.css('a.item._item')
+        productElements = response.css('li.product._product')
         category = response.meta['category']
 
-        for index, productLink in enumerate(productLinks):
+        for index, productElement in enumerate(productElements):
 
-            priceElement = productLink.xpath('//following-sibling::div[1]/div[@class="product-info-item product-info-item-price"]/div/span/@data-price').extract_first()
-            productLink = productLink.css('::attr(href)').extract_first()
+            priceElement = productElement.css('div.product-info._product-info>div.product-info-item.product-info-item-price>div.price._product-price>span::attr(data-price)').extract_first()
+            productLink = productElement.css('a.item._item::attr(href)').extract_first()
 
             if category == "tops_bodies" and ("top-" not in productLink and 'camiseta-tul' not in productLink):
                 pass
