@@ -190,11 +190,11 @@ class LaredouteSpider(scrapy.Spider):
                 modelImageUrl = images[1].replace("100by100","641by641")
                 productImageUrl = images[0].replace("100by100","641by641")
 
-            elif brand == 'MADEMOISELLE R'
+            elif brand == 'MADEMOISELLE R' or brand == 'La Redoute Collections':
 
                 modelImageUrl = images[0].replace("100by100","641by641")
                 productImageUrl= images[4].replace("100by100","641by641")
-
+                
             else:
                 try:
                     modelImageUrl = images[0].replace("100by100","641by641")
