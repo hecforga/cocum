@@ -9,6 +9,7 @@ import json
 import os
 import shutil
 import os.path
+import errno
 
 
 
@@ -64,10 +65,8 @@ class ZaraSpider(scrapy.Spider):
             categoriaNombre="camisetas"
         elif index == 8 or index == 9 or index == 10:
             categoriaNombre= "tops_bodies"
-        elif index == 11: 
+        elif index == 11 or index == 12: 
             categoriaNombre="sudaderas_jerseis"
-        elif index == 12:
-            categoriaNombre="punto"
         elif index == 13:
             categoriaNombre="faldas"
         elif index == 14 or index == 15:
@@ -83,13 +82,16 @@ class ZaraSpider(scrapy.Spider):
 
         if not os.path.exists(os.path.dirname(dirToProducts)):
             try:
-                with open(current_products_dir, "w") as outfile:
-                    outfile.write("[]")
-                with open(new_products_dir, "w") as outfile:
-                    outfile.write("[]")
+                os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
                     raise                       
+
+        if not os.path.isfile(current_products_dir):
+            with open(current_products_dir, "w") as outfile:
+                outfile.write("[]")
+            with open(new_products_dir, "w") as outfile:
+                outfile.write("[]")
 
         shutil.copy(current_products_dir, previous_products_dir)
 
@@ -127,7 +129,7 @@ class ZaraSpider(scrapy.Spider):
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
 
-            yield SplashRequest(url, self.parse_category_page,
+            yield SplashRequest(url, self.parse_category_page, dont_filter = True,
                 meta={
                     'category': category,
                     'previous_products': previous_products,

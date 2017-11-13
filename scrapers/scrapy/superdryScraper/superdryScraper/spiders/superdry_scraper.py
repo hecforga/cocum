@@ -11,6 +11,7 @@ import json
 import os
 import shutil
 import os.path
+import errno
 
 
 
@@ -49,7 +50,6 @@ class SuperDrySpider(scrapy.Spider):
         # 10.Faldas
         # 11.Pantalones largos
         # 12.Pantalones cortos
-        # 13.Punto
 
         #funciona como un switch
         if index == 0 or index == 1 or index==2:
@@ -62,7 +62,7 @@ class SuperDrySpider(scrapy.Spider):
             categoriaNombre="camisetas"
         elif index == 7:
             categoriaNombre="tops_bodies"
-        elif index == 8 or index == 9:
+        elif index == 8 or index == 9 or index == 13:
             categoriaNombre="sudaderas_jerseis"
         elif index == 10:
             categoriaNombre="faldas"
@@ -70,8 +70,6 @@ class SuperDrySpider(scrapy.Spider):
             categoriaNombre="pantalones_largos"
         elif index == 12:
             categoriaNombre="pantalones_cortos"
-        elif index == 13:
-            categoriaNombre="punto"
 
         return categoriaNombre
 
@@ -81,13 +79,16 @@ class SuperDrySpider(scrapy.Spider):
 
         if not os.path.exists(os.path.dirname(dirToProducts)):
             try:
-                with open(current_products_dir, "w") as outfile:
-                    outfile.write("[]")
-                with open(new_products_dir, "w") as outfile:
-                    outfile.write("[]")
+                os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
                     raise                       
+
+        if not os.path.isfile(current_products_dir):
+            with open(current_products_dir, "w") as outfile:
+                outfile.write("[]")
+            with open(new_products_dir, "w") as outfile:
+                outfile.write("[]")
 
         shutil.copy(current_products_dir, previous_products_dir)
 
@@ -123,7 +124,7 @@ class SuperDrySpider(scrapy.Spider):
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
 
-            yield SplashRequest(url, self.parse_category_page,
+            yield SplashRequest(url, self.parse_category_page, dont_filter = True,
                 meta={
                     'category': category,
                     'previous_products': previous_products,
