@@ -52,12 +52,6 @@ const categories = [
     ],
     icon: require('../components//img/pantalones_largos.png')
   }, {
-    name: 'punto',
-    labels: [
-      'Punto'
-    ],
-    icon: require('../components//img/punto.png')
-  }, {
     name: 'sudaderas_jerseis',
     labels: [
       'Sudaderas y',

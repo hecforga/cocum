@@ -53,7 +53,7 @@ class ProductDetailContainer extends Component {
 
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
 
-    const url = selectedProduct.productUrl;
+    const url = fromProductsInfo.getProductUrl(selectedProduct);
 
     this.onCloseModal();
 

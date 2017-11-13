@@ -53,7 +53,7 @@ class ProductDetailModal extends Component {
                     onPress={() => onVisitShopPress()}
                   />
                   <MyButton
-                    title='Cocum it!'
+                    title='Más parecidos'
                     buttonStyle={{ minWidth: 120 }}
                     onPress={() => onCocumItPress()}
                   />

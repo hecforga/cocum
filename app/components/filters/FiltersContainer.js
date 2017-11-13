@@ -73,7 +73,7 @@ class FiltersContainer extends Component {
         maxPrice: currentFilters.maxPrice,
         shops: currentFilters.shops
       };
-      this.tracker.trackEvent('button_categoryShowMore', 'pressed', { label: generateEventLabel(labelData) } );
+      this.tracker.trackEvent('button_applyFilters', 'pressed', { label: generateEventLabel(labelData) } );
 
       applyFilters(currentFilters, tabName);
       navigation.goBack(null);

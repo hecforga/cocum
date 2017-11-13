@@ -78,8 +78,7 @@ ResultsScreen.navigationOptions = ({ navigation }) => ({
       containerStyle={{ marginRight: 8 }}
     />
   ),
-  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null,
-  tabBarVisible: Platform.OS === 'android'
+  headerStyle: Platform.OS === 'android' ? { marginTop: Constants.statusBarHeight } : null
 });
 
 export default ResultsScreen;
