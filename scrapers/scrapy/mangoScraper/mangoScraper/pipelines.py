@@ -41,6 +41,17 @@ class JsonWriterPipeline(object):
         self.new_products_pantalones_cortos = []
         self.new_products_sudaderas_jerseis = []
 
+        self.update_products_abrigos_chaquetas = []
+        self.update_products_vestidos = []
+        self.update_products_monos = []
+        self.update_products_camisetas = []
+        self.update_products_tops_bodies = []
+        self.update_products_camisas_blusas = []
+        self.update_products_faldas = []
+        self.update_products_pantalones_largos = []
+        self.update_products_pantalones_cortos = []
+        self.update_products_sudaderas_jerseis = []
+
     def close_spider(self, spider):
 
         categoryList = ['abrigos_chaquetas'
@@ -55,33 +66,43 @@ class JsonWriterPipeline(object):
             if category == 'abrigos_chaquetas':
                 current_products = self.current_products_abrigos_chaquetas                
                 new_products = self.new_products_abrigos_chaquetas
+                update_products = self.update_products_abrigos_chaquetas
             elif category == 'vestidos':
                 current_products =self.current_products_vestidos                
-                new_products = self.new_products_vestidos
+                new_products = self.new_products_vestidos                
+                update_products = self.update_products_vestidos
             elif category == 'monos':
                 current_products =self.current_products_monos                
-                new_products = self.new_products_monos
+                new_products = self.new_products_monos                
+                update_products = self.update_products_monos
             elif category == 'camisetas':
                 current_products =self.current_products_camisetas                
-                new_products = self.new_products_camisetas
+                new_products = self.new_products_camisetas                
+                update_products = self.update_products_camisetas
             elif category == 'tops_bodies':
                 current_products =self.current_products_tops_bodies                
-                new_products = self.new_products_tops_bodies
+                new_products = self.new_products_tops_bodies                
+                update_products = self.update_products_tops_bodies
             elif category == 'camisas_blusas':
                 current_products =self.current_products_camisas_blusas                
-                new_products = self.new_products_camisas_blusas
+                new_products = self.new_products_camisas_blusas                
+                update_products = self.update_products_camisas_blusas
             elif category == 'faldas':
                 current_products =self.current_products_faldas                
-                new_products = self.new_products_faldas
+                new_products = self.new_products_faldas                
+                update_products = self.update_products_faldas
             elif category == 'pantalones_largos':
                 current_products =self.current_products_pantalones_largos                
-                new_products = self.new_products_pantalones_largos
+                new_products = self.new_products_pantalones_largos              
+                update_products = self.update_products_pantalones_largos
             elif category == 'pantalones_cortos':
                 current_products =self.current_products_pantalones_cortos                
-                new_products = self.new_products_pantalones_cortos
+                new_products = self.new_products_pantalones_cortos             
+                update_products = self.update_products_pantalones_cortos
             elif category == 'sudaderas_jerseis':
                 current_products =self.current_products_sudaderas_jerseis                
-                new_products = self.new_products_sudaderas_jerseis
+                new_products = self.new_products_sudaderas_jerseis              
+                update_products = self.update_products_sudaderas_jerseis
 
             if len(current_products) > 0:
                 try: 
@@ -103,6 +124,9 @@ class JsonWriterPipeline(object):
                 with open(dirToSave+'new_products.json', 'w') as f:
                     json.dump(list(set(new_products)), f, indent = 2, separators = (',',': '))
 
+                with open(dirToSave+'update_products.json', 'w') as f:
+                    json.dump(list(set(update_products)), f, indent = 2, separators = (',',': '))
+
                 with open(dirToSave+'previous_products.json', 'w') as f:
                     json.dump(aux_previous_products, f, indent = 2, separators = (',',': '))
 
@@ -111,41 +135,61 @@ class JsonWriterPipeline(object):
             self.current_products_abrigos_chaquetas.append(item['productId'])
             if item['new']:
                 self.new_products_abrigos_chaquetas.append(item['productId'])
+            elif item['update']:
+                self.update_products_abrigos_chaquetas.append(item['productId'])
         elif item['category'] == 'vestidos':
             self.current_products_vestidos.append(item['productId'])
             if item['new']:
                 self.new_products_vestidos.append(item['productId'])
+            elif item['update']:
+                self.update_products_vestidos.append(item['productId'])
         elif item['category'] == 'monos':
             self.current_products_monos.append(item['productId'])
             if item['new']:
                 self.new_products_monos.append(item['productId'])
+            elif item['update']:
+                self.update_products_monos.append(item['productId'])
         elif item['category'] == 'camisetas':
             self.current_products_camisetas.append(item['productId'])
             if item['new']:
                 self.new_products_camisetas.append(item['productId'])
+            elif item['update']:
+                self.update_products_camisetas.append(item['productId'])
         elif item['category'] == 'tops_bodies':
             self.current_products_tops_bodies.append(item['productId'])
             if item['new']:
                 self.new_products_tops_bodies.append(item['productId'])
+            elif item['update']:
+                self.update_products_tops_bodies.append(item['productId'])
         elif item['category'] == 'camisas_blusas':
             self.current_products_camisas_blusas.append(item['productId'])
             if item['new']:
                 self.new_products_camisas_blusas.append(item['productId'])
+            elif item['update']:
+                self.update_products_camisas_blusas.append(item['productId'])
         elif item['category'] == 'faldas':
             self.current_products_faldas.append(item['productId'])
             if item['new']:
                 self.new_products_faldas.append(item['productId'])
+            elif item['update']:
+                self.update_products_faldas.append(item['productId'])
         elif item['category'] == 'pantalones_largos':
             self.current_products_pantalones_largos.append(item['productId'])
             if item['new']:
                 self.new_products_pantalones_largos.append(item['productId'])
+            elif item['update']:
+                self.update_products_pantalones_largos.append(item['productId'])
         elif item['category'] == 'pantalones_cortos':
             self.current_products_pantalones_cortos.append(item['productId'])
             if item['new']:
                 self.new_products_pantalones_cortos.append(item['productId'])
+            elif item['update']:
+                self.update_products_pantalones_cortos.append(item['productId'])
         elif item['category'] == 'sudaderas_jerseis':
             self.current_products_sudaderas_jerseis.append(item['productId'])
             if item['new']:
                 self.new_products_sudaderas_jerseis.append(item['productId'])
+            elif item['update']:
+                self.update_products_sudaderas_jerseis.append(item['productId'])
             
         return item
