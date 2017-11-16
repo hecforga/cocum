@@ -13,6 +13,7 @@ class Product(scrapy.Item):
     category = scrapy.Field()
     shop = scrapy.Field()
     new = scrapy.Field()
+    update = scrapy.Field()
 
 class GuessscraperItem(scrapy.Item):
     # define the fields for your item here like:

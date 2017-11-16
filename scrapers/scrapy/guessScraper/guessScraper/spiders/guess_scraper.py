@@ -221,14 +221,14 @@ class GuessSpider(scrapy.Spider):
         "discounted": discounted
         }
 
+        #Compute product directory depending on the category and the id
+        # in this directory will be stored the image and the details in json
+        productDirectory =  self.product_directory(category, productId)
+        productDetailsFile = productDirectory+productId+'.json'
 
-        if productId not in response.meta['previous_products']:
 
-            #Compute product directory depending on the category and the id
-            # in this directory will be stored the image and the details in json
-            productDirectory =  self.product_directory(category, productId)
-            productDetailsFile = productDirectory+productId+'.json'
-            
+        if productId not in response.meta['previous_products']:                
+
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
             self.Request.retrieve(download_image_url, productDirectory+productImageFile)
@@ -238,13 +238,29 @@ class GuessSpider(scrapy.Spider):
 
             #Compute Product item for scrapy
             # will be sent to pipelines.py
-            product = Product(productId = productId, category = category, new= True)
+            product = Product(productId = productId, category = category, new= True, update = False)
 
             yield product
+
         else:
+            
+            with open(productDetailsFile) as f:
+                previous_product_details = json.load(f)
+
+            previous_product_price = previous_product_details['price']
+
+            update = False
+
+            if productPrice != previous_product_price:
+                new_data = {'price' : productPrice, 'discounted': discounted}
+                previous_product_details.update(new_data)
+                update = True
+                with open(productDetailsFile, 'w') as f:
+                    json.dump(previous_product_details, f, indent = 2, separators = (',',': '))
+
             #Compute Product item for scrapy
             # will be sent to pipelines.py
-            product = Product(productId = productId, category = category, new= False)
+            product = Product(productId = productId, category = category, new = False, update = update)
 
             yield product
 
