@@ -9,6 +9,7 @@ import java.util.List;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 
 public class MainApplication extends MultiDexApplication {
@@ -21,6 +22,7 @@ public class MainApplication extends MultiDexApplication {
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNDeviceInfo(),
             new GoogleAnalyticsBridgePackage()
     );
   }
