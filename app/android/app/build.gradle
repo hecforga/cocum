@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion '25.0.2'
 
   defaultConfig {
     applicationId "com.cocum.app"
@@ -46,10 +45,10 @@ repositories{
   }
   mavenLocal()
   maven { url 'https://maven.fabric.io/public' }
+  google()
 }
 
 dependencies {
-    compile project(':react-native-google-analytics-bridge')
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
   compile 'com.android.support:appcompat-v7:25.3.1'
@@ -60,7 +59,8 @@ dependencies {
     exclude group: 'com.facebook.android', module: 'facebook-android-sdk'
     exclude group: 'com.facebook.android', module: 'audience-network-sdk'
     exclude group: 'io.nlopez.smartlocation', module: 'library'
-    transitive = true;
+    exclude group: 'com.google.android.gms'
+    transitive = true
   }
 
   compile ('com.facebook.android:facebook-android-sdk:4.7.0') {
@@ -72,6 +72,32 @@ dependencies {
   compile('io.nlopez.smartlocation:library:3.2.11') {
     transitive = false
   }
-  
-  
+
+  compile(project(':react-native-google-analytics-bridge')) {
+    exclude group: 'com.google.android.gms'
+  }
+
+  compile ('com.google.android.gms:play-services-gcm:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-analytics:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-maps:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-auth:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-location:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-ads:11.4.2') {
+    force = true
+  }
+  compile ('com.google.android.gms:play-services-fitness:11.4.2') {
+    force = true
+  }
+
+
 }
