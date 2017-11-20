@@ -86,7 +86,7 @@ class missguidedSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -117,7 +117,7 @@ class missguidedSpider(scrapy.Spider):
 
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
@@ -128,7 +128,7 @@ class missguidedSpider(scrapy.Spider):
             #   Here all the occurences that are not the first one for a category must avoid the following code
             #   Replace with the repeated ocurrences index.
             if(index != 3 and index != 5 and index != 8 and index != 9):
-                self.create_files( dirToProducts, current_products_dir, previous_products_dir)                
+                self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
@@ -146,9 +146,9 @@ class missguidedSpider(scrapy.Spider):
         #Depends on the shop: BASE
 
         if has_next_page == False:
-            #Extract product urls from category page 
+            #Extract product urls from category page
             #Depends on the shop: BASE
-            productLinks = response.css('').extract()     
+            productLinks = response.css('').extract()
             category = response.meta['category']
 
             for index, productLink in enumerate(productLinks):
@@ -157,11 +157,11 @@ class missguidedSpider(scrapy.Spider):
                 #BASE
                 if '-petite' in productLink or '-tall-' in productLink or '-talla-grande-' in productLink:
                     pass
-                elif category == 'tops_bodies' and ( 
-                    'camisa' in productLink 
+                elif category == 'tops_bodies' and (
+                    'camisa' in productLink
                     or 'camiseta' in productLink
-                    or 'blusa' in productLink 
-                    or 'sudadera' in productLink 
+                    or 'blusa' in productLink
+                    or 'sudadera' in productLink
                     or 'kimono' in productLink
                     or 'jersey' in productLink
                     ):
@@ -169,33 +169,33 @@ class missguidedSpider(scrapy.Spider):
                 else:
                     #Make Splash Request for parsing the product url
                     yield SplashRequest(
-                        productLink, 
+                        productLink,
                         self.parse_product_page,
                         meta={
                             'category': response.meta['category'],
                             'previous_products' : response.meta['previous_products'],
                         }
-                    )            
+                    )
 
 
-        # Check if it has pages 
+        # Check if it has pages
         # It depends on each shop
         # You may have to remove it
-        # BASE 
+        # BASE
 
         elif has_next_page :
 
-            number_of_pages = 0   
-            
+            number_of_pages = 0
+
 
             yield SplashRequest(
-                response.url, 
+                response.url,
                 self.parse_category_page,
                 meta={
                     'category': response.meta['category'],
                     'previous_products' : response.meta['previous_products'],
                 }
-            )     
+            )
 
     def parse_product_page(self, response):
         #Brand of the product for shops like Asos or Amazon
@@ -224,7 +224,7 @@ class missguidedSpider(scrapy.Spider):
             price = response.css('div.price-box p.special-price span.price::text').extract_first()
         else:
             price = response.css('div.price-box span span.price::text').extract_first()
-        
+
         #Price begins"€ " so we need to remove first two characters
         #Depends on the shop: MISSGUIDED
         price = price[2:]
@@ -241,7 +241,7 @@ class missguidedSpider(scrapy.Spider):
             download_image_url = modelImageUrl.replace('','')
         except:
             return None
-        
+
         #Obtain the name of the file where we will download the image
         #Depends on the shop: BASE
         begin_productImageFile = download_image_url.rfind('')
@@ -251,8 +251,8 @@ class missguidedSpider(scrapy.Spider):
 
         #Compute the affiliate url from the affiliate tag
         #Depends on the shop: MISSGUIDED
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)    
-        
+        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+
         # get JSON data ready for writing into the file
         productDetails = {
         "productId" : productId,
@@ -277,7 +277,7 @@ class missguidedSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -293,7 +293,7 @@ class missguidedSpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -301,8 +301,8 @@ class missguidedSpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

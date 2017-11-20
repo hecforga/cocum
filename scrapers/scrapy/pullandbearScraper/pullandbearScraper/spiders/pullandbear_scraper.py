@@ -82,7 +82,7 @@ class pullandbearSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -122,7 +122,7 @@ class pullandbearSpider(scrapy.Spider):
 
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
@@ -133,7 +133,7 @@ class pullandbearSpider(scrapy.Spider):
             #   Here all the occurences that are not the first one for a category must avoid the following code
             #   Replace with the repeated ocurrences index.
             if(index != 6 and index != 8 and index != 11):
-                self.create_files( dirToProducts, current_products_dir, previous_products_dir)                
+                self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
@@ -150,18 +150,18 @@ class pullandbearSpider(scrapy.Spider):
 
     def parse_category_page(self, response):
 
-        #Extract product urls from category page 
+        #Extract product urls from category page
         #Depends on the shop: pullandbear
 
-        productLinks = response.css('a.grid_itemContainer::attr(href)').extract()     
+        productLinks = response.css('a.grid_itemContainer::attr(href)').extract()
         category = response.meta['category']
 
         for index, productLink in enumerate(productLinks):
 
             #Filtrar categorias depende de cada tienda
             #P&B
-            if category == 'camisetas' and ( 
-                'top-' in productLink 
+            if category == 'camisetas' and (
+                'top-' in productLink
                 or 'body-' in productLink ):
                 pass
 
@@ -171,13 +171,13 @@ class pullandbearSpider(scrapy.Spider):
             else:
                 #Make Splash Request for parsing the product url
                 yield SplashRequest(
-                    productLink, 
+                    productLink,
                     self.parse_product_page,
                     meta={
                         'category': response.meta['category'],
                         'previous_products' : response.meta['previous_products'],
                     }
-                )             
+                )
 
     def parse_product_page(self, response):
         #Brand of the product for shops like Asos or Amazon
@@ -206,7 +206,7 @@ class pullandbearSpider(scrapy.Spider):
             price = response.css('div.product_price.new::text').extract_first()
         else:
             price = response.css('div.product_price::text').extract_first()
-        
+
         #Price end " €" so we need to remove last two characters
         #Depends on the shop: P&B
         price = price[:-2]
@@ -223,7 +223,7 @@ class pullandbearSpider(scrapy.Spider):
             download_image_url = productImageUrl.replace('_3.','_2.')
         except:
             return None
-        
+
         #Obtain the name of the file where we will download the image
         #Depends on the shop: P&B
         begin_productImageFile = download_image_url.rfind('/')+1
@@ -234,8 +234,8 @@ class pullandbearSpider(scrapy.Spider):
 
         #Compute the affiliate url from the affiliate tag
         #Depends on the shop: MISSGUIDED
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)    
-        
+        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+
         # get JSON data ready for writing into the file
         productDetails = {
         "productId" : productId,
@@ -259,7 +259,7 @@ class pullandbearSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -275,7 +275,7 @@ class pullandbearSpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -283,8 +283,8 @@ class pullandbearSpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

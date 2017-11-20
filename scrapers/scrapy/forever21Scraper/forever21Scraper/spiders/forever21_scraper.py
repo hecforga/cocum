@@ -39,7 +39,7 @@ class Forever21Spider(scrapy.Spider):
         # 1.Vestidos
         # 2.Monos
         # 3.Camisas y blusas
-        # 4.Camisetas 
+        # 4.Camisetas
         # 5.Tops y bodies
         # 6.Sudaderas y jerseis
         # 7.Sudaderas y jerseis
@@ -54,7 +54,7 @@ class Forever21Spider(scrapy.Spider):
             categoriaNombre = 'vestidos'
         elif index == 2:
             categoriaNombre = 'monos'
-        elif index == 3:            
+        elif index == 3:
             categoriaNombre = 'camisas_blusas'
         elif index == 4:
             categoriaNombre = 'camisetas'
@@ -80,7 +80,7 @@ class Forever21Spider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -112,7 +112,7 @@ class Forever21Spider(scrapy.Spider):
             current_products_dir = dirToProducts+'current_products.json'
             previous_products_dir = dirToProducts+'previous_products.json'
 
-            if(index != 7):                
+            if(index != 7):
                 self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
@@ -154,7 +154,7 @@ class Forever21Spider(scrapy.Spider):
         pageNumbers = topPageNumbersSpan.css('button::text').extract()
         currentPageNumber = int(topPageNumbersSpan.css('button.active::text').extract_first())
         lastPageNumber = int(pageNumbers[-1])
-        
+
         if currentPageNumber < lastPageNumber:
             nextPageLink = response.url.replace('&page=' + str(currentPageNumber), '&page=' + str(currentPageNumber+1))
             yield SplashRequest(nextPageLink, self.parse_category_page, dont_filter = True,
@@ -186,7 +186,7 @@ class Forever21Spider(scrapy.Spider):
         productImageUrl = response.css('img[alt="front"]::attr(src)').extract_first()
         if modelImageUrl is None:
             modelImageUrl = productImageUrl
-        else:            
+        else:
             modelImageUrl = modelImageUrl.replace('_58', '_330')
             productImageUrl = productImageUrl.replace('_58', '_330')
         download_image_url = modelImageUrl.replace('_330', '_750')
@@ -236,7 +236,7 @@ class Forever21Spider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -252,7 +252,7 @@ class Forever21Spider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -260,8 +260,8 @@ class Forever21Spider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

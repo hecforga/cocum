@@ -84,7 +84,7 @@ class MangoSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -116,7 +116,7 @@ class MangoSpider(scrapy.Spider):
 
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
@@ -129,7 +129,7 @@ class MangoSpider(scrapy.Spider):
                 previous_products = json.load(f)
 
             yield scrapy.Request(
-                    url, 
+                    url,
                     self.parse_category_page,
                     dont_filter = True,
                     meta = {
@@ -143,9 +143,9 @@ class MangoSpider(scrapy.Spider):
         #Try to load the body of the respones as json
         data = json.loads(response.body.decode('utf-8'))
         category = response.meta['category']
-        #Check if we are in the last page 
+        #Check if we are in the last page
         #MANGO
-        try: 
+        try:
             garments = data['groups'][0]['garments']
             for index, garment_key in enumerate(garments):
 
@@ -164,23 +164,23 @@ class MangoSpider(scrapy.Spider):
                 elif category == 'pantalones_largos' and ('-shorts/' in product_link):
                     pass
                 else:
-                    
+
                     #Make Splash Request for parsing the product url
-                    yield SplashRequest(product_link, 
+                    yield SplashRequest(product_link,
                         self.parse_product_page,
                         meta={
                             'category': category,
                             'previous_products' : response.meta['previous_products']
                         }
                     )
-            
+
             #Prepare the url for the next page
             #MANGO
             page_number = response.meta['page_number']
             next_page_number = page_number + 1
             next_page_url = response.url.replace('pageNum='+str(page_number), 'pageNum='+str(next_page_number))
             yield scrapy.Request(
-                    next_page_url, 
+                    next_page_url,
                     self.parse_category_page,
                     dont_filter = True,
                     meta = {
@@ -237,19 +237,19 @@ class MangoSpider(scrapy.Spider):
             discounted = True
         #Remove extra simbols from the price
         #Depends on the shop: MANGO
-        productPrice = priceElement1+priceElement2
-        productPrice = productPrice.replace(",",".")
+        price = priceElement1+priceElement2
+        price = price.replace(",",".")
         #Obtain the name of the file where we will download the image
         #Depends on the shop: MANGO
-        pt1 = productImageUrl.rfind("/")+1       
+        pt1 = productImageUrl.rfind("/")+1
         pt2 = productImageUrl.rfind("?")
         productImageFile = productImageUrl[pt1:pt2]
         #Obtain the product id from the image file name
         productId = productImageFile[:-4]
         #Compute the affiliate url from the affiliate tag
         #Depends on the shop: MANGO
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)    
-        
+        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+
         # get JSON data ready for writing into the file
         productDetails = {
         "productId" : productId,
@@ -260,7 +260,7 @@ class MangoSpider(scrapy.Spider):
         "modelImageUrl" : modelImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
-        "price" : productPrice,
+        "price" : price,
         "title": productTitle,
         "brand": brand,
         "color": productColor,
@@ -273,7 +273,7 @@ class MangoSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -289,7 +289,7 @@ class MangoSpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -297,8 +297,8 @@ class MangoSpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

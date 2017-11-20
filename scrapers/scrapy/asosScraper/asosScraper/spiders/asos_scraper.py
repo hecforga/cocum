@@ -39,7 +39,7 @@ class AsosSpider(scrapy.Spider):
         # 1.Vestidos
         # 2.Monos
         # 3.Camisas y blusas
-        # 4.Camisetas, 
+        # 4.Camisetas,
         # 5.Tops y bodies
         # 6.Sudaderas, Cardigans y jerseis
         # 7.Sudaderas, Cardigans y jerseis
@@ -80,7 +80,7 @@ class AsosSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -106,25 +106,25 @@ class AsosSpider(scrapy.Spider):
         ]
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
-            dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'            
+            dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
             previous_products_dir = dirToProducts+'previous_products.json'
 
             if(index!=7):
                 self.create_files( dirToProducts, current_products_dir, previous_products_dir)
-                
+
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
-            
+
             yield SplashRequest(url, self.parse_category_page, dont_filter = True,
                 meta={
                     'category': category,
                     'previous_products': previous_products,
                 },
             )
-                
+
 
     def parse_category_page(self, response):
         #We obtain the links from each category page
@@ -133,17 +133,17 @@ class AsosSpider(scrapy.Spider):
         category = response.meta['category']
 
         for index, productContainer in enumerate(productContainers):
-                
+
             productLink = productContainer.css('a.product.product-link::attr(href)').extract_first()
             price = productContainer.css('div.scm-pricelist div.price-wrap.price-current span.price::text').extract_first()
 
-            if ('-maternity' in productLink or '-tall' in productLink or '-petite' in productLink 
+            if ('-maternity' in productLink or '-tall' in productLink or '-petite' in productLink
                 or '-curve' in productLink or '-plus' in productLink):
                 pass
             else:
                 #Make Splash Request for parsing the product url
                 yield SplashRequest(
-                    productLink, 
+                    productLink,
                     self.parse_product_page,
                     meta={
                         'category': response.meta['category'],
@@ -152,7 +152,7 @@ class AsosSpider(scrapy.Spider):
                     }
                 )
 
-        # Check if it has pages 
+        # Check if it has pages
         # It depends on each shop
         # ASOS
 
@@ -161,7 +161,7 @@ class AsosSpider(scrapy.Spider):
             first_part_page_link = response.url[:response.url.rfind('/cat/')+5]
             next_page_link = first_part_page_link + second_part_page_link
             yield SplashRequest(
-                next_page_link, 
+                next_page_link,
                 self.parse_category_page,
                 meta={
                     'category': response.meta['category'],
@@ -194,7 +194,7 @@ class AsosSpider(scrapy.Spider):
         #Extract image src of the clothes with the model
         #Depends on the shop: ASOS
         images = response.css('li.image-thumbnail.mobile-hide a img::attr(src)').extract()
-        try:            
+        try:
             productImageUrl= images[0].replace("$S$&wid=40","$XXL$&wid=350")
             modelImageUrl= images[-1].replace("$S$&wid=40","$XXL$&wid=350")
 
@@ -208,7 +208,7 @@ class AsosSpider(scrapy.Spider):
         # and extract the product price
         #Depends on the shop: ASOS has no discount only in the section discounts
         discounted = False
-     
+
         #Price is given with termination " €" so we need to remove last characters
         #ASOS
         price = response.meta['price']
@@ -223,8 +223,8 @@ class AsosSpider(scrapy.Spider):
         productId = productImageFile[:-4]
         #Compute the affiliate url from the affiliate tag
         #Depends on the shop: ASOS
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl.replace('http://www.asos.com',''))    
-        
+        affiliateUrl = self.affiliateTag.replace('XXX', productUrl.replace('http://www.asos.com',''))
+
         # get JSON data ready for writing into the file
         productDetails = {
         "productId" : productId,
@@ -241,7 +241,7 @@ class AsosSpider(scrapy.Spider):
         "color": productColor,
         "discounted": discounted
         }
-        
+
 
         #Compute product directory depending on the category and the id
         # in this directory will be stored the image and the details in json
@@ -249,7 +249,7 @@ class AsosSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -265,7 +265,7 @@ class AsosSpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -273,8 +273,8 @@ class AsosSpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

@@ -82,7 +82,7 @@ class SuperDrySpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -118,8 +118,8 @@ class SuperDrySpider(scrapy.Spider):
             current_products_dir = dirToProducts+'current_products.json'
             previous_products_dir = dirToProducts+'previous_products.json'
 
-            if(index!=1 and index!=2 and index!=6 and index!=9):                
-                self.create_files( dirToProducts, current_products_dir, previous_products_dir)                
+            if(index!=1 and index!=2 and index!=6 and index!=9):
+                self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
@@ -173,17 +173,17 @@ class SuperDrySpider(scrapy.Spider):
         #SUPERDRY
         if category == 'faldas' or category == 'pantalones_cortos':
 
-            modelImageUrl = images[0].replace("productthumbs/", "")            
+            modelImageUrl = images[0].replace("productthumbs/", "")
             productImageUrl = images[1].replace("productthumbs/", "")
             download_image_url = modelImageUrl
 
         elif category == 'pantalones_largos':
-            modelImageUrl = images[1].replace("productthumbs/", "")            
+            modelImageUrl = images[1].replace("productthumbs/", "")
             productImageUrl = images[0].replace("productthumbs/", "")
             download_image_url = modelImageUrl
 
         else:
-            modelImageUrl = images[2].replace("productthumbs/", "")            
+            modelImageUrl = images[2].replace("productthumbs/", "")
             productImageUrl = images[1].replace("productthumbs/", "")
             download_image_url = productImageUrl
 
@@ -200,7 +200,7 @@ class SuperDrySpider(scrapy.Spider):
         #Remove extra simbols from the price
         #Depends on the shop: SUPERDRY
         point = priceElement.rfind("€")+1
-        productPrice = priceElement[point:]
+        price = priceElement[point:]
         #Obtain the name of the file where we will download the image
         #Depends on the shop: SUPERDRY
         pt1 = productImageUrl.rfind('upload')+6
@@ -223,20 +223,20 @@ class SuperDrySpider(scrapy.Spider):
         "modelImageUrl" : modelImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
-        "price" : productPrice,
+        "price" : price,
         "title": productTitle,
         "brand": brand,
         "color": productColor,
         "discounted": discounted
         }
-        
+
         #Compute product directory depending on the category and the id
         # in this directory will be stored the image and the details in json
         productDirectory =  self.product_directory(category, productId)
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -252,7 +252,7 @@ class SuperDrySpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -260,8 +260,8 @@ class SuperDrySpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

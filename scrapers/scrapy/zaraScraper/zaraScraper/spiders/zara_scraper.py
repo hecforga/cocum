@@ -65,7 +65,7 @@ class ZaraSpider(scrapy.Spider):
             categoriaNombre="camisetas"
         elif index == 8 or index == 9 or index == 10:
             categoriaNombre= "tops_bodies"
-        elif index == 11 or index == 12: 
+        elif index == 11 or index == 12:
             categoriaNombre="sudaderas_jerseis"
         elif index == 13:
             categoriaNombre="faldas"
@@ -85,7 +85,7 @@ class ZaraSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -106,7 +106,7 @@ class ZaraSpider(scrapy.Spider):
             "https://www.zara.com/es/es/mujer/camisas/ver-todo-c733890.html",
             "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html",
             "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
-            "https://www.zara.com/es/es/mujer-camisas-tops-l1249.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante 
+            "https://www.zara.com/es/es/mujer-camisas-tops-l1249.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
             "https://www.zara.com/es/es/mujer/body-c788002.html",
             "https://www.zara.com/es/es/mujer/sudaderas-c733914.html",
             "https://www.zara.com/es/es/mujer/punto/jerseys-c498028.html",
@@ -117,14 +117,14 @@ class ZaraSpider(scrapy.Spider):
         ]
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
             previous_products_dir = dirToProducts+'previous_products.json'
 
             if(index!=1 and index!=2 and index!=3 and index!=9 and index!=14):
-                self.create_files( dirToProducts, current_products_dir, previous_products_dir)                
+                self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
                 previous_products = json.load(f)
@@ -158,8 +158,8 @@ class ZaraSpider(scrapy.Spider):
                 pass
             elif category == "pantalones_largos" and ("short" in productLink or 'bermuda' in productLink):
                 pass
-            else:              
-                
+            else:
+
                 #Make Splash Request for parsing the product url
                 yield SplashRequest(productLink, self.parse_product_page,
                     meta={
@@ -208,19 +208,19 @@ class ZaraSpider(scrapy.Spider):
         priceElement = response.meta['price']
         #Remove extra simbols from the price
         #Depends on the shop: ZARA
-        productPrice = priceElement[:-4]
-        productPrice = productPrice.replace(",",".")
+        price = priceElement[:-4]
+        price = price.replace(",",".")
         #Obtain the name of the file where we will download the image
         #Depends on the shop: ZARA
-        pt1 = productImageUrl.rfind("/")+1       
+        pt1 = productImageUrl.rfind("/")+1
         pt2 = productImageUrl.rfind("?")
         productImageFile = productImageUrl[pt1:pt2]
         #Obtain the product id from the image file name
         productId = productImageFile[:-4]
         #Compute the affiliate url from the affiliate tag
         #Depends on the shop: ZARA
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)    
-        
+        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+
         # get JSON data ready for writing into the file
         productDetails = {
         "productId" : productId,
@@ -231,20 +231,20 @@ class ZaraSpider(scrapy.Spider):
         "modelImageUrl" : modelImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
-        "price" : productPrice,
+        "price" : price,
         "title": productTitle,
         "brand": brand,
         "color": productColor,
         "discounted": discounted
         }
-        
+
         #Compute product directory depending on the category and the id
         # in this directory will be stored the image and the details in json
         productDirectory =  self.product_directory(category, productId)
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        if productId not in response.meta['previous_products']:                
+        if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
@@ -260,7 +260,7 @@ class ZaraSpider(scrapy.Spider):
             yield product
 
         else:
-            
+
             with open(productDetailsFile) as f:
                 previous_product_details = json.load(f)
 
@@ -268,8 +268,8 @@ class ZaraSpider(scrapy.Spider):
 
             update = False
 
-            if productPrice != previous_product_price:
-                new_data = {'price' : productPrice, 'discounted': discounted}
+            if price != previous_product_price:
+                new_data = {'price' : price, 'discounted': discounted}
                 previous_product_details.update(new_data)
                 update = True
                 with open(productDetailsFile, 'w') as f:

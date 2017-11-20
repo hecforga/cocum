@@ -82,7 +82,7 @@ class LaredouteSpider(scrapy.Spider):
                 os.makedirs(os.path.dirname(dirToProducts))
             except OSError as exc: # Guard against race condition
                 if exc.errno != errno.EEXIST:
-                    raise                       
+                    raise
 
         if not os.path.isfile(current_products_dir):
             with open(current_products_dir, "w") as outfile:
@@ -111,7 +111,7 @@ class LaredouteSpider(scrapy.Spider):
         ]
         for index, url in enumerate(urls):
 
-            category = self.assign_category(index) 
+            category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
@@ -142,7 +142,7 @@ class LaredouteSpider(scrapy.Spider):
             productLink = 'http://www.laredoute.es'+productLink
             #Make Splash Request for parsing the product url
             yield SplashRequest(
-                productLink, 
+                productLink,
                 self.parse_product_page,
                 meta={
                     'category': response.meta['category'],
@@ -154,7 +154,7 @@ class LaredouteSpider(scrapy.Spider):
         if nextPage is not None:
             nextPage = response.urljoin(nextPage)
             yield SplashRequest(
-                nextPage, 
+                nextPage,
                 self.parse_category_page,
                 meta={
                     'category': response.meta['category'],
@@ -168,9 +168,9 @@ class LaredouteSpider(scrapy.Spider):
         brand = response.css('a.brand::text').extract_first().strip()
 
         #Filtering big size brands of LAREDOUTE
-        if (brand != 'CASTALUNA' 
-            and brand != 'TAILLISSIME' 
-            and brand != 'MELLEM' 
+        if (brand != 'CASTALUNA'
+            and brand != 'TAILLISSIME'
+            and brand != 'MELLEM'
             and brand != 'KOKO BY KOKO'
             and brand != 'MAT FASHION'
             and brand != 'MOLLY BRACKEN'
@@ -191,7 +191,7 @@ class LaredouteSpider(scrapy.Spider):
             #Extract image src of the clothes with the model
             #Depends on the shop: LAREDOUTE
             images = response.css('ul.divAddScroller.jcarousel-list.jcarousel-list-vertical li a img::attr(src)').extract()
-            if brand == 'NUMPH':                
+            if brand == 'NUMPH':
                 modelImageUrl = images[1].replace("100by100","641by641")
                 productImageUrl = images[0].replace("100by100","641by641")
 
@@ -199,7 +199,7 @@ class LaredouteSpider(scrapy.Spider):
 
                 modelImageUrl = images[0].replace("100by100","641by641")
                 productImageUrl= images[4].replace("100by100","641by641")
-                
+
             else:
                 try:
                     modelImageUrl = images[0].replace("100by100","641by641")
@@ -216,20 +216,20 @@ class LaredouteSpider(scrapy.Spider):
             #Get element containing product price
             priceElementAfter = response.css('span[itemprop = "price"]::text').extract_first()
             if priceElementBefore != priceElementAfter:
-                discounted = True 
+                discounted = True
             #Price is given without termination " €" so we do not need to remove last characters
-            productPrice = priceElementAfter
-            productPrice = productPrice.replace(",",".")
+            price = priceElementAfter
+            price = price.replace(",",".")
             #Obtain the name of the file where we will download the image
             #Depends on the shop: LAREDOUTE
-            pt1 = productImageUrl.rfind("/")+1 
+            pt1 = productImageUrl.rfind("/")+1
             productImageFile = productImageUrl[pt1:]
             #Obtain the product id from the image file name
             productId = productImageFile[:-4]
             #Compute the affiliate url from the affiliate tag
             #Depends on the shop: LAREDOUTE
-            affiliateUrl = self.affiliateTag.replace('XXX', productUrl)    
-            
+            affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+
             # get JSON data ready for writing into the file
             productDetails = {
             "productId" : productId,
@@ -240,7 +240,7 @@ class LaredouteSpider(scrapy.Spider):
             "modelImageUrl" : modelImageUrl,
             "productUrl" : productUrl,
             "affiliateUrl" : affiliateUrl,
-            "price" : productPrice,
+            "price" : price,
             "title": productTitle,
             "brand": brand,
             "color": productColor,
@@ -253,7 +253,7 @@ class LaredouteSpider(scrapy.Spider):
             productDetailsFile = productDirectory+productId+'.json'
 
 
-            if productId not in response.meta['previous_products']:                
+            if productId not in response.meta['previous_products']:
 
                 #Check if the product is already in the database so we do not download the image again
                 #Download image to the correct folder in the dataset
@@ -269,7 +269,7 @@ class LaredouteSpider(scrapy.Spider):
                 yield product
 
             else:
-                
+
                 with open(productDetailsFile) as f:
                     previous_product_details = json.load(f)
 
@@ -277,8 +277,8 @@ class LaredouteSpider(scrapy.Spider):
 
                 update = False
 
-                if productPrice != previous_product_price:
-                    new_data = {'price' : productPrice, 'discounted': discounted}
+                if price != previous_product_price:
+                    new_data = {'price' : price, 'discounted': discounted}
                     previous_product_details.update(new_data)
                     update = True
                     with open(productDetailsFile, 'w') as f:
