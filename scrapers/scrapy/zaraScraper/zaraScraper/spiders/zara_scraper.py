@@ -146,6 +146,11 @@ class ZaraSpider(scrapy.Spider):
 
             priceElement = productElement.css('div.product-info._product-info>div.product-info-item.product-info-item-price>div.price._product-price>span::attr(data-price)').extract_first()
             productLink = productElement.css('a.item._item::attr(href)').extract_first()
+            special_price_label = productElement.css('div.label._label.label-special_price.special_price')
+
+            discounted = False
+            if len(special_price_label) > 0:
+                discounted = True
 
             if category == "tops_bodies" and ("top-" not in productLink and 'camiseta-tul' not in productLink):
                 pass
@@ -160,7 +165,8 @@ class ZaraSpider(scrapy.Spider):
                     meta={
                         'category': response.meta['category'],
                         'previous_products' : response.meta['previous_products'],
-                        'price' : priceElement
+                        'price' : priceElement,
+                        'discounted' : discounted
                     }
                 )
 
@@ -198,7 +204,7 @@ class ZaraSpider(scrapy.Spider):
         #Check if it has discount
         # and extract the product price
         #Depends on the shop: ZARA
-        discounted = False
+        discounted = response.meta['discounted']
         priceElement = response.meta['price']
         #Remove extra simbols from the price
         #Depends on the shop: ZARA
