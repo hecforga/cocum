@@ -53,19 +53,19 @@ class ZaraSpider(scrapy.Spider):
         # 15.Pantalones cortos
 
         #funciona como un switch
-        if index == 0 or index == 1 or index == 2 or index==3:
+        if index == 0 or index == 1 or index == 2:
             categoriaNombre="abrigos_chaquetas"
-        elif index == 4:
+        elif index == 3:
             categoriaNombre="vestidos"
-        elif index == 5:
+        elif index == 4:
             categoriaNombre="monos"
-        elif index == 6:
+        elif index == 5:
             categoriaNombre="camisas_blusas"
-        elif index == 7:
+        elif index == 6:
             categoriaNombre="camisetas"
-        elif index == 8 or index == 9 or index == 10:
+        elif index == 7 or index == 8 or index == 9:
             categoriaNombre= "tops_bodies"
-        elif index == 11 or index == 12:
+        elif index == 10 or index == 11 or index == 12:
             categoriaNombre="sudaderas_jerseis"
         elif index == 13:
             categoriaNombre="faldas"
@@ -97,33 +97,32 @@ class ZaraSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            "https://www.zara.com/es/es/mujer/abrigos/ver-todo-c733882.html",
-            "https://www.zara.com/es/es/mujer/trench-c749003.html",
-            "https://www.zara.com/es/es/mujer/cazadoras-c269184.html",
-            "https://www.zara.com/es/es/mujer/blazers-c756615.html",
-            "https://www.zara.com/es/es/mujer/vestidos/ver-todo-c733885.html",
-            "https://www.zara.com/es/es/mujer/monos-c663016.html",
-            "https://www.zara.com/es/es/mujer/camisas/ver-todo-c733890.html",
-            "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html",
-            "https://www.zara.com/es/es/mujer/camisetas/ver-todo-c733912.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
-            "https://www.zara.com/es/es/mujer-camisas-tops-l1249.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
-            "https://www.zara.com/es/es/mujer/body-c788002.html",
-            "https://www.zara.com/es/es/mujer/sudaderas-c733914.html",
-            "https://www.zara.com/es/es/mujer/punto/jerseys-c498028.html",
-            "https://www.zara.com/es/es/mujer/faldas/ver-todo-c733908.html",
-            "https://www.zara.com/es/es/mujer/jeans/ver-todo-c733918.html",
-            "https://www.zara.com/es/es/mujer/pantalones/ver-todo-c733898.html", #zara hay que filtrar los shorts
-            "https://www.zara.com/es/es/mujer/pantalones/shorts-c502001.html"
+            "https://www.zara.com/es/es/mujer-prendas-exterior-l1184.html",
+            "https://www.zara.com/es/es/mujer-chaquetas-l1114.html",
+            "https://www.zara.com/es/es/mujer-blazers-l1055.html",
+            "https://www.zara.com/es/es/mujer-vestidos-l1066.html",
+            "https://www.zara.com/es/es/mujer-monos-l1150.html",
+            "https://www.zara.com/es/es/mujer-camisas-l1217.html",
+            "https://www.zara.com/es/es/mujer-camisetas-l1362.html",
+            "https://www.zara.com/es/es/mujer-camisetas-l1362.html", #zara tiene los tops donde las camisetas asi que filtramos más adelante
+            "https://www.zara.com/es/es/mujer-camisas-tops-l1249.html", #zara tiene los tops donde las camisas asi que filtramos más adelante
+            "https://www.zara.com/es/es/mujer-body-l1057.html",
+            "https://www.zara.com/es/es/mujer-sudaderas-l1320.html",
+            "https://www.zara.com/es/es/mujer-punto-jerseys-l1165.html",
+            "https://www.zara.com/es/es/mujer-punto-cuello-alto-l1170.html?v1=688003",
+            "https://www.zara.com/es/es/mujer-faldas-l1299.html",
+            "https://www.zara.com/es/es/mujer-jeans-l1119.html",
+            "https://www.zara.com/es/es/mujer-pantalones-l1335.html", #zara hay que filtrar los shorts
+            "https://www.zara.com/es/es/mujer-pantalones-shorts-l1355.html"
         ]
         for index, url in enumerate(urls):
-
             category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
             current_products_dir = dirToProducts+'current_products.json'
             previous_products_dir = dirToProducts+'previous_products.json'
 
-            if(index!=1 and index!=2 and index!=3 and index!=9 and index!=14):
+            if(index!=1 and index!=2 and index!=8 and index!=9 and index!=11 and index!=12 and index!=15):
                 self.create_files( dirToProducts, current_products_dir, previous_products_dir)
 
             with open(previous_products_dir) as f:
@@ -146,6 +145,8 @@ class ZaraSpider(scrapy.Spider):
 
             priceElement = productElement.css('div.product-info._product-info>div.product-info-item.product-info-item-price>div.price._product-price>span::attr(data-price)').extract_first()
             productLink = productElement.css('a.item._item::attr(href)').extract_first()
+            if not productLink:
+                continue
             special_price_label = productElement.css('div.label._label.label-special_price.special_price')
 
             discounted = False

@@ -40,36 +40,38 @@ const updateProduct = (productsFolder, category, shop, index) => {
     }
   }
   `).then((res) => {
-    client.mutate(`
-      {
-        updateProduct(
-          id: "${res.allProducts[0].id}",
-          affiliateUrl: "${productInfo.affiliateUrl}",
-          brand: "${productInfo.brand}",
-          category: "${productInfo.category}",
-          color: "${productInfo.color}",
-          discounted: ${productInfo.discounted},
-          gender: "${productInfo.gender}",
-          modelImageUrl: "${productInfo.modelImageUrl}",
-          price: "${productInfo.price}",
-          productId: "${productInfo.productId}",
-          productImageUrl: "${productInfo.productImageUrl}",
-          productUrl: "${productInfo.productUrl}",
-          shop: "${productInfo.shop}",
-          title: "${productInfo.title}",
-        ) {
-          id
+    if (res.allProducts.length) {
+      client.mutate(`
+        {
+          updateProduct(
+            id: "${res.allProducts[0].id}",
+            affiliateUrl: "${productInfo.affiliateUrl}",
+            brand: "${productInfo.brand}",
+            category: "${productInfo.category}",
+            color: "${productInfo.color}",
+            discounted: ${productInfo.discounted},
+            gender: "${productInfo.gender}",
+            modelImageUrl: "${productInfo.modelImageUrl}",
+            price: "${productInfo.price}",
+            productId: "${productInfo.productId}",
+            productImageUrl: "${productInfo.productImageUrl}",
+            productUrl: "${productInfo.productUrl}",
+            shop: "${productInfo.shop}",
+            title: "${productInfo.title}",
+          ) {
+            id
+          }
         }
-      }
-    `)
-    .then(() => {
-      if (index % 100 === 0) {
-        console.log(category + ', ' + shop + ': analyzed ' + (index + 1) + ' of ' + newProducts[category][shop].length);
-      }
-    })
-    .catch((error) => {
-      throw error;
-    });
+      `)
+      .then(() => {
+        if (index % 100 === 0) {
+          console.log(category + ', ' + shop + ': analyzed ' + (index + 1) + ' of ' + newProducts[category][shop].length);
+        }
+      })
+      .catch((error) => {
+        throw error;
+      });
+    }
   })
   .catch((error) => {
     console.log(error);
@@ -88,7 +90,7 @@ genders.forEach((gender) => {
     const categoryFolder = datasetFolder + '/' + gender + '/' + category;
     shops.forEach((shop) => {
       const productsFolder = categoryFolder + '/' + shop + '/products';
-      const newProductsFilePath = productsFolder + '/new_products.json';
+      const newProductsFilePath = productsFolder + '/update_products.json';
       newProducts[category][shop] = JSON.parse(fs.readFileSync(newProductsFilePath, 'utf8'));
       if (newProducts[category][shop].length) {
         updateProduct(productsFolder, category, shop, 0);

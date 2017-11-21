@@ -7,7 +7,7 @@ from myargparse import parse_args
 
 args = parse_args()
 
-input_dir = '/home/hector/Desktop/dataset/mujer'
+input_dir = '/media/hector/HECTOR/dataset/mujer'
 output_dir = '../dataset/mujer'
 #input_dir = '../dataset/mujer'
 #output_dir = '/media/hector/HECTOR/dataset/mujer'

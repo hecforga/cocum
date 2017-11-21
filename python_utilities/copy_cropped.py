@@ -8,8 +8,8 @@ from myargparse import parse_args
 args = parse_args()
 
 #input_dir = '../dataset/mujer'
-#output_dir = '/media/hector/HECTOR/dataset_limpiar/mujer'
-input_dir = '/media/hector/HECTOR/dataset_limpio/mujer'
+#output_dir = '/media/hector/DIEGO/dataset_limpiar/mujer'
+input_dir = '/media/hector/DIEGO/dataset_limpio/mujer'
 output_dir = '../dataset/mujer'
 
 for shop in args.shops:

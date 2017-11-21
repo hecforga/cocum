@@ -98,20 +98,20 @@ class MangoSpider(scrapy.Spider):
     def start_requests(self):
 
         urls = [
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=abrigos&menu=familia;2&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=chaquetas&menu=familia;4,304&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=vestidos&menu=familia;32&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=monos&menu=familia;34&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops de camisas
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=camisetas&menu=familia;18,318&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops y bodies de camisetas
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay qu filtrar las camisas y las blusas de los tops
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Tops&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Bodies&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=sudaderas&menu=familia;610,810&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=cardigans&menu=familia;55,355&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=faldas&menu=familia;20&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=pantalones&menu=familia;26,326&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los shorts de los pantalones
-                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_PromoWomanOCT.prendas/?idSubSection=pantalones&menu=familia;26,326&subMenu=pants26,326;Shorts&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2"
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=abrigos&menu=familia;2&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=chaquetas&menu=familia;4,304&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=vestidos&menu=familia;32&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=monos&menu=familia;34&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops de camisas
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=camisetas&menu=familia;18,318&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los tops y bodies de camisetas
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=camisas&menu=familia;14&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar las camisas y las blusas de los tops
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Tops&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=camisetas&menu=familia;18,318&subMenu=tops18,318;Bodies&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=sudaderas&menu=familia;610,810&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=cardigans&menu=familia;55,355&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=faldas&menu=familia;20&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=pantalones&menu=familia;26,326&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2",#En Mango hay que filtrar los shorts de los pantalones
+                    "https://shop.mango.com/services/productlist/products/ES/she/sections_she_Guia_Regalos_ES.prendas/?idSubSection=pantalones&menu=familia;26,326&subMenu=pants26,326;Shorts&stateCode=46&pageNum=1&rowsPerPage=20&columnsPerRow=2"
                 ]
 
         for index, url in enumerate(urls):

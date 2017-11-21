@@ -25,6 +25,5 @@ for shop in args.shops:
                 if not product_id in current_products:
                     shutil.rmtree(product_folder)
 
-        for cropped_image_name in os.listdir(cropped_folder):
-            cropped_image = os.path.join(cropped_folder + '/' + cropped_image_name)
-            os.remove(cropped_image)
+        shutil.rmtree(cropped_folder)
+        os.mkdir(cropped_folder)
