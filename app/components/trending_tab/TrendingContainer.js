@@ -38,7 +38,7 @@ class TrendingContainer extends Component {
       tabName,
       productsByTimesRedirected,
       productsByTimesVisited,
-      productsByRandom,
+      productsByUpdatedAtSkip,
       productsByUpdatedAt
     } = this.props;
 
@@ -46,7 +46,7 @@ class TrendingContainer extends Component {
     if (
       productsByTimesRedirected.loading === true ||
       productsByTimesVisited.loading === true ||
-      productsByRandom.loading === true ||
+      productsByUpdatedAtSkip.loading === true ||
       productsByUpdatedAt.loading === true
     ) {
       return (
@@ -86,7 +86,7 @@ class TrendingContainer extends Component {
           <ProductsHorizontalList
             title={'Te puede gustar'}
             onProductPress={(product) => this.onProductPress(product)}
-            products={this.getProductsRandom()}
+            products={this.getProductsUpdatedSkip()}
             scrollbarStyle={styles.scrollbarStyle}
             productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
@@ -111,9 +111,9 @@ class TrendingContainer extends Component {
     return productsByUpdatedAt.allProducts;
   }
 
-  getProductsRandom() {
-    const { productsByRandom } = this.props;
-    return productsByRandom.allProducts;
+  getProductsUpdatedSkip() {
+    const { productsByUpdatedAtSkip } = this.props;
+    return productsByUpdatedAtSkip.allProducts;
   }
 
   onProductPress(product) {
@@ -150,9 +150,17 @@ const styles = StyleSheet.create({
   }
 });
 
+const aWeekAgo = new Date(new Date().getTime() - 604800000).toISOString();
+const excludedShops = ['zara', 'mango'];
+
 const getProductsByTimesRedirected = gql`
   query getProductsByTimesRedirected {
-    allProducts(orderBy: timesRedirected_DESC, first:5) {
+    allProducts(
+    orderBy: timesRedirected_DESC,
+    first:5,
+    filter: {
+      updatedAt_gte: "${aWeekAgo}"
+    }) {
       id,
       productId,
       productImageUrl,
@@ -160,6 +168,7 @@ const getProductsByTimesRedirected = gql`
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,
@@ -171,7 +180,12 @@ const getProductsByTimesRedirected = gql`
 
 const getProductsByTimesVisited = gql`
   query getProductsByTimesVisited {
-    allProducts(orderBy: timesVisited_DESC, first:5) {
+    allProducts(
+    orderBy: timesVisited_DESC,
+    first:5,
+    filter: {
+      updatedAt_gte: "${aWeekAgo}"
+    }) {
       id,
       productId,
       productImageUrl,
@@ -179,6 +193,7 @@ const getProductsByTimesVisited = gql`
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,
@@ -194,7 +209,7 @@ const getProductsByUpdatedAt = gql`
     orderBy: updatedAt_DESC,
     first:5,
     filter: {
-      shop_not_in: ["zara", "mango","pullandbear"]
+      shop_not_in: ["${excludedShops.join(`", "`)}"]
     }) {
       id,
       productId,
@@ -203,6 +218,7 @@ const getProductsByUpdatedAt = gql`
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,
@@ -212,14 +228,14 @@ const getProductsByUpdatedAt = gql`
   }
 `;
 
-const getProductsByRandom = gql`
-  query getProductsByRandom {
+const getProductsByUpdatedAtSkip = gql`
+  query getProductsByUpdatedAtSkip {
     allProducts(
     first:5, 
     skip:5, 
     orderBy: updatedAt_DESC,        
     filter: {
-     shop_not_in: ["zara", "mango","pullandbear"]
+     shop_not_in: ["${excludedShops.join(`", "`)}"]
     }) {
       id,
       productId,
@@ -228,6 +244,7 @@ const getProductsByRandom = gql`
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,
@@ -252,7 +269,7 @@ export default compose(
   ),
   graphql(getProductsByTimesRedirected, { name : 'productsByTimesRedirected' }),
   graphql(getProductsByTimesVisited, { name : 'productsByTimesVisited' }),
-  graphql(getProductsByRandom, { name : 'productsByRandom' }),
+  graphql(getProductsByUpdatedAtSkip, { name : 'productsByUpdatedAtSkip' }),
   graphql(getProductsByUpdatedAt, { name : 'productsByUpdatedAt' }),
   graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
 )(TrendingContainer);

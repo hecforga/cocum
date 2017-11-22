@@ -30,7 +30,7 @@ class HomeScreen extends Component {
 
     return (
       <Image
-        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_background.jpg' }}
+        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_background_autumn.jpg' }}
         style={ styles.backgroundImage}>
         <View style={styles.backgroundMargin}/>
         <View style={ styles.container }>

@@ -21,9 +21,17 @@ class ProductThumbnail extends Component {
             source={{ uri: fromProductsInfo.getModelImageUrl(product) }}
             style={styles.image}
             resizeMode='cover'
-          />
+          >
+            {product.discounted ?
+              <View style={{ position: 'absolute', top: 10, right: 0, backgroundColor: 'black' }}>
+                <Text style={{ color: 'white', paddingLeft: 4, paddingRight: 4, fontSize: 12 }}>OFERTA</Text>
+              </View>
+              :
+              null
+            }
+          </Image>
           <Text numberOfLines={1}>{fromProductsInfo.getShopOrBrandLabel(product)}</Text>
-          <Text style={styles.price}>{fromProductsInfo.getPriceLabel(product)}</Text>
+          <Text style={[styles.price, { color: product.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(product)}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -35,6 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e8e8ee'
   },
   image: {
+    flex: 1,
     aspectRatio: 0.8,
     marginBottom: 8,
   },

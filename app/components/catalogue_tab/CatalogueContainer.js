@@ -146,6 +146,7 @@ const queries = categories.map((category) => ({
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,

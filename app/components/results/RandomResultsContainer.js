@@ -51,6 +51,7 @@ const getProductsByIds = gql`
       productUrl,
       affiliateUrl,
       price,
+      discounted,
       shop,
       brand,
       category,

@@ -44,7 +44,7 @@ class ProductDetailModal extends Component {
                 />
                 <View style={styles.detailTextContainer}>
                   <Text numberOfLines={1}>{fromProductsInfo.getShopAndBrandLabel(selectedProduct)}</Text>
-                  <Text style={styles.price}>{fromProductsInfo.getPriceLabel(selectedProduct)}</Text>
+                  <Text style={[styles.price, { color: selectedProduct.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(selectedProduct)}</Text>
                 </View>
                 <View style={styles.detailBottomContainer}>
                   <MyButton
