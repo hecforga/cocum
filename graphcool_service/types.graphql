@@ -1,0 +1,31 @@
+type MyQuery @model {
+  category: String!
+  createdAt: DateTime!
+  gender: String!
+  id: ID! @isUnique
+  imageUrl: String
+  rating: Int
+  resultsList: [String!]
+  updatedAt: DateTime!
+}
+
+type Product @model {
+  affiliateUrl: String @defaultValue(value: "")
+  brand: String @defaultValue(value: "")
+  category: String!
+  color: String @defaultValue(value: "")
+  createdAt: DateTime!
+  discounted: Boolean @defaultValue(value: false)
+  id: ID! @isUnique
+  productImageUrl: String!
+  modelImageUrl: String @defaultValue(value: "")
+  price: String!
+  productId: String!
+  productUrl: String!
+  shop: String!
+  timesRedirected: Int @defaultValue(value: 0)
+  timesVisited: Int @defaultValue(value: 0)
+  title: String @defaultValue(value: "")
+  updatedAt: DateTime!
+  gender: String!
+}
