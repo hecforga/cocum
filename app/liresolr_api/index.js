@@ -12,7 +12,7 @@ const addIdQuery = (url, params) => {
 
 const generateBaseUrl = (params) => {
   const { gender, category } = params;
-  return LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?rows=12&field=ce&ms=false'
+  return LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?rows=12&field=ce&ms=false';
 };
 
 const generateFilterQueries = (params) => {
