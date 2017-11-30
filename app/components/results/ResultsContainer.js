@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import DeviceInfo from 'react-native-device-info';
+import firebase from 'react-native-firebase';
 
 import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
@@ -15,6 +17,9 @@ class ResultsContainer extends Component {
     setCanGoNext(true);
     onResultsWillMount(tabName);
 
+    this.buildNumber = parseInt(DeviceInfo.getBuildNumber());
+
+    // react-native-google-analytics_bridge
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
@@ -104,12 +109,17 @@ class ResultsContainer extends Component {
   onProductPress(product) {
     const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
 
-    const labelData = {
+    const eventParams = {
       tabName: tabName,
       category: product.category,
       shop: product.shop
     };
-    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
+    if (this.buildNumber >= 8) {
+      firebase.analytics().logEvent('product_pressed', eventParams);
+    }
+
+    // react-native-google-analytics_bridge
+    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(eventParams) } );
 
     setSelectedProduct(tabName, product);
     setProductTimesVisited(updateProductTimesVisitedMutate, product);

@@ -3,6 +3,8 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react
 import { Constants } from 'expo';
 import { Entypo } from '@expo/vector-icons';
 import { GoogleAnalyticsTracker, GoogleAnalyticsSettings } from 'react-native-google-analytics-bridge';
+import DeviceInfo from 'react-native-device-info';
+import firebase from 'react-native-firebase';
 
 import { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
 
@@ -11,22 +13,19 @@ import MyButton from './common/MyButton.js';
 class HomeScreen extends Component {
 
   componentWillMount() {
-    // Recommend you set this much higher in real app! 30 seconds+
-    // GoogleAnalyticsSettings has static methods and is applied
-    // for all trackers
+    this.buildNumber = parseInt(DeviceInfo.getBuildNumber());
+    if (this.buildNumber >= 8) {
+      firebase.analytics().setCurrentScreen('Home');
+    }
+
+    // react-native-google-analytics_bridge
     GoogleAnalyticsSettings.setDispatchInterval(30);
-    // for testing:means no data will be sent to GA
-    //GoogleAnalyticsSettings.setDryRun(true);
-    // The tracker is constructed
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
     this.tracker.trackScreenView('Home');
-
   }
 
   render() {
     const { navigation } = this.props;
-
-
 
     return (
       <Image
@@ -56,6 +55,11 @@ class HomeScreen extends Component {
               iconStyle={{ fontSize: 56 }}
               touchableType={'opacity'}
               onPress={() => {
+                if (this.buildNumber >= 8) {
+                  firebase.analytics().logEvent('galleryButton_pressed');
+                }
+
+                // react-native-google-analytics_bridge
                 this.tracker.trackEvent('button', 'pressed', { label: 'gallery'} );
 
                 navigation.navigate('CategorySelection', {
@@ -71,6 +75,11 @@ class HomeScreen extends Component {
               iconStyle={{ fontSize: 56 }}
               touchableType={'opacity'}
               onPress={() => {
+                if (this.buildNumber >= 8) {
+                  firebase.analytics().logEvent('cameraButton_pressed');
+                }
+
+                // react-native-google-analytics_bridge
                 this.tracker.trackEvent('button', 'pressed', { label: 'camera'} );
 
                 navigation.navigate('CategorySelection', {

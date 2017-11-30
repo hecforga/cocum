@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import DeviceInfo from 'react-native-device-info';
+import firebase from 'react-native-firebase';
 
 import { getResultsActiveLevel, getSelectedProductAtLevel } from '../../reducers';
 import * as actions from '../../actions';
@@ -13,6 +14,9 @@ import ProductDetailModal from './ProductDetailModal.js';
 
 class ProductDetailContainer extends Component {
   componentWillMount() {
+    this.buildNumber = parseInt(DeviceInfo.getBuildNumber());
+
+    // react-native-google-analytics_bridge
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
@@ -44,12 +48,17 @@ class ProductDetailContainer extends Component {
       updateProductTimesRedirectedMutate
     } = this.props;
 
-    const labelData = {
+    const eventParams = {
       tabName: tabName,
       category: selectedProduct.category,
       shop: selectedProduct.shop
     };
-    this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(labelData) } );
+    if (this.buildNumber >= 8) {
+      firebase.analytics().logEvent('visitShopButton_pressed', eventParams);
+    }
+
+    // react-native-google-analytics_bridge
+    this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(eventParams) } );
 
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
 
@@ -65,12 +74,17 @@ class ProductDetailContainer extends Component {
   onCocumItPress() {
     const { navigation, tabName, level, selectedProduct } = this.props;
 
-    const labelData = {
+    const eventParams = {
       tabName: tabName,
       category: selectedProduct.category,
       shop: selectedProduct.shop
     };
-    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
+    if (this.buildNumber >= 8) {
+      firebase.analytics().logEvent('similarButton_pressed', eventParams);
+    }
+
+    // react-native-google-analytics_bridge
+    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(eventParams) } );
 
     navigation.navigate('Results', {
       category: selectedProduct.category,

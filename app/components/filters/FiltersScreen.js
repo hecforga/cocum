@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { Constants } from 'expo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import DeviceInfo from 'react-native-device-info';
+import firebase from 'react-native-firebase';
 
 import FiltersContainer from './FiltersContainer.js';
 
 class FiltersScreen extends Component {
   componentWillMount() {
+    this.buildNumber = parseInt(DeviceInfo.getBuildNumber());
+    if (this.buildNumber >= 8) {
+      firebase.analytics().setCurrentScreen('Filters');
+    }
+
+    // react-native-google-analytics_bridge
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
     this.tracker.trackScreenView('Filters');
   }

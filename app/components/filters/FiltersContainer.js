@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import DeviceInfo from 'react-native-device-info';
+import firebase from 'react-native-firebase';
 
 import { getCurrentFilters, areFiltersCleared, areFiltersValid, getAppliedFiltersAtLevel } from '../../reducers/index';
 import * as actions from '../../actions/index';
@@ -16,6 +18,9 @@ class FiltersContainer extends Component {
     const { initCurrentFilters, appliedFilters } = this.props;
     initCurrentFilters(appliedFilters);
 
+    this.buildNumber = parseInt(DeviceInfo.getBuildNumber());
+
+    // react-native-google-analytics_bridge
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
@@ -26,8 +31,7 @@ class FiltersContainer extends Component {
       setMaxPriceFilter,
       addShopFilter,
       removeShopFilter,
-      areFiltersCleared,
-      clearFilters,
+      areFiltersCleared
     } = this.props;
 
     return (
@@ -47,7 +51,7 @@ class FiltersContainer extends Component {
         <View style={styles.buttonsContainer}>
           <MyButton
             title={'Borrar'}
-            onPress={() => clearFilters()}
+            onPress={() => this.clearFilters()}
             disabled={areFiltersCleared}
             containerStyle={[styles.buttonContainerStyle, { marginRight: 8 }]}
             buttonStyle={styles.buttonStyle}
@@ -67,13 +71,18 @@ class FiltersContainer extends Component {
     const { navigation, tabName, currentFilters, areFiltersValid, applyFilters } = this.props;
 
     if (areFiltersValid) {
-      const labelData = {
+      const eventParams = {
         tabName: tabName,
         minPrice: currentFilters.minPrice,
         maxPrice: currentFilters.maxPrice,
-        shops: currentFilters.shops
+        shops: currentFilters.shops.toString()
       };
-      this.tracker.trackEvent('button_applyFilters', 'pressed', { label: generateEventLabel(labelData) } );
+      if (this.buildNumber >= 8) {
+        firebase.analytics().logEvent('applyFiltersButton_pressed', eventParams);
+      }
+
+      // react-native-google-analytics_bridge
+      this.tracker.trackEvent('button_applyFilters', 'pressed', { label: generateEventLabel(eventParams) } );
 
       applyFilters(currentFilters, tabName);
       navigation.goBack(null);
@@ -83,6 +92,16 @@ class FiltersContainer extends Component {
         'El precio mínimo no puede ser mayor que el precio máximo'
       )
     }
+  }
+
+  clearFilters() {
+    const { clearFilters } = this.props;
+
+    if (this.buildNumber >= 8) {
+      firebase.analytics().logEvent('clearFiltersButton_pressed');
+    }
+
+    clearFilters();
   }
 }
 

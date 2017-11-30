@@ -20,7 +20,7 @@ public class MainActivity extends ExponentActivity {
 
   @Override
   public String developmentUrl() {
-    return ExponentBuildConstants.DEVELOPMENT_URL;
+    return "expa9f81069b8f942429303cbbafaa7e301://3n-zcc.hecforga.app.exp.direct:80";
   }
 
   @Override
