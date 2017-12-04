@@ -30,14 +30,13 @@ class HomeScreen extends Component {
 
     return (
       <Image
-        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_background_autumn.jpg' }}
+        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_model_flowers.jpg' }}
         style={ styles.backgroundImage}>
-        <View style={styles.backgroundMargin}/>
         <View style={ styles.container }>
           <View style={ styles.topContainer }>
             <View style={styles.logoTopMargin}/>
             <Image
-              source= {require('./img/logococum.png')}
+              source= {require('./img/logococum_nombre_bajo_azul.png')}
               resizeMode='contain'
               style={ styles.imageLogo}
             />
@@ -84,7 +83,6 @@ class HomeScreen extends Component {
           <View style={ styles.bottomMargin}>
           </View>
         </View>
-        <View style={styles.backgroundMargin}/>
       </Image>
     );
   }
@@ -110,7 +108,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 0.85,
-    backgroundColor: '#fafafa'
+    backgroundColor: '#24333d',
+    opacity: 0.70,
   },
   topContainer: {
     flex: 0.375,
@@ -118,7 +117,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   topText: {
-    fontSize: 24
+    fontSize: 24,
+    color: 'white',
   },
   centerContainer1: {
     flex: 0.225,
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     elevation: 0
   },
   centerText: {
-  fontSize: 16
+  fontSize: 16,
+  color: 'white',
   },
   bottomContainer: {
     flex: 0.125,
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
     paddingRight: 32,
     borderRadius: 5,
     borderWidth: 0.8,
+    color: '#3595d2'
     borderColor: '#01579b'
   },
   galleryIcon:{
