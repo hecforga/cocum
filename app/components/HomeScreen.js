@@ -30,14 +30,13 @@ class HomeScreen extends Component {
 
     return (
       <Image
-        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_background_autumn.jpg' }}
+        source={{ uri: 'https://s3.eu-central-1.amazonaws.com/cocumapp/app_assets/home_model_gabardina.jpg' }}
         style={ styles.backgroundImage}>
-        <View style={styles.backgroundMargin}/>
         <View style={ styles.container }>
           <View style={ styles.topContainer }>
             <View style={styles.logoTopMargin}/>
             <Image
-              source= {require('./img/logococum.png')}
+              source= {require('./img/logococum_nombre_bajo_azul.png')}
               resizeMode='contain'
               style={ styles.imageLogo}
             />
@@ -47,13 +46,10 @@ class HomeScreen extends Component {
             <Text style={ styles.topText }>te inspira</Text>
           </View>
           <View style={ styles.centerContainer2 }>
-            <Text style={ styles.centerText }>¡Elige una foto!</Text>
           </View>
           <View style={ styles.bottomContainer }>
             <MyButton
-              iconName='images'
-              iconFamily='Entypo'
-              iconStyle={{ fontSize: 56 }}
+              title='Abre la galería'
               touchableType={'opacity'}
               onPress={() => {
                 this.tracker.trackEvent('button', 'pressed', { label: 'gallery'} );
@@ -63,12 +59,10 @@ class HomeScreen extends Component {
                   imagePickerMode: 'gallery'
                 });
               }}
-              buttonStyle={styles.galleryButton}
+              buttonStyle={[styles.galleryButton, {backgroundColor: '#f0742f', borderColor:'#f0742f'}]}
             />
             <MyButton
-              iconName='camera'
-              iconFamily='Entypo'
-              iconStyle={{ fontSize: 56 }}
+              title='Haz una foto'
               touchableType={'opacity'}
               onPress={() => {
                 this.tracker.trackEvent('button', 'pressed', { label: 'camera'} );
@@ -78,13 +72,12 @@ class HomeScreen extends Component {
                     imagePickerMode: 'camera'
                 });
               }}
-              buttonStyle={styles.galleryButton}
+              buttonStyle={[styles.galleryButton, {backgroundColor:'#6683a4', borderColor:'#6683a4'}]}
             />
           </View>
           <View style={ styles.bottomMargin}>
           </View>
         </View>
-        <View style={styles.backgroundMargin}/>
       </Image>
     );
   }
@@ -105,20 +98,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: Platform.OS === 'android' ? Constants.statusBarHeight : null
   },
-  backgroundMargin:{
-    flex:0.075
-  },
   container: {
-    flex: 0.85,
-    backgroundColor: '#fafafa'
+    flex: 1,
+    backgroundColor: '#24333d80',
   },
   topContainer: {
-    flex: 0.375,
+    flex: 0.33,
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   topText: {
-    fontSize: 24
+    fontSize: 24,
+    color: 'white',
   },
   centerContainer1: {
     flex: 0.225,
@@ -126,38 +117,32 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   centerContainer2: {
-    flex: 0.225,
+    flex: 0.245,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 0,
     elevation: 0
   },
-  centerText: {
-  fontSize: 16
-  },
   bottomContainer: {
-    flex: 0.125,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flex: 0.20,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     marginLeft: 24,
     marginRight: 24
   },
   imageLogo: {
-    flex:0.8
+    flex:0.9
   },
   logoTopMargin: {
-    flex: 0.2
+    flex: 0.1
   },
   galleryButton: {
-    flex: 1,
+    width:300,
+    height:50,
     paddingLeft: 32,
     paddingRight: 32,
-    borderRadius: 5,
+    borderRadius: 25,
     borderWidth: 0.8,
-    borderColor: '#01579b'
-  },
-  galleryIcon:{
-    color: 'white'
   },
   bottomMargin:{
     flex: 0.05
