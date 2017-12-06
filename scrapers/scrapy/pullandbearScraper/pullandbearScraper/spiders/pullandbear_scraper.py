@@ -26,8 +26,8 @@ class pullandbearSpider(scrapy.Spider):
     #Gender of the garments we are crawling mujer/hombre
     gender = "mujer"
     #Depends on the shop
-    #affiliateTag for shop: BASE
-    affiliateTag = ''
+    #affiliateTag for shop: P&B
+    affiliateTag = 'https://ad.zanox.com/ppc/?43913210C229456068&ULP=[[XXX%3Futm_source=zanox%26utm_campaign=zanox%26utm_medium=deeplink]]'
 
     dirToSave = "../../../dataset/"+gender+"/"
 
@@ -233,8 +233,14 @@ class pullandbearSpider(scrapy.Spider):
         productId = productImageFile[:-4]
 
         #Compute the affiliate url from the affiliate tag
-        #Depends on the shop: MISSGUIDED
-        affiliateUrl = self.affiliateTag.replace('XXX', productUrl)
+        #Depends on the shop: P&B
+        # In P&B we compute affiliateUrl for those that only have 1 color. Problem with zanox
+        number_of_colors = len(response.css('div.product_color_chooser').extract())
+
+        if number_of_colors == 1:
+            affiliateUrl = self.affiliateTag.replace('XXX', productUrl).replace('#', '%23')
+        else:
+            affiliateUrl = ''
 
         # get JSON data ready for writing into the file
         productDetails = {
