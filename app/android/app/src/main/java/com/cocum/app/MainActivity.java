@@ -20,7 +20,9 @@ public class MainActivity extends ExponentActivity {
 
   @Override
   public String developmentUrl() {
-    return ExponentBuildConstants.DEVELOPMENT_URL;
+    String angel = "http://172.31.49.147:19000";
+    String hector = "expa9f81069b8f942429303cbbafaa7e301://3n-zcc.hecforga.app.exp.direct:80";
+    return hector;
   }
 
   @Override

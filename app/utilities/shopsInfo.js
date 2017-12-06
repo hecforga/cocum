@@ -18,6 +18,9 @@ const shops = [
     name: 'missguided',
     label: 'Missguided'
   }, {
+    name: 'pullandbear',
+    label: 'PULLANDBEAR'
+  }, {
     name: 'superdry',
     label: 'Superdry'
   }, {

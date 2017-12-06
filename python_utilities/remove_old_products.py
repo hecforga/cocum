@@ -25,5 +25,8 @@ for shop in args.shops:
                 if not product_id in current_products:
                     shutil.rmtree(product_folder)
 
-        shutil.rmtree(cropped_folder)
+        try:
+            shutil.rmtree(cropped_folder)
+        except:
+            pass
         os.mkdir(cropped_folder)

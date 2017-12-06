@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     flex: 0.20,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    alignItems: 'stretch',
     marginLeft: 24,
     marginRight: 24
   },
@@ -137,8 +138,7 @@ const styles = StyleSheet.create({
     flex: 0.1
   },
   galleryButton: {
-    width:300,
-    height:50,
+    height: 50,
     paddingLeft: 32,
     paddingRight: 32,
     borderRadius: 25,

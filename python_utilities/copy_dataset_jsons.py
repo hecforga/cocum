@@ -22,12 +22,13 @@ for shop in args.shops:
             for item in os.listdir(products_folder):
                 if os.path.isdir(os.path.join(products_folder, item)):
                     src = os.path.join(products_folder, item, item + '.json')
-                    dst = os.path.join(dst_products_folder, item, item + '.json')
-                    if os.path.isdir(os.path.join(dst_products_folder, item)) is False:
-                        os.makedirs(os.path.join(dst_products_folder, item))
-                    if os.path.isfile(dst):
-                        os.remove(dst)
-                    shutil.copyfile(src, dst)
+                    if os.path.isfile(src):
+                        dst = os.path.join(dst_products_folder, item, item + '.json')
+                        if os.path.isdir(os.path.join(dst_products_folder, item)) is False:
+                            os.makedirs(os.path.join(dst_products_folder, item))
+                        if os.path.isfile(dst):
+                            os.remove(dst)
+                        shutil.copyfile(src, dst)
                 else:
                     src = os.path.join(products_folder, item)
                     dst = os.path.join(dst_products_folder, item)

@@ -90,6 +90,20 @@
 	 - Todas las categorías:
 		 - rcnn_cropper.py
 
+## PULL&BEAR ##
+
+ - **URLs de las imágenes:**
+	 - Todas las categorías:
+		 - productImageUrl ---> última
+		 - modelImageUrl ---> 1ª
+		 - downloadImageUrl ---> productImageUrl
+ - **Ancho de las imágenes:**
+	 - urls ---> 285
+	 - download ---> 626
+ - **Croppers:**
+	 - Todas las categorías:
+		 - white_background_cropper.py
+
 ## Superdry ##
 
  - **URLs de las imágenes:**

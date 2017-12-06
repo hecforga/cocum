@@ -112,6 +112,14 @@ Después de recortar, eliminar de CROPPED las imágenes que se hayan recortado m
 node graphcool_creator.js mujer category/all shop/all
 ```
 
+### Actualizar Graphcool
+
+(Si se han añadido/eliminado tiendas/categorías, editar el archivo graphcool_updater.js con dichas modificaciones antes de ejecutarlo.)
+
+```bash
+node graphcool_updater.js mujer category/all shop/all
+```
+
 ### Calcular y subir índices a LireSolr
 
 Abrir el proyecto my-liresolr en IntelliJ y ejecutar ParallelSolrIndexer.java. (Si se han añadido/eliminado tiendas/categorías, editar el archivo ParallelSolrIndexer.java con dichas modificaciones antes de ejecutarlo.)

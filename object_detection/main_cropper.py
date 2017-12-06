@@ -47,7 +47,15 @@ correlations = {
             'cropper': rcnn_cropper
         }
     },
+    'pullandbear': {
+        'all': {
+            'cropper': white_background_cropper
+        }
+    },
     'superdry': {
+        'vestidos': {
+            'cropper': rcnn_cropper
+        },
         'top': {
             'cropper': white_background_cropper
         },
