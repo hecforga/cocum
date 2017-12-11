@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Dimensions, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { gql, graphql, compose } from 'react-apollo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import * as actions from '../../actions';
 import categories, { getCategoryLabel } from '../../utilities/categoriesInfo.js';
 import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
-import ProductsHorizontalList from '../common/ProductsHorizontalList.js';
-import ProductDetailContainer from '../product_detail/ProductDetailContainer.js';
-
-const CONTAINER_PADDING = 16;
-const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
-
 class CatalogueContainer extends Component {
   componentWillMount() {
     const { tabName, setCanGoNext, onResultsWillMount } = this.props;
 
     const { height, width } = Dimensions.get('window');
-    this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_THUMBNAIL_CONTAINER_MARGIN) / 2.25;
+    this.categoryButtonHeight = height/2.3 - height/4;
 
     setCanGoNext(true);
     onResultsWillMount(tabName);
@@ -39,41 +32,31 @@ class CatalogueContainer extends Component {
       level,
     } = this.props;
 
-
-    if (this.isLoading()) {
-      return (
-        <View style={styles.centeredContainer}>
-          <ActivityIndicator size='large' />
-        </View>
-      );
-    }
-
     return (
       <View style={styles.container}>
-        <ScrollView
-          showsVerticalScrollIndicator={true}
-        >
-          {queries.map(query => (
-            <ProductsHorizontalList
-              key={query.queryName}
-              title={getCategoryLabel(query.queryName)}
-              button={true}
-              buttonTitle={'Ver más'}
-              onButtonPress={() => this.onShowMorePress(query.queryName)}
-              onProductPress={(product) => this.onProductPress(product)}
-              products={this.props[query.queryName].allProducts}
-              scrollbarStyle={styles.scrollbarStyle}
-              productThumbnailContainerStyle={{ width: this.imageWidth }}
-            />
-          ))}
-        </ScrollView>
-        <ProductDetailContainer navigation={navigation} tabName={tabName} level={level} />
+        <View style={styles.scrollViewContainerStyle}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+          >
+            {categories.map(category => (
+              <TouchableOpacity
+                key={getCategoryLabel(category.name)}
+                onPress={() => this.onShowMorePress(category.name)}
+              >
+                <View style={[styles.categoryButtonStyle,{height: this.categoryButtonHeight, marginTop:this.categoryButtonHeight/5.5}]}>
+                  <Text style={[styles.categoryName, {marginLeft: this.categoryButtonHeight/6}]}>{getCategoryLabel(category.name).toUpperCase()}</Text>
+                  <Image 
+                    style={[styles.categoryImageStyle,{height: this.categoryButtonHeight}]}
+                    source={category.image} 
+                    resizeMode='contain'
+                  />             
+                </View>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>        
+        </View>        
       </View>
     );
-  }
-
-  isLoading() {
-    return queries.reduce((accumulator, query) => accumulator || this.props[query.queryName].loading, false);
   }
 
   onShowMorePress(category) {
@@ -91,86 +74,36 @@ class CatalogueContainer extends Component {
       level: level + 1
     });
   }
-
-  onProductPress(product) {
-    const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
-
-    const labelData = {
-      tabName: tabName,
-      initial: true,
-      category: product.category,
-      shop: product.shop
-    };
-    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
-
-    setSelectedProduct(tabName, product);
-    setProductTimesVisited(updateProductTimesVisitedMutate, product);
-  }
 }
 
 const styles = StyleSheet.create({
-  centeredContainer: {
+  container: {
+    flexDirection: 'row',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'center',
   },
-  scrollbarStyle: {
-    marginTop: 15,
-    marginBottom: 15,
-    marginLeft: 10
-  }
+  scrollViewContainerStyle: {
+    flex: 0.9,
+  },
+  categoryButtonStyle: {
+    width: null,
+    flexDirection: 'row',
+    backgroundColor: '#6683a4',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  categoryName: {
+    flex:0.5,
+    color: 'white',
+    fontWeight: '500'
+  },
+  categoryImageStyle: {
+    flex:0.5,
+  },
 });
 
-const aWeekAgo = new Date(new Date().getTime() - 604800000).toISOString();
-const excludedShops = ['zara', 'mango'];
-const queries = categories.map((category) => ({
-  query: gql`
-    query ${category.name} {
-      allProducts(
-        orderBy: timesRedirected_DESC,
-        first: 5,
-        filter: {
-          category: "${category.name}",
-          shop_not_in: ["${excludedShops.join(`", "`)}"],
-          updatedAt_gte: "${aWeekAgo}"
-        }
-      ) {
-        id,
-        productId,
-      productImageUrl,
-      modelImageUrl,
-      productUrl,
-      affiliateUrl,
-      price,
-      discounted,
-      shop,
-      brand,
-      category,
-      timesVisited,
-      timesRedirected
-      }
-    }
-  `,
-  queryName: category.name
-}));
 
-const updateProductTimesVisited = gql`
-  mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
-    updateProduct(id: $id, timesVisited: $timesVisited ) {
-      id
-    }
-  }
-`;
-
-export default compose(
-  connect(
+export default connect(
     null,
     actions
-  ),
-  ...queries.map(query => graphql(query.query, { name: query.queryName })),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
-)(CatalogueContainer);
+  )(CatalogueContainer);
