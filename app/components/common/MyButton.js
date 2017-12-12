@@ -73,10 +73,9 @@ class MyButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    // Material design blue from https://material.google.com/style/color.html#color-color-palette
-    backgroundColor: '#2196F3',
+    backgroundColor: '#6683a4',
     padding: 8,
-    borderRadius: 2,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center'
   },
