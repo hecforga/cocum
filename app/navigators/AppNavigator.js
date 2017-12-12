@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { BackHandler } from 'react-native';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
+import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop, TabBarBottom } from 'react-navigation';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import tabs, { getTabNameForHomeScreen } from '../utilities/tabsInfo.js';
@@ -24,6 +24,9 @@ const HomeNavigator = StackNavigator({
   initialRouteName: 'Home',
   navigationOptions: {
     headerBackTitle: null
+  },
+  cardStyle:{
+    backgroundColor:'white'
   }
 });
 
@@ -35,6 +38,9 @@ const TrendingNavigator = StackNavigator({
 }, {
   navigationOptions: {
     headerBackTitle: null
+  },
+  cardStyle:{
+    backgroundColor:'white'
   }
 });
 
@@ -46,6 +52,9 @@ const CatalogueNavigator = StackNavigator({
 }, {
   navigationOptions: {
     headerBackTitle: null
+  },
+  cardStyle:{
+    backgroundColor:'white'
   }
 });
 
@@ -87,7 +96,7 @@ export const AppNavigator = TabNavigator({
     }
   }
 }, {
-  tabBarComponent: TabBarTop,
+  tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',
   animationEnabled: false,
   swipeEnabled: false,
@@ -95,14 +104,15 @@ export const AppNavigator = TabNavigator({
   order: tabs,
   lazy: true,
   tabBarOptions: {
-    activeTintColor: 'black',
+    activeTintColor: '#f0742f',
     inactiveTintColor: '#9e9e9e',
     showIcon: true,
     showLabel: false,
-    style: { backgroundColor: 'white' },
+    style: {backgroundColor:'white', borderTopColor:'#e8e8ee', borderTopWidth:0.9},
     indicatorStyle: { height: 0, width: 0 }
   }
 });
+
 
 class AppWithNavigationState extends Component {
   componentDidMount() {

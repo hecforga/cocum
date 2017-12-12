@@ -16,7 +16,7 @@ class ResultsHeader extends Component {
               touchableType={'highlight'}
               title={'Filtrar'}
               onPress={() => navigation.navigate('Filters', { tabName, level })}
-              buttonStyle={{ flex: 1, backgroundColor: '#e8e8ee', borderRadius: 0 }}
+              buttonStyle={{ flex: 1, backgroundColor: 'white', borderRadius: 0 }}
               textStyle={{ color: 'black' }}
               containerStyle={{ flex: 1 }}
             />

@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     elevation: 4,
-    backgroundColor: '#e8e8ee',
+    backgroundColor: 'white',
     padding: 8,
     minHeight: 48,
     alignItems: 'center',
