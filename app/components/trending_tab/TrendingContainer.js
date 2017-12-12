@@ -18,8 +18,7 @@ class TrendingContainer extends Component {
     const { tabName, setCanGoNext, onResultsWillMount } = this.props;
 
     const { height, width } = Dimensions.get('window');
-    this.imageWidth = (width - 2 * CONTAINER_PADDING - 4 * PRODUCT_THUMBNAIL_CONTAINER_MARGIN) / 2.25;
-
+    this.imageWidth = 0.60*width;
     setCanGoNext(true);
     onResultsWillMount(tabName);
 
