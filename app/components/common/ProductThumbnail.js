@@ -40,7 +40,7 @@ class ProductThumbnail extends Component {
 
 const styles = StyleSheet.create({
   productThumbnail: {
-    backgroundColor: '#e8e8ee'
+    backgroundColor: 'white'
   },
   image: {
     flex: 1,
