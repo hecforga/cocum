@@ -61,14 +61,14 @@ const CatalogueNavigator = StackNavigator({
 let platformContainerStyles;
 if (Platform.OS === 'ios') {
   platformContainerStyles = {    
-    backgroundColor:'#F7F7F7',
-    borderTopColor:'rgba(0, 0, 0, .3)',
+    backgroundColor:'#efeef3',
+    borderTopColor:'rgba(0, 0, 0, 0.1)',
     borderTopWidth: StyleSheet.hairlineWidth,
   };
 } else {
   platformContainerStyles = {
     backgroundColor:'white',
-    borderTopColor:'#e8e8ee',
+    borderTopColor:'rgba(0, 0, 0, 0.1)',
     borderTopWidth:0.9
   };
 }

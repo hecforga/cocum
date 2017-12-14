@@ -26,14 +26,15 @@ class WebViewScreen extends Component {
 WebViewScreen.navigationOptions = {
   title: 'Comprar',
   headerRight: (
-    <View style={{ flexDirection: 'row', marginRight: 4 }}>
+    <View style={{ flexDirection: 'row', alignItems:'center' , marginRight: 4 }}>
       <HeaderButtonContainer
         iconName='ios-arrow-back-outline'
         iconFamily='Ionicons'
         iconColor='black'
         buttonStyle={{
-          backgroundColor: Platform.OS === 'ios' ? '#F7F7F7' : '#FFF',
-          padding: 16
+          backgroundColor: Platform.OS === 'ios' ? '#efeef3' : '#FFF',
+          paddingLeft:16,
+          paddingRight:16,
         }}
         iconStyle={{ fontSize: 24 }}
         onPress={(state) => {
@@ -49,8 +50,9 @@ WebViewScreen.navigationOptions = {
         iconFamily='Ionicons'
         iconColor='black'
         buttonStyle={{
-          backgroundColor: Platform.OS === 'ios' ? '#F7F7F7' : '#FFF',
-          padding: 16
+          backgroundColor: Platform.OS === 'ios' ? '#efeef3' : '#FFF',
+          paddingLeft:16,
+          paddingRight:16,
         }}
         iconStyle={{ fontSize: 24 }}
         onPress={(state) => {
