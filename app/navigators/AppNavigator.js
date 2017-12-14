@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { BackHandler, Platform } from 'react-native';
+import { BackHandler, Platform, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop, TabBarBottom } from 'react-navigation';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
