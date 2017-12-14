@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { BackHandler } from 'react-native';
+import { BackHandler, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, NavigationActions, StackNavigator, TabNavigator, TabBarTop, TabBarBottom } from 'react-navigation';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -58,6 +58,22 @@ const CatalogueNavigator = StackNavigator({
   }
 });
 
+let platformContainerStyles;
+if (Platform.OS === 'ios') {
+  platformContainerStyles = {    
+    backgroundColor:'#F7F7F7',
+    borderTopColor:'rgba(0, 0, 0, .3)',
+    borderTopWidth: StyleSheet.hairlineWidth,
+  };
+} else {
+  platformContainerStyles = {
+    backgroundColor:'white',
+    borderTopColor:'#e8e8ee',
+    borderTopWidth:0.9
+  };
+}
+
+
 export const AppNavigator = TabNavigator({
   HomeTab: {
     screen: HomeNavigator,
@@ -108,7 +124,7 @@ export const AppNavigator = TabNavigator({
     inactiveTintColor: '#9e9e9e',
     showIcon: true,
     showLabel: false,
-    style: {backgroundColor:'white', borderTopColor:'#e8e8ee', borderTopWidth:0.9},
+    style: {...platformContainerStyles},
     indicatorStyle: { height: 0, width: 0 }
   }
 });
