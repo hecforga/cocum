@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
 
 import ProductThumbnail from '../common/ProductThumbnail.js';
 
-const CONTAINER_PADDING = 16;
+const CONTAINER_PADDING = 8;
 const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
 
 class ResultsList1 extends Component {
