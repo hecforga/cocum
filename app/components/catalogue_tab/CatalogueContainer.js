@@ -26,36 +26,36 @@ class CatalogueContainer extends Component {
   }
 
   render() {
-    const {
-      navigation,
-      tabName,
-      level,
-    } = this.props;
-
     return (
-      <View style={styles.container}>
-        <View style={styles.scrollViewContainerStyle}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
+      <ScrollView
+        showsVerticalScrollIndicator={true}
+        style={styles.container}
+      >
+        {categories.map((category, index) => (
+          <TouchableOpacity
+            key={getCategoryLabel(category.name)}
+            onPress={() => this.onShowMorePress(category.name)}
+            delayPressIn={100}
           >
-            {categories.map(category => (
-              <TouchableOpacity
-                key={getCategoryLabel(category.name)}
-                onPress={() => this.onShowMorePress(category.name)}
-              >
-                <View style={[styles.categoryButtonStyle,{height: this.categoryButtonHeight, marginTop:this.categoryButtonHeight/5.5}]}>
-                  <Text style={[styles.categoryName, {marginLeft: this.categoryButtonHeight/6}]}>{getCategoryLabel(category.name).toUpperCase()}</Text>
-                  <Image 
-                    style={[styles.categoryImageStyle,{height: this.categoryButtonHeight}]}
-                    source={category.image} 
-                    resizeMode='contain'
-                  />             
-                </View>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>        
-        </View>        
-      </View>
+            <View
+              style={[styles.categoryButton, {
+                height: this.categoryButtonHeight,
+                marginTop: index === 0 ? this.categoryButtonHeight / 5.5 : 0,
+                marginBottom: this.categoryButtonHeight / 5.5
+              }]}
+            >
+              <Text style={[styles.categoryName, { marginLeft: this.categoryButtonHeight / 6 }]}>
+                {getCategoryLabel(category.name).toUpperCase()}
+              </Text>
+              <Image
+                style={[styles.categoryImage, { height: this.categoryButtonHeight }]}
+                source={category.image}
+                resizeMode='contain'
+              />
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     );
   }
 
@@ -78,15 +78,10 @@ class CatalogueContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     flex: 1,
-    justifyContent: 'center',
+    paddingHorizontal: 16
   },
-  scrollViewContainerStyle: {
-    flex: 0.9,
-  },
-  categoryButtonStyle: {
-    width: null,
+  categoryButton: {
     flexDirection: 'row',
     backgroundColor: '#6683a4',
     alignItems: 'center',
@@ -97,7 +92,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '500'
   },
-  categoryImageStyle: {
+  categoryImage: {
     flex:0.5,
   },
 });
