@@ -37,6 +37,7 @@ class ResultsScreen extends Component {
         return (
           <CocumItResultsContainer
             navigation={navigation}
+            productId={navigation.state.params.productId}
             category={navigation.state.params.category}
             tabName={navigation.state.params.tabName}
             level={navigation.state.params.level}

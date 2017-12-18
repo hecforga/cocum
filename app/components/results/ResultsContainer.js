@@ -7,7 +7,7 @@ import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 import NoResultsMessage from './NoResultsMessage.js';
 import ResultsHeader from './ResultsHeader.js';
 import ResultsList from './ResultsList.js';
-import ProductDetailContainer from '../product_detail/ProductDetailContainer.js';
+import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
 class ResultsContainer extends Component {
   componentWillMount() {
@@ -30,6 +30,7 @@ class ResultsContainer extends Component {
       level,
       status,
       errorMessage,
+      cocumItIsVisible,
     } = this.props;
 
     if (status === 'error') {
@@ -56,14 +57,15 @@ class ResultsContainer extends Component {
         {productsInArraysOf2.length ?
           <ResultsList
             productsInArraysOf2={productsInArraysOf2}
+            cocumItIsVisible={cocumItIsVisible}
             onProductPress={(product) => this.onProductPress(product)}
+            onCocumItPress={(product) => this.onCocumItPress(product)}
           />
           :
           <View style={styles.centeredContainer}>
             <NoResultsMessage/>
           </View>
         }
-        <ProductDetailContainer navigation={navigation} tabName={tabName} level={level}/>
       </View>
     );
   }
@@ -100,20 +102,43 @@ class ResultsContainer extends Component {
 
     return productsInArraysOf2;
   }
-
   onProductPress(product) {
-    const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
+    const { navigation, tabName, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
 
     const labelData = {
       tabName: tabName,
       category: product.category,
       shop: product.shop
     };
-    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
+    this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(labelData) } );
 
-    setSelectedProduct(tabName, product);
-    setProductTimesVisited(updateProductTimesVisitedMutate, product);
+    setProductTimesRedirected(updateProductTimesRedirectedMutate, product);
+
+    const url = fromProductsInfo.getProductUrl(product);
+
+    navigation.navigate('WebView', {
+      url
+    });
   }
+
+  onCocumItPress(product) {
+    const { navigation, tabName, level } = this.props;
+
+    const labelData = {
+      tabName: tabName,
+      category: product.category,
+      shop: product.shop
+    };
+    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
+
+    navigation.navigate('Results', {
+      productId: product.productId,
+      category: product.category,
+      tabName: tabName,
+      fetchMode: 'id',
+      level: level + 1
+    });
+  }  
 }
 
 const styles = StyleSheet.create({

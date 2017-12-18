@@ -27,7 +27,7 @@ class RandomResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer {...this.props} />
+      <ResultsContainer cocumItIsVisible={true} {...this.props} />
     )
   }
 }
@@ -61,13 +61,13 @@ const getProductsByIds = gql`
   }
 `;
 
-const updateProductTimesVisited = gql`
-  mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
-    updateProduct(id: $id, timesVisited: $timesVisited ) {
-      id
-    }
-  }
-`;
+const updateProductTimesRedirected = gql` 
+  mutation updateProductTimesRedirected ($id: ID!, $timesRedirected: Int!) { 
+    updateProduct(id: $id, timesRedirected: $timesRedirected ) { 
+      id 
+    } 
+  } 
+`; 
 
 export default compose(
   connect(
@@ -75,5 +75,5 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
+  graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(RandomResultsContainer);

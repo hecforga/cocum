@@ -9,7 +9,9 @@ class ProductThumbnail extends Component {
     const {
       product,
       productThumbnailContainerStyle,
+      cocumItIsVisible,
       onPress,
+      onCocumItPress,
     } = this.props;
 
     return (
@@ -33,13 +35,18 @@ class ProductThumbnail extends Component {
           </Image>
           <View style={styles.priceAndButtonContainerStyle}>
             <Text style={[styles.price, { color: product.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(product)}</Text>
-            <MyButton
-              iconName='search'
-              iconColor='black'
-              iconFamily='MaterialIcons'
-              iconStyle={{fontSize:25}}
-              buttonStyle={{backgroundColor: 'white', minWidth:35, borderRadius:0}}
-            />
+            {cocumItIsVisible ?
+              <MyButton
+                iconName='search'
+                iconColor='black'
+                iconFamily='MaterialIcons'
+                iconStyle={{fontSize:25}}
+                buttonStyle={{backgroundColor: 'transparent', minWidth:35, borderRadius:0}}
+                onPress={() => onCocumItPress(product) }
+              />
+              :
+              <View/>
+            }
           </View>
           <Text numberOfLines={1}>{fromProductsInfo.getShopOrBrandLabel(product)}</Text>
         </View>
