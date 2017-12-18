@@ -29,6 +29,7 @@ class ResultsList1 extends Component {
                   product={product}
                   productThumbnailContainerStyle={{
                     margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN,
+                    marginBottom: 19,
                     width: this.imageWidth
                   }}
                   onPress={onProductPress}
@@ -54,9 +55,6 @@ const styles = StyleSheet.create({
   },
   productThumbnail: {
     backgroundColor: '#e8e8ee'
-  },
-  price: {
-    fontWeight: 'bold'
   }
 });
 
