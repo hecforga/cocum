@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 6,
+    marginBottom: 4,
     minHeight: 30
   },
   price: {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     aspectRatio: 0.8,
-    marginBottom: 11,
+    marginBottom: 10,
   },
 });
 

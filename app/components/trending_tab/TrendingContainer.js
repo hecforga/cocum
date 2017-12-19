@@ -128,28 +128,11 @@ class TrendingContainer extends Component {
     setProductTimesRedirected(updateProductTimesRedirectedMutate, product);
 
     const url = fromProductsInfo.getProductUrl(product);
+    const domain = fromProductsInfo.getShopDomain(product);
 
     navigation.navigate('WebView', {
-      url
-    });
-  }
-
-  onCocumItPress(product) {
-    const { navigation, tabName, level } = this.props;
-
-    const labelData = {
-      tabName: tabName,
-      category: product.category,
-      shop: product.shop
-    };
-    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
-
-    navigation.navigate('Results', {
-      productId: product.productId,
-      category: product.category,
-      tabName: tabName,
-      fetchMode: 'id',
-      level: level + 1
+      url,
+      domain
     });
   }
 }

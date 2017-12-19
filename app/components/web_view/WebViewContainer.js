@@ -36,7 +36,6 @@ class WebViewContainer extends Component {
         <WebView
           ref={setWebView}
           source={{uri: navigation.state.params.url}}
-          onLoadStart={() => setWebViewIsLoading(true)}
           onLoadEnd={() => setWebViewIsLoading(false)}
           onNavigationStateChange={(navState) => {
             setWebViewCanGoBack(navState.canGoBack);

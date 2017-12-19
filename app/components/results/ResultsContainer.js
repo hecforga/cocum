@@ -115,9 +115,11 @@ class ResultsContainer extends Component {
     setProductTimesRedirected(updateProductTimesRedirectedMutate, product);
 
     const url = fromProductsInfo.getProductUrl(product);
+    const domain = fromProductsInfo.getShopDomain(product);
 
     navigation.navigate('WebView', {
-      url
+      url,
+      domain
     });
   }
 

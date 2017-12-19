@@ -29,7 +29,7 @@ class ResultsList1 extends Component {
                   product={product}
                   productThumbnailContainerStyle={{
                     margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN,
-                    marginBottom: 19,
+                    marginBottom: 16,
                     width: this.imageWidth
                   }}
                   cocumItIsVisible={cocumItIsVisible}
