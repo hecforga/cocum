@@ -8,7 +8,7 @@ import * as actions from '../../actions';
 import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
 import ProductsHorizontalList from '../common/ProductsHorizontalList.js';
-import ProductDetailContainer from '../product_detail/ProductDetailContainer.js';
+import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
 const CONTAINER_PADDING = 16;
 const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
@@ -90,7 +90,6 @@ class TrendingContainer extends Component {
             productThumbnailContainerStyle={{ width: this.imageWidth }}
           />
         </ScrollView>
-        <ProductDetailContainer navigation={navigation} tabName={tabName} level={level} />
       </View>
     );
   }
@@ -114,9 +113,9 @@ class TrendingContainer extends Component {
     const { productsByUpdatedAtSkip } = this.props;
     return productsByUpdatedAtSkip.allProducts;
   }
-
+  
   onProductPress(product) {
-    const { tabName, setSelectedProduct, setProductTimesVisited, updateProductTimesVisitedMutate } = this.props;
+    const { navigation, tabName, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
 
     const labelData = {
       tabName: tabName,
@@ -124,10 +123,34 @@ class TrendingContainer extends Component {
       category: product.category,
       shop: product.shop
     };
-    this.tracker.trackEvent('product', 'pressed', { label: generateEventLabel(labelData) } );
+    this.tracker.trackEvent('button_visitShop', 'pressed', { label: generateEventLabel(labelData) } );
 
-    setSelectedProduct(tabName, product);
-    setProductTimesVisited(updateProductTimesVisitedMutate, product);
+    setProductTimesRedirected(updateProductTimesRedirectedMutate, product);
+
+    const url = fromProductsInfo.getProductUrl(product);
+
+    navigation.navigate('WebView', {
+      url
+    });
+  }
+
+  onCocumItPress(product) {
+    const { navigation, tabName, level } = this.props;
+
+    const labelData = {
+      tabName: tabName,
+      category: product.category,
+      shop: product.shop
+    };
+    this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
+
+    navigation.navigate('Results', {
+      productId: product.productId,
+      category: product.category,
+      tabName: tabName,
+      fetchMode: 'id',
+      level: level + 1
+    });
   }
 }
 
@@ -270,5 +293,5 @@ export default compose(
   graphql(getProductsByTimesVisited, { name : 'productsByTimesVisited' }),
   graphql(getProductsByUpdatedAtSkip, { name : 'productsByUpdatedAtSkip' }),
   graphql(getProductsByUpdatedAt, { name : 'productsByUpdatedAt' }),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
+  graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(TrendingContainer);

@@ -13,21 +13,21 @@ class CocumItResultsContainer extends Component {
       switch (nextProps.status) {
         case 'init':
         case 'filters_applied':
-          this.fetchResults(nextProps.previousLevelSelectedProduct, nextProps.appliedFilters, nextProps.ids);
+          this.fetchResults(nextProps.appliedFilters, nextProps.ids);
           break;
       }
     }
   }
 
-  fetchResults(previousLevelSelectedProduct, appliedFilters, ids) {
-    const { category, tabName, fetchResults } = this.props;
-    const params = { gender: 'mujer', category, product: previousLevelSelectedProduct, filters: appliedFilters, previousIds: ids };
+  fetchResults(appliedFilters, ids) {
+    const { productId, category, tabName, fetchResults } = this.props;
+    const params = { gender: 'mujer', category, productId: productId, filters: appliedFilters, previousIds: ids };
     fetchResults(tabName, 'id', params);
   }
 
   render() {
     return (
-      <ResultsContainer {...this.props} />
+      <ResultsContainer cocumItIsVisible={false} {  ...this.props} />
     )
   }
 }
@@ -36,8 +36,7 @@ const mapStateToProps = (state, ownProps) => ({
   ids: getResultsIdsAtLevel(state, ownProps.tabName, ownProps.level),
   status: getResultsStatusAtLevel(state, ownProps.tabName, ownProps.level),
   errorMessage: getResultsErrorMessage(state, ownProps.tabName),
-  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.tabName, ownProps.level),
-  previousLevelSelectedProduct: getSelectedProductAtLevel(state, ownProps.tabName, ownProps.level - 1)
+  appliedFilters: getAppliedFiltersAtLevel(state, ownProps.tabName, ownProps.level)
 });
 
 const getProductsByIds = gql`
@@ -76,5 +75,5 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
+  graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(CocumItResultsContainer);

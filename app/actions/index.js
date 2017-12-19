@@ -143,20 +143,6 @@ export const onResultsWillUnmount = (tabName) => ({
   tabName
 });
 
-export const setSelectedProduct = (tabName, product) => ({
-  type: 'SET_SELECTED_PRODUCT',
-  tabName,
-  product
-});
-
-export const setProductTimesVisited = (mutate, product) => (dispatch, getState) => {
-  mutate({
-    variables: { id: product.id, timesVisited: product.timesVisited + 1}
-  }).catch(
-    error => console.log(error)
-  );
-};
-
 export const setProductTimesRedirected = (mutate, product) => (dispatch, getState) => {
   mutate({
     variables: { id: product.id, timesRedirected: product.timesRedirected + 1}

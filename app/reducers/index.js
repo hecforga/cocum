@@ -1,7 +1,6 @@
 import * as fromSelectedImage from './selectedImage.js';
 import * as fromQuery from './query.js';
 import * as fromResults from './results.js';
-import * as fromSelectedProducts from './selectedProducts.js';
 import * as fromFilters from './filters.js';
 import * as fromCanGoNext from './canGoNext.js';
 import * as fromWebView from './webView.js';
@@ -23,9 +22,6 @@ export const getResultsErrorMessage = (state, tabName) =>
 
 export const getResultsActiveLevel = (state, tabName) =>
   fromResults.getActiveLevel(state.results, tabName);
-
-export const getSelectedProductAtLevel = (state, tabName, level) =>
-  fromSelectedProducts.getSelectedProductAtLevel(state.selectedProducts, tabName, level);
 
 export const getCurrentFilters = (state) =>
   fromFilters.getCurrentFilters(state.filters);

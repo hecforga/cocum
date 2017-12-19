@@ -13,7 +13,7 @@ class ResultsList1 extends Component {
   }
 
   render() {
-    const { productsInArraysOf2, onProductPress } = this.props;
+    const { productsInArraysOf2, cocumItIsVisible, onProductPress, onCocumItPress } = this.props;
 
     return (
       <FlatList
@@ -29,9 +29,12 @@ class ResultsList1 extends Component {
                   product={product}
                   productThumbnailContainerStyle={{
                     margin: PRODUCT_THUMBNAIL_CONTAINER_MARGIN,
+                    marginBottom: 19,
                     width: this.imageWidth
                   }}
+                  cocumItIsVisible={cocumItIsVisible}
                   onPress={onProductPress}
+                  onCocumItPress={onCocumItPress}
                 />
               )}
             </View>
@@ -54,9 +57,6 @@ const styles = StyleSheet.create({
   },
   productThumbnail: {
     backgroundColor: '#e8e8ee'
-  },
-  price: {
-    fontWeight: 'bold'
   }
 });
 

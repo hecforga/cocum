@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TouchableHighlight, Image, Text } from 'react-native';
 
 import * as fromProductsInfo from '../../utilities/productsInfo.js';
+import MyButton from './MyButton.js';
 
 class ProductThumbnail extends Component {
   render() {
     const {
       product,
       productThumbnailContainerStyle,
+      cocumItIsVisible,
       onPress,
+      onCocumItPress,
     } = this.props;
 
     return (
@@ -30,8 +33,22 @@ class ProductThumbnail extends Component {
               null
             }
           </Image>
+          <View style={styles.priceAndButtonContainerStyle}>
+            <Text style={[styles.price, { color: product.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(product)}</Text>
+            {cocumItIsVisible ?
+              <MyButton
+                iconName='search'
+                iconColor='black'
+                iconFamily='MaterialIcons'
+                iconStyle={{fontSize:25}}
+                buttonStyle={{backgroundColor: 'transparent', minWidth:35, borderRadius:0}}
+                onPress={() => onCocumItPress(product) }
+              />
+              :
+              <View/>
+            }
+          </View>
           <Text numberOfLines={1}>{fromProductsInfo.getShopOrBrandLabel(product)}</Text>
-          <Text style={[styles.price, { color: product.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(product)}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -42,13 +59,20 @@ const styles = StyleSheet.create({
   productThumbnail: {
     backgroundColor: 'white'
   },
+  priceAndButtonContainerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  price: {
+    fontSize:15,
+    fontWeight: 'bold',
+  },
   image: {
     flex: 1,
     aspectRatio: 0.8,
-    marginBottom: 8,
-  },
-  price: {
-    fontWeight: 'bold'
+    marginBottom: 11,
   },
 });
 

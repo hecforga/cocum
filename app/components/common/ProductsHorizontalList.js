@@ -55,7 +55,8 @@ class ProductsHorizontalList extends Component {
                 },
                 productThumbnailContainerStyle
               ]}
-              onPress={onProductPress}
+              onPress={onProductPress}             
+              cocumItIsVisible={false}
             />
           )}
         </ScrollView>

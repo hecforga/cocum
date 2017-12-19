@@ -7,7 +7,7 @@ const addUrlQuery = (url, params) => {
 };
 
 const addIdQuery = (url, params) => {
-  return url + '&id=' + params.product.productId;
+  return url + '&id=' + params.productId;
 };
 
 const generateBaseUrl = (params) => {

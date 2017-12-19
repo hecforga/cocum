@@ -27,7 +27,7 @@ class RandomResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer {...this.props} />
+      <ResultsContainer cocumItIsVisible={true} {...this.props} />
     )
   }
 }
@@ -75,5 +75,5 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
+  graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(RandomResultsContainer);

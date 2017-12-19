@@ -52,7 +52,7 @@ class QueryResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer {...this.props} />
+      <ResultsContainer cocumItIsVisible={true} {...this.props} />
     )
   }
 }
@@ -111,5 +111,5 @@ export default compose(
   ),
   graphql(getProductsByIds),
   graphql(createMyQuery, { name: 'createMyQueryMutate' }),
-  graphql(updateProductTimesVisited, { name: 'updateProductTimesVisitedMutate' })
+  graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(QueryResultsContainer);
