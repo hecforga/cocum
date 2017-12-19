@@ -189,6 +189,8 @@ class Forever21Spider(scrapy.Spider):
         else:
             modelImageUrl = modelImageUrl.replace('_58', '_330')
             productImageUrl = productImageUrl.replace('_58', '_330')
+
+        displayImageUrl = response.css('img[alt="front"]::attr(src)').extract_first().replace('_58', '_330')
         download_image_url = modelImageUrl.replace('_330', '_750')
         #Check if it has discount
         # and extract the product price
@@ -219,8 +221,7 @@ class Forever21Spider(scrapy.Spider):
             'gender': self.gender,
             'shop': self.shop,
             'category': category,
-            'productImageUrl': productImageUrl,
-            'modelImageUrl': modelImageUrl,
+            'displayImageUrl': displayImageUrl,
             'productUrl': productUrl,
             'affiliateUrl': affiliateUrl,
             'price': price,

@@ -223,6 +223,11 @@ class MangoSpider(scrapy.Spider):
             productImageUrl = modelImageUrl
             modelImageUrl = aux_image_url
 
+        if category == 'pantalones_largos' or category == 'pantalones_cortos' or category == 'faldas':
+            displayImageUrl = images[2].replace('S1', 'S9')
+        else:
+            displayImageUrl = images[0].replace('S1', 'S9')
+
         download_image_url = productImageUrl
         #Check if it has discount
         # and extract the product price
@@ -256,8 +261,7 @@ class MangoSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,

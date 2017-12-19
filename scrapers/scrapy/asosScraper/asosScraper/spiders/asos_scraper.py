@@ -197,6 +197,7 @@ class AsosSpider(scrapy.Spider):
         try:
             productImageUrl= images[0].replace("$S$&wid=40","$XXL$&wid=350")
             modelImageUrl= images[-1].replace("$S$&wid=40","$XXL$&wid=350")
+            displayImageUrl= images[0].replace("$S$&wid=40","$XXL$&wid=350")
 
             if category == 'faldas' or category == 'pantalones_cortos' or category == 'pantalones_largos':
                 download_image_url = productImageUrl.replace("$XXL$&wid=350","$XXL$&wid=513")
@@ -231,8 +232,7 @@ class AsosSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,

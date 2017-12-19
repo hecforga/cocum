@@ -175,16 +175,19 @@ class SuperDrySpider(scrapy.Spider):
 
             modelImageUrl = images[0].replace("productthumbs/", "")
             productImageUrl = images[1].replace("productthumbs/", "")
+            displayImageUrl = images[1].replace("productthumbs/", "")
             download_image_url = modelImageUrl
 
         elif category == 'pantalones_largos':
             modelImageUrl = images[1].replace("productthumbs/", "")
             productImageUrl = images[0].replace("productthumbs/", "")
+            displayImageUrl = images[0].replace("productthumbs/", "")
             download_image_url = modelImageUrl
 
         else:
             modelImageUrl = images[2].replace("productthumbs/", "")
             productImageUrl = images[1].replace("productthumbs/", "")
+            displayImageUrl = images[0].replace("productthumbs/", "")
             download_image_url = productImageUrl
 
         #Check if it has discount
@@ -219,8 +222,7 @@ class SuperDrySpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,
