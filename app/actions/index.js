@@ -215,6 +215,11 @@ export const setWebViewCanGoForward = (canGoForward) => ({
   canGoForward
 });
 
+export const setWebViewIsLoading = (isLoading) => ({
+  type: 'SET_WEB_VIEW_IS_LOADING',
+  isLoading
+});
+
 export const resetWebView = () => ({
   type: 'RESET_WEB_VIEW'
 });

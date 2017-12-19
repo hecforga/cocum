@@ -54,11 +54,13 @@ class ProductDetailContainer extends Component {
     setProductTimesRedirected(updateProductTimesRedirectedMutate, selectedProduct);
 
     const url = fromProductsInfo.getProductUrl(selectedProduct);
+    const domain = fromProductsInfo.getShopDomain(selectedProduct);
 
     this.onCloseModal();
 
     navigation.navigate('WebView', {
-      url
+      url,
+      domain
     });
   }
 

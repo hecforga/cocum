@@ -47,3 +47,6 @@ export const getWebViewCanGoBack = (state) =>
 
 export const getWebViewCanGoForward = (state) =>
   fromWebView.getCanGoForward(state.webView);
+
+export const getWebViewIsLoading = (state) =>
+  fromWebView.getIsLoading(state.webView);

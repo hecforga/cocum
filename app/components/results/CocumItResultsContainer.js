@@ -64,7 +64,7 @@ const getProductsByIds = gql`
 
 const updateProductTimesVisited = gql`
   mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
-    updateProduct(id: $id, timesVisited: $timesVisited ) {
+    updateProduct(id: $id, timesVisited: $timesVisited) {
       id
     }
   }

@@ -90,7 +90,7 @@ const getProductsByIds = gql`
 
 const createMyQuery = gql`
   mutation createMyQuery ($gender: String!, $category: String!) {
-    createMyQuery(gender: $gender, category: $category ) {
+    createMyQuery(gender: $gender, category: $category) {
       id
     }
   }
@@ -98,7 +98,7 @@ const createMyQuery = gql`
 
 const updateProductTimesVisited = gql`
   mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
-    updateProduct(id: $id, timesVisited: $timesVisited ) {
+    updateProduct(id: $id, timesVisited: $timesVisited) {
       id
     }
   }
