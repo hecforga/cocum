@@ -276,7 +276,7 @@ const getProductsByUpdatedAtSkip = gql`
   }
 `;
 
-const updateProductTimesVisited = gql`
+const updateProductTimesRedirected = gql`
   mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
     updateProduct(id: $id, timesVisited: $timesVisited) {
       id

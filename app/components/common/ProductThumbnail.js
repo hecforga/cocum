@@ -34,14 +34,14 @@ class ProductThumbnail extends Component {
             }
           </Image>
           <View style={styles.priceAndButtonContainerStyle}>
-            <Text style={[styles.price, { color: product.discounted ? 'red' : 'black' }]}>{fromProductsInfo.getPriceLabel(product)}</Text>
+            <Text style={[styles.price, { color: product.discounted ? 'red' : 'black'}]}>{fromProductsInfo.getPriceLabel(product)}</Text>
             {cocumItIsVisible ?
               <MyButton
                 iconName='search'
                 iconColor='black'
                 iconFamily='MaterialIcons'
-                iconStyle={{fontSize:25}}
-                buttonStyle={{backgroundColor: 'transparent', minWidth:35, borderRadius:0}}
+                iconStyle={{fontSize: 24}}
+                buttonStyle={{backgroundColor: 'transparent', borderRadius: 0}}
                 onPress={() => onCocumItPress(product) }
               />
               :
@@ -64,10 +64,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 6,
+    minHeight: 30
   },
   price: {
-    fontSize:15,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: 'bold'
   },
   image: {
     flex: 1,

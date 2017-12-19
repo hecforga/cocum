@@ -60,7 +60,11 @@ class ResultsScreen extends Component {
 const tracker = new GoogleAnalyticsTracker('UA-106460906-1');
 
 ResultsScreen.navigationOptions = ({ navigation }) => ({
-  title: getCategoryLabel(navigation.state.params.category),
+  title: navigation.state.params.fetchMode === 'id' ?
+    'Más parecidos'
+    :
+    getCategoryLabel(navigation.state.params.category)
+  ,
   headerRight: (
     <HeaderButtonContainer
       iconName='home'
