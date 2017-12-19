@@ -189,13 +189,16 @@ class ZaraSpider(scrapy.Spider):
         productColor = response.css('span._colorName::text').extract_first().strip()
         #Extract image src of the clothes with the model
         #Depends on the shop: ZARA
-        modelImageUrl_list = response.css('div[id="main-images"] div a::attr(href)').extract()
+        image_list = response.css('div[id="main-images"] div a::attr(href)').extract()
         if category == 'faldas' or category == 'pantalones_cortos' or category == 'pantalones_largos':
-            modelImageUrl = modelImageUrl_list[0]
+            modelImageUrl = image_list[0]
+            displayImageUrl = image_list[1]
         else :
-            modelImageUrl = modelImageUrl_list[1]
+            modelImageUrl = image_list[1]
+            displayImageUrl = image_list[-2]
 
         modelImageUrl = 'http:'+modelImageUrl.replace('w/560', 'w/400')
+        displayImageUrl = 'http:'+displayImageUrl.replace('w/560', 'w/400')
         #Extract image src of the clothes alone
         #Depends on the shop: ZARA
         productImageUrl = response.css('div[id="plain-image"] div a::attr(href)').extract_first()
@@ -228,8 +231,7 @@ class ZaraSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,

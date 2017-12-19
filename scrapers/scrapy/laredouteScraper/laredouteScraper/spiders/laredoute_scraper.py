@@ -207,6 +207,11 @@ class LaredouteSpider(scrapy.Spider):
                 except:
                     return None
 
+            if category == 'pantalones_largos' or category == 'pantalones_cortos' or category == 'faldas':
+                displayImageUrl = images[1].replace("100by100","641by641")
+            else:
+                displayImageUrl = images[0].replace("100by100","641by641")
+
             download_image_url = productImageUrl
             #Check if it has discount
             # and extract the product price
@@ -236,8 +241,7 @@ class LaredouteSpider(scrapy.Spider):
             "gender" : self.gender,
             "shop" : self.shop,
             "category" : category,
-            "productImageUrl" : productImageUrl,
-            "modelImageUrl" : modelImageUrl,
+            "displayImageUrl" : displayImageUrl,
             "productUrl" : productUrl,
             "affiliateUrl" : affiliateUrl,
             "price" : price,

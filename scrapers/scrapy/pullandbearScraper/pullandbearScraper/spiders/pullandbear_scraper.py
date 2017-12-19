@@ -220,6 +220,12 @@ class pullandbearSpider(scrapy.Spider):
             #Depends on the shop: BASE
             modelImageUrl = images[0].replace('_2.','_3.')
             productImageUrl = images[-1].replace('_2.','_3.')
+
+            if category == 'vestidos':
+                displayImageUrl = images[-2].replace('_2.','_3.')
+            else:
+                displayImageUrl = images[0].replace('_2.','_3.')
+                
             download_image_url = productImageUrl.replace('_3.','_2.')
         except:
             return None
@@ -248,8 +254,7 @@ class pullandbearSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,

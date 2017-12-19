@@ -177,6 +177,12 @@ class GuessSpider(scrapy.Spider):
         try:
             modelImageUrl = images[0].replace('wid=540', 'wid=350')
             productImageUrl= images[-1].replace('wid=540', 'wid=350')
+
+            if category == 'pantalones_largos' or category == 'pantalones_cortos' or category == 'faldas':
+                displayImageUrl = images[1].replace('wid=540', 'wid=350')
+            else:
+                displayImageUrl = images[0].replace('wid=540', 'wid=350')
+
             download_image_url = productImageUrl.replace('wid=350', 'wid=414')
         except:
             return None
@@ -210,8 +216,7 @@ class GuessSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,

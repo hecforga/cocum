@@ -261,6 +261,7 @@ class missguidedSpider(scrapy.Spider):
             #Depends on the shop: MISSGUIDED
             modelImageUrl = images[1].replace('--1x','--3x')
             productImageUrl = images[0].replace('--1x','--3x')
+            displayImageUrl = images[0].replace('--1x','--3x')
             download_image_url = modelImageUrl.replace('product-page__thumbnail--3x','category-page__grid--3x')
         except:
             return None
@@ -297,8 +298,7 @@ class missguidedSpider(scrapy.Spider):
         "gender" : self.gender,
         "shop" : self.shop,
         "category" : category,
-        "productImageUrl" : productImageUrl,
-        "modelImageUrl" : modelImageUrl,
+        "displayImageUrl" : displayImageUrl,
         "productUrl" : productUrl,
         "affiliateUrl" : affiliateUrl,
         "price" : price,
