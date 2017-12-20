@@ -129,13 +129,13 @@ class AsosSpider(scrapy.Spider):
     def parse_category_page(self, response):
         #We obtain the links from each category page
         #Depends on the shop: ASOS
-        productContainers = response.css('li.product-container.interactions')
+        productContainers = response.css('article')
         category = response.meta['category']
 
         for index, productContainer in enumerate(productContainers):
 
-            productLink = productContainer.css('a.product.product-link::attr(href)').extract_first()
-            price = productContainer.css('div.scm-pricelist div.price-wrap.price-current span.price::text').extract_first()
+            productLink = productContainer.css('a::attr(href)').extract_first()
+            price = productContainer.css('a > p > span[data-auto-id="productTilePrice"]::text').extract_first()
 
             if ('-maternity' in productLink or '-tall' in productLink or '-petite' in productLink
                 or '-curve' in productLink or '-plus' in productLink):
@@ -156,10 +156,9 @@ class AsosSpider(scrapy.Spider):
         # It depends on each shop
         # ASOS
 
-        second_part_page_link = response.css('ul.pager li.next a::attr(href)').extract_first()
-        if second_part_page_link != '':
-            first_part_page_link = response.url[:response.url.rfind('/cat/')+5]
-            next_page_link = first_part_page_link + second_part_page_link
+        next_page_link = response.css('a[data-auto-id="loadMoreProducts"]::attr(href)').extract_first()
+        if next_page_link is not None:
+            print('has next page')
             yield SplashRequest(
                 next_page_link,
                 self.parse_category_page,
@@ -182,13 +181,13 @@ class AsosSpider(scrapy.Spider):
         #Depends on the shop: ASOS
         productTitle = response.css('div.product-hero h1::text').extract_first().strip()
         #In ASOS we need to remove the brand's name from the title
-        productTitle = productTitle[:productTitle.rfind(' de ')-1]
+        productTitle = productTitle[:productTitle.rfind(' de ')]
         #Color of the product
         #Depends on the shop: ASOS
         #in ASOS we could not find a way of getting the color of product
         # as it is loaded after the page is rendered
         position1_color = productUrl.rfind('clr=')+4
-        position2_color = productUrl.rfind('&')
+        position2_color = productUrl.find('&', position1_color)
         productColor = productUrl[position1_color: position2_color]
 
         #Extract image src of the clothes with the model
