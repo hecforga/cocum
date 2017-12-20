@@ -95,7 +95,7 @@ In the file `<shopName>_scraper.py` the comments will guide you as well.
 
 ##**Executing the scraper**##
 1. Start the docker with the Splash:
-`$ sudo docker run -d -p 8050:8050 --restart=always scrapinghub/splash --maxrss=4000`
+`$ sudo docker run -d -p 8050:8050 --restart=always scrapinghub/splash --maxrss=4000` (en missguided `--max-timeout=3600`)
 2. For executing the spider, with `/scrapers/scrapy/<shopName>Scraper>/` as our working directory:
 `$ scrapy crawl <shopName>`
 3. Close the docker Splash:
