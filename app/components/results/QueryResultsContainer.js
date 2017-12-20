@@ -97,8 +97,8 @@ const createMyQuery = gql`
 `;
 
 const updateProductTimesRedirected = gql`
-  mutation updateProductTimesVisited ($id: ID!, $timesVisited: Int!) {
-    updateProduct(id: $id, timesVisited: $timesVisited) {
+  mutation updateProductTimesRedirected ($id: ID!, $timesRedirected: Int!) {
+    updateProduct(id: $id, timesRedirected: $timesRedirected) {
       id
     }
   }
