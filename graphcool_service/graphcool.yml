@@ -19,11 +19,21 @@ types: ./types.graphql
 
 
 functions:
-  hello:
-    handler:
-      code: src/hello.js
+  computeResults:
     type: resolver
-    schema: src/hello.graphql
+    schema: src/computeResults.graphql
+    handler:
+      code: src/computeResults.js
+  computePredictions:
+    type: resolver
+    schema: src/computePredictions.graphql
+    handler:
+      code: src/computePredictions.js
+  getProductTags:
+    type: resolver
+    schema: src/getProductTags.graphql
+    handler:
+      code: src/getProductTags.js
 
 
 # Model/Relation permissions are used to limit the API access

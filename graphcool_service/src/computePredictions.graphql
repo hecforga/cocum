@@ -1,0 +1,7 @@
+type ComputePredictionsPayload {
+  tags: Json!
+}
+
+extend type Mutation {
+  computePredictions(gender: String!, category: String!, imageUrl: String!): ComputePredictionsPayload
+}
