@@ -33,7 +33,7 @@ class FiltersContainer extends Component {
     return (
       <View style={ styles.container }>
         <ScrollView style={styles.filtersContainer}>
-          <View style={styles.priceFilterContainer}>
+          <View style={styles.filterContainer}>
             <PriceFilter
               minPrice={currentFilters.minPrice}
               maxPrice={currentFilters.maxPrice}
@@ -88,21 +88,18 @@ class FiltersContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 16
-  },
-  filtersContainer: {
     flex: 1
   },
-  priceFilterContainer: {
-    marginBottom: 8
+  filtersContainer: {
+    flex: 1,
+    paddingHorizontal: 16
   },
   filterContainer: {
-    marginBottom: 16
+    marginVertical: 8
   },
   buttonsContainer: {
     flexDirection: 'row',
-    marginTop: 16
+    margin: 16
   },
   buttonContainer: {
     flex: 1
