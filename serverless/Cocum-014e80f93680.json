@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cocum-187309",
+  "private_key_id": "014e80f9368023c5d90ea8d2af2adcc42f2e3260",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDWFfu9LjdB6MWa\nhk4V5Ul7vnnbFeUZ+6LKd/C0KiPF01Nfiuvs/8dgQJyIkwQJx7T9bvER0Ms7dO9y\n+KW+7amvuVjS3bCXUNrrGIjs/PH5+nDC+xVcJ62L7+vqwLVX9igjg1I5z7Kdg3Gf\nZFr1M5dIm7T9CTJe8lcmEtLebr2dPpTSIL/ZvMv7m4ZvkV0+OICQSmdWMLvT8r47\noUwfXnv6JrJ6UZE9pNMk/nNAvk49HQGhByEBlEF/RyLjyJLwUDohVogwx74dC9a8\nlZNc3/RrMCb3KTGW33XLSPnLY+44hHwQ5U6HyjK7YpTKKUIK+YqF2udFYYDGX9oN\nnDyxczF/AgMBAAECggEAC0gGR35PeCAphY6NP9cgy64KYtKhC4D4n525Z+0OjIap\nzo+WBhumaHqPJR1GKbPF5FL7zhoIE56CXbcfmNOSTQnB1f7LpvWiS6Az2vUrVSZu\n2b98bSpEGWsvreOwyq1UiSaK5zP8MBO0oZcaufAZiUB3RZw99MXldMKqLQF96XLB\nm80ojIeO5iNGdEEs4mY8VDixDxj7HNzKbfG8Mn0wsWgIpAfvtUYISmzn9MmsU6Wi\nepWNvfn2bitZyH0PYn5d3UDskaxL9PHaFAKjv0VsvwkaZ4/8SUHBDjouTUcAgwQk\nzQYwIz+hMTC7VDZZTmVXROqJv7/B4zhP2vjTdJP4hQKBgQDvsqmKiiUp+CErkwES\nUJihXvo/5wVRyFQnwA0UQ+QV4MVa5a6gv5shg8YRq5YHJyTrihFJzag0bpN1k/ZA\nWlrZ2xDhM5S6v6/KyZERW89wsoxCi4ynzRLJusz0wUHYeoBBqHaVf9OvbMOQqOHo\nBuL/IMx8ZdDgb2jjHC07urPSCwKBgQDkpWUFX5iQlDyGjsHMuGRUk7dRqmUIbkpk\n6TOei221oYk4JUp8w3DM/Gt2xM/VuIizOWPlZWMbZi/0onLRhoV0KzstJypeHbww\nSDYUhi9jLqAnO/Sc+CnT1dT4g92ITiVzb88dJS++b/J7hEzV8Hhq+11QbO0NrgNN\nIe/OV31a3QKBgHYzhoO5CAagQ8s3HOopMHszWPi2NdtUjJtli42YxRs80lW2udyv\nYBKw5rXEBaHVXdGBLnFUp0Pj23e51U96vx57duF3DDrjWA8KQy1qNut+QMh4BI6j\nBEbShUuVGaFlF2ZJauDiPkNdwTrO7Uf8TWg+hlg55T0n83M7a9rugMptAoGBAN2R\nOTffz2QrgguSw1KzTOZ4zqigyo9E8WqgYZk92+6qvuJdoLUOX30FDs5lIlIlJLMo\n5hkiCsw+VjJmSYWpKiHM0ueKkI/rmLXhBCcXcUxXnnLmssB5626QRHUes8qmj7wx\nmS7RHlcY/I2dQyf+g3KIa4DITV94RVK1lEEMnzkxAoGBANmip7XjPFzRBGNRfYF5\nSFD7W28kMWyVJKTPG9JWAzACCmBv1iDhbNECFi3w2x/b78dAmE0ZPFsEbwgNsLlq\n892xZHPQfbg/wRKmHXE6Gy81rdfLoR8+7BDipCQiHj+dei+EFDbLIMInU5OwLRtX\nH0vQ+eAFnRE5ObdQNaP3xD2W\n-----END PRIVATE KEY-----\n",
+  "client_email": "ml-engine-developer@cocum-187309.iam.gserviceaccount.com",
+  "client_id": "113820335275959844401",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ml-engine-developer%40cocum-187309.iam.gserviceaccount.com"
+}
