@@ -1,9 +1,17 @@
+import * as fromCategorySelection from './categorySelection.js';
 import * as fromSelectedImage from './selectedImage.js';
 import * as fromQuery from './query.js';
 import * as fromResults from './results.js';
+import * as fromCocumIt from './cocumIt.js';
 import * as fromFilters from './filters.js';
 import * as fromCanGoNext from './canGoNext.js';
 import * as fromWebView from './webView.js';
+
+export const getCategorySelectionStatus = (state) =>
+  fromCategorySelection.getStatus(state.categorySelection);
+
+export const getCategorySelectionErrorMessage = (state) =>
+  fromCategorySelection.getErrorMessage(state.categorySelection);
 
 export const getSelectedImage = (state) =>
   fromSelectedImage.getSelectedImage(state.selectedImage);
@@ -20,8 +28,11 @@ export const getResultsStatusAtLevel = (state, tabName, level) =>
 export const getResultsErrorMessage = (state, tabName) =>
   fromResults.getErrorMessage(state.results, tabName);
 
-export const getResultsActiveLevel = (state, tabName) =>
-  fromResults.getActiveLevel(state.results, tabName);
+export const getCocumItProductId = (state) =>
+  fromCocumIt.getProductId(state.cocumIt);
+
+export const getCocumItTags = (state) =>
+  fromCocumIt.getTags(state.cocumIt);
 
 export const getCurrentFilters = (state) =>
   fromFilters.getCurrentFilters(state.filters);

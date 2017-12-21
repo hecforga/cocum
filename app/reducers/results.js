@@ -15,10 +15,10 @@ const ids = (state = generateInitialState([]), action) => {
         ...state,
         [action.tabName]: popFromArray(state[action.tabName])
       };
-    case 'FETCH_RESULTS_SUCCESS':
+    case 'COMPUTE_RESULTS_SUCCESS':
       return {
         ...state,
-        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, action.response)
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, action.ids)
       };
     default:
       return state;
@@ -42,48 +42,51 @@ const status = (state = generateInitialState([]), action) => {
         ...state,
         [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'image_cropped')
       };
-    case 'SET_QUERY_ID':
-      return {
-        ...state,
-        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'id_generated')
-      };
-    case 'UPLOAD_IMAGE_SUCCESS':
-      return {
-        ...state,
-        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'image_uploaded')
-      };
+    case 'COMPUTE_PREDICTIONS_SUCCESS':
+      if (action.croppedImageUrl) {
+        return {
+          ...state,
+          ['HomeTab']: updateItemAtPosition(state['HomeTab'], state['HomeTab'].length - 1, 'ready_to_compute_results')
+        };
+      } else {
+        return state;
+      }
+    case 'UPLOAD_CROPPED_IMAGE_SUCCESS':
+      if (action.tags !== null) {
+        return {
+          ...state,
+          [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'ready_to_compute_results')
+        };
+      } else {
+        return {
+          ...state,
+          [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'cropped_image_uploaded')
+        };
+      }
     case 'APPLY_FILTERS':
       return {
         ...state,
         [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'filters_applied')
       };
-    case 'FETCH_RESULTS_SUCCESS':
+    case 'GET_PRODUCT_TAGS_SUCCESS':
       return {
         ...state,
-        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'results_ready')
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'product_tags_got')
       };
-    case 'FETCH_RESULTS_FAILURE':
+    case 'COMPUTE_RESULTS_SUCCESS':
+      return {
+        ...state,
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'results_computed')
+      };
+    case 'RESULTS_FAILURE':
       return {
         ...state,
         [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'error')
       };
-    case 'APOLLO_QUERY_RESULT':
-    case 'APOLLO_QUERY_RESULT_CLIENT':
-      let activeTabName;
-      if (action.operationName === 'getProductsByIds') {
-        activeTabName = tabs.find((tabName) => state[tabName][state[tabName].length - 1] === 'results_ready');
-        if (activeTabName) {
-          return {
-            ...state,
-            [activeTabName]: updateItemAtPosition(state[activeTabName], state[activeTabName].length - 1, 'apollo_results_ready')
-          };
-        }
-      }
-      return state;
-    case 'APOLLO_RESULTS_READY_MANUAL':
+    case 'ON_RESULTS_RETRY_PRESS':
       return {
         ...state,
-        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'apollo_results_ready')
+        [action.tabName]: updateItemAtPosition(state[action.tabName], state[action.tabName].length - 1, 'retry')
       };
     default:
       return state;
@@ -93,13 +96,12 @@ const status = (state = generateInitialState([]), action) => {
 const errorMessage = (state = generateInitialState(null), action) => {
   switch (action.type) {
     case 'ON_RESULTS_WILL_MOUNT':
-    case 'FETCH_RESULTS_REQUEST':
-    case 'FETCH_RESULTS_SUCCESS':
+    case 'COMPUTE_RESULTS_SUCCESS':
       return {
         ...state,
         [action.tabName]: null
       };
-    case 'FETCH_RESULTS_FAILURE':
+    case 'RESULTS_FAILURE':
       return {
         ...state,
         [action.tabName]: action.message
@@ -109,28 +111,10 @@ const errorMessage = (state = generateInitialState(null), action) => {
   }
 };
 
-const activeLevel = (state = generateInitialState(-1), action) => {
-  switch (action.type) {
-    case 'ON_RESULTS_WILL_MOUNT':
-      return {
-        ...state,
-        [action.tabName]: state[action.tabName] + 1
-      };
-    case 'ON_RESULTS_WILL_UNMOUNT':
-      return {
-        ...state,
-        [action.tabName]: state[action.tabName] - 1
-      };
-    default:
-      return state;
-  }
-};
-
 const results = combineReducers({
   ids,
   status,
-  errorMessage,
-  activeLevel
+  errorMessage
 });
 
 export default results;
@@ -138,4 +122,3 @@ export default results;
 export const getIdsAtLevel = (state, tabName, level) => state.ids[tabName][level];
 export const getStatusAtLevel = (state, tabName, level) => state.status[tabName][level];
 export const getErrorMessage = (state, tabName) => state.errorMessage[tabName];
-export const getActiveLevel = (state, tabName) => state.activeLevel[tabName];

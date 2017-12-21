@@ -1,14 +1,37 @@
+import { ImagePicker } from 'expo';
 import { RNS3 } from 'react-native-aws3';
 
+import { getQuery } from '../reducers';
 import { accessKey, secretKey } from '../credentials/s3credentials.js';
-import * as liresolr_api from '../liresolr_api';
 
-export const selectImage = (imageUri, width, height) => ({
-  type: 'SELECT_IMAGE',
-  imageUri,
-  width,
-  height
+export const categorySelectionDidMount = () => ({
+  type: 'ON_CATEGORY_SELECTION_DID_MOUNT',
 });
+
+export const pickImage = (imagePickerMode) => (dispatch, getState) => {
+  if (imagePickerMode === 'gallery') {
+    ImagePicker.launchImageLibraryAsync({allowsEditing: false})
+      .then((pickedImage) => handlePickedImage(pickedImage, dispatch));
+  } else {
+    ImagePicker.launchCameraAsync({allowsEditing: false})
+      .then((pickedImage) => handlePickedImage(pickedImage, dispatch));
+  }
+};
+
+const handlePickedImage = (pickedImage, dispatch) => {
+  if (pickedImage.cancelled) {
+    dispatch({
+      type: 'IMAGE_PICKER_CANCELLED'
+    });
+  } else {
+    dispatch({
+      type: 'SELECT_IMAGE',
+      imageUri: pickedImage.uri,
+      width: pickedImage.width,
+      height: pickedImage.height
+    });
+  }
+};
 
 export const setSelectedImageLayout = (layout) => ({
   type: 'SET_SELECTED_IMAGE_LAYOUT',
@@ -20,21 +43,93 @@ export const setSelectedImageCropData = (cropData) => ({
   cropData
 });
 
-export const resetSelectedImage = () => ({
-  type: 'RESET_SELECTED_IMAGE'
-});
+export const createMyQuery = (mutate, query) => (dispatch, getState) => {
+  mutate({
+    variables: { gender: query.gender }
+  }).then((response) => {
+    dispatch({
+      type: 'CREATE_MY_QUERY_SUCCESS',
+      id: response.data.createMyQuery.id,
+      category: getQuery(getState()).category
+    });
+  }).catch(
+    error => handleCategorySelectionFailure(dispatch, error)
+  );
+};
 
-export const setQueryCategory = (category) => ({
+export const setQueryCategory = (category, id) => ({
   type: 'SET_QUERY_CATEGORY',
-  category
+  category,
+  id
 });
 
-export const resetQuery = () => ({
-  type: 'RESET_QUERY'
+export const uploadFullImage = (queryId, imageUri, category) => (dispatch, getState) => {
+  const file = {
+    uri: imageUri,
+    name: queryId += '.jpg',
+    type: 'image/jpg'
+  };
+
+  const options = {
+    keyPrefix: 'query_images_full/' + category + '/',
+    bucket: 'cocumapp',
+    region: 'eu-central-1',
+    accessKey: accessKey,
+    secretKey: secretKey,
+    successActionStatus: 201
+  };
+
+  RNS3.put(file, options).then(
+    response => {
+      if (response.status !== 201) {
+        throw new Error();
+      }
+      dispatch({
+        type: 'UPLOAD_FULL_IMAGE_SUCCESS',
+        imageUrl: response.body.postResponse.location
+      });
+    }
+  ).catch(
+    error => handleCategorySelectionFailure(dispatch, error)
+  );
+};
+
+export const computePredictions = (mutate, query) => (dispatch, getState) => {
+  mutate({
+    variables: {
+      gender: query.gender,
+      category: query.category,
+      imageUrl: query.fullImageUrl
+    }
+  }).then((response) => {
+    dispatch({
+      type: 'COMPUTE_PREDICTIONS_SUCCESS',
+      tags: response.data.computePredictions.tags,
+      croppedImageUrl: getQuery(getState()).croppedImageUrl
+    });
+  }).catch(
+    error => handleCategorySelectionFailure(dispatch, error)
+  );
+};
+
+const handleCategorySelectionFailure = (dispatch, error) => {
+  console.log(error);
+  dispatch({
+    type: 'CATEGORY_SELECTION_FAILURE',
+    message: 'Algo ha ido mal'
+  });
+};
+
+export const onCategorySelectionRetryPress = () => ({
+  type: 'ON_CATEGORY_SELECTION_RETRY_PRESS'
+});
+
+export const onCategorySelectionWillUnmount = () => ({
+  type: 'ON_CATEGORY_SELECTION_WILL_UNMOUNT'
 });
 
 export const cropImage = (tabName, cropImageMethod, uri, cropData) => (dispatch, getState) => {
-  return new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     cropImageMethod(uri, cropData, resolve, reject);
   }).then(
     response => {
@@ -45,34 +140,19 @@ export const cropImage = (tabName, cropImageMethod, uri, cropData) => (dispatch,
       });
     }
   ).catch(
-    error => handleFetchResultsFailure(dispatch, tabName, error)
+    error => handleResultsFailure(dispatch, tabName, error)
   );
 };
 
-export const generateQueryId = (tabName, mutate, query) => (dispatch, getState) => {
-  mutate({
-    variables: { gender: query.gender, category: query.category }
-  }).then((response) => {
-    dispatch({
-      type: 'SET_QUERY_ID',
-      tabName,
-      id: response.data.createMyQuery.id
-    });
-  }).catch(
-    error => handleFetchResultsFailure(dispatch, tabName, error)
-  );
-};
-
-export const uploadImage = (tabName, queryId, imageUri, category) => (dispatch, getState) => {
+export const uploadCroppedImage = (tabName, queryId, imageUri, category) => (dispatch, getState) => {
   const file = {
-    // `uri` can also be a file system path (i.e. file://)
     uri: imageUri,
     name: queryId+='.jpg',
     type: 'image/jpg'
   };
 
   const options = {
-    keyPrefix: 'queryImages/'.concat(category).concat('/'),
+    keyPrefix: 'query_images_cropped/' + category + '/',
     bucket: 'cocumapp',
     region: 'eu-central-1',
     accessKey: accessKey,
@@ -80,58 +160,82 @@ export const uploadImage = (tabName, queryId, imageUri, category) => (dispatch, 
     successActionStatus: 201
   };
 
-  return RNS3.put(file, options).then(
+  RNS3.put(file, options).then(
     response => {
       if (response.status !== 201) {
         throw new Error();
       }
       dispatch({
-        type: 'UPLOAD_IMAGE_SUCCESS',
+        type: 'UPLOAD_CROPPED_IMAGE_SUCCESS',
         tabName,
-        imageUrl: response.body.postResponse.location
+        imageUrl: response.body.postResponse.location,
+        tags: getQuery(getState()).tags
       });
     }
   ).catch(
-    error => handleFetchResultsFailure(dispatch, tabName, error)
+    error => handleResultsFailure(dispatch, tabName, error)
   );
 };
 
-export const fetchResults = (tabName, mode, params) => (dispatch, getState) => {
-  dispatch({
-    type: 'FETCH_RESULTS_REQUEST',
-    tabName
-  });
-
-  return liresolr_api.fetchResults(mode, params).then(
-    response => {
-      const idsChanged = response.length !== params.previousIds.length ||
-        response.filter((id) => params.previousIds.indexOf(id) < 0).length > 0;
-      if (idsChanged) {
-        dispatch({
-          type: 'FETCH_RESULTS_SUCCESS',
-          tabName,
-          response
-        });
-      } else {
-        dispatch({
-          type: 'APOLLO_RESULTS_READY_MANUAL',
-          tabName
-        });
-      }
+export const getProductTags = (mutate, tabName, gender, category, productId) => (dispatch, getState) => {
+  mutate({
+    variables: {
+      gender,
+      category,
+      productId
     }
-  ).catch(
-    error => handleFetchResultsFailure(dispatch, tabName, error)
+  }).then((response) => {
+    if(response.errors) {
+      throw new Error(response.errors[0].message);
+    }
+    dispatch({
+      type: 'GET_PRODUCT_TAGS_SUCCESS',
+      tabName,
+      tags: response.data.getProductTags.tags
+    });
+  }).catch(
+    error => handleResultsFailure(dispatch, tabName, error)
   );
 };
 
-const handleFetchResultsFailure = (dispatch, tabName, error) => {
+export const computeResults = (mutate, tabName, mode, gender, category, imageUrl, productId, tags, filters) => (dispatch, getState) => {
+  mutate({
+    variables: {
+      mode,
+      gender,
+      category,
+      imageUrl,
+      productId,
+      tags,
+      filters
+    }
+  }).then((response) => {
+    if(response.errors) {
+      throw new Error(response.errors[0].message);
+    }
+    dispatch({
+      type: 'COMPUTE_RESULTS_SUCCESS',
+      tabName,
+      ids: response.data.computeResults.results
+    });
+  }).catch(
+    error => handleResultsFailure(dispatch, tabName, error)
+  );
+};
+
+const handleResultsFailure = (dispatch, tabName, error) => {
   console.log(error);
   dispatch({
-    type: 'FETCH_RESULTS_FAILURE',
+    type: 'RESULTS_FAILURE',
     tabName,
-    message: error.message  || 'Algo ha ido mal.'
+    message: 'Algo ha ido mal'
   });
 };
+
+export const onResultsRetryPress = (tabName) => ({
+  type: 'ON_RESULTS_RETRY_PRESS',
+  tabName
+});
 
 export const onResultsWillMount = (tabName) => ({
   type: 'ON_RESULTS_WILL_MOUNT',
@@ -142,6 +246,23 @@ export const onResultsWillUnmount = (tabName) => ({
   type: 'ON_RESULTS_WILL_UNMOUNT',
   tabName
 });
+
+export const setCocumItProductId = (product) => ({
+  type: 'SET_COCUM_IT_PRODUCT_ID',
+  productId: product.productId
+});
+
+export const onCocumItResultsWillUnmount = () => ({
+  type: 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT'
+});
+
+export const setProductTimesVisited = (mutate, product) => (dispatch, getState) => {
+  mutate({
+    variables: { id: product.id, timesVisited: product.timesVisited + 1}
+  }).catch(
+    error => console.log(error)
+  );
+};
 
 export const setProductTimesRedirected = (mutate, product) => (dispatch, getState) => {
   mutate({
@@ -206,6 +327,6 @@ export const setWebViewIsLoading = (isLoading) => ({
   isLoading
 });
 
-export const resetWebView = () => ({
-  type: 'RESET_WEB_VIEW'
+export const onWebViewWillUnmount = () => ({
+  type: 'ON_WEB_VIEW_WILL_UNMOUNT'
 });

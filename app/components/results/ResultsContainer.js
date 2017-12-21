@@ -4,6 +4,7 @@ import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
+import ErrorView from '../common/ErrorView.js';
 import NoResultsMessage from './NoResultsMessage.js';
 import ResultsHeader from './ResultsHeader.js';
 import ResultsList from './ResultsList.js';
@@ -31,17 +32,21 @@ class ResultsContainer extends Component {
       status,
       errorMessage,
       cocumItIsVisible,
+      data
     } = this.props;
 
     if (status === 'error') {
       return (
         <View style={styles.centeredContainer}>
-          <Text>{errorMessage}</Text>
+          <ErrorView
+            message={errorMessage}
+            onRetryPress={() => this.onRetryPress()}
+          />
         </View>
       );
     }
 
-    if (status !== 'apollo_results_ready') {
+    if (status !== 'results_computed' || data.loading) {
       return (
         <View style={styles.centeredContainer}>
           <ActivityIndicator size='large' />
@@ -69,6 +74,7 @@ class ResultsContainer extends Component {
       </View>
     );
   }
+
 
   getProducts() {
     const { ids, data } = this.props;
@@ -102,6 +108,7 @@ class ResultsContainer extends Component {
 
     return productsInArraysOf2;
   }
+
   onProductPress(product) {
     const { navigation, tabName, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
 
@@ -124,7 +131,7 @@ class ResultsContainer extends Component {
   }
 
   onCocumItPress(product) {
-    const { navigation, tabName, level } = this.props;
+    const { navigation, tabName, level, setCocumItProductId } = this.props;
 
     const labelData = {
       tabName: tabName,
@@ -133,6 +140,8 @@ class ResultsContainer extends Component {
     };
     this.tracker.trackEvent('button_cocumIt', 'pressed', { label: generateEventLabel(labelData) } );
 
+    setCocumItProductId(product);
+
     navigation.navigate('Results', {
       productId: product.productId,
       category: product.category,
@@ -140,7 +149,13 @@ class ResultsContainer extends Component {
       fetchMode: 'id',
       level: level + 1
     });
-  }  
+  }
+
+  onRetryPress() {
+    const { tabName, onResultsRetryPress } = this.props;
+
+    onResultsRetryPress(tabName);
+  }
 }
 
 const styles = StyleSheet.create({
@@ -156,4 +171,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ResultsContainer
+export default ResultsContainer;

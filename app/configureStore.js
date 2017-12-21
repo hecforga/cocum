@@ -3,10 +3,11 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import nav from './reducers/navigation.js';
+import categorySelection from './reducers/categorySelection.js';
 import selectedImage from './reducers/selectedImage.js';
 import query from './reducers/query.js';
 import results from './reducers/results.js';
-import selectedProducts from './reducers/selectedProducts.js';
+import cocumIt from './reducers/cocumIt.js';
 import filters from './reducers/filters.js';
 import canGoNext from './reducers/canGoNext.js';
 import webView from './reducers/webView.js';
@@ -22,10 +23,11 @@ const configureStore = (client) => {
   return createStore(
     combineReducers({
       nav,
+      categorySelection,
       selectedImage,
       query,
       results,
-      selectedProducts,
+      cocumIt,
       filters,
       canGoNext,
       webView,

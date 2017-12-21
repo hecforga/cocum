@@ -2,13 +2,14 @@ const initialState = {
   id: '',
   gender: 'mujer',
   category: '',
-  imageUri: '',
-  imageUrl: ''
+  fullImageUrl: '',
+  croppedImageUrl: '',
+  tags: null
 };
 
 const query = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_QUERY_ID':
+    case 'CREATE_MY_QUERY_SUCCESS':
       return {
         ...state,
         id: action.id
@@ -18,17 +19,22 @@ const query = (state = initialState, action) => {
         ...state,
         category: action.category
       };
-    case 'CROP_IMAGE_SUCCESS':
+    case 'UPLOAD_FULL_IMAGE_SUCCESS':
       return {
         ...state,
-        imageUri: action.imageUri
+        fullImageUrl: action.imageUrl
       };
-    case 'UPLOAD_IMAGE_SUCCESS':
+    case 'COMPUTE_PREDICTIONS_SUCCESS':
       return {
         ...state,
-        imageUrl: action.imageUrl
+        tags: action.tags
       };
-    case 'RESET_QUERY':
+    case 'UPLOAD_CROPPED_IMAGE_SUCCESS':
+      return {
+        ...state,
+        croppedImageUrl: action.imageUrl
+      };
+    case 'ON_CATEGORY_SELECTION_WILL_UNMOUNT':
       return initialState;
     default:
       return state;

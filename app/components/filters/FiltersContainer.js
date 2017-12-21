@@ -49,14 +49,14 @@ class FiltersContainer extends Component {
             title={'Borrar'}
             onPress={() => clearFilters()}
             disabled={areFiltersCleared}
-            containerStyle={[styles.buttonContainerStyle, { marginRight: 8 }]}
-            buttonStyle={styles.buttonStyle}
+            containerStyle={[styles.buttonContainer, { marginRight: 8 }]}
+            buttonStyle={styles.button}
           />
           <MyButton
             title={'Aplicar'}
             onPress={() => this.applyFilters()}
-            containerStyle={[styles.buttonContainerStyle, { marginLeft: 8 }]}
-            buttonStyle={styles.buttonStyle}
+            containerStyle={[styles.buttonContainer, { marginLeft: 8 }]}
+            buttonStyle={styles.button}
           />
         </View>
       </View>
@@ -104,11 +104,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 16
   },
-  buttonContainerStyle: {
-    flex: 1,
-
+  buttonContainer: {
+    flex: 1
   },
-  buttonStyle: {
+  button: {
     padding: 16
   }
 });

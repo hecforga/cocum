@@ -1,33 +1,36 @@
 import { combineReducers } from 'redux';
 
-const canGoBack = (state = false, action) => {
+const canGoBackInitialState = false;
+const canGoBack = (state = canGoBackInitialState, action) => {
   switch (action.type) {
     case 'SET_WEB_VIEW_CAN_GO_BACK':
       return action.canGoBack;
-    case 'RESET_WEB_VIEW':
-      return false;
+    case 'ON_WEB_VIEW_WILL_UNMOUNT':
+      return canGoBackInitialState;
     default:
       return state;
   }
 };
 
-const canGoForward = (state = false, action) => {
+const canGoForwardInitialState = false;
+const canGoForward = (state = canGoForwardInitialState, action) => {
   switch (action.type) {
     case 'SET_WEB_VIEW_CAN_GO_FORWARD':
       return action.canGoForward;
-    case 'RESET_WEB_VIEW':
-      return false;
+    case 'ON_WEB_VIEW_WILL_UNMOUNT':
+      return canGoForwardInitialState;
     default:
       return state;
   }
 };
 
-const isLoading = (state = true, action) => {
+const isLoadingInitialState = true;
+const isLoading = (state = isLoadingInitialState, action) => {
   switch (action.type) {
     case 'SET_WEB_VIEW_IS_LOADING':
       return action.isLoading;
-    case 'RESET_WEB_VIEW':
-      return true;
+    case 'ON_WEB_VIEW_WILL_UNMOUNT':
+      return isLoadingInitialState;
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
 
-import { getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../../reducers/index';
+import { getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../../reducers';
 import * as actions from '../../actions/index';
 
 import ResultsContainer from './ResultsContainer.js';
@@ -12,17 +12,28 @@ class RandomResultsContainer extends Component {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
         case 'init':
+        case 'retry':
         case 'filters_applied':
-          this.fetchResults(nextProps.appliedFilters, nextProps.ids);
+          this.computeResults(nextProps.appliedFilters);
           break;
       }
     }
   }
 
-  fetchResults(appliedFilters, ids) {
-    const { category, tabName, fetchResults } = this.props;
-    const params = { gender: 'mujer', category, filters: appliedFilters, previousIds: ids };
-    fetchResults(tabName, 'random', params);
+  computeResults(appliedFilters) {
+    const { tabName, category, computeResults, computeResultsMutate } = this.props;
+
+    computeResults(
+      computeResultsMutate,
+      tabName,
+      'random',
+      'mujer',
+      category,
+      '',
+      '',
+      {},
+      appliedFilters
+    );
   }
 
   render() {
@@ -61,6 +72,14 @@ const getProductsByIds = gql`
   }
 `;
 
+const computeResults = gql`
+  mutation computeResults ($mode: String!, $gender: String!, $category: String!, $imageUrl: String!, $productId: String!, $tags: Json!, $filters: Json!) {
+    computeResults(mode: $mode, gender: $gender, category: $category, imageUrl: $imageUrl, productId: $productId, tags: $tags, filters: $filters) {
+      results
+    }
+  }
+`;
+
 const updateProductTimesRedirected = gql`
   mutation updateProductTimesRedirected ($id: ID!, $timesRedirected: Int!) {
     updateProduct(id: $id, timesRedirected: $timesRedirected) {
@@ -75,5 +94,6 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
+  graphql(computeResults, { name: 'computeResultsMutate' }),
   graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(RandomResultsContainer);
