@@ -79,8 +79,7 @@ const getProductsByIds = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,
