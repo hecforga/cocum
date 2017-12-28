@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>isManifestVerificationBypassed</key>
-	<true/>
-	<key>isShell</key>
-	<true/>
-	<key>manifestUrl</key>
-	<string>exp://exp.host/@hecforga/Cocum</string>
+	<key>LastAccessedDate</key>
+	<date>2017-12-01T00:03:38Z</date>
+	<key>WorkspacePath</key>
+	<string>/Users/nachofornes/Desktop/Hector/app/ios/cocum.xcworkspace</string>
 </dict>
 </plist>

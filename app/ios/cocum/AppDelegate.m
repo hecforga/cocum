@@ -1,5 +1,6 @@
 // Copyright 2015-present 650 Industries. All rights reserved.
 
+#import <Firebase.h>
 #import "AppDelegate.h"
 #import "ExpoKit.h"
 #import "EXViewController.h"
@@ -22,6 +23,8 @@
     
     [_rootViewController loadReactApplication];
     [_window makeKeyAndVisible];
+    
+    [FIRApp configure];
     
     return YES;
 }

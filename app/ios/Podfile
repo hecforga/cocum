@@ -29,6 +29,11 @@ target 'cocum' do
     ]
   pod 'Yoga',
     :path => "../node_modules/react-native/ReactCommon/yoga"
+    
+  pod 'RNDeviceInfo',
+    :path => "../node_modules/react-native-device-info"
+    
+  pod 'Firebase/Core'
 
 
   post_install do |installer|
