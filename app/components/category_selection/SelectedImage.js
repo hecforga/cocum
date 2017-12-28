@@ -6,7 +6,7 @@ import CropRectangle from './CropRectangle.js';
 const SelectedImage = ({ selectedImage, category, onSelectedImageLayoutComputed, setSelectedImageCropData }) => (
   <View style={ styles.container }>
     <Image
-      source={ {uri : selectedImage.imageUri} }
+      source={ {uri : selectedImage.fullImageUri} }
       onLayout={(e) => computeSelectedImageLayout(e.nativeEvent.layout, selectedImage.originalWidth, selectedImage.originalHeight, onSelectedImageLayoutComputed)}
       resizeMode={'contain'}
       style={ styles.image }

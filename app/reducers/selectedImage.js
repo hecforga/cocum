@@ -1,9 +1,10 @@
 const initialState = {
-  imageUri: '',
+  fullImageUri: '',
   originalWidth: 0,
   originalHeight: 0,
   layout: null,
-  cropData: null
+  cropData: null,
+  croppedImageUri: ''
 };
 
 const selectedImage = (state = initialState, action) => {
@@ -11,7 +12,7 @@ const selectedImage = (state = initialState, action) => {
     case 'SELECT_IMAGE':
       return {
         ...state,
-        imageUri: action.imageUri,
+        fullImageUri: action.imageUri,
         originalWidth: action.width,
         originalHeight: action.height
       };
@@ -25,7 +26,12 @@ const selectedImage = (state = initialState, action) => {
         ...state,
         cropData: action.cropData
       };
-    case 'RESET_SELECTED_IMAGE':
+    case 'CROP_IMAGE_SUCCESS':
+      return {
+        ...state,
+        croppedImageUri: action.imageUri
+      };
+    case 'ON_CATEGORY_SELECTION_WILL_UNMOUNT':
       return initialState;
     default:
       return state;

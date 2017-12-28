@@ -1,5 +1,12 @@
 {
   "name": "cocum_graphcool_service",
   "version": "1.0.0",
-  "description": "Cocum Graphcool Service"
+  "description": "Cocum Graphcool Service",
+  "dependencies": {
+    "es6-promise": "^4.1.1",
+    "graphcool-lib": "^0.1.4",
+    "graphql-request": "^1.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.isempty": "^4.4.0"
+  }
 }

@@ -1,0 +1,7 @@
+type GetProductTagsPayload {
+  tags: Json!
+}
+
+extend type Mutation {
+  getProductTags(gender: String!, category: String!, productId: String!): GetProductTagsPayload
+}

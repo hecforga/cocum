@@ -1,0 +1,7 @@
+type ComputeResultsPayload {
+  results: [String!]!
+}
+
+extend type Mutation {
+  computeResults(mode: String!, gender: String!, category: String!, imageUrl: String!, productId: String!, tags: Json!, filters: Json!): ComputeResultsPayload
+}

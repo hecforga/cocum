@@ -7,9 +7,9 @@ import * as actions from '../../actions';
 
 class WebViewContainer extends Component {
   componentWillUnmount() {
-    const { resetWebView } = this.props;
+    const { onWebViewWillUnmount } = this.props;
 
-    resetWebView();
+    onWebViewWillUnmount();
   }
 
   render() {

@@ -3,7 +3,7 @@ import { ImageEditor } from 'react-native';
 import { connect } from 'react-redux';
 import { gql, graphql, compose } from 'react-apollo';
 
-import { getSelectedImage, getQuery, getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../../reducers/index';
+import { getSelectedImage, getQuery, getResultsIdsAtLevel, getResultsStatusAtLevel, getResultsErrorMessage, getAppliedFiltersAtLevel } from '../../reducers';
 import * as actions from '../../actions/index';
 
 import ResultsContainer from './ResultsContainer.js';
@@ -13,17 +13,15 @@ class QueryResultsContainer extends Component {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
         case 'init':
+        case 'retry':
           this.cropImage();
           break;
         case 'image_cropped':
-          this.generateQueryId();
+          this.uploadCroppedImage(nextProps.selectedImage);
           break;
-        case 'id_generated':
-          this.uploadImage(nextProps.query);
-          break;
-        case 'image_uploaded':
+        case 'ready_to_compute_results':
         case 'filters_applied':
-          this.fetchResults(nextProps.query, nextProps.appliedFilters, nextProps.ids);
+          this.computeResults(nextProps.query, nextProps.appliedFilters);
           break;
       }
     }
@@ -31,23 +29,30 @@ class QueryResultsContainer extends Component {
 
   cropImage() {
     const { tabName, selectedImage, cropImage } = this.props;
-    cropImage(tabName, ImageEditor.cropImage, selectedImage.imageUri, selectedImage.cropData);
+
+    cropImage(tabName, ImageEditor.cropImage, selectedImage.fullImageUri, selectedImage.cropData);
   }
 
-  generateQueryId() {
-    const { tabName, query, generateQueryId, createMyQueryMutate } = this.props;
-    generateQueryId(tabName, createMyQueryMutate, query);
+  uploadCroppedImage(selectedImage) {
+    const { tabName, query, uploadCroppedImage } = this.props;
+
+    uploadCroppedImage(tabName, query.id, selectedImage.croppedImageUri, query.category);
   }
 
-  uploadImage(query) {
-    const { tabName, uploadImage } = this.props;
-    uploadImage(tabName, query.id, query.imageUri, query.category);
-  }
+  computeResults(query, appliedFilters) {
+    const { tabName, computeResults, computeResultsMutate } = this.props;
 
-  fetchResults(query, appliedFilters, ids) {
-    const { tabName, fetchResults } = this.props;
-    const params = { gender: query.gender, category: query.category, query, filters: appliedFilters, previousIds: ids };
-    fetchResults(tabName, 'url', params);
+    computeResults(
+      computeResultsMutate,
+      tabName,
+      'url',
+      query.gender,
+      query.category,
+      query.croppedImageUrl,
+      '',
+      query.tags,
+      appliedFilters
+    );
   }
 
   render() {
@@ -73,8 +78,7 @@ const getProductsByIds = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,
@@ -88,10 +92,10 @@ const getProductsByIds = gql`
   }
 `;
 
-const createMyQuery = gql`
-  mutation createMyQuery ($gender: String!, $category: String!) {
-    createMyQuery(gender: $gender, category: $category) {
-      id
+const computeResults = gql`
+  mutation computeResults ($mode: String!, $gender: String!, $category: String!, $imageUrl: String!, $productId: String!, $tags: Json!, $filters: Json!) {
+    computeResults(mode: $mode, gender: $gender, category: $category, imageUrl: $imageUrl, productId: $productId, tags: $tags, filters: $filters) {
+      results
     }
   }
 `;
@@ -110,6 +114,6 @@ export default compose(
     actions
   ),
   graphql(getProductsByIds),
-  graphql(createMyQuery, { name: 'createMyQueryMutate' }),
+  graphql(computeResults, { name: 'computeResultsMutate' }),
   graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(QueryResultsContainer);

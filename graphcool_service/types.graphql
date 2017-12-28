@@ -1,11 +1,12 @@
 type MyQuery @model {
-  category: String!
+  category: String
   createdAt: DateTime!
+  croppedImageUrl: String
+  fullImageUrl: String
   gender: String!
   id: ID! @isUnique
-  imageUrl: String
-  rating: Int
-  resultsList: [String!]
+  results: [String!]!
+  tags: Json
   updatedAt: DateTime!
 }
 

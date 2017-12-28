@@ -33,7 +33,7 @@ class FiltersContainer extends Component {
     return (
       <View style={ styles.container }>
         <ScrollView style={styles.filtersContainer}>
-          <View style={styles.priceFilterContainer}>
+          <View style={styles.filterContainer}>
             <PriceFilter
               minPrice={currentFilters.minPrice}
               maxPrice={currentFilters.maxPrice}
@@ -49,14 +49,14 @@ class FiltersContainer extends Component {
             title={'Borrar'}
             onPress={() => clearFilters()}
             disabled={areFiltersCleared}
-            containerStyle={[styles.buttonContainerStyle, { marginRight: 8 }]}
-            buttonStyle={styles.buttonStyle}
+            containerStyle={[styles.buttonContainer, { marginRight: 8 }]}
+            buttonStyle={styles.button}
           />
           <MyButton
             title={'Aplicar'}
             onPress={() => this.applyFilters()}
-            containerStyle={[styles.buttonContainerStyle, { marginLeft: 8 }]}
-            buttonStyle={styles.buttonStyle}
+            containerStyle={[styles.buttonContainer, { marginLeft: 8 }]}
+            buttonStyle={styles.button}
           />
         </View>
       </View>
@@ -88,27 +88,23 @@ class FiltersContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 16
-  },
-  filtersContainer: {
     flex: 1
   },
-  priceFilterContainer: {
-    marginBottom: 8
+  filtersContainer: {
+    flex: 1,
+    paddingHorizontal: 16
   },
   filterContainer: {
-    marginBottom: 16
+    marginVertical: 8
   },
   buttonsContainer: {
     flexDirection: 'row',
-    marginTop: 16
+    margin: 16
   },
-  buttonContainerStyle: {
-    flex: 1,
-
+  buttonContainer: {
+    flex: 1
   },
-  buttonStyle: {
+  button: {
     padding: 16
   }
 });

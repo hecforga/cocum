@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 class NoResultsMessage extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <View style={styles.topContainer}>
           <Text style={styles.topText}>Lo sentimos</Text>
           <Entypo name='emoji-sad' color='black' style={styles.icon} />
@@ -17,9 +17,6 @@ class NoResultsMessage extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
   topContainer: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { Constants } from 'expo';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
-import CategorySelectionContainer from './CategorySelectionContainer.js';
+import CategorySelectionContainer2 from './CategorySelectionContainer.js';
 import HeaderButtonContainer from '../header/HeaderButtonContainer.js';
 
 class CategorySelectionScreen extends Component {
@@ -18,7 +18,7 @@ class CategorySelectionScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <CategorySelectionContainer navigation={navigation} />
+      <CategorySelectionContainer2 navigation={navigation} />
     );
   }
 }
