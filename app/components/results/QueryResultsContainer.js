@@ -57,7 +57,10 @@ class QueryResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer cocumItIsVisible={true} {...this.props} />
+      <ResultsContainer 
+        cocumItIsVisible={true} 
+        webViewCaller={'ResultsUrl'}
+        {...this.props} />
     )
   }
 }

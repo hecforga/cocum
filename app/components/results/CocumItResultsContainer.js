@@ -58,7 +58,10 @@ class CocumItResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer cocumItIsVisible={false} {...this.props} />
+      <ResultsContainer 
+        cocumItIsVisible={false} 
+        webViewCaller={'ResultsId'}
+        {...this.props} />
     )
   }
 }

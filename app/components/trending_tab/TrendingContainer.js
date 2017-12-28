@@ -119,7 +119,7 @@ class TrendingContainer extends Component {
 
     const labelData = {
       tabName: tabName,
-      initial: true,
+      webViewCaller: 'TrendingTab',
       category: product.category,
       shop: product.shop
     };
