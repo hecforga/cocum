@@ -228,6 +228,7 @@ class MangoSpider(scrapy.Spider):
         else:
             displayImageUrl = images[0].replace('S1', 'S9')
 
+        labellingImageUrl = images[2].replace('S1', 'S9')
         download_image_url = productImageUrl
         #Check if it has discount
         # and extract the product price
@@ -277,6 +278,7 @@ class MangoSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
+        self.Request.retrieve(labellingImageUrl, productDirectory+ 'labelling_' +productImageFile)
         if productId not in response.meta['previous_products']:
 
             #Check if the product is already in the database so we do not download the image again

@@ -21,8 +21,11 @@ for shop in args.shops:
         with open(products_folder + '/new_products.json', 'w') as outfile:
             json.dump(list_of_dirs, outfile, indent=2, separators=(',', ': '))
 
-        with open(products_folder + '/current_products.json', 'w') as outfile:
-            json.dump(list_of_dirs, outfile, indent=2, separators=(',', ': '))
+        #with open(products_folder + '/update_products.json', 'w') as outfile:
+        #    json.dump(list_of_dirs, outfile, indent=2, separators=(',', ': '))
 
-        with open(products_folder + '/previous_products.json', 'w') as outfile:
-            json.dump([], outfile, indent=2, separators=(',', ': '))
+        #with open(products_folder + '/current_products.json', 'w') as outfile:
+        #    json.dump(list_of_dirs, outfile, indent=2, separators=(',', ': '))
+
+        #with open(products_folder + '/previous_products.json', 'w') as outfile:
+        #    json.dump([], outfile, indent=2, separators=(',', ': '))
