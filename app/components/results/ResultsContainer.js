@@ -23,6 +23,7 @@ class ResultsContainer extends Component {
     const {
       navigation,
       tabName,
+      webViewCaller,
       level,
       status,
       errorMessage,
@@ -105,10 +106,11 @@ class ResultsContainer extends Component {
   }
 
   onProductPress(product) {
-    const { navigation, tabName, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
+    const { navigation, tabName, webViewCaller, setProductTimesRedirected, updateProductTimesRedirectedMutate } = this.props;
 
     const labelData = {
       tabName: tabName,
+      webViewCaller: webViewCaller,
       category: product.category,
       shop: product.shop
     };
@@ -126,10 +128,11 @@ class ResultsContainer extends Component {
   }
 
   onCocumItPress(product) {
-    const { navigation, tabName, level, setCocumItProductId } = this.props;
+    const { navigation, tabName, webViewCaller, level, setCocumItProductId } = this.props;
 
     const labelData = {
       tabName: tabName,
+      webViewCaller: webViewCaller,
       category: product.category,
       shop: product.shop
     };

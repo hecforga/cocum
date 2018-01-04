@@ -50,7 +50,10 @@ class RandomResultsContainer extends Component {
 
   render() {
     return (
-      <ResultsContainer cocumItIsVisible={true} {...this.props} />
+      <ResultsContainer 
+        cocumItIsVisible={true} 
+        webViewCaller={'ResultsRandom'}
+        {...this.props} />
     )
   }
 }
