@@ -8,6 +8,12 @@ import * as actions from '../../actions/index';
 import ResultsContainer from './ResultsContainer.js';
 
 class CocumItResultsContainer extends Component {
+  componentDidMount() {
+    const { tabName, onCocumItResultsDidMount } = this.props;
+
+    onCocumItResultsDidMount(tabName);
+  }
+
   componentWillUpdate(nextProps) {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
@@ -24,9 +30,9 @@ class CocumItResultsContainer extends Component {
   }
 
   componentWillUnmount() {
-    const { onCocumItResultsWillUnmount } = this.props;
+    const { tabName, onCocumItResultsWillUnmount } = this.props;
 
-    onCocumItResultsWillUnmount();
+    onCocumItResultsWillUnmount(tabName);
   }
 
   getProductTags() {
@@ -79,8 +85,7 @@ const getProductsByIds = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,

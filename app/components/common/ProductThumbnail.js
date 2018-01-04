@@ -21,7 +21,7 @@ class ProductThumbnail extends Component {
       >
         <View style={styles.productThumbnail}>
           <Image
-            source={{ uri: fromProductsInfo.getModelImageUrl(product) }}
+            source={{ uri: fromProductsInfo.getDisplayImageUrl(product) }}
             style={styles.image}
             resizeMode='cover'
           >

@@ -3,7 +3,7 @@ import * as fetch from 'isomorphic-fetch';
 const LIRESOLR_SERVER_URL = 'http://34.242.219.160/solr/';
 
 const categoriesInfo = {
-  prueba: {
+  vestidos: {
     properties: ['fit', 'length', 'neck', 'print', 'sleeve']
   }
 };
@@ -41,7 +41,7 @@ const addQuery = (url, productId) => {
   return url + '&q=id:' + productId;
 };
 
-const addFields = (url, properties) => {
+const addFields = (url, category) => {
   let fields = '&fl=';
 
   const properties = categoriesInfo[category].properties;

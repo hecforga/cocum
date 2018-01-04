@@ -52,12 +52,16 @@ const current = (state = initialState, action) => {
 
 const applied = (state = generateInitialState([]), action) => {
   switch (action.type) {
-    case 'ON_RESULTS_WILL_MOUNT':
+    case 'ON_QUERY_RESULTS_DID_MOUNT':
+    case 'ON_COCUM_IT_RESULTS_DID_MOUNT':
+    case 'ON_RANDOM_RESULTS_DID_MOUNT':
       return {
         ...state,
         [action.tabName]: pushToArray(state[action.tabName], initialState)
       };
-    case 'ON_RESULTS_WILL_UNMOUNT':
+    case 'ON_QUERY_RESULTS_WILL_UNMOUNT':
+    case 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT':
+    case 'ON_RANDOM_RESULTS_WILL_UNMOUNT':
       return {
         ...state,
         [action.tabName]: popFromArray(state[action.tabName])

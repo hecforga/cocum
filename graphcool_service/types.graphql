@@ -5,7 +5,7 @@ type MyQuery @model {
   fullImageUrl: String
   gender: String!
   id: ID! @isUnique
-  results: [String!]!
+  results: [String!] @defaultValue(value: "[]")
   tags: Json
   updatedAt: DateTime!
 }
@@ -18,8 +18,7 @@ type Product @model {
   createdAt: DateTime!
   discounted: Boolean @defaultValue(value: false)
   id: ID! @isUnique
-  productImageUrl: String!
-  modelImageUrl: String @defaultValue(value: "")
+  displayImageUrl: String!
   price: String!
   productId: String!
   productUrl: String!

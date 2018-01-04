@@ -9,20 +9,25 @@ import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 
 class CatalogueContainer extends Component {
   componentWillMount() {
-    const { tabName, setCanGoNext, onResultsWillMount } = this.props;
+    const { setCanGoNext } = this.props;
 
     const { height, width } = Dimensions.get('window');
     this.categoryButtonHeight = height/2.3 - height/4;
 
     setCanGoNext(true);
-    onResultsWillMount(tabName);
 
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
+  componentDidMount() {
+    const { tabName, onRandomResultsDidMount } = this.props;
+
+    onRandomResultsDidMount(tabName);
+  }
+
   componentWillUnmount() {
-    const { tabName, onResultsWillUnmount } = this.props;
-    onResultsWillUnmount(tabName);
+    const { tabName, onRandomResultsWillUnmount } = this.props;
+    onRandomResultsWillUnmount(tabName);
   }
 
   render() {

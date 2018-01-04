@@ -10,31 +10,19 @@ import { generateEventLabel } from '../../utilities/googleAnalytics.js';
 import ProductsHorizontalList from '../common/ProductsHorizontalList.js';
 import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
-const CONTAINER_PADDING = 16;
-const PRODUCT_THUMBNAIL_CONTAINER_MARGIN = 8;
-
 class TrendingContainer extends Component {
   componentWillMount() {
-    const { tabName, setCanGoNext, onResultsWillMount } = this.props;
+    const { setCanGoNext } = this.props;
 
     const { height, width } = Dimensions.get('window');
-    this.imageWidth = 0.60*width;
+    this.imageWidth = 0.6 * width;
     setCanGoNext(true);
-    onResultsWillMount(tabName);
 
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 
-  componentWillUnmount() {
-    const { tabName, onResultsWillUnmount } = this.props;
-    onResultsWillUnmount(tabName);
-  }
-
   render() {
     const {
-      navigation,
-      level,
-      tabName,
       productsByTimesRedirected,
       productsByTimesVisited,
       productsByUpdatedAtSkip,
@@ -168,8 +156,7 @@ const getProductsByTimesRedirected = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,
@@ -193,8 +180,7 @@ const getProductsByTimesVisited = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,
@@ -218,8 +204,7 @@ const getProductsByUpdatedAt = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,
@@ -244,8 +229,7 @@ const getProductsByUpdatedAtSkip = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,

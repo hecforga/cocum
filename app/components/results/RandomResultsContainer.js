@@ -8,6 +8,12 @@ import * as actions from '../../actions/index';
 import ResultsContainer from './ResultsContainer.js';
 
 class RandomResultsContainer extends Component {
+  componentDidMount() {
+    const { tabName, onRandomResultsDidMount } = this.props;
+
+    onRandomResultsDidMount(tabName);
+  }
+
   componentWillUpdate(nextProps) {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
@@ -18,6 +24,12 @@ class RandomResultsContainer extends Component {
           break;
       }
     }
+  }
+
+  componentWillUnmount() {
+    const { tabName, onRandomResultsWillUnmount } = this.props;
+
+    onRandomResultsWillUnmount(tabName);
   }
 
   computeResults(appliedFilters) {
@@ -57,8 +69,7 @@ const getProductsByIds = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,

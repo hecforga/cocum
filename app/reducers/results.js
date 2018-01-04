@@ -5,12 +5,16 @@ import tabs, { generateInitialState } from '../utilities/tabsInfo.js';
 
 const ids = (state = generateInitialState([]), action) => {
   switch (action.type) {
-    case 'ON_RESULTS_WILL_MOUNT':
+    case 'ON_QUERY_RESULTS_DID_MOUNT':
+    case 'ON_COCUM_IT_RESULTS_DID_MOUNT':
+    case 'ON_RANDOM_RESULTS_DID_MOUNT':
       return {
         ...state,
         [action.tabName]: pushToArray(state[action.tabName], [])
       };
-    case 'ON_RESULTS_WILL_UNMOUNT':
+    case 'ON_QUERY_RESULTS_WILL_UNMOUNT':
+    case 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT':
+    case 'ON_RANDOM_RESULTS_WILL_UNMOUNT':
       return {
         ...state,
         [action.tabName]: popFromArray(state[action.tabName])
@@ -27,12 +31,16 @@ const ids = (state = generateInitialState([]), action) => {
 
 const status = (state = generateInitialState([]), action) => {
   switch (action.type) {
-    case 'ON_RESULTS_WILL_MOUNT':
+    case 'ON_QUERY_RESULTS_DID_MOUNT':
+    case 'ON_COCUM_IT_RESULTS_DID_MOUNT':
+    case 'ON_RANDOM_RESULTS_DID_MOUNT':
       return {
         ...state,
         [action.tabName]: pushToArray(state[action.tabName], 'init')
       };
-    case 'ON_RESULTS_WILL_UNMOUNT':
+    case 'ON_QUERY_RESULTS_WILL_UNMOUNT':
+    case 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT':
+    case 'ON_RANDOM_RESULTS_WILL_UNMOUNT':
       return {
         ...state,
         [action.tabName]: popFromArray(state[action.tabName])
@@ -95,7 +103,9 @@ const status = (state = generateInitialState([]), action) => {
 
 const errorMessage = (state = generateInitialState(null), action) => {
   switch (action.type) {
-    case 'ON_RESULTS_WILL_MOUNT':
+    case 'ON_QUERY_RESULTS_DID_MOUNT':
+    case 'ON_COCUM_IT_RESULTS_DID_MOUNT':
+    case 'ON_RANDOM_RESULTS_DID_MOUNT':
     case 'COMPUTE_RESULTS_SUCCESS':
       return {
         ...state,

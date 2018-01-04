@@ -38,7 +38,7 @@ class CropRectangle extends Component {
     this.leftLimit = imageLayout.x;
     this.topLimit = imageLayout.y;
     this.rightLimit = imageLayout.x + imageLayout.width;
-    this.bottomLimit = imageLayout.y + imageLayout.height - INFO_BAR_HEIGHT;
+    this.bottomLimit = imageLayout.y + imageLayout.height - (INFO_BAR_HEIGHT - imageLayout.y);
 
     const initialWidth = Math.max(imageLayout.width / 3, MIN_GRID_SIZE);
     const initialHeight = Math.max(imageLayout.height / 3, MIN_GRID_SIZE);

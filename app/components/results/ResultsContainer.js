@@ -12,16 +12,11 @@ import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
 class ResultsContainer extends Component {
   componentWillMount() {
-    const { tabName, setCanGoNext, onResultsWillMount } = this.props;
+    const { setCanGoNext } = this.props;
+
     setCanGoNext(true);
-    onResultsWillMount(tabName);
 
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
-  }
-
-  componentWillUnmount() {
-    const { tabName, onResultsWillUnmount } = this.props;
-    onResultsWillUnmount(tabName);
   }
 
   render() {

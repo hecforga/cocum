@@ -18,9 +18,9 @@ class CategorySelectionContainer extends Component {
   }
 
   componentDidMount() {
-    const { categorySelectionDidMount } = this.props;
+    const { onCategorySelectionDidMount } = this.props;
 
-    categorySelectionDidMount();
+    onCategorySelectionDidMount();
   }
 
   componentWillUpdate(nextProps) {

@@ -9,6 +9,12 @@ import * as actions from '../../actions/index';
 import ResultsContainer from './ResultsContainer.js';
 
 class QueryResultsContainer extends Component {
+  componentDidMount() {
+    const { tabName, onQueryResultsDidMount } = this.props;
+
+    onQueryResultsDidMount(tabName);
+  }
+
   componentWillUpdate(nextProps) {
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
@@ -27,6 +33,12 @@ class QueryResultsContainer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const { tabName, onQueryResultsWillUnmount } = this.props;
+
+    onQueryResultsWillUnmount(tabName);
+  }
+
   cropImage() {
     const { tabName, selectedImage, cropImage } = this.props;
 
@@ -36,7 +48,7 @@ class QueryResultsContainer extends Component {
   uploadCroppedImage(selectedImage) {
     const { tabName, query, uploadCroppedImage } = this.props;
 
-    uploadCroppedImage(tabName, query.id, selectedImage.croppedImageUri, query.category);
+    uploadCroppedImage(tabName, query.id, query.searchTimes, selectedImage.croppedImageUri, query.category);
   }
 
   computeResults(query, appliedFilters) {
@@ -78,8 +90,7 @@ const getProductsByIds = gql`
     }) {
       id,
       productId,
-      productImageUrl,
-      modelImageUrl,
+      displayImageUrl,
       productUrl,
       affiliateUrl,
       price,

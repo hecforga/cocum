@@ -3,7 +3,7 @@ import * as fetch from 'isomorphic-fetch';
 const LAMBDA_URL = 'https://v3jn6b6jn3.execute-api.eu-west-1.amazonaws.com/dev/prediction';
 
 const categoriesInfo = {
-  prueba: {
+  vestidos: {
     properties: ['fit', 'length', 'neck', 'print', 'sleeve']
   }
 };

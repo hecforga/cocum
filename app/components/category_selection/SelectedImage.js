@@ -11,7 +11,7 @@ const SelectedImage = ({ selectedImage, category, onSelectedImageLayoutComputed,
       resizeMode={'contain'}
       style={ styles.image }
     >
-      {category ?
+      {category && selectedImage.layout ?
         <CropRectangle selectedImage={selectedImage} setSelectedImageCropData={setSelectedImageCropData}/>
         :
         <View style={styles.opacityContainer}>

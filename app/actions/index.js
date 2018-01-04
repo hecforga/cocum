@@ -4,7 +4,7 @@ import { RNS3 } from 'react-native-aws3';
 import { getQuery } from '../reducers';
 import { accessKey, secretKey } from '../credentials/s3credentials.js';
 
-export const categorySelectionDidMount = () => ({
+export const onCategorySelectionDidMount = () => ({
   type: 'ON_CATEGORY_SELECTION_DID_MOUNT',
 });
 
@@ -66,7 +66,7 @@ export const setQueryCategory = (category, id) => ({
 export const uploadFullImage = (queryId, imageUri, category) => (dispatch, getState) => {
   const file = {
     uri: imageUri,
-    name: queryId += '.jpg',
+    name: queryId + '.jpg',
     type: 'image/jpg'
   };
 
@@ -95,6 +95,9 @@ export const uploadFullImage = (queryId, imageUri, category) => (dispatch, getSt
 };
 
 export const computePredictions = (mutate, query) => (dispatch, getState) => {
+  dispatch({
+    type: 'COMPUTE_PREDICTIONS_REQUEST'
+  });
   mutate({
     variables: {
       gender: query.gender,
@@ -102,11 +105,14 @@ export const computePredictions = (mutate, query) => (dispatch, getState) => {
       imageUrl: query.fullImageUrl
     }
   }).then((response) => {
-    dispatch({
-      type: 'COMPUTE_PREDICTIONS_SUCCESS',
-      tags: response.data.computePredictions.tags,
-      croppedImageUrl: getQuery(getState()).croppedImageUrl
-    });
+    const nextQuery = getQuery(getState());
+    if (query.computePredictionsRequestTimes === nextQuery.computePredictionsRequestTimes - 1) {
+      dispatch({
+        type: 'COMPUTE_PREDICTIONS_SUCCESS',
+        tags: response.data.computePredictions.tags,
+        croppedImageUrl: nextQuery.croppedImageUrl
+      });
+    }
   }).catch(
     error => handleCategorySelectionFailure(dispatch, error)
   );
@@ -144,10 +150,10 @@ export const cropImage = (tabName, cropImageMethod, uri, cropData) => (dispatch,
   );
 };
 
-export const uploadCroppedImage = (tabName, queryId, imageUri, category) => (dispatch, getState) => {
+export const uploadCroppedImage = (tabName, queryId, searchTimes, imageUri, category) => (dispatch, getState) => {
   const file = {
     uri: imageUri,
-    name: queryId+='.jpg',
+    name: queryId + '_' + searchTimes + '.jpg',
     type: 'image/jpg'
   };
 
@@ -237,23 +243,39 @@ export const onResultsRetryPress = (tabName) => ({
   tabName
 });
 
-export const onResultsWillMount = (tabName) => ({
-  type: 'ON_RESULTS_WILL_MOUNT',
+export const onQueryResultsDidMount = (tabName) => ({
+  type: 'ON_QUERY_RESULTS_DID_MOUNT',
   tabName
 });
 
-export const onResultsWillUnmount = (tabName) => ({
-  type: 'ON_RESULTS_WILL_UNMOUNT',
+export const onCocumItResultsDidMount = (tabName) => ({
+  type: 'ON_COCUM_IT_RESULTS_DID_MOUNT',
+  tabName
+});
+
+export const onRandomResultsDidMount = (tabName) => ({
+  type: 'ON_RANDOM_RESULTS_DID_MOUNT',
+  tabName
+});
+
+export const onQueryResultsWillUnmount = (tabName) => ({
+  type: 'ON_QUERY_RESULTS_WILL_UNMOUNT',
+  tabName
+});
+
+export const onCocumItResultsWillUnmount = (tabName) => ({
+  type: 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT',
+  tabName
+});
+
+export const onRandomResultsWillUnmount = (tabName) => ({
+  type: 'ON_RANDOM_RESULTS_WILL_UNMOUNT',
   tabName
 });
 
 export const setCocumItProductId = (product) => ({
   type: 'SET_COCUM_IT_PRODUCT_ID',
   productId: product.productId
-});
-
-export const onCocumItResultsWillUnmount = () => ({
-  type: 'ON_COCUM_IT_RESULTS_WILL_UNMOUNT'
 });
 
 export const setProductTimesVisited = (mutate, product) => (dispatch, getState) => {

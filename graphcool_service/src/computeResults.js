@@ -4,8 +4,8 @@ var isEmpty = require('lodash.isempty');
 const LIRESOLR_SERVER_URL = 'http://34.242.219.160/solr/';
 
 const categoriesInfo = {
-  prueba: {
-    boosts: { fit: 10, length: 10, neck: 10, print: 10, sleeve: 10 },
+  vestidos: {
+    boosts: { fit: 11, length: 13, neck: 4, print: 13, sleeve: 9 },
     maxScore: 50.0
   }
 };
@@ -39,12 +39,12 @@ async function fetchVisualResults(mode, gender, category, imageUrl, productId, f
   endpoint = addFilterQueries(endpoint, filters);
   return fetch(endpoint)
     .then(response => response.json()
-      .then(json => json.docs || json.response
+      .then(json => json.docs || json.response || []
   ));
 }
 
 async function fetchTextResults(mode, gender, category, tags, filters) {
-  if (mode === 'random' || !categoriesInfo['category'] || isEmpty(tags)) {
+  if (mode === 'random' || !categoriesInfo[category] || isEmpty(tags)) {
     return [];
   }
   let endpoint = generateTextBaseUrl(gender, category);
@@ -67,7 +67,7 @@ const mixResults = (visualResults, textResults, category) => {
     visualResults.forEach((visualResult) => {
       const foundTextResult = textResults.find((textResult) => textResult.id === visualResult.id);
       if (foundTextResult) {
-        visualResult.d = visualResult.d * (1.0 - 0.3 * foundTextResult.score / maxScore);
+        visualResult.d = visualResult.d * (1.0 - 0.5 * foundTextResult.score / maxScore);
       }
     });
     visualResults = visualResults.sort((a, b) => a.d - b.d);
@@ -76,7 +76,7 @@ const mixResults = (visualResults, textResults, category) => {
 };
 
 const generateVisualBaseUrl = (gender, category) => {
-  return LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?rows=30&field=ce&ms=false';
+  return LIRESOLR_SERVER_URL + gender + '_' + category + '/lireq?rows=90&field=ce&ms=false';
 };
 
 const generateTextBaseUrl = (gender, category) => {

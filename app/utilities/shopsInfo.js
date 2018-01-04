@@ -46,5 +46,5 @@ const getShopWithName = (shopName) =>
 export const getShopLabel = (shopName) =>
   getShopWithName(shopName).label;
 
-export const getShopdomain = (shopName) =>
+export const getShopDomain = (shopName) =>
   getShopWithName(shopName).domain;

@@ -10,19 +10,16 @@ export const getShopAndBrandLabel = (product) =>
 export const getShopOrBrandLabel = (product) =>
   product.brand ? product.brand : fromShopsInfo.getShopLabel(product.shop);
 
-export const getModelImageUrl = (product) => {
-  let imageUrl = product.modelImageUrl || product.productImageUrl;
+export const getDisplayImageUrl = (product) => {
+  let imageUrl = product.displayImageUrl;
   if (product.shop === 'laredoute') {
     imageUrl = cloudinaryUrl + imageUrl;
   }
   return imageUrl;
 };
 
-export const getProductImageUrl = (product) =>
-  product.productImageUrl || product.modelImageUrl;
-
 export const getProductUrl = (product) =>
   product.affiliateUrl || product.productUrl;
 
 export const getShopDomain = (product) =>
-  fromShopsInfo.getShopdomain(product.shop);
+  fromShopsInfo.getShopDomain(product.shop);
