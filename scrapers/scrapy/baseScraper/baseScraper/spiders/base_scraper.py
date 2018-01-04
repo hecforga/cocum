@@ -240,6 +240,7 @@ class missguidedSpider(scrapy.Spider):
             productImageUrl = images[0].replace('','')
             displayImageUrl = images[0].replace('','')
             download_image_url = modelImageUrl.replace('','')
+            labelling_image_url = images[1].replace(,)
         except:
             return None
 
@@ -278,6 +279,9 @@ class missguidedSpider(scrapy.Spider):
 
 
         if productId not in response.meta['previous_products']:
+
+            if category == 'vestidos':                
+                self.Request.retrieve(labelling_image_url, productDirectory+'labelling_'+productImageFile)
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
