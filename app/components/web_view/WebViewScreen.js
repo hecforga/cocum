@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, View } from 'react-native';
 import { Constants } from 'expo';
-import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
 import WebViewContainer from './WebViewContainer.js';
 import HeaderButtonContainer from '../header/HeaderButtonContainer.js';
@@ -9,11 +8,6 @@ import HeaderButtonContainer from '../header/HeaderButtonContainer.js';
 let _webView = null;
 
 class WebViewScreen extends Component {
-  componentWillMount() {
-    this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
-    this.tracker.trackScreenView('WebView');
-  }
-
   render() {
     const { navigation } = this.props;
 

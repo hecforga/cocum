@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
+import screenTracking from './middlewares/screenTracking.js';
 import nav from './reducers/navigation.js';
 import categorySelection from './reducers/categorySelection.js';
 import selectedImage from './reducers/selectedImage.js';
@@ -14,7 +15,7 @@ import webView from './reducers/webView.js';
 
 const configureStore = (client) => {
 
-  const middlewares = [thunk];
+  const middlewares = [thunk, screenTracking];
   if (process.env.NODE_ENV !== 'production') {
     middlewares.push(createLogger());
   }

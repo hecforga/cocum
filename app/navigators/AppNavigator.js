@@ -31,7 +31,7 @@ const HomeNavigator = StackNavigator({
 });
 
 const TrendingNavigator = StackNavigator({
-  TrendingHome: { screen: TrendingScreen },
+  Trending: { screen: TrendingScreen },
   Results: { screen: ResultsScreen },
   Filters: { screen: FiltersScreen },
   WebView: { screen: WebViewScreen }
@@ -45,7 +45,7 @@ const TrendingNavigator = StackNavigator({
 });
 
 const CatalogueNavigator = StackNavigator({
-  CatalogueHome: { screen: CatalogueScreen },
+  Catalogue: { screen: CatalogueScreen },
   Results: { screen: ResultsScreen },
   Filters: { screen: FiltersScreen },
   WebView: { screen: WebViewScreen }

@@ -15,9 +15,6 @@ class HomeScreen extends Component {
     // GoogleAnalyticsSettings has static methods and is applied
     // for all trackers
     GoogleAnalyticsSettings.setDispatchInterval(30);
-    // for testing:means no data will be sent to GA
-    //GoogleAnalyticsSettings.setDryRun(true);
-    // The tracker is constructed
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
     this.tracker.trackScreenView('Home');
 
