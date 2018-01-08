@@ -278,8 +278,9 @@ class MangoSpider(scrapy.Spider):
         productDetailsFile = productDirectory+productId+'.json'
 
 
-        self.Request.retrieve(labellingImageUrl, productDirectory+ 'labelling_' +productImageFile)
         if productId not in response.meta['previous_products']:
+            if category == 'vestidos':
+                self.Request.retrieve(labellingImageUrl, productDirectory+ 'labelling_' +productImageFile)
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset
