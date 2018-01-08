@@ -12,10 +12,6 @@ import * as fromProductsInfo from '../../utilities/productsInfo.js';
 
 class ResultsContainer extends Component {
   componentWillMount() {
-    const { setCanGoNext } = this.props;
-
-    setCanGoNext(true);
-
     this.tracker = new GoogleAnalyticsTracker('UA-106460906-1');
   }
 

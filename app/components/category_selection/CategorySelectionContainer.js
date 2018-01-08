@@ -24,6 +24,8 @@ class CategorySelectionContainer extends Component {
   }
 
   componentWillUpdate(nextProps) {
+    const { setCanGoNext } = this.props;
+
     if (this.props.status !== nextProps.status) {
       switch (nextProps.status) {
         case 'init':
@@ -40,6 +42,7 @@ class CategorySelectionContainer extends Component {
           this.uploadFullImage(nextProps.query);
           break;
         case 'full_image_uploaded':
+          setCanGoNext(true);
           this.computePredictions(nextProps.query);
           break;
       }
@@ -47,8 +50,9 @@ class CategorySelectionContainer extends Component {
   }
 
   componentWillUnmount() {
-    const { onCategorySelectionWillUnmount } = this.props;
+    const { setCanGoNext, onCategorySelectionWillUnmount } = this.props;
 
+    setCanGoNext(true);
     onCategorySelectionWillUnmount();
   }
 
@@ -84,7 +88,6 @@ class CategorySelectionContainer extends Component {
       setSelectedImageLayout,
       setSelectedImageCropData,
       query,
-      setCanGoNext,
       onCategorySelectionRetryPress
     } = this.props;
 
@@ -113,7 +116,6 @@ class CategorySelectionContainer extends Component {
           <CategoriesList
             selectedCategory={query.category}
             setQueryCategory={(category) => this.setQueryCategory(category)}
-            setCanGoNext={setCanGoNext}
           />
         </View>
       </View>

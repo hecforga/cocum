@@ -1,7 +1,7 @@
 const canGoNext = (state = false, action) => {
   switch (action.type) {
     case 'SET_CAN_GO_NEXT':
-      return action.goNext;
+      return action.canGoNext;
     default:
       return state;
   }

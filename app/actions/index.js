@@ -329,9 +329,9 @@ export const applyFilters = (filters, tabName) => ({
   tabName
 });
 
-export const setCanGoNext = (goNext) => ({
+export const setCanGoNext = (canGoNext) => ({
   type: 'SET_CAN_GO_NEXT',
-  goNext
+  canGoNext
 });
 
 export const setWebViewCanGoBack = (canGoBack) => ({
