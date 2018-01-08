@@ -116,6 +116,7 @@ class ZaraSpider(scrapy.Spider):
             "https://www.zara.com/es/es/mujer-pantalones-shorts-l1355.html"
         ]
         for index, url in enumerate(urls):
+
             category = self.assign_category(index)
 
             dirToProducts = self.dirToSave +category+'/'+self.shop+'/products/'
@@ -204,7 +205,9 @@ class ZaraSpider(scrapy.Spider):
         productImageUrl = response.css('div[id="plain-image"] div a::attr(href)').extract_first()
         productImageUrl = 'http:'+productImageUrl.replace('w/560', 'w/400')
 
-        download_image_url = productImageUrl.replace( 'w/400', 'w/560')
+        download_image_url = productImageUrl.replace( 'w/400', 'w/560')        
+        labelling_image_url = 'http:'+image_list[0]
+        
         #Check if it has discount
         # and extract the product price
         #Depends on the shop: ZARA
@@ -244,10 +247,12 @@ class ZaraSpider(scrapy.Spider):
         #Compute product directory depending on the category and the id
         # in this directory will be stored the image and the details in json
         productDirectory =  self.product_directory(category, productId)
-        productDetailsFile = productDirectory+productId+'.json'
-
+        productDetailsFile = productDirectory+productId+'.json'     
 
         if productId not in response.meta['previous_products']:
+
+            if category == 'vestidos':            
+                self.Request.retrieve(labelling_image_url, productDirectory+'labelling_'+productImageFile)
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset

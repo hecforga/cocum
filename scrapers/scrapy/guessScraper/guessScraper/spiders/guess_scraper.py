@@ -183,6 +183,7 @@ class GuessSpider(scrapy.Spider):
             else:
                 displayImageUrl = images[0].replace('wid=540', 'wid=350')
 
+            labelling_image_url = modelImageUrl.replace('wid=350', 'wid=414')
             download_image_url = productImageUrl.replace('wid=350', 'wid=414')
         except:
             return None
@@ -231,8 +232,10 @@ class GuessSpider(scrapy.Spider):
         productDirectory =  self.product_directory(category, productId)
         productDetailsFile = productDirectory+productId+'.json'
 
-
         if productId not in response.meta['previous_products']:
+
+            if category == 'vestidos':
+                self.Request.retrieve(labelling_image_url, productDirectory+'labelling_'+productImageFile)
 
             #Check if the product is already in the database so we do not download the image again
             #Download image to the correct folder in the dataset

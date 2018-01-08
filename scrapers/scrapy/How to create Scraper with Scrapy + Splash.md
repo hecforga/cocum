@@ -86,9 +86,9 @@ In the file `<shopName>_scraper.py` the comments will guide you as well.
  
  12. Extract **images** of the product. For more info on specifications on which url to extract have look at [Scrapers Info](https://github.com/hecforga/cocum/blob/master/scrapers/SCRAPERS_INFO.md). Set the url for:
 
-	 12.1 **productImageUrl** - the image where the product can be seen alone or in more detail. Will be stored in graphcool. It should have width between 300-450 px.
-	 12.2 **modelImageUrl** - the image where a model wears the product. Will be stored in graphcool. It should have width between 300-450 px.
-	 12.3 **download_image_url** - the image that will be downloaded. It needs to be set taking into account which cropper will be used. The url will not be stored anywhere but the image located at this url will be downloaded. The optimal width is in the range of 500 and 800 px.
+	 12.1 **displayImageUrl** - the image where a model wears the product. Will be stored in graphcool. It should have width between 300-450 px. This image will be displayed on the app.
+	 12.2 **download_image_url** - the image that will be downloaded. It needs to be set taking into account which cropper will be used. The url will not be stored anywhere but the image located at this url will be downloaded. The optimal width is in the range of 500 and 800 px.
+     12.3 **labelling_image_url** - the image that will be labelled with machine learning. It needs to be set taking into account that a full view of a model appears. The url will not be stored anywhere but the image located at this url will be downloaded for later classification. The optimal width is in the range of 500 and 800 px.
 
  13. Obtain the **productImageFile**  from the download_image_url that is the name we will store the image that will be downloaded.
  14. Set the **affiliateUrl**. Sometimes not all the productUrl needs to be on it.
