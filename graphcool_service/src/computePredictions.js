@@ -2,11 +2,7 @@ import * as fetch from 'isomorphic-fetch';
 
 const LAMBDA_URL = 'https://v3jn6b6jn3.execute-api.eu-west-1.amazonaws.com/dev/prediction';
 
-const categoriesInfo = {
-  vestidos: {
-    properties: ['fit', 'length', 'neck', 'print', 'sleeve']
-  }
-};
+const categoriesInfo = {};
 
 export default async event => {
   try {

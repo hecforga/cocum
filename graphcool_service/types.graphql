@@ -1,6 +1,7 @@
 type MyQuery @model {
   category: String
   createdAt: DateTime!
+  cropData: Json
   croppedImageUrl: String
   fullImageUrl: String
   gender: String!

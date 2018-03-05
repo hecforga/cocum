@@ -229,6 +229,22 @@ export const computeResults = (mutate, tabName, mode, gender, category, imageUrl
   );
 };
 
+export const updateMyQuery = (mutate, id, category, croppedImageUrl, fullImageUrl, results, tags, cropData) => (dispatch, getState) => {
+  mutate({
+    variables: {
+      id,
+      category,
+      croppedImageUrl,
+      fullImageUrl,
+      results,
+      tags,
+      cropData
+    }
+  }).catch(
+    error => console.log(error)
+  );
+};
+
 const handleResultsFailure = (dispatch, tabName, error) => {
   console.log(error);
   dispatch({

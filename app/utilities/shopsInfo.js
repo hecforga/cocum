@@ -24,10 +24,6 @@ const shops = [
     label: 'Missguided',
     domain: 'missguided.com'
   }, {
-    name: 'pullandbear',
-    label: 'PULLANDBEAR',
-    domain: 'pullandbear.com'
-  }, {
     name: 'superdry',
     label: 'Superdry',
     domain: 'superdry.es'

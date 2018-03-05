@@ -29,6 +29,8 @@ class QueryResultsContainer extends Component {
         case 'filters_applied':
           this.computeResults(nextProps.query, nextProps.appliedFilters);
           break;
+        case 'results_computed':
+          this.updateMyQuery(nextProps.ids);
       }
     }
   }
@@ -64,6 +66,21 @@ class QueryResultsContainer extends Component {
       '',
       query.tags,
       appliedFilters
+    );
+  }
+
+  updateMyQuery(ids) {
+    const { query, selectedImage, updateMyQuery, updateMyQueryMutate } = this.props;
+
+    updateMyQuery(
+      updateMyQueryMutate,
+      query.id,
+      query.category,
+      query.croppedImageUrl,
+      query.fullImageUrl,
+      ids,
+      query.tags,
+      selectedImage.cropData
     );
   }
 
@@ -115,6 +132,14 @@ const computeResults = gql`
   }
 `;
 
+const updateMyQuery = gql`
+  mutation updateMyQuery ($id: ID!, $category: String!, $croppedImageUrl: String!, $fullImageUrl: String!, $results: [String!]!, $tags: Json!, $cropData: Json!) {
+    updateMyQuery(id: $id, category: $category, croppedImageUrl: $croppedImageUrl, fullImageUrl: $fullImageUrl, results: $results, tags: $tags, cropData: $cropData) {
+      id
+    }
+  }
+`;
+
 const updateProductTimesRedirected = gql`
   mutation updateProductTimesRedirected ($id: ID!, $timesRedirected: Int!) {
     updateProduct(id: $id, timesRedirected: $timesRedirected) {
@@ -130,5 +155,6 @@ export default compose(
   ),
   graphql(getProductsByIds),
   graphql(computeResults, { name: 'computeResultsMutate' }),
+  graphql(updateMyQuery, { name: 'updateMyQueryMutate' }),
   graphql(updateProductTimesRedirected, { name: 'updateProductTimesRedirectedMutate' })
 )(QueryResultsContainer);
